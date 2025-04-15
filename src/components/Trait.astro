@@ -164,8 +164,9 @@
         }
       ].map((item, index) => (
         <div 
-          class="group relative rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
+          class="group relative rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden"
         >
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary-500/10 to-transparent rounded-bl-full"></div>
           <div class="relative">
             <div class="flex items-center gap-2 xs:gap-3 mb-2 xs:mb-3 sm:mb-4">
               <div class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-lg xs:rounded-xl bg-primary-500 flex items-center justify-center shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 flex-shrink-0">
@@ -182,7 +183,7 @@
                   <h3 class="text-base xs:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300 line-clamp-1">
                     {item.title}
                   </h3>
-                  <span class="px-1.5 xs:px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs rounded-full transition-colors duration-300 whitespace-nowrap">
+                  <span class="px-1.5 xs:px-2 py-0.5 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-900/30 text-primary-600 dark:text-primary-400 text-xs rounded-full transition-colors duration-300 whitespace-nowrap">
                     {item.stats}
                   </span>
                 </div>

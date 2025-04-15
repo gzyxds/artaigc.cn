@@ -50,8 +50,6 @@ const {
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <title>{title}</title>
-    <!-- 引入Material Icons字体 -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- 启用Astro页面过渡效果 -->
     <ViewTransitions />
   </head>
@@ -100,21 +98,12 @@ const {
         }
       });
 
-      /**
-       * 百度统计代码
-       */
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?93a7b9a145222f9b7109d643a0c58f8d";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode?.insertBefore(hm, s);
-      })();
+
     </script>
     <!-- 引入过渡动画脚本 -->
     <script src="../scripts/transitions.js"></script>
     <!-- 返回顶部按钮 - 优化样式和交互效果 -->
-  <button id="back-to-top" class="fixed bottom-24 right-10 p-3 bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out opacity-0 scale-90 backdrop-blur-sm border border-blue-400/30 dark:border-blue-300/30 z-50">
+  <button id="back-to-top" class="fixed bottom-28 right-10 p-3 bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out opacity-0 scale-90 backdrop-blur-sm border border-blue-400/30 dark:border-blue-300/35 z-50">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
     </svg>
