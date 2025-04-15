@@ -1,11 +1,13 @@
 ---
 // 产品文档卡片组件
 
-
 const categories = [
   {
     title: "AI数字人",
-    icon: "school",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/>
+      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
+    </svg>`,
     items: [
       {icon: "🛠️", text: "宝塔面板部署"},
       {icon: "⚙", text: "通用部署"},
@@ -23,7 +25,10 @@ const categories = [
   },
   {
     title: "AI知识库",
-    icon: "card_giftcard",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" fill="currentColor"/>
+      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
+    </svg>`,
     items: [
       {icon: "🛠️", text: "宝塔面板部署"},
       {icon: "⚙", text: "通用部署"},
@@ -41,7 +46,10 @@ const categories = [
   },
   {
     title: "聊天绘画",
-    icon: "group",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/>
+      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
+    </svg>`,
     items: [
       {icon: "🛠️", text: "宝塔面板部署"},
       {icon: "⚙", text: "通用部署"},
@@ -59,7 +67,10 @@ const categories = [
   },
   {
     title: "论文写作",
-    icon: "payments",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" fill="currentColor"/>
+      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
+    </svg>`,
     items: [
       {icon: "🛠️", text: "宝塔面板部署"},
       {icon: "⚙", text: "通用部署"},
@@ -76,43 +87,71 @@ const categories = [
     ]
   }, 
 ];
+
 ---
-<div class="container-custom mt-8 mb-12">
-  <h2 class="text-2xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-white">产品文档</h2>
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-    {categories.slice(0, 6).map((category) => (
-      <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-200 relative group overflow-hidden">
-        <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 dark:bg-blue-900/20 transform rotate-45 translate-x-8 -translate-y-8 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30 transition-colors duration-300"></div>
-        <div class="absolute top-0 right-0 w-16 h-16 bg-blue-100 dark:bg-blue-800/30 transform rotate-45 translate-x-6 -translate-y-6 group-hover:bg-blue-200 dark:group-hover:bg-blue-700/40 transition-colors duration-300"></div>
-        
-        <div class="flex items-start gap-4 mb-4 relative z-10">
-          <div class="flex-shrink-0">
-            <div class="w-10 h-10 rounded-lg bg-[#EBF5FF] dark:bg-blue-900/30 flex items-center justify-center">
-              <span class="material-icons text-[#0066FF] dark:text-blue-400 text-2xl">{category.icon}</span>
-            </div>
+<section class="relative py-16 sm:py-24 lg:py-32">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      {categories.map((category, index) => (
+        <div 
+          class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700 hover:-translate-y-1 transition-all duration-500"
+          style={`transition-delay: ${index * 100}ms`}
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          {/* 装饰背景 */}
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+          
+          {/* 装饰角标 */}
+          <div class="absolute top-0 right-0">
+            <div class="w-24 h-24 bg-gradient-to-br from-blue-100/50 to-transparent dark:from-blue-800/20 dark:to-transparent rounded-bl-[100px] group-hover:from-blue-200/70 dark:group-hover:from-blue-700/30 transition-colors duration-300"></div>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{category.title}</h3>
+          
+          <div class="relative flex items-center space-x-5 mb-6">
+            <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-blue-200/70 to-transparent dark:from-blue-700/30 dark:to-transparent p-3 sm:p-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 text-blue-500">
+              <div set:html={category.icon}></div>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300">{category.title}</h3>
+          </div>
+          
+          <ul class="relative space-y-3 mb-8">
+            {category.items.slice(0, 6).map((item) => (
+              <li class="flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer transition-all duration-200 group/item">
+                <span class="mr-3 transform group-hover/item:scale-110 transition-transform duration-200">{item.icon}</span>
+                <span class="group-hover/item:translate-x-1 transition-transform duration-200">{item.text}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <a href="https://doc.artaigc.cn/" class="relative inline-flex items-center text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition-all duration-200 group/link">
+            查看更多
+            <svg class="w-5 h-5 ml-1 transform group-hover/link:translate-x-1 transition-transform duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl"></div>
         </div>
-        
-        <ul class="space-y-3 mb-4 relative z-10">
-          {category.items.slice(0, 6).map((item) => (
-            <li class="text-gray-600 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 cursor-pointer transition-colors duration-200">
-              <span class="mr-2">{item.icon}</span>{item.text}
-            </li>
-          ))}
-        </ul>
-        
-        <a href="https://doc.artaigc.cn/" class="inline-flex items-center text-[#0066FF] dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 relative z-10">
-          查看更多
-          <span class="material-icons text-lg ml-1">arrow_forward</span>
-        </a>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
-</div>
+</section>
 
 <style>
+  .container-custom {
+    max-width: 1550px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   @media (max-width: 639px) {
+    .container-custom {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
     .grid {
       gap: 0.75rem;
     }
@@ -126,23 +165,21 @@ const categories = [
     }
     
     li {
-      font-size: 0.75rem;
-    }
-
-    .container-custom {
-      padding: 0 0.5rem;
+      font-size: 0.875rem;
     }
   }
   
-  @media (min-width: 640px) and (max-width: 1023px) {
-    .grid {
-      gap: 1.25rem;
+  @media (min-width: 640px) {
+    .container-custom {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
-    .grid {
-      gap: 1.5rem;
+    .container-custom {
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 </style>
