@@ -316,6 +316,14 @@ const products: Product[] = [
 // 默认视图类型
 type ViewType = 'grid' | 'list' | 'card';
 const defaultView: ViewType = 'grid';
+// 确保视图类型一致性
+const isValidViewType = (view: string): view is ViewType => {
+  return ['grid', 'list', 'card'].includes(view);
+};
+// 将字符串转换为ViewType
+const asViewType = (view: string): ViewType => {
+  return isValidViewType(view) ? view as ViewType : 'grid';
+};
 ---
 
 <Layout 
@@ -536,7 +544,7 @@ const defaultView: ViewType = 'grid';
       </div>
 
       <!-- 卡片视图容器 -->
-      <div id="card-view-container" class={defaultView === 'card' ? '' : 'hidden'}>
+      <div id="card-view-container" class={`${defaultView === 'card' ? '' : 'hidden'}`}>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {products.map((product, index) => (
             <div 
@@ -617,60 +625,99 @@ const defaultView: ViewType = 'grid';
   <Footer />
 </Layout>
 
-<script>
-  // 视图切换功能
-  const gridViewBtn = document.getElementById('grid-view');
-  const listViewBtn = document.getElementById('list-view');
-  const cardViewBtn = document.getElementById('card-view');
-  const gridViewContainer = document.getElementById('grid-view-container');
-  const listViewContainer = document.getElementById('list-view-container');
-  const cardViewContainer = document.getElementById('card-view-container');
+<script is:inline>
+  // 使用立即执行函数确保每次页面加载时都会执行
+  (function() {
+    // 视图切换功能
+    function initViewSwitcher() {
+      const gridViewBtn = document.getElementById('grid-view');
+      const listViewBtn = document.getElementById('list-view');
+      const cardViewBtn = document.getElementById('card-view');
+      const gridViewContainer = document.getElementById('grid-view-container');
+      const listViewContainer = document.getElementById('list-view-container');
+      const cardViewContainer = document.getElementById('card-view-container');
 
-  function switchView(view: ViewType) {
-    // 更新按钮状态
-    [gridViewBtn, listViewBtn, cardViewBtn].forEach(btn => {
-      if (btn) {
-        btn.classList.remove('bg-primary-500', 'text-white');
-        btn.classList.add('text-gray-600', 'dark:text-gray-300');
+      // 如果元素不存在，则退出初始化
+      if (!gridViewBtn || !listViewBtn || !cardViewBtn) return;
+
+      function switchView(view) {
+        // 确保视图类型有效 - 使用字符串比较而非类型比较
+        if (!['grid', 'list', 'card'].includes(view)) {
+          console.error('Invalid view type:', view);
+          return;
+        }
+        
+        // 更新按钮状态
+        [gridViewBtn, listViewBtn, cardViewBtn].forEach(btn => {
+          if (btn) {
+            btn.classList.remove('bg-primary-500', 'text-white');
+            btn.classList.add('text-gray-600', 'dark:text-gray-300');
+          }
+        });
+        
+        // 隐藏所有视图容器
+        [gridViewContainer, listViewContainer, cardViewContainer].forEach(container => {
+          if (container) {
+            container.classList.add('hidden');
+          }
+        });
+        
+        // 保存当前视图到本地存储
+        try {
+          localStorage.setItem('preferredView', view);
+        } catch (e) {
+          console.warn('无法保存视图偏好:', e);
+        }
+
+        // 激活选中的视图
+        switch(view) {
+          case 'grid':
+            if (gridViewBtn && gridViewContainer) {
+              gridViewBtn.classList.add('bg-primary-500', 'text-white');
+              gridViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+              gridViewContainer.classList.remove('hidden');
+            }
+            break;
+          case 'list':
+            if (listViewBtn && listViewContainer) {
+              listViewBtn.classList.add('bg-primary-500', 'text-white');
+              listViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+              listViewContainer.classList.remove('hidden');
+            }
+            break;
+          case 'card':
+            if (cardViewBtn && cardViewContainer) {
+              cardViewBtn.classList.add('bg-primary-500', 'text-white');
+              cardViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+              cardViewContainer.classList.remove('hidden');
+            }
+            break;
+        }
       }
-    });
 
-    // 更新容器显示状态
-    [gridViewContainer, listViewContainer, cardViewContainer].forEach(container => {
-      if (container) {
-        container.classList.add('hidden');
-      }
-    });
+      // 创建事件处理函数（使用命名函数以便正确移除）
+      const handleGridView = () => switchView('grid');
+      const handleListView = () => switchView('list');
+      const handleCardView = () => switchView('card');
+      
+      // 移除可能存在的旧事件监听器（避免重复绑定）
+      gridViewBtn.removeEventListener('click', handleGridView);
+      listViewBtn.removeEventListener('click', handleListView);
+      cardViewBtn.removeEventListener('click', handleCardView);
 
-    // 激活选中的视图
-    switch(view) {
-      case 'grid':
-        if (gridViewBtn && gridViewContainer) {
-          gridViewBtn.classList.add('bg-primary-500', 'text-white');
-          gridViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
-          gridViewContainer.classList.remove('hidden');
-        }
-        break;
-      case 'list':
-        if (listViewBtn && listViewContainer) {
-          listViewBtn.classList.add('bg-primary-500', 'text-white');
-          listViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
-          listViewContainer.classList.remove('hidden');
-        }
-        break;
-      case 'card':
-        if (cardViewBtn && cardViewContainer) {
-          cardViewBtn.classList.add('bg-primary-500', 'text-white');
-          cardViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
-          cardViewContainer.classList.remove('hidden');
-        }
-        break;
+      // 添加新的点击事件监听器
+      gridViewBtn.addEventListener('click', handleGridView);
+      listViewBtn.addEventListener('click', handleListView);
+      cardViewBtn.addEventListener('click', handleCardView);
     }
-  }
 
-  // 添加点击事件监听器
-  gridViewBtn?.addEventListener('click', () => switchView('grid'));
-  listViewBtn?.addEventListener('click', () => switchView('list'));
-  cardViewBtn?.addEventListener('click', () => switchView('card'));
+    // 页面加载完成后初始化视图切换器
+    document.addEventListener('DOMContentLoaded', initViewSwitcher);
+    
+    // 确保在页面已经加载完成的情况下也能正确初始化
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(initViewSwitcher, 0); // 使用setTimeout确保DOM完全准备好
+    }
+  })();
 </script>
     
