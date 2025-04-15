@@ -1,0 +1,391 @@
+---
+// 基础布局组件
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// 页面主要组件
+import PaperModule from '../components/Hero/PaperModule.astro';
+import Structure from '../components/Hero/Structure.astro';
+import EnterpriseOS from '../components/EnterpriseOS.astro';
+
+// 功能组件
+import Contact from '../components/Contact.astro';
+import Calltoaction from '../components/Calltoaction.astro';
+import ProductCards from '../components/ProductCards.astro';
+
+---
+
+<Layout 
+  title="AI论文写作系统_AI论文生成器_艺创AI"
+  description="艺创AI论文写作系统是一款基于人工智能的论文创作工具,支持期刊论文、科普文章、学生作业等多种写作场景,提供智能写作、参考文献引用、格式排版等功能,是学术写作的得力助手。"
+  keywords="AI论文写作系统,AI论文生成器,论文写作工具,智能写作系统,AI写作助手"
+>
+  <!-- 页面头部 -->
+  <Header />
+  
+  <!-- 论文创作模块 -->
+  <PaperModule />
+  
+  <!-- 产品介绍部分 -->
+  <section class="py-6 sm:py-10 md:py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <div class="container-custom">
+      <!-- 添加大标题 -->
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">产品介绍</h2>
+      <!-- 添加小标题 -->
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">艺创AI论文系统应用优势</p>
+      <div class="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- 期刊论文卡片 -->
+        <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center mb-3 md:mb-4">
+            <div class="p-2 md:p-3 bg-blue-100 dark:bg-blue-900/50 rounded-lg md:rounded-2xl flex items-center justify-center mr-3 md:mr-4 transform transition-all duration-300 hover:rotate-6">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-blue-600 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">期刊论文</h3>
+          </div>
+          <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">研究人员可以使用AI写作系统来生成论文的初稿或补充材料，可以更快地完成研究工作</p>
+        </div>
+
+        <!-- 科普文章卡片 -->
+        <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <div class="p-2 bg-green-100 dark:bg-green-900 rounded-full mr-3">
+              <svg class="w-6 h-6 text-green-600 dark:text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">科普文章</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">科普作家可以使用AI写作系统来生成易于理解的科学文章，以便向公众传播复杂的科学知识</p>
+        </div>
+
+        <!-- 学生作业卡片 -->
+        <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <div class="p-2 bg-purple-100 dark:bg-purple-900 rounded-full mr-3">
+              <svg class="w-6 h-6 text-purple-600 dark:text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">学生作业</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">学生可以利用AI写作系统来获得关于特定主题的论文建议、参考文献和写作指导，提高写作能力和学术水平</p>
+        </div>
+
+        <!-- 商业报告卡片 -->
+        <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <div class="p-2 bg-yellow-100 dark:bg-yellow-900 rounded-full mr-3">
+              <svg class="w-6 h-6 text-yellow-600 dark:text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">商业报告</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">企业可以利用AI写作系统来撰写市场调研报告、竞争分析报告等商业文档，提供决策支持和业务洞察</p>
+        </div>
+
+        <!-- 新闻报道卡片 -->
+        <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <div class="p-2 bg-teal-100 dark:bg-teal-900 rounded-full mr-3">
+              <svg class="w-6 h-6 text-teal-600 dark:text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">新闻报道</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">记者可以使用AI写作系统来生成新闻稿件的初稿，快速获取相关信息并加快新闻发布速度</p>
+        </div>
+
+        <!-- 更多场景卡片 -->
+        <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <div class="p-2 bg-orange-100 dark:bg-orange-900 rounded-full mr-3">
+              <svg class="w-6 h-6 text-orange-600 dark:text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a5 5 0 00-5 5v10a5 5 0 0010 0V7a5 5 0 00-5-5zM9 21v-6a3 3 0 013-3h6"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">更多场景</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">AI论文系统可应用于其他更多场景，可根据自己的需求合理使用</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 智能生成论文大纲部分 -->
+  <section class="py-6 sm:py-10 md:py-12 bg-white dark:bg-gray-900">
+    <div class="container-custom">
+     <div class="mb-12 md:mb-24">
+        <div class="grid gap-8 md:gap-12 items-center mb-8 md:mb-12 md:grid-cols-2">
+          <div>
+            <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+              智能生成论文大纲
+            </span>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">AI智能助手一键生成论文大纲</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              你只需要输入论文关键词，AI即可快速为您生成论文大纲，可修改章节内容，操作高效快捷！
+            </p>
+            <div class="flex flex-wrap gap-4 mb-6">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">一键生成全篇论文</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">走马灯通知</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">移动端自适应</span>
+              </div>
+            </div>
+            <!-- 修改按钮样式为蓝色 -->
+            <div class="flex flex-wrap gap-4">
+              <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
+                查看演示
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                </svg>
+                购买授权
+              </a>
+            </div>
+          </div>
+          <!-- 右侧展示图片区域 -->
+          <div class="rounded-lg overflow-hidden">
+            <!-- 数字人形象展示图片 -->
+            <img src="/assets/img/paper1.png" alt="AI论文生成" class="w-full h-auto" />
+          </div>
+        </div>
+      </div>
+   <!--卡片数字分身内容结束 -->
+
+   <!--一键生成全篇论文 -->   
+      <div class="mb-24">
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+          <div class="order-2 md:order-1 rounded-lg overflow-hidden">
+            <img src="/assets/img/paper2.png" alt="AI智能创作" class="w-full h-auto" />
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+              一键生成全篇论文
+            </span>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">AI一键创作论文初稿</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              只需要几分钟，AI可为您生成2万字长文，AI助手生成全篇论文比自己写作更快，因为它是基于预训练模型的模式生成，不需要深入的思考和研究。可为您节约时间成本、避免写作困难。
+            </p>
+            <div class="flex flex-wrap gap-4 mb-6">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">一键生成全篇论文</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">走马灯通知</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">移动端自适应</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
+                获取演示
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                </svg>
+                购买授权
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   <!--移动端自适应 -->   
+   <div class="mb-12 md:mb-24">
+    <div class="grid gap-8 md:gap-12 items-center mb-8 md:mb-12 md:grid-cols-2">
+      <div>
+        <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+          多终端自适应
+        </span>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">移动端自适应</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          系统支持多终端自适应，无论您使用的是电脑、平板还是手机，都可以轻松访问和使用。
+        </p>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-gray-700 dark:text-gray-300">移动端自适应</span>
+          </div>
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-gray-700 dark:text-gray-300">电脑端自适应</span>
+          </div>
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-gray-700 dark:text-gray-300">平板端自适应</span>
+          </div>
+        </div>
+        <!-- 修改按钮样式为蓝色 -->
+        <div class="flex flex-wrap gap-4">
+          <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
+            查看演示
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+            </svg>
+            购买授权
+          </a>
+        </div>
+      </div>
+      <!-- 右侧展示图片区域 -->
+      <div class="rounded-lg overflow-hidden">
+        <!-- 数字人形象展示图片 -->
+        <img src="/assets/img/paper1.png" alt="AI论文生成" class="w-full h-auto" />
+      </div>
+    </div>
+  </div>
+<!--移动端自适应 -->
+  </section>
+
+  <!-- 走马灯通知部分 -->
+  <section class="py-6 sm:py-10 md:py-12 bg-white dark:bg-gray-900">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative order-2 md:order-1">
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">系统通知</h3>
+              <span class="px-2 py-1 text-xs font-medium text-blue-600 bg-blue-100 dark:bg-blue-900/50 rounded-full">实时</span>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <div class="w-2 h-2 mt-1.5 bg-green-500 rounded-full"></div>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-300">论文生成进度：85%</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">预计完成时间：2分钟</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <div class="w-2 h-2 mt-1.5 bg-blue-500 rounded-full"></div>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-300">系统更新：新增AI写作模板</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">2024-02-20 10:30</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <div class="w-2 h-2 mt-1.5 bg-yellow-500 rounded-full"></div>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-300">重要提示：请及时保存您的论文</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">2024-02-20 10:25</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+            实时通知系统
+          </span>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">智能通知系统</h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            实时展示论文生成进度、系统更新和重要通知，确保您不会错过任何重要信息。
+          </p>
+          <div class="flex flex-wrap gap-4 mb-6">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-gray-700 dark:text-gray-300">实时进度通知</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-gray-700 dark:text-gray-300">系统更新提醒</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-gray-700 dark:text-gray-300">重要信息推送</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
+              查看演示
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+              了解更多
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 系统结构展示 -->
+  <Structure />
+
+  <!-- 企业级AI系统 -->
+  <EnterpriseOS />
+
+  <!-- 联系信息 -->
+  <Contact />
+
+  <!-- 产品文档 -->
+  <ProductCards />
+
+  <!-- 行动号召 -->
+  <Calltoaction />
+
+  <!-- 页面底部 -->
+  <Footer />
+</Layout>

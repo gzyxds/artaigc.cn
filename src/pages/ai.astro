@@ -1,0 +1,548 @@
+---
+import Layout from '../layouts/Layout.astro';  // 导入Layout组件
+import Header from '../components/Header.astro'; // 导入Header组件
+import Footer from '../components/Footer.astro'; // 导入Footer组件
+import EnterpriseOS from '../components/EnterpriseOS.astro';  // 导入企业OS组件
+import WorkModule from '../components/Hero/WorkModule.astro'; // 导入工作模块组件
+import Structure from '../components/Hero/Structure.astro';  // 导入架构设计组件
+import Contact from '../components/Contact.astro'; // 导入联系组件
+import Calltoaction from '../components/Calltoaction.astro'; // 导入行动号召组件  
+
+// 定义页面元数据
+const pageMetadata = {
+  title: "全能AI知识库系统_全能AI知识库系统源码_AIGC系统_艺创AI",
+  description: "艺创AI全能AI知识库系统是一款基于PHP和Java双语言开发的AI知识库系统,支持私有化部署,提供知识库训练、智能问答、数字人等多种功能,是企业打造数字化转型的理想选择",
+  keywords: "全能AI知识库系统,全能AI知识库系统源码,全能AI知识库系统源码,AI知识库系统,AI知识库系统源码"
+};
+---
+
+<Layout {...pageMetadata}>
+  <Header /> 
+  <WorkModule />
+  </section>
+<section class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+        企业智能客服
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300">
+        提供全方位的智能客服解决方案，提升客户服务效率
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- 企业智能客服卡片 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 transform hover:-translate-y-1">
+        <div class="flex items-center mb-6">
+          <div class="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full mr-4">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">企业智能客服</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">企业可以上传产品资料、FAQ手册等信息，完成训练后，对外发布智能客服聊天窗口。通过AI客服可以提供24小时在线客服支持，节省人力物力。</p>
+      </div>
+
+      <!-- 企业智能文档卡片 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 transform hover:-translate-y-1">
+        <div class="flex items-center mb-6">
+          <div class="p-3 bg-green-100 dark:bg-green-900/30 rounded-full mr-4">
+            <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">企业智能文档</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">企业可以上传产品文档，合同内容等信息，完成训练后，仅限内部员工登录访问。通过AI助手，可以快速、准确的查询企业内部有关的信息文档，增强企业内部信息流动性。</p>
+      </div>
+
+      <!-- 专家顾问助理卡片 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 transform hover:-translate-y-1">
+        <div class="flex items-center mb-6">
+          <div class="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full mr-4">
+            <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">专家顾问助理</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">专家学者，大V博主，可以上传自己的语录资料，出版书籍等文本信息，打造24小时虚拟数字分身。例如健身顾问、心理咨询师通过导入专业资料后，可以24小时对外提供在线服务，带来额外的服务收入。</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 机器人管理 -->
+</section>
+    <section class="py-8 bg-white dark:bg-gray-900"> 
+      <div class="container-custom">
+        <!-- 机器人管理模块 -->
+        <div class="mb-24">
+          <!-- 两列网格布局 -->
+          <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <!-- 左侧内容区域 -->
+            <div>
+              <!-- 标签显示 -->
+              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+                机器人管理
+              </span>
+              <!-- 标题 -->
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">机器人管理</h2>
+              <!-- 描述文本 -->
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                支持创建/发布机器人，打造企业专属应用。1、创建机器人：可单独创建和设置私有机器人 2、发布机器人：支持发布多种渠道，如网页、JS嵌入、API接口、微信公众号等等
+              </p>
+              <!-- 功能特点列表 -->
+              <div class="flex flex-wrap gap-4 mb-6">
+                <!-- 多渠道发布特点 -->
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">多渠道发布</span>
+                </div>
+                <!-- 私有部署特点 -->
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">私有部署</span>
+                </div>
+                <!-- API集成特点 -->
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">API集成</span>
+                </div>
+              </div>
+              <!-- 按钮组 -->
+              <div class="flex flex-wrap gap-4">
+                <!-- 演示按钮 -->
+                <a href="/demo" target="_blank" 
+                  class="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+                  获取演示
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+                  </svg>
+                </a>
+                <!-- 购买按钮 -->
+                <a href="/contact" 
+                  class="inline-flex items-center px-6 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                  </svg>
+                  购买授权
+                </a>
+              </div>
+            </div>
+            <!-- 右侧图片展示 -->
+            <div class="rounded-lg overflow-hidden">
+              <img src="/assets/img/work1.png" 
+                alt="机器人管理" 
+                class="w-full h-auto" />
+            </div>
+          </div>
+          <!-- 添加分割线 -->
+          <div class="border-b border-gray-200 dark:border-gray-700"></div>
+        </div>
+        <!-- 机器人管理 -->
+        
+        <!-- 知识库数据训练 -->
+        <div class="mb-24">
+          <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div class="rounded-lg overflow-hidden">
+              <img src="/assets/img/work2.png" alt="知识库训练" class="w-full h-auto" />
+            </div>
+            <div>
+              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+                知识库训练
+              </span>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">知识库数据训练</h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                独立训练机器人数据，支持问答型、文档型的知识库，知识库共享。通过数据训练，用户在前台通过聊天对话模式快速查阅和各种内部资料和文档。使用机器学习技术，让系统自动学习并优化知识库中的知识，提高知识库的准确性和智能性。
+              </p>
+              <div class="flex flex-wrap gap-4 mb-6">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">智能训练</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">知识共享</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">持续优化</span>
+                </div>
+              </div>
+              <!-- 按钮组 -->
+              <div class="flex flex-wrap gap-4">
+                <!-- 演示按钮 -->
+                <a href="/demo" target="_blank" 
+                  class="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+                  获取演示
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+                  </svg>
+                </a>
+                <!-- 购买按钮 -->
+                <a href="/contact" 
+                  class="inline-flex items-center px-6 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                  </svg>
+                  购买授权
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- 添加分割线 -->
+          <div class="border-b border-gray-200 dark:border-gray-700"></div>
+        </div>
+        <!-- 知识库数据训练 -->
+
+
+        
+        <!-- AI数字人 -->
+        <div class="mb-24">
+          <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div>
+              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+                AI数字人
+              </span>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">AI数字人</h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                结合语音合成、语音识别、语义理解、图像处理、机器翻译、虚拟形象驱动等多项AI核心技术，实现了信息播报、互动交流、业务咨询、服务导览等多项功能，满足了新闻、政企、文旅、金融等多场景的需要。
+              </p>
+              <div class="flex flex-wrap gap-4 mb-6">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">多形象对话</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">场景定制</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">多功能集成</span>
+                </div>
+              </div>
+              <!-- 按钮组 -->
+              <div class="flex flex-wrap gap-4">
+                <!-- 演示按钮 -->
+                <a href="/demo" target="_blank" 
+                  class="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+                  获取演示
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+                  </svg>
+                </a>
+                <!-- 购买按钮 -->
+                <a href="/contact" 
+                  class="inline-flex items-center px-6 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                  </svg>
+                  购买授权
+                </a>
+              </div>
+            </div>
+            <div class="rounded-lg overflow-hidden">
+              <img src="/assets/img/work3.png" alt="AI数字人" class="w-full h-auto" />
+            </div>
+          </div>
+          <!-- 添加分割线 -->
+          <div class="border-b border-gray-200 dark:border-gray-700"></div>
+        </div>
+<!-- AI数字人 -->
+
+
+        
+<!-- AI智能问答 -->
+<div class="mb-24">
+  <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+    <div class="rounded-lg overflow-hidden">
+      <img src="/assets/img/work7.png" alt="知识库训练" class="w-full h-auto" />
+    </div>
+    <div>
+      <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+        AI智能问答
+      </span>
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">智能聊天对话，AI秒回答</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        对接ChatAI接口，可以对自然语言进行深度理解，识别出用户的意图和需求，从而提供更加精准的回答和服务。
+      </p>
+      <div class="flex flex-wrap gap-4 mb-6">
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span class="text-gray-700 dark:text-gray-300">智能训练</span>
+        </div>
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span class="text-gray-700 dark:text-gray-300">知识共享</span>
+        </div>
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span class="text-gray-700 dark:text-gray-300">持续优化</span>
+        </div>
+      </div>
+      <!-- 按钮组 -->
+      <div class="flex flex-wrap gap-4">
+        <!-- 演示按钮 -->
+        <a href="/demo" target="_blank" 
+          class="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+          获取演示
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <!-- 购买按钮 -->
+        <a href="/contact" 
+          class="inline-flex items-center px-6 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+          </svg>
+          购买授权
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- 添加分割线 -->
+  <div class="border-b border-gray-200 dark:border-gray-700"></div>
+</div>
+<!-- AI智能问答 -->
+        
+     
+<!-- 行动号召卡片 -->
+<div class="mt-16 text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-indigo-900 py-12 rounded-2xl">
+  <div class="container-custom">
+    <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+      艺创全能AI知识库系统
+    </h3>
+    <p class="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+      已有数百家企业选择艺创AI全能知识库解决方案，我们专业的团队随时准备为您提供支持，助力您的业务腾飞。
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
+      <a 
+        href="/contact" 
+        class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+      >
+        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400 to-indigo-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+        <svg class="w-5 h-5 mr-2 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+        </svg>
+        <span class="relative">联系我们</span>
+      </a>
+      <a 
+        href="/pricing" 
+        class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+      >
+        <span class="absolute inset-0 w-full h-full bg-gray-100 dark:bg-gray-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+        <svg class="w-5 h-5 mr-2 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="relative">查看价格</span>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+<!-- 功能特色 -->
+<section class="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">功能特色</h2>
+      <div class="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
+      <p class="text-xl text-gray-600 dark:text-gray-300">艺创AI数字人SaaS系统全栈架构设计</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- 平台端 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-blue-100 dark:bg-blue-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">AI智能对话</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">使用自然语言处理技术，让用户可以使用自然语言方式进行知识库搜索和提问，提高用户的使用体验。</p>
+      </div>
+
+      <!-- 知识库应用 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-green-100 dark:bg-green-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-green-600 dark:text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">知识库应用</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">支持创建多个知识库应用不同场景，打造企业专属应用</p>
+      </div>
+
+      <!-- 发布应用 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-purple-100 dark:bg-purple-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-purple-600 dark:text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">发布应用</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">应用支持发布为：网页、JS嵌入、API接口三种</p>
+      </div>
+
+      <!-- 数据训练 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-red-100 dark:bg-red-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-red-600 dark:text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">数据训练</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">通过后台训练数据，用户在前台通过聊天对话模式快速查阅和各种内部资料和文档。</p>
+      </div>
+
+      <!-- 数据测试 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-yellow-100 dark:bg-yellow-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-yellow-600 dark:text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">数据测试</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">训练好的数据可在后台进行测试，大大提高用户的使用体验</p>
+      </div>
+
+      <!-- 移动端自适应 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-indigo-100 dark:bg-indigo-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a5 5 0 110-10 5 5 0 010 10zm0 0c1.657 0 3-4.03 3-9s-1.343-9-3-9-3 4.03-3 9 1.343 9 3 9z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">移动端自适应</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">支持手机、平板、电脑访问。通过自适应，完美解决移动端的管理需求，一套系统多端应用。</p>
+      </div>
+
+      <!-- AI大语言模型 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-pink-100 dark:bg-pink-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-pink-600 dark:text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM6 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm12 0c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">AI大语言模型</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">支持GPT3.5、GPT4.0、api2d3.5、api2d4.0、ChatGLM（清华）等大语言模型。</p>
+      </div>
+
+      <!-- 适用多种场景 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-teal-100 dark:bg-teal-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-teal-600 dark:text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">适用多种场景</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">企业智能客服、企业智能文档、专家顾问助理等都能使用</p>
+      </div>
+
+      <!-- key池轮询 -->
+      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-orange-100 dark:bg-orange-300 rounded-md mr-4">
+            <svg class="w-8 h-8 text-orange-600 dark:text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a5 5 0 00-5 5v10a5 5 0 0010 0V7a5 5 0 00-5-5zM9 21v-6a3 3 0 013-3h6"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">key池轮询</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">支持多key轮询，提高整体系统的吞吐量和响应速度。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 功能特色 -->
+
+
+<!-- 幻灯 -->
+<section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-indigo-900">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="order-2 md:order-1">
+        <h3 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          AI智能
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            创作
+          </span>
+          <br/>场景设定，AI专业化创作
+        </h3>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+          根据不同的场景设定和角色设定，AI助手可以根据用户输入的内容一键创作。无论是对话对白、故事情节、还是其他文本形式，都可以根据所提供的信息进行创作。
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#" class="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <span>了解更多</span>
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#" class="inline-flex items-center px-6 py-3 rounded-lg bg-white text-blue-600 border-2 border-blue-600 font-medium hover:bg-blue-50 transition-all duration-200">
+            立即试用
+          </a>
+        </div>
+      </div>
+      <div class="order-1 md:order-2">
+        <img src="https://server.mddai.cn/uploads/images/20240430170834b521c6017.png" alt="AI数字人演示" class="w-full h-auto rounded-lg"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 引入页面结构组件 -->
+<Structure />
+<!-- 引入联系我们组件 -->
+<Contact />
+<Calltoaction />
+<!-- 引入页脚组件 -->
+<Footer />
+</Layout>

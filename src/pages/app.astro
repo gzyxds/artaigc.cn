@@ -1,0 +1,214 @@
+---
+// 布局组件
+import Layout from '../layouts/Layout.astro';
+
+// 页面组件
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Download from '../components/Download.astro';
+---
+
+<Layout 
+  title="艺创AI应用下载_AI数字人应用_AI聊天绘画应用"
+  description="艺创AI应用提供多平台下载，包括iOS、Android、微信小程序等，随时随地体验AI数字人和智能创作功能。"
+  keywords="AI应用下载,数字人应用,聊天绘画应用,AI小程序,艺创AI"
+>
+  <Header />
+
+  <main>
+    <!-- 页面标题区域 -->
+    <section class="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 sm:mb-16">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+            艺创AI <span class="text-blue-600 dark:text-blue-400">应用下载</span>
+          </h1>
+          <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            随时随地，开启AI智能创作与数字人交互新体验
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 下载组件区域 -->
+    <Download />
+    
+    <!-- 功能亮点区域 -->
+    <section class="py-12 sm:py-16 bg-white dark:bg-gray-800">
+      <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">应用功能亮点</h2>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">强大的AI功能，助力您的工作与生活</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- AI核心功能 -->
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI聊天助手</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">智能对话，解答问题，提供建议，让交流更加高效便捷。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI绘画创作</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">通过文字描述生成精美图像，释放创意，轻松创作专业级视觉内容。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">数字人互动</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">与逼真的数字人进行语音对话，获得沉浸式的交互体验。</p>
+          </div>
+          
+          <!-- 企业应用功能 -->
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI智能对话</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">使用自然语言处理技术，让用户可以使用自然语言方式进行知识库搜索和提问，提高用户的使用体验。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">知识库应用</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">支持创建多个知识库应用不同场景，打造企业专属应用。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">发布应用</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">应用支持发布为：网页、JS嵌入、API接口三种方式，满足不同场景需求。</p>
+          </div>
+          
+          <!-- 技术特性 -->
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">数据训练</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">通过后台训练数据，用户在前台通过聊天对话模式快速查阅和各种内部资料和文档。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">数据测试</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">训练好的数据可在后台进行测试，大大提高用户的使用体验。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">移动端自适应</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">支持手机、平板、电脑访问。通过自适应，完美解决移动端的管理需求，一套系统多端应用。</p>
+          </div>
+          
+          <!-- 模型支持 -->
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI大语言模型</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">支持GPT3.5、GPT4.0、api2d3.5、api2d4.0、ChatGLM（清华）等大语言模型。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">适用多种场景</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">企业智能客服、企业智能文档、专家顾问助理等都能使用。</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="flex items-center mb-4">
+              <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">key池轮询</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300">支持多key轮询，提高整体系统的吞吐量和响应速度。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .feature-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+  }
+  
+  .dark .feature-card {
+    background: rgba(31, 41, 55, 0.7);
+  }
+  
+  .icon-container {
+    @apply w-10 h-10 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mr-3;
+  }
+</style>

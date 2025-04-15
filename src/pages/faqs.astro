@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+import FQA from '../components/FQA.astro';
+---
+
+<Layout title="常见问题 - 艺创AIGC">
+  <Header />
+  <main>
+    <HeroSection 
+      title="帮助中心" 
+      highlightText="帮助"
+      description="我们收集了用户最常遇到的问题和解答，希望能帮助您更好地使用我们的服务"
+    />
+    <FQA />
+  <Footer />
+</Layout>
+
+<style>
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-base font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors;
+  }
+</style>

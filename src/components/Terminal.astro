@@ -1,0 +1,195 @@
+<!-- 多终端支持 -->
+<section class="relative py-16 sm:py-24 lg:py-32">
+  <div class="container-custom">
+    <div class="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+      <span class="inline-flex items-center px-4 py-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-full ring-1 ring-inset ring-blue-500/20 backdrop-blur transition-colors duration-300">
+        <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        全平台覆盖
+      </span>
+      <h2 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400">一套代码，多端运行</h2>
+      <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300">支持微信小程序、公众号、H5、PC等主流平台，数据实时同步</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {[
+        {
+          title: "微信小程序",
+          description: "原生性能体验，快速覆盖用户群体",
+          icon: "https://www.mddai.cn/_nuxt/mp.2cd6995f.png",
+          status: "已上线"
+        },
+        {
+          title: "H5网页版",
+          description: "支持各类主流浏览器访问使用",
+          icon: "https://www.mddai.cn/_nuxt/h5.6296a876.png",
+          status: "已上线"
+        },
+        {
+          title: "微信公众号",
+          description: "公众号模板消息通知集成",
+          icon: "https://www.mddai.cn/_nuxt/oa.fe9fbe67.png",
+          status: "已上线"
+        },
+        {
+          title: "PC管理后台",
+          description: "专业的数据管理与分析平台",
+          icon: "https://www.mddai.cn/_nuxt/pc.903e62b9.png",
+          status: "已上线"
+        },
+        {
+          title: "企业管理系统",
+          description: "企业级应用的高效管理方案",
+          icon: "https://www.mddai.cn/_nuxt/admin.a5101328.png",
+          status: "已上线"
+        },
+        {
+          title: "APP客户端",
+          description: "iOS与Android原生应用体验",
+          icon: "https://www.mddai.cn/_nuxt/app.655bff8d.png",
+          status: "开发中"
+        }
+      ].map((item, index) => (
+        <div 
+          class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700 shadow-xl shadow-blue-500/10 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-1"
+          style={`transition-delay: ${index * 100}ms`}
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-blue-50/50 dark:from-blue-900/20 dark:to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+          
+          <!-- 右上角装饰元素 -->
+          <div class="absolute top-0 right-0">
+            <div class="w-24 h-24 bg-gradient-to-br from-blue-100/50 to-transparent dark:from-blue-800/20 dark:to-transparent rounded-bl-[100px] group-hover:from-blue-200/70 dark:group-hover:from-blue-700/30 transition-colors duration-300"></div>
+          </div>
+          
+          <div class="relative flex items-center space-x-5 mb-6">
+            <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-blue-100 to-blue-100 dark:from-blue-900/50 dark:to-blue-900/50 p-3 sm:p-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+              <img src={item.icon} alt={item.title} class="w-full h-full object-contain" loading="lazy"/>
+            </div>
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300">{item.title}</h3>
+              <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                item.status === "已上线" 
+                  ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                  : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300"
+              }`}>
+                {item.status}
+              </span>
+            </div>
+          </div>
+          
+          <p class="relative text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8">{item.description}</p>
+
+          <div class="relative grid grid-cols-2 gap-4">
+            {[
+              ["即开即用", "无需配置"],
+              ["数据同步", "安全可靠"]
+            ].map(([title, desc]) => (
+              <div class="flex items-center text-sm sm:text-base text-slate-700 dark:text-slate-300">
+                <svg class="flex-shrink-0 w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                  <dt class="font-medium">{title}</dt>
+                  <dd class="text-xs text-slate-500 dark:text-slate-400">{desc}</dd>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 技术栈展示 -->
+<section class="relative py-8 sm:py-12 lg:py-16">
+  <div class="container-custom">
+    <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+      <span class="inline-flex items-center px-4 py-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-full ring-1 ring-inset ring-blue-500/20 backdrop-blur transition-colors duration-300">
+        <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        技术优势
+      </span>
+      <h2 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400">前沿技术栈</h2>
+      <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300">采用业界领先的技术方案，打造高性能、可扩展的应用</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {[
+        {
+          title: "Vue.js 生态",
+          description: "基于 Vue 3 + TypeScript + Vite 构建，集成 Vue Router 和 Pinia 状态管理，提供完整工程化配置",
+          icon: "/assets/img/vue.svg",
+          features: ["组件化开发", "响应式设计", "状态管理", "路由系统"]
+        },
+        {
+          title: "跨平台开发",
+          description: "使用 uni-app 框架实现一套代码，多端运行，覆盖移动应用、小程序、H5等全部主流平台",
+          icon: "/assets/img/uni-app.svg",
+          features: ["iOS/Android", "各类小程序", "H5响应式", "快应用"]
+        },
+        {
+          title: "现代构建工具",
+          description: "采用 Vite 实现极速的开发体验，享受即时的热更新和优化的构建性能",
+          icon: "/assets/img/vue.svg",
+          features: ["快速冷启动", "即时热更新", "按需加载", "优化构建"]
+        },
+        {
+          title: "类型安全",
+          description: "全面采用 TypeScript 开发，提供完整的类型检查和智能提示，提升代码质量和开发效率",
+          icon: "/assets/img/TypeScript.svg",
+          features: ["类型检查", "智能提示", "重构支持", "错误预防"]
+        },
+        {
+          title: "强大后端",
+          description: "基于 ThinkPHP 框架的模块化后端架构，集成丰富的功能模块和第三方服务",
+          icon: "/assets/thinkphp.svg",
+          features: ["多应用架构", "服务集成", "安全认证", "性能优化"]
+        },
+        {
+          title: "优雅界面",
+          description: "基于 Element Plus 构建专业的后台管理界面，提供丰富的组件和主题定制能力",
+          icon: "/assets/img/element.svg",
+          features: ["组件丰富", "主题定制", "响应式设计", "交互体验"]
+        }
+      ].map((tech, index) => (
+        <div 
+          class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700 shadow-xl shadow-blue-500/10 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-1"
+          style={`transition-delay: ${index * 100}ms`}
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-blue-50/50 dark:from-blue-900/20 dark:to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+          
+          <div class="relative flex items-center space-x-5 mb-6">
+            <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-blue-100 to-blue-100 dark:from-blue-900/50 dark:to-blue-900/50 p-3 sm:p-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+              <img src={tech.icon} alt={tech.title} class="w-full h-full object-contain" loading="lazy"/>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300">{tech.title}</h3>
+          </div>
+          
+          <p class="relative text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8">{tech.description}</p>
+
+          <div class="relative grid grid-cols-2 gap-4">
+            {tech.features.map(feature => (
+              <div class="flex items-center text-sm sm:text-base text-slate-700 dark:text-slate-300">
+                <svg class="flex-shrink-0 w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="truncate">{feature}</span>
+              </div>
+            ))}
+          </div>
+          
+          <div class="absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

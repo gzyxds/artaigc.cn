@@ -1,0 +1,465 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Download from '../components/Download.astro'; // 导入Download组件
+import Hero from '../components/Hero.astro'; // 导入Hero组件
+import Contact from '../components/Contact.astro'; // 导入联系组件
+---
+
+<Layout title="AI系统源码_AIGC系统_AI数字人_AI绘画_AI知识库_AI论文创作_AI系统开发_艺创AI">
+  <Header />
+  <Hero />
+  <div class="h-16"></div>
+  <main class="container-custom">
+    <h1 class="text-3xl font-bold mb-8 text-center relative">
+      <span class="relative z-10">系统演示</span>
+      <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+    </h1>
+
+    <!-- AI数字人SaaS系统 - 左右布局 -->
+    <section class="mb-12 bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+      <div class="flex flex-col md:flex-row items-center gap-8 mb-6">
+        <div class="w-full md:w-1/2">
+          <img src="/assets/saas.svg" alt="AI数字人SaaS系统" class="w-full h-auto rounded-lg shadow-md transform transition-transform duration-300">
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl font-bold mb-4 flex items-center">
+            <span class="mr-2">🤖</span>
+            <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">AI数字人SaaS系统演示</span>
+          </h2>
+          <div class="overflow-x-auto rounded-lg border border-gray-100">
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr class="bg-gradient-to-r from-gray-50 to-gray-100">
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示平台</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示地址</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">账号</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">密码</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">💻 PC端前台</td>
+                  <td class="px-6 py-4 border-b"><a href="https://demo.cnai.art" class="text-blue-600 hover:text-blue-800 hover:underline">PC端前台</a></td>
+                  <td class="px-6 py-4 border-b">自行注册</td>
+                  <td class="px-6 py-4 border-b">自行注册</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">🛠️ 管理后台</td>
+                  <td class="px-6 py-4 border-b"><a href="https://demo.cnai.art" class="text-blue-600 hover:text-blue-800 hover:underline">后台系统演示</a></td>
+                  <td class="px-6 py-4 border-b">demo</td>
+                  <td class="px-6 py-4 border-b">demo</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">🛠️ 运营端</td>
+                  <td class="px-6 py-4 border-b">占不提供</td>
+                  <td class="px-6 py-4 border-b">占不提供</td>
+                  <td class="px-6 py-4 border-b">占不提供</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-4">
+            <a href="https://v.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>在线体验</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            
+            <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>联系客服</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </a>
+            
+            <a href="https://demo.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>后台演示</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+            
+            <a href="https://auth.cnai.art" target="_blank" rel="noopener noreferrer" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>立即授权</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 全能AI知识库系统 - 右左布局 -->
+    <section class="mb-12 bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+      <div class="flex flex-col md:flex-row-reverse items-center gap-8 mb-6">
+        <div class="w-full md:w-1/2">
+          <img src="/assets/work.svg" alt="全能AI知识库系统" class="w-full h-auto rounded-lg shadow-md transform transition-transform duration-300">
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl font-bold mb-4 flex items-center">
+            <span class="mr-2">🧠</span>
+            <span class="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">全能AI知识库系统演示</span>
+          </h2>
+          <div class="overflow-x-auto rounded-lg border border-gray-100">
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr class="bg-gradient-to-r from-gray-50 to-gray-100">
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示平台</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示地址</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">账号</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">密码</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">💻 PC端前台</td>
+                  <td class="px-6 py-4 border-b"><a href="https://www.cnai.art" class="text-blue-600 hover:text-blue-800 hover:underline">PC端前台</a></td>
+                  <td class="px-6 py-4 border-b">自行注册</td>
+                  <td class="px-6 py-4 border-b">自行注册</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">📱 移动端H5</td>
+                  <td class="px-6 py-4 border-b"><a href="https://www.cnai.art/mobile" class="text-blue-600 hover:text-blue-800 hover:underline">移动端H5</a></td>
+                  <td class="px-6 py-4 border-b">自行注册</td>
+                  <td class="px-6 py-4 border-b">自行注册</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">🛠️ 管理后台</td>
+                  <td class="px-6 py-4 border-b"><a href="https://ai-demo.chatmoney.cn/admin" class="text-blue-600 hover:text-blue-800 hover:underline">后台系统演示</a></td>
+                  <td class="px-6 py-4 border-b">admin</td>
+                  <td class="px-6 py-4 border-b">123456</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-4">
+            <a href="https://v.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>在线体验</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            
+            <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>联系客服</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </a>
+            
+            <a href="https://demo.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>后台演示</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+            
+            <a href="https://auth.cnai.art" target="_blank" rel="noopener noreferrer" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>立即授权</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聊天绘画系统 - 左右布局 -->
+    <section class="mb-12 bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+      <div class="flex flex-col md:flex-row items-center gap-8 mb-6">
+        <div class="w-full md:w-1/2">
+          <img src="/assets/ai.svg" alt="聊天绘画系统" class="w-full h-auto rounded-lg shadow-md transform transition-transform duration-300">
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl font-bold mb-4 flex items-center">
+            <span class="mr-2">🎨</span>
+            <span class="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">聊天绘画系统演示</span>
+          </h2>
+          <div class="overflow-x-auto rounded-lg border border-gray-100">
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr class="bg-gradient-to-r from-gray-50 to-gray-100">
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示平台</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示地址</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">账号</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">密码</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">💻 PC端前台</td>
+                  <td class="px-6 py-4 border-b"><a href="https://cnai.art" class="text-blue-600 hover:text-blue-800 hover:underline">默认PC前台</a></td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">📱 移动端H5</td>
+                  <td class="px-6 py-4 border-b"><a href="https://cnai.art/mobile" class="text-blue-600 hover:text-blue-800 hover:underline">默认H5演示</a></td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">🛠️ 管理后台</td>
+                  <td class="px-6 py-4 border-b">默认体验后台</td>
+                  <td class="px-6 py-4 border-b">aiadmin</td>
+                  <td class="px-6 py-4 border-b">admin110</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-4">
+            <a href="https://v.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>在线体验</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            
+            <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>联系客服</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </a>
+            
+            <a href="https://demo.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>后台演示</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+            
+            <a href="https://auth.cnai.art" target="_blank" rel="noopener noreferrer" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>立即授权</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 论文写作系统 - 右左布局 -->
+    <section class="mb-12 bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+      <div class="flex flex-col md:flex-row-reverse items-center gap-8 mb-6">
+        <div class="w-full md:w-1/2">
+          <img src="/assets/lw.svg" alt="论文写作系统" class="w-full h-auto rounded-lg shadow-md transform transition-transform duration-300">
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl font-bold mb-4 flex items-center">
+            <span class="mr-2">📚</span>
+            <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">论文写作系统演示</span>
+          </h2>
+          <div class="overflow-x-auto rounded-lg border border-gray-100">
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr class="bg-gradient-to-r from-gray-50 to-gray-100">
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示平台</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">演示地址</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">账号</th>
+                  <th class="px-6 py-3 border-b text-left text-gray-600">密码</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">💻 PC端前台</td>
+                  <td class="px-6 py-4 border-b"><a href="https://cp.chatmoney.cn/generate/1" class="text-blue-600 hover:underline">系统PC演示前台</a></td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">📱移动端H5</td>
+                  <td class="px-6 py-4 border-b"><a href="https://cp.chatmoney.cn/generate/1" class="text-blue-600 hover:underline">系统移动端H5演示</a></td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                  <td class="px-6 py-4 border-b">自行后台添加</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                  <td class="px-6 py-4 border-b">🛠️ 管理后台</td>
+                  <td class="px-6 py-4 border-b"><a href="https://ai-demo.chatmoney.cn/admin" class="text-blue-600 hover:underline">系统体验后台</a></td>
+                  <td class="px-6 py-4 border-b">admin</td>
+                  <td class="px-6 py-4 border-b">admin110</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-4">
+            <a href="https://v.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>在线体验</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            
+            <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>联系客服</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </a>
+            
+            <a href="https://demo.cnai.art" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>后台演示</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+            
+            <a href="https://auth.cnai.art" target="_blank" rel="noopener noreferrer" class="group px-5 sm:px-6 py-2 sm:py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+              <span>立即授权</span>
+              <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 p-4 mb-8 rounded-lg shadow-sm">
+      <p class="text-yellow-700 flex items-center">
+        <span class="mr-2">⚠️</span>
+        注：演示站为未授权版本，功能可能不全，购买后将获得最新完整版本
+      </p>
+    </div>
+  </main>
+  <Contact />
+  <Footer />
+</Layout>
+
+<style>
+  .container-custom {
+    width: 100%;
+    max-width: 1550px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-custom {
+      padding: 0 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-custom {
+      padding: 0 4rem;
+    }
+  }
+
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    .container-custom {
+      padding: 0 1rem;
+    }
+
+    section {
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    table {
+      font-size: 0.875rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+    }
+  }
+
+  /* 动画效果 */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  /* 表格样式优化 */
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+  }
+
+  th {
+    font-weight: 600;
+    color: #374151;
+  }
+
+  /* 卡片悬停效果 */
+  .mobile-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mobile-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
+  // 在移动端将表格转换为卡片式布局
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll('table').forEach(table => {
+      const mobileTable = document.createElement('div');
+      mobileTable.className = 'mobile-table space-y-4';
+      
+      const tbody = table.querySelector('tbody');
+      if (!tbody) return;
+      
+      const rows = tbody.querySelectorAll('tr');
+      const headers = table.querySelectorAll('th');
+      
+      rows.forEach(row => {
+        const card = document.createElement('div');
+        card.className = 'mobile-card bg-white rounded-lg p-4 shadow-sm';
+        
+        const cells = row.querySelectorAll('td');
+        
+        cells.forEach((cell, index) => {
+          const row = document.createElement('div');
+          row.className = 'mobile-row flex justify-between py-2 border-b last:border-b-0';
+          
+          const label = document.createElement('div');
+          label.className = 'mobile-label font-medium text-gray-600';
+          label.textContent = headers[index].textContent;
+          
+          const value = document.createElement('div');
+          value.className = 'mobile-value text-gray-800';
+          value.textContent = cell.textContent;
+          
+          row.appendChild(label);
+          row.appendChild(value);
+          card.appendChild(row);
+        });
+        
+        mobileTable.appendChild(card);
+      });
+      
+      const parent = table.parentNode;
+      if (parent) {
+        parent.insertBefore(mobileTable, table);
+        table.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+

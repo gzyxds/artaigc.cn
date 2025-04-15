@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+
+// 版本数据
+const versions = [
+  {
+    version: 'v4.2.7',
+    date: '2025-04-01 15:29',
+    title: '全能AI知识库系统「PHP源码版」-V4.2.7',
+    changes: {
+      improvements: [
+        '优化推荐问题生成',
+        '优化智能体发布页地址',
+        '优化语音生成超时问题',
+        '优化安装程序兼容性问题',
+        'GoApi渠道更新请求域名',
+        '优化创作模型全局指令字数限制'
+      ],
+      fixes: [
+        '修复使用oss后语音失败问题',
+        '修复豆包绘画尺寸无效问题', 
+        '修复绑定手机号判断异常问题',
+        '修复未登录时分享报错',
+        '修复AI视频生成失败次数较多问题'
+      ]
+    }
+  },
+  {
+    version: 'v1.2.2',
+    date: '2025-03-11 18:21',
+    title: '超级IP数字人SaaS系统「PHP源码版」-V1.2.2',
+    changes: {
+      fixes: [
+        '修复小程序端AI文案功能后台控制问题',
+        '租户后台AI文案配置增加豆包推理接入点设置'
+      ]
+    }
+  },
+{
+    version: 'v4.1.1',
+    date: '2025-04-07 11:36',
+    title: '全能AI知识库系统「Java源码版」-V4.1.1',
+    changes: {
+      improvements: [
+        '适配deepseekR1逻辑模型',
+        '适配星火模型新的接口',
+        '增加删除用户的时候，联动删除关联的team',
+        '讯飞语音录入失败，但是没有任何提示的问题',
+        '上传图片错误，却没任何提示的交互问题',
+        '增加会员等级应用限制音乐，导图，搜索的vip限制管理',
+        '支付没有正确读取到终端的导致微信支付的appid需要填小程序管理模块的问题',
+        '适配新的微信支付接口',
+        '优化音乐，视频的keypool校验'
+      ],
+      fixes: [
+        '优化接口幂等导致重复insert session而引起的查询错误',
+        '没加上delete_time为null而导致的查询错误',
+        '知识库共享没使用新的表而导致的联动问题',
+        '公众号注册不会触发奖励的bug',
+        '默认加了AAA11的指令的bug',
+        'gpt聊天失败',
+        '因没配置默认值而导致的报错',
+        '朗诵按钮失效',
+        '对话记录头像无法显示',
+        '管理后台选择会员没有保存成功，但也没任何提示'
+      ],
+      notes: [
+        '升级需要重新导入cw_system_config的内容，旧系统升级注意对照',
+        '表cw_chat_record，cw_kb_robot_record增加字段reasoning'
+      ]
+    }
+  },
+{
+    version: 'v4.5.2',
+    date: '2025-03-23 12:44',
+    title: '聊天绘画系统「PHP源码版」-V4.5.2',
+    changes: {
+      new: [
+        'deepseek-r1模型支持思考链显示',
+        'deepseek适配硅基流动模型',
+        '增加mj绘画渠道Acedata'
+      ],
+      fixes: [
+        '后台通义千问部分子模型不显示',
+        '审核内容违规无法显示问题',
+        '聊天插件自定义名称显示异常'
+      ]
+    }
+  },
+{
+    version: 'v2.4.0',
+    date: '2024-09-10 14:50',
+    title: '聊天绘画系统「Java源码版」-V2.4.0',
+    changes: {
+      new: [
+        '新增豆包,DeepSeek模型',
+        '绘画支持openai-hub渠道',
+        '绘画翻译支持百度翻译',
+        '插件增加kimi文档问答'
+      ],
+      improvements: [
+        '绘画提示支持自定义',
+        '后台对话记录显示消耗tokens字段',
+        '未登录情况下也显示对话模型/插件',
+        '后台绘画广场作品支持自定义头像和昵称',
+        '绘画广场-生成海报提示词显示优化',
+        '提示框弹出不清空输入框的内容'
+      ],
+      fixes: [
+        '修复提问内容字数多时报错问题',
+        '微信access_token无缓存问题'
+      ],
+      notes: [
+        '更新前请先备份原来的数据！！！'
+      ]
+    }
+  },
+{
+    version: 'v1.5.4',
+    date: '2025-03-28 10:46',
+    title: 'ChatPaper-论文写作系统「PHP源码版」-V1.5.4',
+    changes: {
+      new: [
+        '新增deepseek模型'
+      ],
+      improvements: [
+        '优化文献数据处理',
+        '优化程序安装兼容性'
+      ]
+    }
+  },
+  // ... 其他版本数据
+];
+---
+
+<Layout title="更新日志 - 艺创AI">
+  <Header />
+  <main>
+    <HeroSection 
+      title="产品更新日志" 
+      highlightText="更新日志"
+      description="及时了解艺创AI的最新更新、改进和修复。"
+    />
+    
+    <section class="py-16 bg-white dark:bg-gray-800">
+      <div class="container-custom">
+        <!-- 搜索和筛选区域 -->
+        <div class="max-w-4xl mx-auto mb-12">
+          <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div class="relative w-full md:w-96">
+              <input 
+                type="text" 
+                placeholder="搜索更新内容..." 
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              />
+              <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <div class="flex gap-2">
+              <button class="px-4 py-2 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors">
+                订阅更新
+              </button>
+              <button class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                版本对比
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 版本列表 -->
+        <div class="max-w-4xl mx-auto space-y-16">
+          {versions.map((version) => (
+            <div class="relative">
+              {/* 版本时间线 */}
+              <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+              
+              <div class="relative pl-8">
+                {/* 版本标记 */}
+                <div class="absolute left-0 -translate-x-1/2 w-4 h-4 rounded-full bg-primary-500"></div>
+                
+                {/* 版本信息 */}
+                <div class="flex flex-col md:flex-row md:items-center gap-4 mb-6">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 font-medium text-sm">
+                      {version.version}
+                    </span>
+                    <span class="text-gray-500 dark:text-gray-400">{version.date}</span>
+                  </div>
+                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{version.title}</h2>
+                </div>
+
+                {/* 更新内容 */}
+                <div class="space-y-6">
+                  {version.changes.new && version.changes.new.length > 0 && (
+                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-green-700 dark:text-green-400 mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        新功能
+                      </h3>
+                      <ul class="space-y-2">
+                        {version.changes.new.map((item) => (
+                          <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            <span class="text-gray-700 dark:text-gray-300">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {version.changes.improvements && version.changes.improvements.length > 0 && (
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        改进
+                      </h3>
+                      <ul class="space-y-2">
+                        {version.changes.improvements.map((item) => (
+                          <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span class="text-gray-700 dark:text-gray-300">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {version.changes.fixes && version.changes.fixes.length > 0 && (
+                    <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-red-700 dark:text-red-400 mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        错误修复
+                      </h3>
+                      <ul class="space-y-2">
+                        {version.changes.fixes.map((item) => (
+                          <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            <span class="text-gray-700 dark:text-gray-300">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- 加载更多按钮 -->
+        <div class="max-w-4xl mx-auto mt-12 text-center">
+          <button class="inline-flex items-center px-6 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            加载更多更新
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout> 

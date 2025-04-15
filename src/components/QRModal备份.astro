@@ -1,0 +1,258 @@
+---
+interface Props {
+  qrCodeUrl: string;
+  title?: string;
+  description?: string;
+  isOpen?: boolean;
+}
+
+const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用微信扫描下方二维码，即可添加客服微信", isOpen = false } = Astro.props;
+---
+
+<div class={`modal-overlay ${isOpen ? 'active' : ''}`} id="qr-modal">
+  <div class="modal-content">
+    <button class="close-button" aria-label="关闭二维码" id="close-modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    
+    <div class="modal-body">
+      <h2 class="modal-title">{title}</h2>
+      <p class="modal-description">{description}</p>
+      <div class="qr-container">
+        <img src={qrCodeUrl} alt="客服二维码" class="qr-code" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(2px);
+    overflow-y: auto;
+  }
+
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    position: absolute;
+    max-width: 90%;
+    width: 400px;
+    transform: translateY(-20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    will-change: transform;
+  }
+
+  .modal-overlay.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .modal-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: #666;
+    transition: all 0.2s ease;
+    z-index: 1;
+  }
+
+  .close-button:hover {
+    color: #333;
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+  }
+
+  .modal-body {
+    text-align: center;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .modal-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .qr-container {
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .qr-code {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 480px) {
+    .modal-content {
+      padding: 1.5rem;
+      width: 90%;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+    }
+
+    .modal-description {
+      font-size: 0.9rem;
+    }
+
+    .qr-code {
+      width: 180px;
+      height: 180px;
+    }
+  }
+</style>
+
+<script>
+  // 打开模态框函数
+  function openModal() {
+    const modal = document.getElementById('qr-modal');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      
+      // 每次打开模态框时重新绑定关闭按钮事件
+      bindCloseButton();
+    }
+  }
+
+  // 关闭模态框函数
+  function closeModal() {
+    const modal = document.getElementById('qr-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
+    }
+  }
+
+  // 绑定关闭按钮事件
+  function bindCloseButton() {
+    const closeButton = document.getElementById('close-modal');
+    if (closeButton) {
+      // 移除之前的事件监听器
+      closeButton.removeEventListener('click', handleCloseClick);
+      // 添加新的事件监听器
+      closeButton.addEventListener('click', handleCloseClick);
+    }
+  }
+
+  // 处理关闭按钮点击事件
+  function handleCloseClick(e: Event) {
+    e.stopPropagation();
+    closeModal();
+  }
+
+  // 点击背景关闭模态框
+  document.getElementById('qr-modal')?.addEventListener('click', (e) => {
+    const target = e.currentTarget as HTMLElement;
+    if (e.target === target && target) {
+      closeModal();
+    }
+  });
+
+  // 点击页面其他区域关闭模态框
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const modal = document.getElementById('qr-modal');
+    
+    // 如果点击的是触发按钮
+    if (target?.closest('[onclick*="qr-modal"]')) {
+      e.preventDefault();
+      const modalContent = modal?.querySelector('.modal-content') as HTMLElement;
+      
+      if (modal && modalContent) {
+        // 计算模态框居中位置
+        const modalWidth = 400;
+        const modalHeight = modalContent.offsetHeight;
+        
+        // 设置模态框居中显示
+        modalContent.style.left = `${Math.max(20, (window.innerWidth - modalWidth) / 2)}px`;
+        modalContent.style.top = `${Math.max(20, (window.innerHeight - modalHeight) / 2)}px`;
+        
+        // 打开模态框
+        openModal();
+      }
+    }
+    // 如果点击的是模态框以外的区域
+    else if (modal?.classList.contains('active') && !target?.closest('.modal-content')) {
+      closeModal();
+    }
+  });
+
+  // 按ESC键关闭模态框
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  // 监听模态框状态变化
+  const modal = document.getElementById('qr-modal');
+  if (modal) {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          if (modal.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+          } else {
+            document.body.style.overflow = 'auto';
+            document.body.style.position = 'static';
+          }
+        }
+      });
+    });
+
+    observer.observe(modal, { attributes: true });
+  }
+
+  // 初始绑定关闭按钮事件
+  bindCloseButton();
+</script>

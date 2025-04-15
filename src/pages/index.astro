@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// 首屏组件
+import AigcHero from '../components/Hero.astro';
+import ServiceFeatures from '../components/ServiceFeatures.astro';
+
+// 产品展示组件
+import Aisd from '../components/Aisd.astro';
+import Products from '../components/Products.astro';
+import ProductCards from '../components/ProductCards.astro';
+
+// 功能特性组件
+import Scene from '../components/Scene.astro';
+import Trait from '../components/Trait.astro';
+import ModelShowcase from '../components/ModelShowcase.astro';
+import Solution from '../components/Solution.astro';
+import Characteristic from '../components/Characteristic.astro';
+import Terminal from '../components/Terminal.astro';
+import Structure from '../components/Hero/Structure.astro';
+import EnterpriseOS from '../components/EnterpriseOS.astro';
+
+// 其他组件
+import Testimonials from '../components/Testimonials.astro';
+import FQA from '../components/FQA.astro';
+---
+
+<Layout 
+  title="艺创AI_AI系统源码_AI数字人系统_聊天绘画系统_ai平台源码_ai创作系统源码_ai官网源码"
+  description="艺创AI专注提供AI系统源代码解决方案的技术团队「AI数字人系统」「企业全能AI变现系统」「AI聊天绘画系统」「AI论文写作系统」拥有PHP和Java两种语言版本，技术实力强，系统体验好支持私有部署，专业团队、售后无忧"
+  keywords="AI系统源码,AI数字人系统,聊天绘画系统,AI平台源码,AI创作系统,AI官网源码,AI变现系统,AI论文写作,AI解决方案,私有部署">
+  
+  <!-- SEO Meta Tags -->
+  <meta property="og:title" content="艺创AI - AI系统源码解决方案" />
+  <meta property="og:description" content="艺创AI专注提供AI系统源代码解决方案的技术团队，支持私有部署，专业团队、售后无忧" />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <Header />
+  <main>
+    <!-- 首屏组件 -->
+    <AigcHero />
+    <ServiceFeatures />
+    
+    <!-- 产品展示区域 -->
+    <Aisd />
+    <Products />
+    <ProductCards />
+    
+    <!-- 功能特性展示 -->
+    <Scene />
+    <Trait />
+    <ModelShowcase />
+    <Solution />
+    <Characteristic />
+    <Terminal />
+    <Structure />
+    <EnterpriseOS />
+    
+    <!-- 用户反馈与常见问题 -->
+    <Testimonials />
+    <FQA />
+  </main>
+  <Footer />
+</Layout>

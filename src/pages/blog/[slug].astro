@@ -1,0 +1,339 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? !data.draft : true;
+  });
+  
+  return posts.map((post) => ({
+    params: { slug: post.id.replace('.md', '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// 获取相关文章
+const allPosts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+
+const relatedPosts = allPosts
+  .filter(p => p.id !== post.id && p.data.category === post.data.category)
+  .slice(0, 3)
+  .map(p => ({
+    id: p.id,
+    title: p.data.title,
+    excerpt: p.data.excerpt,
+    image: p.data.image,
+    date: p.data.date
+  }));
+---
+
+<Layout title={post.data.title + " - 艺创AI"} description={post.data.excerpt}>
+  <Header />
+  <main class="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <article class="relative">
+      <!-- 返回按钮 - 固定在顶部 -->
+      <div class="sticky top-20 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg py-4">
+        <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px]">
+          <a href="/blog" class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 transform group-hover:-translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            返回博客列表
+          </a>
+        </div>
+      </div>
+
+      <!-- 文章头部 - 大图展示 -->
+      <header class="relative h-[50vh] min-h-[400px] max-h-[600px] flex items-center justify-center overflow-hidden">
+        <img 
+          src={post.data.image} 
+          alt={post.data.title}
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+        <div class="relative container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] text-center text-white">
+          <div class="flex items-center justify-center mb-6">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white font-medium text-sm">
+              {post.data.category}
+            </span>
+            <span class="mx-2 text-white/60">•</span>
+            <time class="text-sm text-white/80">{post.data.date}</time>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">{post.data.title}</h1>
+          <div class="flex items-center justify-center">
+            <img 
+              src={post.data.authorAvatar} 
+              alt={post.data.author} 
+              class="w-12 h-12 rounded-full mr-4 object-cover ring-2 ring-white/20"
+            />
+            <div class="text-left">
+              <p class="font-medium text-white">{post.data.author}</p>
+              <p class="text-sm text-white/80">{post.data.authorRole}</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- 文章内容区域 -->
+      <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- 目录导航 -->
+          <div class="lg:w-64 flex-shrink-0">
+            <div class="sticky top-32">
+              <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">目录</h3>
+              <nav class="space-y-2" id="toc">
+                <!-- 目录内容将通过JavaScript动态生成 -->
+              </nav>
+            </div>
+          </div>
+
+          <!-- 文章内容 -->
+          <div class="flex-1">
+            <div class="prose dark:prose-invert prose-lg max-w-none
+              prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
+              prose-h1:text-4xl prose-h1:mb-8
+              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+              prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-p:text-lg
+              prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:no-underline hover:prose-a:underline
+              prose-strong:text-gray-900 dark:prose-strong:text-white
+              prose-ul:list-disc prose-ul:pl-6 prose-ul:text-lg
+              prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-lg
+              prose-li:text-gray-700 dark:prose-li:text-gray-300
+              prose-blockquote:border-l-4 prose-blockquote:border-primary-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-lg
+              prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded
+              prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800 prose-pre:text-gray-100
+              prose-img:rounded-xl prose-img:shadow-lg
+              prose-hr:border-gray-200 dark:prose-hr:border-gray-700">
+              <Content />
+            </div>
+
+            <!-- 分享和互动区域 -->
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+              <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                  <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">分享这篇文章</h3>
+                  <div class="flex space-x-4">
+                    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`} 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:bg-primary-100 hover:text-primary-600 dark:hover:bg-primary-900/50 dark:hover:text-primary-400 transition-colors" 
+                       aria-label="在Twitter上分享">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                      </svg>
+                    </a>
+                    <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.data.title)}`} 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:bg-primary-100 hover:text-primary-600 dark:hover:bg-primary-900/50 dark:hover:text-primary-400 transition-colors" 
+                       aria-label="在LinkedIn上分享">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                      </svg>
+                    </a>
+                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`} 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:bg-primary-100 hover:text-primary-600 dark:hover:bg-primary-900/50 dark:hover:text-primary-400 transition-colors" 
+                       aria-label="在Facebook上分享">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                      </svg>
+                    </a>
+                    <a href={`mailto:?subject=${encodeURIComponent(post.data.title)}&body=${encodeURIComponent(Astro.url.href)}`} 
+                       class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:bg-primary-100 hover:text-primary-600 dark:hover:bg-primary-900/50 dark:hover:text-primary-400 transition-colors" 
+                       aria-label="通过电子邮件分享">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- 阅读进度指示器 -->
+                <div class="w-full sm:w-auto">
+                  <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-2">
+                    <span>阅读进度</span>
+                    <span class="reading-progress">0%</span>
+                  </div>
+                  <div class="w-full sm:w-48 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div class="reading-progress-bar h-full bg-primary-600 dark:bg-primary-500 transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 相关文章推荐 -->
+            {relatedPosts.length > 0 && (
+              <div class="mt-16">
+                <h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white">相关文章</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {relatedPosts.map((relatedPost) => (
+                    <a href={'/blog/' + relatedPost.id.replace('.md', '')} 
+                       class="group block bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                      <div class="relative aspect-[16/9] overflow-hidden">
+                        <img 
+                          src={relatedPost.image} 
+                          alt={relatedPost.title}
+                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                      <div class="p-6">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2 mb-2">
+                          {relatedPost.title}
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+                          {relatedPost.excerpt}
+                        </p>
+                        <time class="text-xs text-gray-500 dark:text-gray-400 mt-2 block">
+                          {relatedPost.date}
+                        </time>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* 基础样式 */
+  :root {
+    --header-height: 4rem;
+  }
+
+  /* 平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+  }
+
+  /* 阅读进度条动画 */
+  .reading-progress-bar {
+    transition: width 0.2s ease-out;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 640px) {
+    .container-custom {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* 暗色模式优化 */
+  @media (prefers-color-scheme: dark) {
+    .dark\:bg-gradient-to-b {
+      background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+    }
+  }
+
+  /* 目录样式 */
+  #toc a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--tw-text-gray-600);
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+
+  #toc a:hover {
+    background-color: var(--tw-bg-gray-100);
+    color: var(--tw-text-primary-600);
+  }
+
+  #toc a.active {
+    background-color: var(--tw-bg-primary-50);
+    color: var(--tw-text-primary-600);
+  }
+</style>
+
+<script>
+  // 阅读进度跟踪
+  const updateReadingProgress = () => {
+    const article = document.querySelector('article');
+    const progressBar = document.querySelector('.reading-progress-bar') as HTMLElement;
+    const progressText = document.querySelector('.reading-progress') as HTMLElement;
+    
+    if (!article || !progressBar || !progressText) return;
+
+    const updateProgress = () => {
+      const articleHeight = article.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrolled = window.scrollY;
+      const progress = Math.min(
+        Math.round((scrolled / (articleHeight - windowHeight)) * 100),
+        100
+      );
+      
+      progressBar.style.width = `${progress}%`;
+      progressText.textContent = `${progress}%`;
+    };
+
+    window.addEventListener('scroll', updateProgress);
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  };
+
+  // 目录生成和跟踪
+  const generateTOC = () => {
+    const headings = document.querySelectorAll('article h2, article h3');
+    const toc = document.getElementById('toc');
+    
+    if (!headings.length || !toc) return;
+
+    const fragment = document.createDocumentFragment();
+    
+    headings.forEach((heading, index) => {
+      const id = `heading-${index}`;
+      heading.id = id;
+      
+      const link = document.createElement('a');
+      link.href = `#${id}`;
+      link.textContent = heading.textContent;
+      link.className = 'text-sm';
+      
+      fragment.appendChild(link);
+    });
+    
+    toc.appendChild(fragment);
+
+    // 跟踪当前阅读的标题
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id;
+        const link = toc.querySelector(`a[href="#${id}"]`);
+        
+        if (entry.isIntersecting) {
+          toc.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+          link?.classList.add('active');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    headings.forEach(heading => observer.observe(heading));
+  };
+
+  // 页面加载完成后初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    updateReadingProgress();
+    generateTOC();
+  });
+</script>

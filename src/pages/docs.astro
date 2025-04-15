@@ -1,0 +1,26 @@
+---
+// 导入必要的组件
+import Layout from '../layouts/Layout.astro';  // 导入基础布局组件
+import Header from '../components/Header.astro';     // 导入页面头部组件
+import HeroSection from '../components/HeroSection.astro';     // 导入英雄/横幅区域组件
+import Footer from '../components/Footer.astro'; // 导入页脚组件
+import ProductCards from '../components/ProductCards.astro'; // 导入文档卡片组件
+
+// 移除未使用的组件导入
+---
+
+<Layout 
+  title="艺创AI - AI系统源码与解决方案文档中心"
+  description="艺创AI提供专业的AI系统源代码解决方案，包括AI变现系统、聊天绘画系统、论文写作系统等。支持PHP和Java双版本，提供完善的技术文档与售后支持。"
+  keywords="AI系统文档,AI解决方案,系统部署指南,技术文档,开发文档,使用教程,API文档,常见问题">
+  <Header />
+  <main class="docs-container">
+    <HeroSection 
+      title="文档中心" 
+      highlightText="文档"
+      description="全面的技术文档与使用指南"
+    />
+    <ProductCards />
+  </main>
+  <Footer />
+</Layout>

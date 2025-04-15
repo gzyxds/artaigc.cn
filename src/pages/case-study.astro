@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<Layout title="AI数字人 - OpenAuth.Net">
+  <Header />
+  <main>
+    <HeroSection 
+      title="查看演示" 
+      highlightText="演示"
+      description="了解OpenAuth.Net如何帮助您更快速搭建权限工作流框架。"
+    />
+    
+    <section class="py-8 bg-gray-50 dark:bg-gray-800">
+      <div class="container-custom">
+        <!-- 开源版演示 -->
+        <div class="mb-24">
+          <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div>
+              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+                免费版
+              </span>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">OpenAuth.Net开源版</h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                采用Asp.Net MVC开发模式,更适合传统.net framework开发者使用，前端深度使用layui界面
+              </p>
+              <div class="flex flex-wrap gap-4 mb-6">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">.Net MVC 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">layui 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">完全免费</span>
+                </div>
+              </div>
+              <a href="http://demo.openauth.net.cn:1802" target="_blank" class="btn-primary">进入演示</a>
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-xl">
+              <img src="http://img.openauth.net.cn/20250320214954.png" alt="ShopWave仪表板" class="w-full h-auto" />
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-24">
+          <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div class="order-2 md:order-1 rounded-lg overflow-hidden shadow-xl">
+              <img src="http://img.openauth.net.cn/20250320215139.png" alt="TechNova团队" class="w-full h-auto" />
+            </div>
+            <div class="order-1 md:order-2">
+              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+                高级版
+              </span>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">OpenAuth.Vue2版本</h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                采用WebAPI+VUE2.x前后端分离模式，后端基于OpenAuth.Net WebAPI接口，前端ElementUI界面
+              </p>
+              <div class="flex flex-wrap gap-4 mb-6">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">.Net WebAPI 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">Vue2 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">ElementUI 100%</span>
+                </div>
+              </div>
+              <a href="http://demo.openauth.net.cn:1803" target="_blank" class="btn-primary">进入演示</a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div>
+              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+                企业版
+              </span>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">OpenAuth.Vue3版本</h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                采用WebAPI+VUE3.x前后端分离模式，后端基于OpenAuth.Net WebAPI接口，前端ElementPlus界面
+              </p>
+              <div class="flex flex-wrap gap-4 mb-6">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">.Net WebAPI 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">Vue3 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">Element+ 100%</span>
+                </div>
+              </div>
+              <a href="http://demo.openauth.net.cn:1805" target="_blank" class="btn-primary">进入演示</a>
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-xl">
+              <img src="http://img.openauth.net.cn/2025-03-26-08-52-56.png" alt="OpenAuth.Vue3" class="w-full h-auto" />
+            </div>
+          </div>
+        </div>
+
+         <div class="mb-24">
+          <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div class="order-2 md:order-1 rounded-lg overflow-hidden shadow-xl flex flex-row">
+              <img src="http://img.openauth.net.cn/20250322184800.png" alt="移动应用" class=" h-96" />
+              <img src="http://img.openauth.net.cn/20250322185421.png" class="h-96" />
+              <img src="http://img.openauth.net.cn/20250322185707.png" alt="移动应用" class="h-96" />
+            </div>
+            <div class="order-1 md:order-2">
+              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+                企业版移动端
+              </span>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">OpenAuth.H5版本</h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                采用WebAPI+VUE3.x前后端分离模式，后端基于OpenAuth.Net WebAPI接口，前端Vant界面
+              </p>
+              <div class="flex flex-wrap gap-4 mb-6">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">.Net WebAPI 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">Vue3 100%</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">Vant 100%</span>
+                </div>
+              </div>
+              <a href="http://demo.openauth.net.cn:1804" target="_blank" class="btn-primary">进入演示</a>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="mt-16 text-center">
+          <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">准备好实现类似的成果了吗？</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            加入数百家正在使用OpenAuth.Net的公司。我们的团队随时准备帮您取得成功。
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="/contact" class="btn-primary">联系销售</a>
+            <a href="/pricing" class="btn-secondary">查看价格</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout> 

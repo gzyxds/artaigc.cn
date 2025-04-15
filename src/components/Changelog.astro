@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+
+// 版本数据
+const versions = [
+  {
+    version: 'v2.5.0',
+    date: '2023年7月15日',
+    title: '查看演示',
+    changes: {
+      improvements: [
+        '优化推荐问题生成',
+        '优化智能体发布页地址',
+        '优化语音生成超时问题',
+        '优化安装程序兼容性问题',
+        'GoApi渠道更新请求域名',
+        '优化创作模型全局指令字数限制'
+      ],
+      fixes: [
+        '修复使用oss后语音失败问题',
+        '修复豆包绘画尺寸无效问题',
+        '修复绑定手机号判断异常问题',
+        '修复未登录时分享报错',
+        '修复AI视频生成失败次数较多问题'
+      ]
+    }
+  },
+  // ... 其他版本数据
+];
+---
+
+<Layout title="更新日志 - 艺创AI">
+  <Header />
+  <main>
+    <HeroSection 
+      title="产品更新日志" 
+      highlightText="更新日志"
+      description="及时了解艺创AI的最新更新、改进和修复。"
+    />
+    
+    <section class="py-16 bg-white dark:bg-gray-800">
+      <div class="container-custom">
+        <!-- 搜索和筛选区域 -->
+        <div class="max-w-4xl mx-auto mb-12">
+          <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div class="relative w-full md:w-96">
+              <input 
+                type="text" 
+                placeholder="搜索更新内容..." 
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              />
+              <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <div class="flex gap-2">
+              <button class="px-4 py-2 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors">
+                订阅更新
+              </button>
+              <button class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                版本对比
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 版本列表 -->
+        <div class="max-w-4xl mx-auto space-y-16">
+          {versions.map((version) => (
+            <div class="relative">
+              {/* 版本时间线 */}
+              <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+              
+              <div class="relative pl-8">
+                {/* 版本标记 */}
+                <div class="absolute left-0 -translate-x-1/2 w-4 h-4 rounded-full bg-primary-500"></div>
+                
+                {/* 版本信息 */}
+                <div class="flex flex-col md:flex-row md:items-center gap-4 mb-6">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 font-medium text-sm">
+                      {version.version}
+                    </span>
+                    <span class="text-gray-500 dark:text-gray-400">{version.date}</span>
+                  </div>
+                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{version.title}</h2>
+                </div>
+
+                {/* 更新内容 */}
+                <div class="space-y-6">
+                  {version.changes.new && version.changes.new.length > 0 && (
+                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-green-700 dark:text-green-400 mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        新功能
+                      </h3>
+                      <ul class="space-y-2">
+                        {version.changes.new.map((item) => (
+                          <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            <span class="text-gray-700 dark:text-gray-300">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {version.changes.improvements && version.changes.improvements.length > 0 && (
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        改进
+                      </h3>
+                      <ul class="space-y-2">
+                        {version.changes.improvements.map((item) => (
+                          <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span class="text-gray-700 dark:text-gray-300">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {version.changes.fixes && version.changes.fixes.length > 0 && (
+                    <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-red-700 dark:text-red-400 mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        错误修复
+                      </h3>
+                      <ul class="space-y-2">
+                        {version.changes.fixes.map((item) => (
+                          <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            <span class="text-gray-700 dark:text-gray-300">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- 加载更多按钮 -->
+        <div class="max-w-4xl mx-auto mt-12 text-center">
+          <button class="inline-flex items-center px-6 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            加载更多更新
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout> 

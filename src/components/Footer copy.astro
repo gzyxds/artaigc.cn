@@ -1,0 +1,193 @@
+---
+// 底部组件
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  {
+    title: "关于我们",
+    links: [
+      { text: "项目文档", url: "/src/pages/why-volcengine" },
+      { text: "飞书文档", url: "/src/pages/docs" },
+      { text: "联系我们", url: "/src/pages/contact" },
+      { text: "人才招聘", url: "/src/pages/careers" },
+      { text: "友情链接", url: "/src/pages/links" }
+    ]
+  },
+  {
+    title: "产品中心",
+    links: [
+      { text: "AI数字人", url: "/products" },
+      { text: "企业知识库", url: "/products" },
+      { text: "聊天绘画", url: "/products" },
+      { text: "论文创作", url: "/products" },
+      { text: "艺创AIGC", url: "/products" },
+    ]
+  },
+  {
+    title: "解决方案",
+    links: [
+      { text: "艺创数字人", url: "/solutions/automotive" },
+      { text: "全能知识库", url: "/solutions/finance" },
+      { text: "论文创作", url: "/solutions/entertainment" },
+      { text: "聊天绘画", url: "/solutions/healthcare" },
+      { text: "文生视频", url: "/solutions/media" },
+      ]
+  },
+  {
+    title: "服务与支持",
+    links: [
+      { text: "文档中心", url: "/support/icp" },
+      { text: "安装部署", url: "/support/consulting" },
+      { text: "技术支持", url: "/support/feedback" },
+      { text: "联系我们", url: "/support/security" },
+      { text: "举报平台", url: "/support/report" }
+    ]
+  }
+];
+
+const contactInfo = {
+  business: {
+    label: "业务咨询",
+    email: "236749035@qq.com"
+  },
+  marketing: {
+    label: "市场合作", 
+    email: "artaigc@.cn"
+  },
+  phone: "18296869415"
+};
+---
+
+<footer class="relative bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 text-slate-600 dark:text-slate-300 py-16 border-t border-slate-200 dark:border-slate-700 font-sans overflow-hidden">
+  <!-- 装饰背景 -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-indigo-500 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
+  </div>
+
+  <div class="container-custom mx-auto relative">
+    <!-- 主要内容区域 -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-10">
+      {footerLinks.map(column => (
+        <div class="space-y-4 md:space-y-6 group">
+          <h3 class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-100 relative inline-block">
+            {column.title}
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+          </h3>
+          <ul class="space-y-4">
+            {column.links.map(link => (
+              <li>
+                <a href={link.url} 
+                   class="text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300 text-sm flex items-center group">
+                  <span class="w-1 h-1 bg-slate-300 dark:bg-slate-600 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      
+      <!-- 联系方式区域 -->
+      <div class="space-y-4 md:space-y-6">
+        <h3 class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-100 relative inline-block">
+          联系我们
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+        </h3>
+        <div class="space-y-4">
+          <p class="text-sm flex items-center">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+            {contactInfo.business.label}：
+            <a href={`mailto:${contactInfo.business.email}`} 
+               class="text-indigo-600 dark:text-indigo-400 hover:underline ml-1">
+              {contactInfo.business.email}
+            </a>
+          </p>
+          <p class="text-sm flex items-center">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+            {contactInfo.marketing.label}：
+            <a href={`mailto:${contactInfo.marketing.email}`} 
+               class="text-indigo-600 dark:text-indigo-400 hover:underline ml-1">
+              {contactInfo.marketing.email}
+            </a>
+          </p>
+          <p class="text-sm flex items-center">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+            电话：
+            <a href={`tel:${contactInfo.phone}`} 
+               class="text-indigo-600 dark:text-indigo-400 hover:underline ml-1">
+              {contactInfo.phone}
+            </a>
+          </p>
+          <p class="text-sm flex items-center">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+            {contactInfo.address}
+          </p>
+          
+          <!-- 二维码区域 -->
+          <div class="grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6">
+            <div class="text-center group">
+              <div class="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mx-auto mb-2 relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <img src="/assets/wchatpay.png" alt="微信公众号" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <p class="text-xs">微信公众号</p>
+            </div>
+            <div class="text-center group">
+              <div class="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mx-auto mb-2 relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <img src="/assets/qrcode.png" alt="微信客服" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <p class="text-xs">微信客服</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部版权信息 -->
+    <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-700">
+      <div class="text-slate-400 dark:text-slate-500 text-sm">
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          <span class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">&copy; 艺创AI 2023-{currentYear} 版权所有</span>
+          <span>代理域名注册服务机构：新网数码 商中在线</span>
+          <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">服务条款</a>
+          <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">隐私政策</a>
+          <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">更多协议</a>
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+          <span>京公网安备110108020323137号</span>
+          <span>京ICP备20018813号-3</span>
+          <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">营业执照</a>
+          <span>增值电信业务经营许可证:B2-20202418，A2.B1.B2-20202637</span>
+          <span>网络文化经营许可证：京网文（2023）4872-140号</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 声明全局变量类型
+    declare global {
+      interface Window {
+        chat_iframe_src: string;
+        chat_iframe_width: string;
+        chat_iframe_height: string;
+        chat_icon_bg: string;
+        chat_icon_color: string;
+      }
+    }
+
+    window.chat_iframe_src = 'https://www.cnai.art/chat/js-7c85889def3811e75402833418dcb807Dmdot'
+    window.chat_iframe_width = '350px' //聊天窗口宽
+    window.chat_iframe_height = '600px'  //聊天窗口高
+    window.chat_icon_bg = '#3C5EFD' //聊天悬浮按钮背景
+    window.chat_icon_color = '#3C5EFD' //聊天悬浮按钮颜色
+    var js = document.createElement('script')
+    js.type = 'text/javascript'
+    js.async = true
+    js.src = 'https://www.cnai.art/js-iframe.js'
+    var header = document.getElementsByTagName('head')[0]
+    header.appendChild(js)
+  </script>
+</footer>

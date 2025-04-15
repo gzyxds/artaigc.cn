@@ -1,0 +1,457 @@
+---
+// 产品数据接口
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  price: number;
+  originalPrice: number;
+  features: string[];
+  demoUrl: string;
+  purchaseUrl: string;
+  color: string;
+}
+
+// 组件属性
+interface Props {
+  products?: Product[];
+  title?: string;
+  showViewToggle?: boolean;
+  defaultView?: 'grid' | 'list' | 'card';
+}
+
+// 默认产品数据
+const defaultProducts: Product[] = [
+  {
+    id: 1,
+    title: "超级IP数字人SaaS系统「PHP源码版」",
+    description: "为企业主、个人博主打造短视频IP的数字人源码系统，支持真人声音+形象克隆，一键合成,基于SaaS多开模式的架构设计，支持无限OEM贴牌开通站点",
+    image: "/assets/work.svg",
+    category: "AI数字人",
+    price: 4999,
+    originalPrice: 6800,
+    features: ["声音克隆", "形象克隆", "视频生成", "AI文案", "热点话题"],
+    demoUrl: "https://v.cnai.art",
+    purchaseUrl: "https://auth.cnai.art",
+    color: "blue"
+  },
+  {
+    id: 2,
+    title: "艺创全能AI知识库系统「Java&PHP源码版」",
+    description: "全能AI知识库系统Java版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持问答式和文档式知识库，能够导入txt、doc、docx、pdf、md等多种格式文档",
+    image: "/assets/work.svg",
+    category: "AI写作",
+    price: 6600,
+    originalPrice: 9800,
+    features: ["多格式导入", "向量检索", "智能问答", "多端支持"],
+    demoUrl: "/demo/thesis",
+    purchaseUrl: "/purchase/thesis",
+    color: "green"
+  },
+  {
+    id: 3,
+    title: "艺创AI聊天绘画「Java&PHP源码版」",
+    description: "实现了AI对话+AI绘画的融合使用。系统功能包括：AI智能对话、AI创作模型、AI绘画、分销推广、会员套餐、充值套餐、卡密兑换、模型计费、会员回流优惠券等丰富的营销功能",
+    image: "/assets/ai.svg",
+    category: "智能聊天",
+    price: 2999,
+    originalPrice: 3800,
+    features: ["AI绘画", "智能聊天", "场景定制", "一键部署"],
+    demoUrl: "/demo/thesis",
+    purchaseUrl: "/purchase/thesis",
+    color: "green"
+  },
+  {
+    id: 4,
+    title: "艺创AI论文写作系统「Java&PHP源码版」",
+    description: "10分钟可生成几万字长文的系统。只需要输入主题关键词，AI即可快速为您生成主题大纲，可任意修改章节内容，操作高效快捷",
+    image: "/assets/lw.svg",
+    category: "论文创作",
+    price: 3200,
+    originalPrice: 4698,
+    features: ["快速生成大纲", "一键生成论文", "可下载资料", "走马灯通知"],
+    demoUrl: "/demo/digital-human",
+    purchaseUrl: "/purchase/digital-human",
+    color: "purple"
+  }
+];
+
+// 默认属性值
+const { 
+  products = defaultProducts, 
+  title = "我们的产品", 
+  showViewToggle = true,
+  defaultView = 'grid'
+} = Astro.props;
+---
+
+<div class="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
+  <!-- 背景装饰 -->
+  <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-b-[100%] blur-xl"></div>
+  
+  <!-- 装饰元素 - 左上角 -->
+  <div class="absolute left-0 top-1/4 w-64 h-64 bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
+  
+  <!-- 装饰元素 - 右上角 -->
+  <div class="absolute right-0 top-1/3 w-80 h-80 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
+  
+  <!-- 装饰元素 - 左下角 -->
+  <div class="absolute left-1/4 bottom-1/4 w-72 h-72 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+  
+  <!-- 装饰元素 - 右下角 -->
+  <div class="absolute right-1/4 bottom-1/3 w-60 h-60 bg-accent-100/40 dark:bg-accent-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 3s;"></div>
+
+  <div class="container-custom">
+    <!-- 页面标题和视图切换 -->
+    <div class="text-center mb-8">
+      <div class="inline-block mb-4">
+        <span class="inline-block px-3 py-1 text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-full">
+          精选产品
+        </span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 lg:mb-10 bg-gradient-to-r from-primary-600 via-secondary-500 to-accent-500 bg-clip-text text-transparent animate-fade-in hover:scale-105 transition-transform duration-300">
+        {title}
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-6">
+        探索我们的创新产品系列，为您的业务提供最佳解决方案
+      </p>
+      
+      {showViewToggle && (
+        <div class="flex items-center justify-start space-x-3 p-2 rounded-lg inline-block">
+          <button id="grid-view" class={`p-3 rounded-md ${defaultView === 'grid' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="网格视图">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </button>
+          <button id="list-view" class={`p-3 rounded-md ${defaultView === 'list' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="列表视图">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="card-view" class={`p-3 rounded-md ${defaultView === 'card' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="卡片视图">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </button>
+        </div>
+      )}
+    </div>
+
+    <!-- 产品列表容器 -->
+    <div id="grid-view-container" class={defaultView === 'grid' ? '' : 'hidden'}>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        {products.map((product, index) => (
+          <div 
+            class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            transition:animate="slide"
+            style={`transition-delay: ${index * 0.1}s`}
+          >
+            <div class="relative overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 aspect-[16/9]">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
+              <img 
+                src={product.image} 
+                alt={product.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-bl-lg z-20 shadow-md">
+                {product.category}
+              </div>
+              <div class="absolute bottom-2 left-2 z-20">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 text-primary-600 dark:bg-gray-800/90 dark:text-primary-400 shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span>
+                  热门
+                </span>
+              </div>
+            </div>
+            <div class="p-4 sm:p-5 md:p-6 flex-grow flex flex-col">
+              <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white line-clamp-2 group-hover:text-primary-500 transition-colors duration-300">
+                {product.title}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-3 sm:mb-4 line-clamp-2 flex-grow">
+                {product.description}
+              </p>
+              <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                {product.features.map(feature => (
+                  <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+              <div class="flex items-center justify-between mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+                <div>
+                  <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
+                  {product.originalPrice && (
+                    <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
+                  )}
+                </div>
+                <div class="flex space-x-2">
+                  <a 
+                    href={product.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-3 py-1.5 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 transform hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
+                  >
+                    演示
+                  </a>
+                  <a 
+                    href={product.purchaseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-3 py-1.5 border border-primary-500 text-primary-500 text-sm rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transform hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    购买
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 列表视图容器 -->
+    <div id="list-view-container" class={defaultView === 'list' ? '' : 'hidden'}>
+      <div class="space-y-6 md:space-y-8">
+        {products.map((product, index) => (
+          <div 
+            class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            transition:animate="slide"
+            style={`transition-delay: ${index * 0.1}s`}
+          >
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 relative overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  class="w-full h-48 md:h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-bl-lg z-20 shadow-md">
+                  {product.category}
+                </div>
+                <div class="absolute bottom-2 left-2 z-20">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 text-primary-600 dark:bg-gray-800/90 dark:text-primary-400 shadow-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span>
+                    热门
+                  </span>
+                </div>
+              </div>
+              <div class="p-4 sm:p-5 md:p-6 md:w-2/3">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
+                  {product.title}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-3 sm:mb-4">
+                  {product.description}
+                </p>
+                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                  {product.features.map(feature => (
+                    <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
+                  <div>
+                    <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
+                    {product.originalPrice && (
+                      <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
+                    )}
+                  </div>
+                  <div class="flex space-x-2">
+                    <a 
+                      href={product.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="px-3 py-1.5 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 transform hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
+                    >
+                      演示
+                    </a>
+                    <a 
+                      href={product.purchaseUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="px-3 py-1.5 border border-primary-500 text-primary-500 text-sm rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transform hover:-translate-y-0.5 transition-all duration-300"
+                    >
+                      购买
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 卡片视图容器 -->
+    <div id="card-view-container" class={defaultView === 'card' ? '' : 'hidden'}>
+      <div class="grid grid-cols-1 gap-6 md:gap-8">
+        {products.map((product, index) => (
+          <div 
+            class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            transition:animate="slide"
+            style={`transition-delay: ${index * 0.1}s`}
+          >
+            <div class="p-4 sm:p-5 md:p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 ring-2 ring-primary-100 dark:ring-primary-800">
+                  <img 
+                    src={product.image} 
+                    alt={product.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
+                    {product.title}
+                  </h3>
+                  <div class="bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs px-2 py-1 rounded-full inline-block shadow-sm">
+                    {product.category}
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                {product.description}
+              </p>
+              <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
+                {product.features.map(feature => (
+                  <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
+                <div>
+                  <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
+                  {product.originalPrice && (
+                    <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
+                  )}
+                </div>
+                <div class="flex space-x-2">
+                  <a 
+                    href={product.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-3 py-1.5 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 transform hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
+                  >
+                    演示
+                  </a>
+                  <a 
+                    href={product.purchaseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-3 py-1.5 border border-primary-500 text-primary-500 text-sm rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transform hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    购买
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 8s infinite ease-in-out;
+  }
+</style>
+
+<script>
+  // 视图切换功能
+  document.addEventListener('DOMContentLoaded', () => {
+    const gridViewBtn = document.getElementById('grid-view');
+    const listViewBtn = document.getElementById('list-view');
+    const cardViewBtn = document.getElementById('card-view');
+    
+    const gridViewContainer = document.getElementById('grid-view-container');
+    const listViewContainer = document.getElementById('list-view-container');
+    const cardViewContainer = document.getElementById('card-view-container');
+    
+    // 检查元素是否存在
+    if (!gridViewBtn || !listViewBtn || !cardViewBtn || 
+        !gridViewContainer || !listViewContainer || !cardViewContainer) {
+      console.error('无法找到视图切换元素');
+      return;
+    }
+    
+    // 默认显示网格视图
+    let currentView = 'grid';
+    
+    // 从本地存储中获取上次选择的视图
+    const savedView = localStorage.getItem('productViewMode');
+    if (savedView && ['grid', 'list', 'card'].includes(savedView)) {
+      switchView(savedView as 'grid' | 'list' | 'card');
+    }
+    
+    // 切换视图函数
+    function switchView(view: 'grid' | 'list' | 'card') {
+      // 隐藏所有视图
+      if (gridViewContainer) gridViewContainer.classList.add('hidden');
+      if (listViewContainer) listViewContainer.classList.add('hidden');
+      if (cardViewContainer) cardViewContainer.classList.add('hidden');
+      
+      // 重置所有按钮样式
+      if (gridViewBtn) {
+        gridViewBtn.classList.remove('bg-primary-500', 'text-white');
+        gridViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
+      }
+      
+      if (listViewBtn) {
+        listViewBtn.classList.remove('bg-primary-500', 'text-white');
+        listViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
+      }
+      
+      if (cardViewBtn) {
+        cardViewBtn.classList.remove('bg-primary-500', 'text-white');
+        cardViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
+      }
+      
+      // 显示选中的视图
+      if (view === 'grid' && gridViewContainer && gridViewBtn) {
+        gridViewContainer.classList.remove('hidden');
+        gridViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+        gridViewBtn.classList.add('bg-primary-500', 'text-white');
+      } else if (view === 'list' && listViewContainer && listViewBtn) {
+        listViewContainer.classList.remove('hidden');
+        listViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+        listViewBtn.classList.add('bg-primary-500', 'text-white');
+      } else if (view === 'card' && cardViewContainer && cardViewBtn) {
+        cardViewContainer.classList.remove('hidden');
+        cardViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+        cardViewBtn.classList.add('bg-primary-500', 'text-white');
+      }
+      
+      // 保存当前视图到本地存储
+      localStorage.setItem('productViewMode', view);
+      currentView = view;
+    }
+    
+    // 添加按钮点击事件
+    if (gridViewBtn) gridViewBtn.addEventListener('click', () => switchView('grid'));
+    if (listViewBtn) listViewBtn.addEventListener('click', () => switchView('list'));
+    if (cardViewBtn) cardViewBtn.addEventListener('click', () => switchView('card'));
+  });
+</script>

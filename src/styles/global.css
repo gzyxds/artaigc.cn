@@ -1,0 +1,184 @@
+/* 引入Tailwind CSS的基础样式 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 基础层样式定义 */
+@layer base {
+  /* 设置所有标题使用display字体 */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+  
+  /* 一级标题样式：更细腻的响应式字体大小 */
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  /* 二级标题样式 */
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold;
+  }
+  
+  /* 三级标题样式 */
+  h3 {
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold;
+  }
+  
+  /* 四级标题样式 */
+  h4 {
+    @apply text-lg sm:text-xl md:text-2xl font-semibold;
+  }
+  
+  /* 段落文本样式：优化响应式 */
+  p {
+    @apply text-base sm:text-lg md:text-xl leading-relaxed;
+  }
+}
+
+/* 组件层样式定义 */
+@layer components {
+  /* 基础按钮样式 */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium 
+           transition-all duration-300 focus:outline-none will-change-transform;
+  }
+  
+  /* 主要按钮样式 */
+  .btn-primary {
+    @apply btn bg-accent-400 hover:bg-accent-500 text-black 
+           shadow-md hover:shadow-lg focus:ring-2 focus:ring-accent-500 
+           focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  }
+  
+  /* 次要按钮样式 */
+  .btn-secondary {
+    @apply btn bg-primary-600 hover:bg-primary-700 text-white 
+           shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary-500 
+           focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  }
+  
+  /* 强调按钮样式 */
+  .btn-accent {
+    @apply btn bg-accent-500 hover:bg-accent-600 text-black 
+           shadow-md hover:shadow-lg focus:ring-2 focus:ring-accent-500 
+           focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  }
+  
+  /* 轮廓按钮样式 */
+  .btn-outline {
+    @apply btn border-2 border-secondary-300 dark:border-secondary-700 
+           hover:bg-secondary-100 dark:hover:bg-secondary-800 
+           text-secondary-900 dark:text-secondary-100
+           focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 
+           focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  }
+  
+  /* 优化容器样式 */
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 max-w-[1550px];
+  }
+  
+  /* 内容区域样式 */
+  .content-area {
+    @apply max-w-[800px] mx-auto;
+  }
+  
+  .content-area-wide {
+    @apply max-w-[1200px] mx-auto;
+  }
+  
+  /* 网格容器样式 */
+  .grid-container {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+  
+  /* 网格项样式 */
+  .grid-item {
+    @apply w-full;
+  }
+  
+  /* 区块样式：优化间距 */
+  .section {
+    @apply py-12 md:py-16 lg:py-20 xl:py-24;
+  }
+  
+  /* 水平间距 */
+  .section-x {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  /* 卡片样式：增强暗色模式支持 */
+  .card {
+    @apply bg-white dark:bg-secondary-900 rounded-xl shadow-md hover:shadow-lg 
+           transition-shadow duration-300 overflow-hidden 
+           border border-secondary-200 dark:border-secondary-800
+           dark:shadow-secondary-900/50;
+  }
+  
+  /* 间距工具类 */
+  .space-y-section {
+    @apply space-y-8 md:space-y-12 lg:space-y-16;
+  }
+  
+  .space-x-section {
+    @apply space-x-4 md:space-x-6 lg:space-x-8;
+  }
+  
+  /* 性能优化类 */
+  .optimize-rendering {
+    @apply will-change-transform transform-gpu;
+  }
+  
+  /* 加载优化类 */
+  .lazy-load {
+    @apply transition-opacity duration-300 opacity-0;
+  }
+  
+  .lazy-load.loaded {
+    @apply opacity-100;
+  }
+}
+
+/* 动画效果 */
+.fade-in {
+  @apply animate-fade-in;
+}
+
+.slide-up {
+  @apply animate-slide-up;
+}
+
+.slide-down {
+  @apply animate-slide-down;
+}
+
+/* 可访问性样式 */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+/* 键盘导航焦点样式：增强可访问性 */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary-500 dark:ring-primary-400 
+         ring-offset-2 ring-offset-white dark:ring-offset-secondary-900;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    @apply border-2 border-black dark:border-white;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-black dark:border-white;
+  }
+  
+  .btn-accent {
+    @apply border-2 border-black dark:border-white;
+  }
+  
+  .btn-outline {
+    @apply border-4;
+  }
+}

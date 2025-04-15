@@ -1,0 +1,176 @@
+---
+/**
+ * 英雄部分组件属性接口
+ * @interface Props
+ * @property {string} title - 标题文本
+ * @property {string} [highlightText] - 可选的高亮文本，将在标题中被特殊样式处理
+ * @property {string} description - 描述文本
+ * @property {string} [backgroundImage] - 可选的背景图片URL
+ * @property {Array<{text: string, url: string, variant?: 'primary'|'secondary'|'outline'|'accent'}>} [buttons] - 可选的按钮数组
+ * @property {string} [height] - 可选的高度设置，默认为'400px'
+ * @property {boolean} [hasPattern] - 是否显示背景图案，默认为false
+ * @property {string} [alignment] - 内容对齐方式，可选值：'center'、'left'，默认为'center'
+ */
+interface Props {
+  title: string;
+  highlightText?: string;
+  description: string;
+  backgroundImage?: string;
+  buttons?: Array<{text: string, url: string, variant?: 'primary'|'secondary'|'outline'|'accent'}>;
+  height?: string;
+  hasPattern?: boolean;
+  alignment?: 'center' | 'left';
+}
+
+const { 
+  title, 
+  highlightText, 
+  description, 
+  backgroundImage, 
+  buttons = [], 
+  height = '400px', 
+  hasPattern = false,
+  alignment = 'center' 
+} = Astro.props;
+
+/**
+ * 处理标题文本
+ * 如果提供了高亮文本，将标题拆分为前后两部分，以便在渲染时突出显示高亮部分
+ */
+let titleStart = title;
+let titleEnd = "";
+
+if (highlightText) {
+  const titleParts = title.split(highlightText);
+  if (titleParts.length > 1) {
+    titleStart = titleParts[0];
+    titleEnd = titleParts[1];
+  }
+}
+---
+<!-- 英雄部分 - 现代化设计的主视觉区域 -->
+<section 
+  class="relative overflow-hidden hero-section"
+  style={`height: ${height}`}
+  role="banner"
+  aria-label="Hero section"
+>
+  <!-- 背景层 -->
+  <div class="absolute inset-0">
+    <!-- 渐变背景 - 增强的渐变效果 -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 dark:from-blue-900 dark:via-indigo-900 dark:to-blue-800 opacity-90"></div>
+    
+    <!-- 背景图案（如果启用） -->
+    {hasPattern && (
+      <div class="absolute inset-0 pattern-grid opacity-5 dark:opacity-10"></div>
+    )}
+    
+    <!-- 背景图片（如果提供） -->
+    {backgroundImage && (
+      <div 
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 transform scale-105 animate-subtle-float"
+        style={`background-image: url(${backgroundImage})`}
+      ></div>
+    )}
+    
+    <!-- 装饰性光晕效果 -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-400/20 dark:bg-primary-600/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent-400/20 dark:bg-accent-600/20 rounded-full blur-3xl"></div>
+  </div>
+  
+  <!-- 内容容器 -->
+  <div class="container-custom relative z-10 h-full flex items-center">
+    <div class={`max-w-[1200px] ${alignment === 'center' ? 'mx-auto text-center' : 'ml-0 mr-auto text-left'} py-6`}>
+      <!-- 标题区域 - 增强的动画和排版 -->
+      <h1 
+        class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-blue-400 dark:to-cyan-400 animate-fade-in animate-slide-down [text-wrap:balance] tracking-wider"
+        style="animation-delay: 100ms"
+      >
+        {highlightText ? (
+          <>
+            {titleStart}
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 dark:from-blue-300 dark:via-blue-400 dark:to-blue-500 animate-pulse-subtle">
+              {highlightText}
+            </span>
+            {titleEnd}
+          </>
+        ) : (
+          title
+        )}
+      </h1>
+      
+      <!-- 描述文本 - 增强的可读性和动画 -->
+      <p 
+        class={`font-sans text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 animate-fade-in animate-slide-up ${alignment === 'center' ? 'max-w-[800px] mx-auto' : 'max-w-[700px]'} [text-wrap:pretty]`}
+        style="animation-delay: 200ms"
+      >
+        {description}
+      </p>
+      
+      <!-- 按钮组 - 新增功能 -->
+      {buttons.length > 0 && (
+        <div 
+          class={`flex flex-wrap gap-4 ${alignment === 'center' ? 'justify-center' : 'justify-start'} animate-fade-in`}
+          style="animation-delay: 300ms"
+        >
+          {buttons.map((button, index) => (
+            <a 
+              href={button.url} 
+              class={`btn ${button.variant ? `btn-${button.variant}` : 'btn-primary'} transform hover:scale-105`}
+              style={`animation-delay: ${300 + (index * 100)}ms`}
+            >
+              {button.text}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+  
+  <!-- 底部装饰效果 - 增强的视觉效果 -->
+  <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/40 to-transparent dark:from-slate-950/40"></div>
+  
+  <!-- 装饰性元素 - 增加视觉趣味 -->
+  <div class="absolute bottom-8 right-8 w-24 h-24 border border-primary-300/30 dark:border-primary-700/30 rounded-full animate-pulse-slow hidden lg:block"></div>
+  <div class="absolute top-12 left-12 w-16 h-16 border border-accent-300/30 dark:border-accent-700/30 rounded-full animate-pulse-slow hidden lg:block"></div>
+</section>
+
+<style>
+  /* 优化动画性能 */
+  .animate-fade-in,
+  .animate-slide-down,
+  .animate-slide-up {
+    will-change: transform, opacity;
+  }
+  
+  /* 背景图案 */
+  .pattern-grid {
+    background-image: 
+      linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* 新增动画效果 */
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+  
+  @keyframes subtle-float {
+    0%, 100% { transform: translateY(0) scale(1.05); }
+    50% { transform: translateY(-5px) scale(1.05); }
+  }
+  
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+  
+  .animate-subtle-float {
+    animation: subtle-float 10s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-subtle 6s ease-in-out infinite;
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+// 常见问题数据组件
+const faqs = [
+  {
+    question: "你们开发AI系统的周期是多久？",
+    answer: "一般根据你的项目大小和难易程度决定，一般都在5个工作日内可以完成很多工作，当然这里不包含定制开发。"
+  },
+  {
+    question: "你们的AI系统可以接入哪些场景？",
+    answer: "主流的软件我们基本都能接入，比如企业微信、钉钉、飞书、微信公众号等或者你自己的App也可以。"
+  },
+  {
+    question: "你们AI接口对接的哪里的?",
+    answer: "我们接入OpenAI官方最新接口，访问速度非常快，支持GPT4.0和GPT3.5。国内大语言模型例如ChatGLM我们也是支持的。"
+  },
+  {
+    question: "你们训练AI模型的时间是多久",
+    answer: "这个需要根据您提供的训练资料决定，根据你提供的训练资料才可以知道他的训练时间和学习过程。"
+  },
+  {
+    question: "什么是商业授权？",
+    answer: "商业授权是允许用户将软件用于商业目的的凭证。免费版可用于学习交流，但需保留版权信息；商业授权后可去除版权信息，但不可二次销售。未授权去除版权将被视为侵权。"
+  },
+  {
+    question: "开源为什么需要购买商业授权？",
+    answer: "开源不等于完全免费！开源代码是为了方便用户二次开发，便于学习和交流，免费使用请务必保留官方版权标识和链接。"
+  },
+  {
+    question: "怎样获取商业授权？",
+    answer: "联系官方客服购买，购买成功后客服人员会在后台给您开通授权。"
+  },
+  {
+    question: "商业授权生成后可以更改吗？",
+    answer: "由于商品的特殊性，商业授权后可提供一次免费的域名更改服务，后续如需更改域名需要缴纳更改时对应付费产品费用的50%作为变更费用。"
+  },
+  {
+    question: "一份商业授权可用于多个网站吗？",
+    answer: "不可以。商业授权是根据域名进行授权，一份商业授权只能授予一个域名。"
+  },
+  {
+    question: "获得商业授权后可去除版权信息吗？",
+    answer: "取得商业授权后可以去除代码官方版权信息和链接，但不能用作二次发行销售。"
+  }
+]
+---
+<section class="py-12 sm:py-16 lg:py-24">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-sans text-transparent bg-clip-text bg-gradient-to-r from-[#205aef] to-[#205aef]/80 mb-4 sm:mb-6">
+        常见问题解答
+      </h2>
+      <p class="text-sm sm:text-base lg:text-lg font-medium text-slate-600 dark:text-slate-300">
+        为您解答使用过程中的常见疑问，助您快速了解我们的服务
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
+      {faqs.map((faq, index) => (
+        <div class="group relative perspective-1000">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#205aef]/20 to-[#205aef]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
+          <div class="relative bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-500 transform group-hover:scale-[1.01]">
+            <details class="group/faq">
+              <summary class="flex items-start gap-3 sm:gap-4 cursor-pointer list-none">
+                <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-[#205aef] shadow-sm">
+                  <span class="text-white text-xs sm:text-sm font-bold">{(index + 1).toString().padStart(2, '0')}</span>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-base sm:text-lg lg:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-[#205aef] dark:group-hover:text-[#205aef] transition-colors duration-300">
+                    {faq.question}
+                  </h3>
+                </div>
+                <div class="flex-shrink-0 mt-1">
+                  <svg class="w-4 h-4 text-slate-500 group-open/faq:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </summary>
+              <div class="pl-10 sm:pl-14 mt-2">
+                <p class="text-xs sm:text-sm lg:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12 sm:mt-16">
+      <a href="#contact" class="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold text-white bg-[#205aef] rounded-xl sm:rounded-2xl hover:shadow-md hover:shadow-[#205aef]/20 transform hover:-translate-y-1 transition-all duration-500 ease-out">
+        <span>联系我们了解更多</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

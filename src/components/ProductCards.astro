@@ -1,0 +1,148 @@
+---
+// 产品文档卡片组件
+
+
+const categories = [
+  {
+    title: "AI数字人",
+    icon: "school",
+    items: [
+      {icon: "🛠️", text: "宝塔面板部署"},
+      {icon: "⚙", text: "通用部署"},
+      {icon: "🖥️", text: "前端部署"},
+      {icon: "💬", text: "微信公众号"},
+      {icon: "📱", text: "微信小程序"},
+      {icon: "⬆️", text: "（一键上传）"},
+      {icon: "⚙️", text: "其他配置"},
+      {icon: "🔓", text: "微信开放平台"},
+      {icon: "💰", text: "微信支付"},
+      {icon: "💳", text: "支付宝支付"},
+      {icon: "🔧", text: "二次开发"},
+      {icon: "🔌", text: "数据接口"}
+    ]
+  },
+  {
+    title: "AI知识库",
+    icon: "card_giftcard",
+    items: [
+      {icon: "🛠️", text: "宝塔面板部署"},
+      {icon: "⚙", text: "通用部署"},
+      {icon: "🖥️", text: "前端部署"},
+      {icon: "💬", text: "微信公众号"},
+      {icon: "📱", text: "微信小程序"},
+      {icon: "⬆️", text: "（一键上传）"},
+      {icon: "⚙️", text: "其他配置"},
+      {icon: "🔓", text: "微信开放平台"},
+      {icon: "💰", text: "微信支付"},
+      {icon: "💳", text: "支付宝支付"},
+      {icon: "🔧", text: "二次开发"},
+      {icon: "🔌", text: "数据接口"}
+    ]
+  },
+  {
+    title: "聊天绘画",
+    icon: "group",
+    items: [
+      {icon: "🛠️", text: "宝塔面板部署"},
+      {icon: "⚙", text: "通用部署"},
+      {icon: "🖥️", text: "前端部署"},
+      {icon: "💬", text: "微信公众号"},
+      {icon: "📱", text: "微信小程序"},
+      {icon: "⬆️", text: "（一键上传）"},
+      {icon: "⚙️", text: "其他配置"},
+      {icon: "🔓", text: "微信开放平台"},
+      {icon: "💰", text: "微信支付"},
+      {icon: "💳", text: "支付宝支付"},
+      {icon: "🔧", text: "二次开发"},
+      {icon: "🔌", text: "数据接口"}
+    ]
+  },
+  {
+    title: "论文写作",
+    icon: "payments",
+    items: [
+      {icon: "🛠️", text: "宝塔面板部署"},
+      {icon: "⚙", text: "通用部署"},
+      {icon: "🖥️", text: "前端部署"},
+      {icon: "💬", text: "微信公众号"},
+      {icon: "📱", text: "微信小程序"},
+      {icon: "⬆️", text: "（一键上传）"},
+      {icon: "⚙️", text: "其他配置"},
+      {icon: "🔓", text: "微信开放平台"},
+      {icon: "💰", text: "微信支付"},
+      {icon: "💳", text: "支付宝支付"},
+      {icon: "🔧", text: "二次开发"},
+      {icon: "🔌", text: "数据接口"}
+    ]
+  }, 
+];
+---
+<div class="container-custom mt-8 mb-12">
+  <h2 class="text-2xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-white">产品文档</h2>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+    {categories.slice(0, 6).map((category) => (
+      <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-200 relative group overflow-hidden">
+        <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 dark:bg-blue-900/20 transform rotate-45 translate-x-8 -translate-y-8 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30 transition-colors duration-300"></div>
+        <div class="absolute top-0 right-0 w-16 h-16 bg-blue-100 dark:bg-blue-800/30 transform rotate-45 translate-x-6 -translate-y-6 group-hover:bg-blue-200 dark:group-hover:bg-blue-700/40 transition-colors duration-300"></div>
+        
+        <div class="flex items-start gap-4 mb-4 relative z-10">
+          <div class="flex-shrink-0">
+            <div class="w-10 h-10 rounded-lg bg-[#EBF5FF] dark:bg-blue-900/30 flex items-center justify-center">
+              <span class="material-icons text-[#0066FF] dark:text-blue-400 text-2xl">{category.icon}</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{category.title}</h3>
+        </div>
+        
+        <ul class="space-y-3 mb-4 relative z-10">
+          {category.items.slice(0, 6).map((item) => (
+            <li class="text-gray-600 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 cursor-pointer transition-colors duration-200">
+              <span class="mr-2">{item.icon}</span>{item.text}
+            </li>
+          ))}
+        </ul>
+        
+        <a href="https://doc.artaigc.cn/" class="inline-flex items-center text-[#0066FF] dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 relative z-10">
+          查看更多
+          <span class="material-icons text-lg ml-1">arrow_forward</span>
+        </a>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  @media (max-width: 639px) {
+    .grid {
+      gap: 0.75rem;
+    }
+    
+    .material-icons {
+      font-size: 1.125rem !important;
+    }
+    
+    h3 {
+      font-size: 1rem;
+    }
+    
+    li {
+      font-size: 0.75rem;
+    }
+
+    .container-custom {
+      padding: 0 0.5rem;
+    }
+  }
+  
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .grid {
+      gap: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      gap: 1.5rem;
+    }
+  }
+</style>
