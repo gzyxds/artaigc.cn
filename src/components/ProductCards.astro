@@ -89,7 +89,16 @@ const categories = [
 ];
 
 ---
-<section class="relative py-16 sm:py-24 lg:py-32">
+<div class="text-center mb-3 sm:mb-4 lg:mb-5">
+  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-display text-slate-900 dark:text-white mb-4 sm:mb-5 lg:mb-6">
+    产品文档中心
+  </h1>
+  <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+    全面的产品使用指南，帮助您快速上手和深入了解我们的产品功能
+  </p>
+</div>
+
+<section class="relative py-4 sm:py-6 lg:py-8">
   <div class="container-custom">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
       {categories.map((category, index) => (

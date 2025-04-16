@@ -1,12 +1,37 @@
 ---
-const allPages = [
+/**
+ * Header组件
+ * 网站的顶部导航栏组件，提供网站的主要导航功能
+ * 包含以下功能：
+ * 1. 网站Logo和品牌名称
+ * 2. 主导航菜单（首页、产品中心等）
+ * 3. 下拉菜单（产品、文档、支持等）
+ * 4. 移动端响应式菜单
+ * 5. 暗黑模式切换按钮
+ * 6. 用户操作按钮（登录、注册等）
+ */
+
+/**
+ * 定义所有页面的导航链接
+ * 用于构建主导航菜单
+ */
+ const allPages = [
   { text: "常见问题", url: "/faqs" },
   { text: "更新日志", url: "/changelog" },
   { text: "集成", url: "/integrations" },
 ];
 
+/**
+ * 导入网站Logo
+ * 用于在导航栏中显示网站标识
+ */
 import astroLogo from '../assets/logo.svg';
 
+/**
+ * 产品菜单项
+ * 定义产品下拉菜单中的项目
+ * 每个项目包含名称、URL、图标、描述和颜色
+ */
 const products = [
   { name: "AI数字人", url: "/human", icon: "👤", desc: "智能数字人解决方案", color: "blue" },
   { name: "AI知识库", url: "/ai", icon: "🧠", desc: "智能知识管理平台", color: "green" },
@@ -14,17 +39,29 @@ const products = [
   { name: "AI论文创作", url: "/paper", icon: "📝", desc: "智能论文写作助手", color: "orange" },
   { name: "产品中心", url: "/shop", icon: "🎯", desc: "全部产品导航", color: "pink" },
   { name: "产品演示", url: "/demo", icon: "🖥️", desc: "在线体验中心", color: "orange" },
-  { name: "授权中心", url: "/demo", icon: "👤", desc: "授权管理与使用", color: "orange" },
+  { name: "AI提示词", url: "/tips", icon: "💡", desc: "AI提示词大全", color: "orange" },
+  { name: "授权中心", url: "http://auth.cnai.art", icon: "👤", desc: "授权管理与使用", color: "orange", target: "_blank" },
 ];
 
+/**
+ * 支持菜单项
+ * 定义支持下拉菜单中的项目
+ * 每个项目包含名称、URL、图标、描述和颜色
+ */
 const supportItems = [
   { name: "更新日志", url: "/changelog", icon: "🛠️", desc: "获取最新更新", color: "teal" },
   { name: "联系我们", url: "/contact", icon: "📞", desc: "获取专业支持服务", color: "indigo" },
   { name: "集成与API", url: "/integrations", icon: "🔌", desc: "连接您喜爱的工具", color: "blue" },
   { name: "合作伙伴", url: "/cooperate", icon: "🤝", desc: "查看合作机会", color: "yellow" },
   { name: "渠道合作", url: "/channel", icon: "🤝", desc: "渠道合作与加盟", color: "yellow" },
+  { name: "APP下载", url: "/app", icon: "📱", desc: "多终端APP下载", color: "green" },
 ];
 
+/**
+ * 文档菜单项
+ * 定义文档下拉菜单中的项目
+ * 每个项目包含名称、URL、图标、描述和颜色
+ */
 const docItems = [
   { name: "项目文档", url: "https://doc.artaigc.cn/", icon: "📄", desc: "5分钟快速上手", color: "red", target: "_blank" },
   { name: "飞书文档", url: "https://rwm01l8tn3x.feishu.cn/wiki/VqNCwBO0KiqWIWkSfdHcDigGnZg?from=from_copylink", icon: "🔍", desc: "详细功能说明", color: "blue" },
@@ -68,33 +105,35 @@ const faqItems = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-72 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-md shadow-xl ring-1 ring-black/5 dark:ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="p-3 space-y-1">
-              {products.map((product) => (
-                <a href={product.url} class="menu-item group/item">
-                  <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200">
-                    <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${product.color}-100 dark:bg-${product.color}-900/30 text-${product.color}-600 dark:text-${product.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
-                      {product.icon}
-                    </span>
-                    <div class="flex-1 min-w-0">
-                      <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
-                        {product.name}
+          <div class="absolute left-0 mt-2 w-[500px] rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-md shadow-xl ring-1 ring-black/5 dark:ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="p-4">
+              <div class="grid grid-cols-2 gap-3">
+                {products.map((product) => (
+                  <a href={product.url} class="menu-item group/item">
+                    <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
+                      <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${product.color}-100 dark:bg-${product.color}-900/30 text-${product.color}-600 dark:text-${product.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
+                        {product.icon}
+                      </span>
+                      <div class="flex-1 min-w-0">
+                        <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
+                          {product.name}
+                        </div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                          {product.desc}
+                        </div>
                       </div>
-                      <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
-                        {product.desc}
-                      </div>
+                      <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
-                    <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Documentation Dropdown -->
+        <!--产品文档  -->
         <div class="relative group">
           <button class="nav-link flex items-center">
             产品文档
@@ -102,34 +141,35 @@ const faqItems = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-72 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-md shadow-xl ring-1 ring-black/5 dark:ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="p-3 space-y-1">
-              {docItems.map((item) => (
-                <a href={item.url} target={item.target} class="menu-item group/item">
-                  <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200">
-                    <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
-                      {item.icon}
-                    </span>
-                    <div class="flex-1 min-w-0">
-                      <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
-                        {item.name}
+          <div class="absolute left-0 mt-2 w-[500px] rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-md shadow-xl ring-1 ring-black/5 dark:ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="p-4">
+              <div class="grid grid-cols-2 gap-3">
+                {docItems.map((item) => (
+                  <a href={item.url} target={item.target} class="menu-item group/item">
+                    <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
+                      <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
+                        {item.icon}
+                      </span>
+                      <div class="flex-1 min-w-0">
+                        <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
+                          {item.name}
+                        </div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                          {item.desc}
+                        </div>
                       </div>
-                      <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
-                        {item.desc}
-                      </div>
+                      <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
-                    <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         <a href="/pricing" class="nav-link">产品价格</a>
-        <a href="/blog" class="nav-link">最新动态</a>
         <a href="/company" class="nav-link">关于我们</a>
         <a href="/contact" class="nav-link">联系我们</a>
 
@@ -141,31 +181,34 @@ const faqItems = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-72 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-md shadow-xl ring-1 ring-black/5 dark:ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="p-3 space-y-1">
-              {supportItems.map((item) => (
-                <a href={item.url} class="menu-item group/item">
-                  <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200">
-                    <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
-                      {item.icon}
-                    </span>
-                    <div class="flex-1 min-w-0">
-                      <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
-                        {item.name}
+          <div class="absolute left-0 mt-2 w-[500px] rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-md shadow-xl ring-1 ring-black/5 dark:ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="p-4">
+              <div class="grid grid-cols-2 gap-3">
+                {supportItems.map((item) => (
+                  <a href={item.url} class="menu-item group/item">
+                    <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
+                      <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
+                        {item.icon}
+                      </span>
+                      <div class="flex-1 min-w-0">
+                        <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
+                          {item.name}
+                        </div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                          {item.desc}
+                        </div>
                       </div>
-                      <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
-                        {item.desc}
-                      </div>
+                      <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
-                    <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+        <a href="/blog" class="nav-link">最新动态</a>
       </nav>
 
       <!-- Right Side Actions -->
@@ -185,19 +228,26 @@ const faqItems = [
         </button>
 
         <!-- Auth Buttons -->
-        <a 
-          href="https://auth.cnai.art/login.htm" 
-          class="hidden sm:inline-flex items-center px-4 py-2 rounded-md bg-primary-600 hover:bg-primary-700 text-white font-medium transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
-        >
-          购买授权
-        </a>
-        <a 
-          href="https://auth.cnai.art/login.htm" 
-          class="hidden sm:inline-flex items-center px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium transition-all duration-200"
-        >
-          登录/注册
-        </a>
-
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+          <a 
+            href="https://auth.cnai.art/regist.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group hidden sm:inline-flex items-center px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+          >
+            <span>立即购买</span>
+          </a>
+          
+          <a 
+            href="https://auth.cnai.art/regist.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group hidden sm:inline-flex items-center px-6 py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+          >
+            <span>登入/注册</span>
+          </a>
+        </div>
+        
         <!-- Mobile Menu Button -->
         <button 
           x-data="{open: false}"
@@ -251,15 +301,20 @@ const faqItems = [
           </button>
           
           <div x-show="expanded" x-collapse x-cloak>
-            <div class="space-y-2 pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
-              {products.map(product => (
-                <a href={product.url} class="mobile-menu-item">
-                  <div class="flex items-center space-x-3">
-                    <span class={`text-${product.color}-600 dark:text-${product.color}-400`}>{product.name}</span>
-                    <span class="text-sm text-gray-500">{product.desc}</span>
-                  </div>
-                </a>
-              ))}
+            <div class="pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
+              <div class="grid grid-cols-2 gap-2">
+                {products.map(product => (
+                  <a href={product.url} class="mobile-menu-item">
+                    <div class="flex flex-col">
+                      <div class="flex items-center space-x-2">
+                        <span class={`text-${product.color}-600 dark:text-${product.color}-400`}>{product.icon}</span>
+                        <span class={`font-medium text-${product.color}-600 dark:text-${product.color}-400`}>{product.name}</span>
+                      </div>
+                      <span class="text-xs text-gray-500 mt-1">{product.desc}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -281,21 +336,25 @@ const faqItems = [
           </button>
           
           <div x-show="expanded" x-collapse x-cloak>
-            <div class="space-y-2 pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
-              {docItems.map(item => (
-                <a href={item.url} target={item.target} class="mobile-menu-item">
-                  <div class="flex items-center space-x-3">
-                    <span class={`text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
-                    <span class="text-sm text-gray-500">{item.desc}</span>
-                  </div>
-                </a>
-              ))}
+            <div class="pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
+              <div class="grid grid-cols-2 gap-2">
+                {docItems.map(item => (
+                  <a href={item.url} target={item.target} class="mobile-menu-item">
+                    <div class="flex flex-col">
+                      <div class="flex items-center space-x-2">
+                        <span class={`text-${item.color}-600 dark:text-${item.color}-400`}>{item.icon}</span>
+                        <span class={`font-medium text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
+                      </div>
+                      <span class="text-xs text-gray-500 mt-1">{item.desc}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         <a href="/pricing" class="mobile-nav-item">产品价格</a>
-        <a href="/blog" class="mobile-nav-item">最新动态</a>
         <a href="/company" class="mobile-nav-item">关于我们</a>
         <a href="/contact" class="mobile-nav-item">联系我们</a>
 
@@ -316,18 +375,24 @@ const faqItems = [
           </button>
           
           <div x-show="expanded" x-collapse x-cloak>
-            <div class="space-y-2 pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
-              {supportItems.map(item => (
-                <a href={item.url} class="mobile-menu-item">
-                  <div class="flex items-center space-x-3">
-                    <span class={`text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
-                    <span class="text-sm text-gray-500">{item.desc}</span>
-                  </div>
-                </a>
-              ))}
+            <div class="pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
+              <div class="grid grid-cols-2 gap-2">
+                {supportItems.map(item => (
+                  <a href={item.url} class="mobile-menu-item">
+                    <div class="flex flex-col">
+                      <div class="flex items-center space-x-2">
+                        <span class={`text-${item.color}-600 dark:text-${item.color}-400`}>{item.icon}</span>
+                        <span class={`font-medium text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
+                      </div>
+                      <span class="text-xs text-gray-500 mt-1">{item.desc}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+        <a href="/blog" class="mobile-nav-item">最新动态</a>
       </div>
 
       <!-- Mobile Auth Buttons -->
@@ -364,7 +429,7 @@ const faqItems = [
   }
 
   .menu-item {
-    @apply flex items-center space-x-3 p-2 rounded-xl transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800/50;
+    @apply flex items-center space-x-3 p-2 rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-800/50;
   }
 
   .mobile-nav-item {
