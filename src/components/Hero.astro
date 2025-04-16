@@ -27,36 +27,36 @@ interface Card {
 }
 
 const features: Feature[] = [
-  { name: 'AI数字人', color: 'blue', href: '/shop' },
-  { name: '知识库', color: 'purple', href: '/shop' },
-  { name: '智能绘画', color: 'green', href: '/shop' },
-  { name: '论文创作', color: 'amber', href: '/shop' },
-  { name: 'PHP&Java', color: 'indigo', href: '/shop' }
+  { name: 'AI数字人', color: 'blue', href: '/human' },
+  { name: '知识库', color: 'purple', href: '/ai' },
+  { name: '智能绘画', color: 'green', href: '/chat' },
+  { name: '论文创作', color: 'amber', href: '/paper' },
+  { name: 'PHP&Java', color: 'indigo', href: '/' }
 ];
 
 const cards: Card[] = [
   {
+    icon: 'code',
     title: '双语言版本',
     description: 'PHP/Java双版本支持',
-    icon: '<path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"/>',
     gradient: 'from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50'
   },
   {
     title: '私有部署',
     description: '安全可控的私有化部署',
-    icon: '<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>',
+    icon: 'cloud_download',
     gradient: 'from-purple-50 to-purple-100 dark:from-purple-900/50 dark:to-purple-800/50'
   },
   {
     title: '专业团队',
     description: '一对一技术支持',
-    icon: '<path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>',
+    icon: 'groups',
     gradient: 'from-green-50 to-green-100 dark:from-green-900/50 dark:to-green-800/50'
   },
   {
     title: '开源方案',
     description: '灵活定制，售后无忧',
-    icon: '<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>',
+    icon: 'star',
     gradient: 'from-amber-50 to-amber-100 dark:from-amber-900/50 dark:to-amber-800/50'
   }
 ];
@@ -172,12 +172,12 @@ const cards: Card[] = [
           <!-- 功能卡片 -->
           <div class="grid grid-cols-2 gap-4 sm:gap-6">
             {cards.map((card) => (
-              <div class={`bg-gradient-to-br ${card.gradient} p-4 sm:p-6 rounded-xl`}>
-                <svg class={`w-8 sm:w-10 h-8 sm:h-10 text-${card.gradient.split('-')[1]}-600 mb-3`} fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <div class={`bg-gradient-to-br ${card.gradient} p-3 sm:p-4 rounded-xl`}>
+                <i class={`material-icons w-16 sm:w-20 h-16 sm:h-20 text-${card.gradient.split('-')[1]}-600 -mb-5 flex items-start justify-start text-4xl sm:text-5xl`}>
                   {card.icon}
-                </svg>
-                <h4 class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg">{card.title}</h4>
-                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">{card.description}</p>
+                </i>
+                <h4 class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg text-left">{card.title}</h4>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">{card.description}</p>
               </div>
             ))}
           </div>
