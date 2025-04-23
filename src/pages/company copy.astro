@@ -18,83 +18,42 @@ import HeroSection from '../components/HeroSection.astro';
     />
 
     <!-- 数据统计展示 -->
-    <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
-      <div class="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-700 [mask-image:linear-gradient(0deg,transparent,black)] opacity-20"></div>
-      <div class="container-custom relative z-10 px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10 sm:mb-16">
-          <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-300 text-xs sm:text-sm font-medium mb-4 ring-1 ring-primary-500/20 backdrop-blur transform hover:scale-105 transition-transform duration-300">
-            <span class="flex items-center gap-1.5 sm:gap-2">
-              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-              数据洞察
-            </span>
-          </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">我们的成长历程</h2>
-          <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-xl sm:max-w-2xl mx-auto">见证艺创AI的发展历程，每一个数字都代表着我们对技术创新和客户服务的不懈追求</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-          <!-- 客户数量卡片 -->
-          <div class="group transform hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300">
-            <div class="relative overflow-hidden rounded-xl sm:rounded-2xl bg-white dark:bg-gray-800 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100/50 dark:border-gray-700/50 backdrop-blur-sm">
-              <div class="absolute -right-8 -top-8 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-primary-500/30 to-primary-500/0 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500"></div>
+    <section class="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div class="container-custom">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div class="group transform hover:scale-105 transition-all duration-300">
+            <div class="relative overflow-hidden rounded-lg bg-white dark:bg-gray-800 p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+              <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-500/10 rounded-full"></div>
               <div class="relative">
-                <div class="flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 mb-4 sm:mb-6 rounded-xl sm:rounded-2xl bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform duration-300">
-                  <svg class="w-6 sm:w-8 h-6 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-600 dark:text-primary-400 mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">50W+</div>
-                <p class="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 font-medium">客户信赖之选</p>
+                <div class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-3">50W+</div>
+                <p class="text-gray-600 dark:text-gray-400 font-medium">客户信赖之选</p>
               </div>
             </div>
           </div>
-
-          <!-- 企业服务卡片 -->
-          <div class="group">
-            <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100/50 dark:border-gray-700/50 backdrop-blur-sm hover:-translate-y-1">
-              <div class="absolute -right-8 -top-8 w-32 h-32 bg-gradient-to-br from-secondary-500/30 to-secondary-500/0 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500"></div>
+          <div class="group transform hover:scale-105 transition-all duration-300">
+            <div class="relative overflow-hidden rounded-lg bg-white dark:bg-gray-800 p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+              <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-500/10 rounded-full"></div>
               <div class="relative">
-                <div class="flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-secondary-100 dark:bg-secondary-900/50 text-secondary-600 dark:text-secondary-400 group-hover:scale-110 transition-transform duration-300">
-                  <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <div class="text-5xl md:text-6xl font-bold text-secondary-600 dark:text-secondary-400 mb-3 group-hover:scale-110 transition-transform duration-300">100+</div>
-                <p class="text-gray-600 dark:text-gray-400 font-medium text-lg">企业服务</p>
+                <div class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-3">100+</div>
+                <p class="text-gray-600 dark:text-gray-400 font-medium">企业服务</p>
               </div>
             </div>
           </div>
-
-          <!-- 城市覆盖卡片 -->
-          <div class="group">
-            <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100/50 dark:border-gray-700/50 backdrop-blur-sm hover:-translate-y-1">
-              <div class="absolute -right-8 -top-8 w-32 h-32 bg-gradient-to-br from-blue-500/30 to-blue-500/0 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500"></div>
+          <div class="group transform hover:scale-105 transition-all duration-300">
+            <div class="relative overflow-hidden rounded-lg bg-white dark:bg-gray-800 p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+              <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-500/10 rounded-full"></div>
               <div class="relative">
-                <div class="flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                  <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div class="text-5xl md:text-6xl font-bold text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300">28个</div>
-                <p class="text-gray-600 dark:text-gray-400 font-medium text-lg">全国城市代理覆盖</p>
+                <div class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-3">28个</div>
+                <p class="text-gray-600 dark:text-gray-400 font-medium">全国城市代理覆盖</p>
               </div>
             </div>
           </div>
-
-          <!-- 服务商卡片 -->
-          <div class="group">
-            <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100/50 dark:border-gray-700/50 backdrop-blur-sm hover:-translate-y-1">
-              <div class="absolute -right-8 -top-8 w-32 h-32 bg-gradient-to-br from-green-500/30 to-green-500/0 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500"></div>
+          <div class="group transform hover:scale-105 transition-all duration-300">
+            <div class="relative overflow-hidden rounded-lg bg-white dark:bg-gray-800 p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+              <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-500/10 rounded-full"></div>
               <div class="relative">
-                <div class="flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 group-hover:scale-110 transition-transform duration-300">
-                  <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div class="text-5xl md:text-6xl font-bold text-green-600 dark:text-green-400 mb-3 group-hover:scale-110 transition-transform duration-300">300+</div>
-                <p class="text-gray-600 dark:text-gray-400 font-medium text-lg">签约服务商</p>
+                <div class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-3">300+</div>
+                <p class="text-gray-600 dark:text-gray-400 font-medium">签约服务商</p>
               </div>
             </div>
           </div>
