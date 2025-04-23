@@ -18,7 +18,7 @@ const posts = await getCollection('blog', ({ data }) => {
   date: entry.data.date,
   author: entry.data.author,
   authorRole: entry.data.authorRole,
-  authorAvatar: entry.data.authorAvatar,
+  authorAvatar: "/assets/logo.png",
   category: entry.data.category,
   image: entry.data.image
 })));
@@ -42,7 +42,7 @@ const categories = [...new Set(posts.map(post => post.category))];
     />
     
     <!-- 分类筛选区域 -->
-    <div class="container-custom py-12">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-12">
       <!-- 分类标签导航 -->
       <div class="flex flex-wrap gap-3 justify-center mb-16">
         <a href="#" class="px-6 py-2.5 rounded-full bg-primary-600 text-white font-medium text-sm hover:bg-primary-700 transition-all duration-300 shadow-lg shadow-primary-600/20 hover:shadow-xl hover:shadow-primary-600/30 hover:-translate-y-0.5">
