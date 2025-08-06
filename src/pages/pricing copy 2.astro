@@ -16,7 +16,7 @@ const keywords = "AI系统价格,AI系统定价,AI数字人价格,AI知识库价
 const products = [
   {
     id: 'ai-knowledge-enterprise',
-    name: '企业级全能知识库',
+    name: '智能知识库',
     subtitle: 'Enterprise Knowledge Platform',
     description: '企业级智能知识管理平台，支持多模态内容处理与智能问答',
     price: 6600,
@@ -157,192 +157,7 @@ const products = [
     name: 'AI论文创作',
     subtitle: 'Document Intelligence Suite',
     description: '智能文档处理套件，支持论文写作、报告生成与内容优化',
-    price: 3200,
-    originalPrice: 4698,
-    period: '永久授权',
-    category: '办公助手',
-    popular: false,
-    features: [
-      {
-        category: '核心功能',
-        items: [
-          '智能论文写作',
-          '自动格式排版',
-          '内容质量检测',
-          '多格式导出'
-        ]
-      },
-      {
-        category: '技术架构',
-        items: [
-          'Django + Vue.js',
-          'PostgreSQL数据库',
-          'Celery异步处理',
-          'LaTeX排版引擎'
-        ]
-      },
-      {
-        category: '服务保障',
-        items: [
-          '完整系统源码',
-          '模板库资源',
-          '使用培训课程',
-          '学术版权许可'
-        ]
-      }
-    ],
-    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
-    metrics: [
-      { label: '写作效率', value: '5x', unit: '提升倍数' },
-      { label: '格式准确率', value: '99%+', unit: '排版精度' },
-      { label: '支持期刊', value: '500+', unit: '期刊模板' }
-    ]
-  },
-  // 复制的产品数据 - 第二套产品系列
-  {
-    id: 'ai-knowledge-enterprise-pro',
-    name: '企业知识库Java版',
-    subtitle: 'Enterprise Knowledge Platform Pro',
-    description: '企业级智能知识管理平台专业版，支持多模态内容处理与智能问答',
-    price: 6600,
-    originalPrice: 9800,
-    period: '永久授权',
-    category: '企业核心',
-    popular: false,
-    features: [
-      {
-        category: '核心功能',
-        items: [
-          '智能文档解析与索引',
-          '多模态知识问答',
-          '实时知识图谱构建',
-          '智能内容推荐'
-        ]
-      },
-      {
-        category: '技术架构',
-        items: [
-          'Spring Boot + Vue3',
-          'MySQL + Redis + ES',
-          'Docker容器化部署',
-          'RESTful API接口'
-        ]
-      },
-      {
-        category: '服务保障',
-        items: [
-          '完整源码交付',
-          '7x24技术支持',
-          '免费版本升级',
-          '部署培训服务'
-        ]
-      }
-    ],
-    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
-    metrics: [
-      { label: '处理速度', value: '< 100ms', unit: '响应时间' },
-      { label: '并发支持', value: '10,000+', unit: '用户' },
-      { label: '准确率', value: '95%+', unit: '问答准确率' }
-    ]
-  },
-  {
-    id: 'ai-digital-human-pro',
-    name: 'AI数字人平台2.0',
-    subtitle: 'Digital Human Solution Pro',
-    description: '专业级数字人生成平台专业版，支持形象克隆、语音合成与视频制作',
-    price: 6600,
-    originalPrice: 9800,
-    period: '永久授权',
-    category: '创新产品',
-    popular: false,
-    features: [
-      {
-        category: '核心功能',
-        items: [
-          '高精度人脸建模',
-          '实时语音克隆',
-          '智能动作生成',
-          '批量视频制作'
-        ]
-      },
-      {
-        category: '技术架构',
-        items: [
-          'Python + FastAPI',
-          'TensorFlow + PyTorch',
-          'GPU加速计算',
-          'WebRTC实时通信'
-        ]
-      },
-      {
-        category: '服务保障',
-        items: [
-          '完整算法源码',
-          '模型训练指导',
-          '硬件配置建议',
-          '商业授权许可'
-        ]
-      }
-    ],
-    icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
-    metrics: [
-      { label: '生成速度', value: '30s', unit: '每分钟视频' },
-      { label: '相似度', value: '98%+', unit: '人脸还原度' },
-      { label: '支持格式', value: '20+', unit: '输出格式' }
-    ]
-  },
-  {
-    id: 'ai-chat-creative-pro',
-    name: 'AI对话创作Java版',
-    subtitle: 'Conversational AI Studio Pro',
-    description: '多模态AI对话与创作平台专业版，集成文本生成、图像创作与代码编写',
-    price: 2999,
-    originalPrice: 3800,
-    period: '永久授权',
-    category: '效率工具',
-    popular: false,
-    features: [
-      {
-        category: '核心功能',
-        items: [
-          '智能对话交互',
-          'AIGC内容生成',
-          '代码智能编写',
-          '多语言翻译'
-        ]
-      },
-      {
-        category: '技术架构',
-        items: [
-          'Node.js + React',
-          'MongoDB + Redis',
-          'WebSocket实时通信',
-          'OpenAI API集成'
-        ]
-      },
-      {
-        category: '服务保障',
-        items: [
-          '前后端源码',
-          'API接口文档',
-          '部署运维指南',
-          '功能定制服务'
-        ]
-      }
-    ],
-    icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
-    metrics: [
-      { label: '响应速度', value: '< 2s', unit: '平均响应' },
-      { label: '内容质量', value: '92%+', unit: '用户满意度' },
-      { label: '支持模型', value: '15+', unit: 'AI模型' }
-    ]
-  },
-  {
-    id: 'ai-document-suite-pro',
-    name: 'AI论文创作Java',
-    subtitle: 'Document Intelligence Suite Pro',
-    description: '智能文档处理套件专业版，支持论文写作、报告生成与内容优化',
-    price: 3200,
+    price: 3999,
     originalPrice: 4698,
     period: '永久授权',
     category: '办公助手',
@@ -507,7 +322,7 @@ const faqData = [
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {serviceFeatures.map((feature) => (
             <div class="text-center p-10 bg-gray-50 hover:bg-blue-50 transition-colors duration-300">
-              <div class="w-20 h-20 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-8">
+              <div class="w-20 h-20 bg-blue-100 flex items-center justify-center mx-auto mb-8">
                 <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}></path>
                 </svg>
@@ -536,7 +351,7 @@ const faqData = [
               
               <!-- 产品头部 -->
               <div class="p-10 border-b border-gray-100">
-                <div class="w-20 h-20 bg-blue-100 rounded-lg flex items-center justify-center mb-8">
+                <div class="w-20 h-20 bg-blue-100 flex items-center justify-center mb-8">
                   <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={product.icon}></path>
                   </svg>
@@ -607,8 +422,8 @@ const faqData = [
             
             <!-- 服务特性网格 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-              <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
-                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
+              <div class="bg-white/10 border border-white/20 p-8 text-center">
+                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6">
                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                   </svg>
@@ -619,8 +434,8 @@ const faqData = [
                 </p>
               </div>
               
-              <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
-                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
+              <div class="bg-white/10 border border-white/20 p-8 text-center">
+                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6">
                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                   </svg>
@@ -631,8 +446,8 @@ const faqData = [
                 </p>
               </div>
               
-              <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
-                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
+              <div class="bg-white/10 border border-white/20 p-8 text-center">
+                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6">
                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
