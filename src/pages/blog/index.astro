@@ -6,8 +6,41 @@ import HeroSection from '../../components/HeroSection.astro';
 import { getCollection } from 'astro:content';
 
 /**
+ * 可用的博客封面图片列表
+ * 从public/assets/blog目录中随机选择
+ */
+const blogImages = [
+  '/assets/blog/blog.jpg',
+  '/assets/blog/blog1.jpg',
+  '/assets/blog/blog2.jpg',
+  '/assets/blog/blog3.jpg',
+  '/assets/blog/blog4.jpg',
+  '/assets/blog/blog5.jpg',
+  '/assets/blog/blog6.jpg',
+  '/assets/blog/blog8.jpg'
+];
+
+/**
+ * 随机选择封面图片的函数
+ * @param {string} postId - 文章ID，用于确保同一文章始终使用相同图片
+ * @returns {string} 图片路径
+ */
+function getRandomImage(postId: string): string {
+  // 使用文章ID生成一个简单的哈希值，确保同一文章始终使用相同图片
+  let hash = 0;
+  for (let i = 0; i < postId.length; i++) {
+    const char = postId.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // 转换为32位整数
+  }
+  // 使用哈希值选择图片索引
+  const index = Math.abs(hash) % blogImages.length;
+  return blogImages[index];
+}
+
+/**
  * 博客文章数据
- * 包含文章ID、标题、摘要、发布日期、作者信息、分类和封面图片
+ * 包含文章ID、标题、摘要、发布日期、作者信息、分类和随机封面图片
  */
 const posts = await getCollection('blog', ({ data }) => {
   return import.meta.env.PROD ? !data.draft : true;
@@ -20,7 +53,8 @@ const posts = await getCollection('blog', ({ data }) => {
   authorRole: entry.data.authorRole,
   authorAvatar: "/assets/logo.png",
   category: entry.data.category,
-  image: entry.data.image
+  // 所有文章都使用public/assets/blog目录中的随机图片作为封面
+  image: getRandomImage(entry.id)
 }))).then(entries => {
   // 按日期排序，最新发布的在前面
   return entries.sort((a, b) => {
@@ -40,38 +74,38 @@ const categories = [...new Set(posts.map(post => post.category))];
 ---
 
 <!-- 博客页面布局 -->
-<Layout title="最新消息 - 艺创AI" description="艺创AI的最新产品更新、功能发布和公司新闻。">
+<Layout title="艺创AI_新闻资讯" description="了解我们最新的产品更新、功能发布和公司新闻。" keywords="新闻,资讯,产品更新,功能发布,公司新闻">
   <Header />
   <main class="bg-gray-50 dark:bg-gray-900">
     <!-- 英雄区块：页面标题和描述 -->
     <HeroSection 
-      title="最新更新与新闻" 
-      highlightText="更新"
-      description="了解我们最新的产品更新、功能发布和公司新闻。"
+      title="新闻资讯" 
+      highlightText="资讯"
+      description="了解我们最新的产品更新、功能发布和公司新闻"
     />
     
-    <!-- 分类筛选区域 -->
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-12">
-      <!-- 分类标签导航 -->
-      <div class="flex flex-wrap gap-3 justify-center mb-16">
-        <a href="#" class="px-6 py-2.5 rounded-full bg-primary-600 text-white font-medium text-sm hover:bg-primary-700 transition-all duration-300 shadow-lg shadow-primary-600/20 hover:shadow-xl hover:shadow-primary-600/30 hover:-translate-y-0.5">
+    <!-- 分类筛选区域 - 极小的间距 -->
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-6">
+      <!-- 分类标签导航 - 极小的标签 -->
+      <div class="flex flex-wrap gap-1.5 justify-center mb-6">
+        <a href="#" class="px-3 py-1 rounded-full bg-primary-600 text-white font-medium text-xs hover:bg-primary-700 transition-all duration-300 hover:-translate-y-0.5">
           所有文章
         </a>
         {categories.map((category) => (
           <a href={'#' + category.toLowerCase().replace(/\s+/g, '-')} 
-             class="px-6 py-2.5 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+             class="px-3 py-1 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-xs hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:-translate-y-0.5">
             {category}
           </a>
         ))}
       </div>
 
-      <!-- 博客文章卡片网格 -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- 博客文章卡片网格 - 4列布局设计 -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {posts.map((post, index) => (
-          <article class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 slide-up border border-gray-100 dark:border-gray-700 hover:-translate-y-1" 
+          <article class="group bg-white dark:bg-gray-800 overflow-hidden transition-all duration-300 slide-up border border-gray-100 dark:border-gray-700 hover:-translate-y-1" 
                    style={'animation-delay: ' + (index * 100) + 'ms'}>
-            <!-- 文章封面图片 -->
-            <a href={'/blog/' + post.id.replace('.md', '')} class="block relative overflow-hidden aspect-[16/9]">
+            <!-- 文章封面图片 - 4列布局优化比例 -->
+            <a href={'/blog/' + post.id.replace('.md', '')} class="block relative overflow-hidden aspect-[4/3]">
               <img 
                 src={post.image} 
                 alt={post.title}
@@ -80,32 +114,32 @@ const categories = [...new Set(posts.map(post => post.category))];
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
-            <!-- 文章内容区域 -->
-            <div class="p-6">
-              <!-- 分类和日期信息 -->
-              <div class="flex items-center mb-4">
-                <span class="px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-medium">
+            <!-- 文章内容区域 - 4列布局优化 -->
+            <div class="p-4">
+              <!-- 分类和日期信息 - 适中的间距 -->
+              <div class="flex items-center mb-3">
+                <span class="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-medium rounded">
                   {post.category}
                 </span>
                 <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
-                <time class="text-sm text-gray-500 dark:text-gray-400">{post.date}</time>
+                <time class="text-xs text-gray-500 dark:text-gray-400">{post.date}</time>
               </div>
-              <!-- 文章标题 -->
-              <a href={'/blog/' + post.id.replace('.md', '')} class="block mb-3 group">
-                <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
+              <!-- 文章标题 - 适中的字体 -->
+              <a href={'/blog/' + post.id.replace('.md', '')} class="block mb-2 group">
+                <h2 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
                   {post.title}
                 </h2>
               </a>
-              <!-- 文章摘要 -->
-              <p class="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 text-sm leading-relaxed">
+              <!-- 文章摘要 - 适中的字体和间距 -->
+              <p class="text-gray-600 dark:text-gray-300 mb-3 line-clamp-2 text-sm leading-relaxed">
                 {post.excerpt}
               </p>
-              <!-- 作者信息 -->
-              <div class="flex items-center pt-4 border-t border-gray-100 dark:border-gray-700">
+              <!-- 作者信息 - 适中的头像和间距 -->
+              <div class="flex items-center pt-3 border-t border-gray-100 dark:border-gray-700">
                 <img 
                   src={post.authorAvatar} 
                   alt={post.author} 
-                  class="w-10 h-10 rounded-full mr-3 object-cover ring-2 ring-white dark:ring-gray-700"
+                  class="w-6 h-6 mr-2 object-cover ring-1 ring-white dark:ring-gray-700"
                   loading="lazy"
                 />
                 <div>
@@ -118,11 +152,11 @@ const categories = [...new Set(posts.map(post => post.category))];
         ))}
       </div>
 
-      <!-- 加载更多按钮 -->
-      <div class="mt-16 flex justify-center">
-        <a href="#" class="group inline-flex items-center px-8 py-3 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-          加载更多文章
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-y-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+      <!-- 加载更多按钮 - 极小的尺寸 -->
+      <div class="mt-6 flex justify-center">
+        <a href="#" class="group inline-flex items-center px-4 py-1.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-xs hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:-translate-y-0.5 border border-gray-200 dark:border-gray-700">
+          加载更多
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1 transform group-hover:translate-y-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
           </svg>
         </a>
