@@ -31,7 +31,6 @@ export const currentAnnouncement: AnnouncementConfig = {
       <div>• 一次购买，终身免费更新升级</div>
       <div>• 企业商用首选，完善售后保障</div>
       <div>• AI智能聊天系统，绘画创作无限可能</div>
-      <div>• 大模型知识库，专业训练开发</div>
     </div>
     
     <div style="text-align: center; margin-bottom: 15px;">
@@ -39,30 +38,26 @@ export const currentAnnouncement: AnnouncementConfig = {
       <div style="border-bottom: 1px solid #d1d5db; margin: 10px 0;"></div>
       
       <div style="margin: 8px 0;">
-        📌 1、<span style="color: #3598db;"><strong>AI数字人</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>6800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>4999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>oXu3x1IZD</strong></span>
+        1、<span style="color: #3598db;"><strong>AI数字人</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>6800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>4999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>oXu3x1IZD</strong></span>
       </div>
       
       <div style="margin: 8px 0;">
-        📌 2、<span style="color: #e03e2d;"><strong>AI知识库</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>9800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>6600</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>Ju9han9Z6</strong></span>
+        2、<span style="color: #e03e2d;"><strong>AI知识库</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>9800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>6600</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>Ju9han9Z6</strong></span>
       </div>
       
       <div style="margin: 8px 0;">
-        📌 3、<span style="color: #169179;"><strong>AI聊天绘画</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>3800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>2999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>4ZKgZfv9M</strong></span>
+        3、<span style="color: #169179;"><strong>AI聊天绘画</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>3800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>2999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>4ZKgZfv9M</strong></span>
       </div>
       
       <div style="margin: 8px 0;">
-        📌 4、<span style="color: #236fa1;"><strong>AI论文写作</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>4698</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>3200</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>lbCG2L0Fq</strong></span>
+        4、<span style="color: #236fa1;"><strong>AI论文写作</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>4698</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>3200</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>lbCG2L0Fq</strong></span>
       </div>
       
       <div style="margin-top: 15px; padding: 8px; background-color: #fef2f2; border-radius: 6px; color: #dc2626; font-weight: 600;">
-        📌 名额限制: 每个优惠码仅限10个，抢完即止！
+        名额限制: 每个优惠码仅限10个，抢完即止！
       </div>
     </div>
-    
     <div style="text-align: center;">
-      <h3 style="color: #1f2937; margin-bottom: 10px;">🌟 核心特色</h3>
-      <div>◆ 技术实力雄厚 &nbsp;&nbsp;&nbsp;&nbsp; ◆ 支持私有化部署</div>
-      <div>◆ 开源代码支持二开 &nbsp;&nbsp; ◆ 配套安装教程文档</div>
     </div>
   `,
   actionUrl: "https://auth.cnai.art/regist.htm",
