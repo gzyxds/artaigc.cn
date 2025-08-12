@@ -199,7 +199,7 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
   }
 
   // 处理关闭按钮点击事件
-  function handleCloseClick(e) {
+  function handleCloseClick(e: Event) {
     e.stopPropagation();
     closeModal();
   }
@@ -218,13 +218,13 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
 
   // 点击页面其他区域关闭模态框
   document.addEventListener('click', (e) => {
-    const target = e.target;
+    const target = e.target as HTMLElement;
     const modal = document.getElementById('qr-modal');
     
     // 如果点击的是触发按钮
     if (target?.closest('[onclick*="qr-modal"]')) {
       e.preventDefault();
-      const modalContent = modal?.querySelector('.modal-content');
+      const modalContent = modal?.querySelector('.modal-content') as HTMLElement;
       
       if (modal && modalContent) {
         // 计算模态框居中位置

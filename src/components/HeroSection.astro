@@ -83,7 +83,7 @@ if (highlightText) {
     <div class={`max-w-[1200px] ${alignment === 'center' ? 'mx-auto text-center' : 'ml-0 mr-auto text-left'} py-6`}>
       <!-- 标题区域 - 增强的动画和排版 -->
       <h1 
-        class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-blue-400 dark:to-cyan-400 animate-fade-in animate-slide-down [text-wrap:balance] tracking-wider"
+        class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-wide mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-blue-400 dark:to-cyan-400 animate-slide-down [text-wrap:balance]"
         style="animation-delay: 100ms"
       >
         {highlightText ? (
@@ -101,7 +101,7 @@ if (highlightText) {
       
       <!-- 描述文本 - 增强的可读性和动画 -->
       <p 
-        class={`font-sans text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 animate-fade-in animate-slide-up ${alignment === 'center' ? 'max-w-[800px] mx-auto' : 'max-w-[700px]'} [text-wrap:pretty]`}
+        class={`font-sans text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 animate-slide-up ${alignment === 'center' ? 'max-w-[800px] mx-auto' : 'max-w-[700px]'} [text-wrap:pretty]`}
         style="animation-delay: 200ms"
       >
         {description}

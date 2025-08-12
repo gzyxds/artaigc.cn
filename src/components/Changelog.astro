@@ -4,13 +4,33 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HeroSection from '../components/HeroSection.astro';
 
+// 定义版本变更类型接口
+interface VersionChanges {
+  new?: string[];
+  improvements?: string[];
+  fixes?: string[];
+}
+
+// 定义版本信息接口
+interface VersionInfo {
+  version: string;
+  date: string;
+  title: string;
+  changes: VersionChanges;
+}
+
 // 版本数据
-const versions = [
+const versions: VersionInfo[] = [
   {
     version: 'v2.5.0',
     date: '2023年7月15日',
     title: '查看演示',
     changes: {
+      new: [
+        '新增智能推荐系统',
+        '新增多语言支持',
+        '新增暗黑模式主题'
+      ],
       improvements: [
         '优化推荐问题生成',
         '优化智能体发布页地址',
@@ -100,7 +120,7 @@ const versions = [
                         新功能
                       </h3>
                       <ul class="space-y-2">
-                        {version.changes.new.map((item) => (
+                        {version.changes.new.map((item: string) => (
                           <li class="flex items-start">
                             <span class="text-green-500 mr-2">•</span>
                             <span class="text-gray-700 dark:text-gray-300">{item}</span>
@@ -119,7 +139,7 @@ const versions = [
                         改进
                       </h3>
                       <ul class="space-y-2">
-                        {version.changes.improvements.map((item) => (
+                        {version.changes.improvements.map((item: string) => (
                           <li class="flex items-start">
                             <span class="text-blue-500 mr-2">•</span>
                             <span class="text-gray-700 dark:text-gray-300">{item}</span>
@@ -138,7 +158,7 @@ const versions = [
                         错误修复
                       </h3>
                       <ul class="space-y-2">
-                        {version.changes.fixes.map((item) => (
+                        {version.changes.fixes.map((item: string) => (
                           <li class="flex items-start">
                             <span class="text-red-500 mr-2">•</span>
                             <span class="text-gray-700 dark:text-gray-300">{item}</span>
@@ -166,4 +186,4 @@ const versions = [
     </section>
   </main>
   <Footer />
-</Layout> 
+</Layout>

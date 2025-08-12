@@ -1,8 +1,10 @@
 ---
 /**
- * Hero组件
- * 网站首页顶部的英雄区域组件，是用户访问网站时首先看到的内容
- * 包含以下功能：
+ * Hero组件 - 艺创AI首页英雄区域
+ * 采用简洁的模拟面设计风格，以蓝色调为主，统一视觉效果
+ * 特点：视觉统一性、层次清晰、交互友好、响应式设计、暗黑模式兼容
+ * 
+ * 功能包括：
  * 1. 展示网站的主要标题和简介
  * 2. 提供产品特性标签
  * 3. 提供行动按钮（联系客服、查看演示）
@@ -15,7 +17,6 @@ import QRModal from './QRModal.astro';
 
 interface Feature {
   name: string;
-  color: string;
   href: string;
 }
 
@@ -23,201 +24,76 @@ interface Card {
   title: string;
   description: string;
   icon: string;
-  gradient: string;
 }
 
 const features: Feature[] = [
-  { name: 'AI数字人', color: 'blue', href: '/human' },
-  { name: '知识库', color: 'purple', href: '/ai' },
-  { name: '智能绘画', color: 'green', href: '/chat' },
-  { name: '论文创作', color: 'amber', href: '/paper' },
-  { name: 'PHP&Java', color: 'indigo', href: '/' }
+  { name: 'AI数字人', href: '/human' },
+  { name: '知识库', href: '/ai' },
+  { name: '智能绘画', href: '/chat' },
+  { name: '论文创作', href: '/paper' },
+  { name: 'PHP&Java', href: '/' }
 ];
 
 const cards: Card[] = [
   {
     icon: 'code',
     title: '双语言版本',
-    description: 'PHP/Java双版本支持',
-    gradient: 'from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50'
+    description: 'PHP/Java双版本支持'
   },
   {
     title: '私有部署',
     description: '安全可控的私有化部署',
-    icon: 'cloud_download',
-    gradient: 'from-purple-50 to-purple-100 dark:from-purple-900/50 dark:to-purple-800/50'
+    icon: 'cloud_download'
   },
   {
     title: '专业团队',
     description: '一对一技术支持',
-    icon: 'groups',
-    gradient: 'from-green-50 to-green-100 dark:from-green-900/50 dark:to-green-800/50'
+    icon: 'groups'
   },
   {
     title: '开源方案',
     description: '灵活定制，售后无忧',
-    icon: 'star',
-    gradient: 'from-amber-50 to-amber-100 dark:from-amber-900/50 dark:to-amber-800/50'
+    icon: 'star'
   }
 ];
 ---
 
-<section class="relative py-16 sm:py-20 md:py-28 lg:py-36 flex items-center bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900 overflow-hidden">
-  <!-- 科技背景层 -->
-  <div class="absolute inset-0">
-    <!-- 动态网格背景 -->
-    <div class="absolute inset-0 opacity-30 dark:opacity-20">
-      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.5" class="text-blue-300 dark:text-blue-600"/>
-          </pattern>
-          <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-            <circle cx="10" cy="10" r="1" fill="currentColor" class="text-blue-400 dark:text-blue-500"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)"/>
-        <rect width="100%" height="100%" fill="url(#dots)"/>
-      </svg>
-    </div>
-    
-    <!-- 简洁背景装饰 -->
-     <div class="absolute inset-0 opacity-8 dark:opacity-12">
-       <div class="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-xl animate-pulse"></div>
-       <div class="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full blur-lg animate-pulse" style="animation-delay: 1s"></div>
-       <div class="absolute bottom-32 left-1/4 w-28 h-28 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl animate-pulse" style="animation-delay: 2s"></div>
-       <div class="absolute bottom-20 right-1/3 w-20 h-20 bg-gradient-to-br from-green-400/20 to-cyan-400/20 rounded-full blur-lg animate-pulse" style="animation-delay: 3s"></div>
-     </div>
-    
-    <!-- 粒子效果 -->
-    <div class="absolute inset-0">
-      <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-60"></div>
-      <div class="absolute top-1/3 right-1/4 w-1 h-1 bg-cyan-400 rounded-full animate-float opacity-80" style="animation-delay: 1s"></div>
-      <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-purple-400 rounded-full animate-float opacity-70" style="animation-delay: 2s"></div>
-      <div class="absolute bottom-1/3 right-1/3 w-1 h-1 bg-green-400 rounded-full animate-float opacity-60" style="animation-delay: 3s"></div>
-      <div class="absolute top-1/2 left-1/6 w-1 h-1 bg-yellow-400 rounded-full animate-float opacity-50" style="animation-delay: 4s"></div>
-      <div class="absolute top-3/4 right-1/6 w-2 h-2 bg-pink-400 rounded-full animate-float opacity-40" style="animation-delay: 5s"></div>
-    </div>
-    
-    <!-- 光晕效果 -->
-    <div class="absolute top-0 -right-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-gradient-to-br from-blue-400/30 to-cyan-400/20 dark:from-blue-700/40 dark:to-cyan-700/30 rounded-full blur-3xl animate-pulse"></div>
-    <div class="absolute bottom-0 -left-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-gradient-to-br from-purple-400/30 to-pink-400/20 dark:from-purple-700/40 dark:to-pink-700/30 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s"></div>
-    
-    <!-- 数据流效果 -->
-    <div class="absolute inset-0 opacity-20 dark:opacity-30">
-      <div class="absolute top-20 left-10 w-px h-20 bg-gradient-to-b from-transparent via-blue-400 to-transparent animate-data-flow"></div>
-      <div class="absolute top-40 right-20 w-px h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent animate-data-flow" style="animation-delay: 1s"></div>
-      <div class="absolute bottom-32 left-1/4 w-px h-24 bg-gradient-to-b from-transparent via-purple-400 to-transparent animate-data-flow" style="animation-delay: 2s"></div>
-      <div class="absolute bottom-20 right-1/3 w-px h-18 bg-gradient-to-b from-transparent via-green-400 to-transparent animate-data-flow" style="animation-delay: 3s"></div>
-    </div>
+<section class="relative py-20 md:py-28 bg-white dark:bg-gray-900 overflow-hidden">
+  <!-- 简洁背景装饰 -->
+  <div class="absolute inset-0 opacity-30">
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[#0055ff]/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#0055ff]/5 rounded-full blur-3xl"></div>
   </div>
-  <div class="container-custom relative">
-    <!-- 装饰元素 -->
-    <div class="absolute -top-20 -left-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-purple-200/20 dark:bg-purple-800/15 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-20 -right-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-blue-200/20 dark:bg-blue-800/15 rounded-full blur-3xl"></div>
-    
-    <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
-      <!-- 左侧内容区 -->
-      <div class="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-2 sm:mb-4 relative">
-          <!-- 装饰光效 -->
-          <div class="absolute -top-1 -right-1 w-16 sm:w-20 h-16 sm:h-20">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 opacity-15 rounded-full animate-pulse"></div>
-            <div class="absolute inset-2 bg-white dark:bg-gray-800 rounded-full"></div>
-            <div class="absolute inset-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full"></div>
-          </div>
-          <div class="relative">
-            <span class="inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 dark:from-blue-400 dark:via-blue-500 dark:to-blue-600 animate-gradient-x">
-              艺创AI
-            </span>
-            <span class="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/10 rounded-full blur-xl"></span>
-            <span class="absolute -bottom-4 -left-4 w-8 h-8 bg-blue-500/10 rounded-full blur-xl"></span>
-          </div>
-          <span class="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-6 sm:mt-8 text-gray-700 dark:text-gray-300 font-medium leading-tight">
-            新一代AI系统
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">赋能企业</span>
-          </span>
-        </h1>
-        
-        <style>
-          @keyframes gradient-x {
-            0%, 100% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-          }
-          .animate-gradient-x {
-            background-size: 200% auto;
-            animation: gradient-x 8s ease infinite;
-          }
-          
-          /* 科技背景动画 */
-          @keyframes float {
-            0%, 100% {
-              transform: translateY(0px) translateX(0px);
-              opacity: 0.6;
-            }
-            25% {
-              transform: translateY(-10px) translateX(5px);
-              opacity: 1;
-            }
-            50% {
-              transform: translateY(-5px) translateX(-5px);
-              opacity: 0.8;
-            }
-            75% {
-              transform: translateY(-15px) translateX(3px);
-              opacity: 0.9;
-            }
-          }
-          .animate-float {
-            animation: float 6s ease-in-out infinite;
-          }
-          
-          @keyframes data-flow {
-            0% {
-              transform: translateY(-100%);
-              opacity: 0;
-            }
-            10% {
-              opacity: 1;
-            }
-            90% {
-              opacity: 1;
-            }
-            100% {
-              transform: translateY(100vh);
-              opacity: 0;
-            }
-          }
-          .animate-data-flow {
-            animation: data-flow 4s linear infinite;
-          }
-          
-          /* 简化的动画效果 */
-          
-          /* 增强现有动画 */
-          .animate-ping {
-            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-          }
-          
-          .animate-pulse {
-            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-          }
-        </style>
 
-        <p class="text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- 左侧内容区 -->
+      <div class="text-center lg:text-left space-y-8">
+        <!-- 主标题 -->
+        <div class="space-y-4">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold">
+            <span class="text-[#0055ff] block mb-2">艺创AI</span>
+            <span class="text-gray-900 dark:text-white text-2xl sm:text-3xl lg:text-4xl font-medium">
+              新一代AI系统赋能企业
+            </span>
+          </h1>
+          
+          <!-- 简洁装饰线 -->
+          <div class="w-20 h-1 bg-[#0055ff] mx-auto lg:mx-0 rounded-full"></div>
+        </div>
+        
+        <!-- 描述文本 -->
+        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
           一站式 ( 渐进式 ) AIGC 系统，提供面向个人用户 (ToC)、开发者 (ToD) 和企业 (ToB) 的全面AI解决方案、一次购买、永久免费更新
         </p>
 
-        <!-- 特性标签 -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4 mb-8 sm:mb-14">
+        <!-- 特性标签 - 统一蓝色调 -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3">
           {features.map((feature) => (
             <a 
               href={feature.href} 
-              class={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-${feature.color}-100 dark:bg-${feature.color}-900/50 text-${feature.color}-700 dark:text-${feature.color}-300 text-xs sm:text-sm font-medium`}
+              class="px-4 py-2 bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-lg text-sm font-medium hover:bg-[#0055ff]/20 transition-colors"
               aria-label={feature.name}
             >
               {feature.name}
@@ -225,61 +101,60 @@ const cards: Card[] = [
           ))}
         </div>
         
-        <!-- CTA按钮 -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6">
+        <!-- 按钮组 -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
           <a 
             href="javascript:void(0)" 
             onclick="document.getElementById('qr-modal').classList.add('active')" 
-            class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center"
+            class="px-8 py-3 bg-[#0055ff] hover:bg-[#0044dd] text-white font-semibold rounded-lg border border-[#0055ff] shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center"
             aria-label="联系客服"
           >
             <span>联系客服</span>
-            <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
             </svg>
           </a>
           
           <a 
             href="/demo" 
-            class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center"
+            class="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-lg border border-gray-300 dark:border-gray-600 shadow-md hover:shadow-lg hover:border-[#0055ff] transition-all duration-200 flex items-center justify-center"
             aria-label="查看演示"
           >
             <span>查看演示</span>
-            <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </a>
         </div>
       </div>
 
-      <!-- 右侧展示区 -->
+      <!-- 右侧展示区 - 简洁模拟面设计 -->
       <div class="relative mt-8 lg:mt-0">
-        <div class="bg-white/95 dark:bg-gray-800/95 rounded-2xl p-8 sm:p-10 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
-          <!-- 装饰文案 -->
-          <div class="flex flex-wrap gap-3 mb-6 sm:mb-8">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8">
+          
+          <!-- 顶部标签区 -->
+          <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
             {features.slice(0, 4).map((feature) => (
-              <span 
-                class="px-3 sm:px-4 py-1.5 text-sm sm:text-base bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg border border-gray-200 dark:border-gray-600"
-              >
+              <span class="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-md">
                 {feature.name}
               </span>
             ))}
           </div>
 
-          <!-- 功能卡片 - 模拟面简洁样式 -->
-          <div class="grid grid-cols-2 gap-4 sm:gap-6">
+          <!-- 功能卡片网格 -->
+          <div class="grid grid-cols-2 gap-3 sm:gap-4">
             {cards.map((card) => (
-              <div class="bg-white dark:bg-gray-800 p-4 sm:p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200">
-                <!-- 简洁图标区域 -->
-                <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-3">
-                  <i class="material-icons text-gray-600 dark:text-gray-400 text-2xl">
+              <div class="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl p-3 sm:p-4 lg:p-6 hover:shadow-md hover:border-[#0055ff]/30 transition-all duration-200">
+                <!-- 图标区域 -->
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#0055ff]/10 rounded-lg flex items-center justify-center mb-2 sm:mb-4">
+                  <i class="material-icons text-[#0055ff] text-lg sm:text-xl">
                     {card.icon}
                   </i>
                 </div>
                 <!-- 内容区域 -->
-                <div class="space-y-1">
-                  <h4 class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg">{card.title}</h4>
-                  <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{card.description}</p>
+                <div class="space-y-1 sm:space-y-2">
+                  <h4 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">{card.title}</h4>
+                  <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{card.description}</p>
                 </div>
               </div>
             ))}

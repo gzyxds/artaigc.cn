@@ -74,9 +74,16 @@ const clients = [
   }
 ];
 
+// 定义客户类型接口
+interface Client {
+  name: string;
+  logo: string;
+  industry: string;
+}
+
 // 按行业分类客户
 const industries = [...new Set(clients.map(client => client.industry))];
-const clientsByIndustry = {};
+const clientsByIndustry: Record<string, Client[]> = {};
 
 industries.forEach(industry => {
   clientsByIndustry[industry] = clients.filter(client => client.industry === industry);
@@ -266,9 +273,9 @@ const featuredClients = [
         // 筛选客户卡片
         clientCards.forEach(card => {
           if (industry === 'all' || card.getAttribute('data-industry') === industry) {
-            card.style.display = 'flex';
+            (card as HTMLElement).style.display = 'flex';
           } else {
-            card.style.display = 'none';
+            (card as HTMLElement).style.display = 'none';
           }
         });
       });

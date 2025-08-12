@@ -35,81 +35,82 @@ import Structure from '../components/Hero/Structure.astro';
     <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">以下是数字人在不同场景下的应用优势</p>
     <div class="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
       <!-- 带货视频卡片 -->
-      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
-        <div class="flex items-center mb-3 md:mb-4">
-          <div class="p-2 md:p-3 bg-blue-100 dark:bg-blue-900/50 rounded-lg md:rounded-2xl flex items-center justify-center mr-3 md:mr-4 transform transition-all duration-300 hover:rotate-6">
-            <svg class="w-6 h-6 md:w-8 md:h-8 text-blue-600 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+      <div class="p-6 md:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
             </svg>
           </div>
-          <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">带货视频</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">带货视频</h3>
         </div>
-        <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">快捷克隆主播形象，配合强大的AI克隆音色功能，轻松创建你的专属数字人。不用背台词，自动根据文案批量生成视频，更低成本，更高效率！</p>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">快捷克隆主播形象，配合强大的AI克隆音色功能，轻松创建你的专属数字人。不用背台词，自动根据文案批量生成视频，更低成本，更高效率！</p>
       </div>
 
       <!-- 虚拟数字人IP卡片 -->
-      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
-        <div class="flex items-center mb-3">
-          <div class="p-2 bg-green-100 dark:bg-green-900 rounded-full mr-3">
-            <svg class="w-6 h-6 text-green-600 dark:text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="p-6 md:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg mr-4">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">虚拟数字人IP</h3>
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">企业可以通过AI克隆数字人，无论是作为企业形象IP、展会数字宣传大使、个性化导览互动服务或者企业宣传片等都完成能胜任！</p>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">企业可以通过AI克隆数字人，无论是作为企业形象IP、展会数字宣传大使、个性化导览互动服务或者企业宣传片等都完成能胜任！</p>
       </div>
 
       <!-- 知识付费卡片 -->
-      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
-        <div class="flex items-center mb-3">
-          <div class="p-2 bg-purple-100 dark:bg-purple-900 rounded-full mr-3">
-            <svg class="w-6 h-6 text-purple-600 dark:text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="p-6 md:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg mr-4">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">知识付费</h3>
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">通过虚拟数字人能够快速批量创建知识付费课程视频，口音纯正，语速自然，情感丰富。十分适合博主通过数字分身来分担工作任务，节省时间。</p>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">通过虚拟数字人能够快速批量创建知识付费课程视频，口音纯正，语速自然，情感丰富。十分适合博主通过数字分身来分担工作任务，节省时间。</p>
       </div>
 
       <!-- 营销中心卡片 -->
-      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
-        <div class="flex items-center mb-3">
-          <div class="p-2 bg-yellow-100 dark:bg-yellow-900 rounded-full mr-3">
-            <svg class="w-6 h-6 text-yellow-600 dark:text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="p-6 md:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg mr-4">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">营销中心</h3>
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">支持自定义新建充值套餐、卡密兑换等功能，方便配合营销推广活动。</p>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">支持自定义新建充值套餐、卡密兑换等功能，方便配合营销推广活动。</p>
       </div>
 
       <!-- 功能管理卡片 -->
-      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
-        <div class="flex items-center mb-3">
-          <div class="p-2 bg-teal-100 dark:bg-teal-900 rounded-full mr-3">
-            <svg class="w-6 h-6 text-teal-600 dark:text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+      <div class="p-6 md:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg mr-4">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">功能管理</h3>
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">可自主调整数字分身、声音克隆、声音合成计费配置，可查看算力消费记录。</p>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">可自主调整数字分身、声音克隆、声音合成计费配置，可查看算力消费记录。</p>
       </div>
 
       <!-- 租户管理卡片 -->
-      <div class="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
-        <div class="flex items-center mb-3">
-          <div class="p-2 bg-orange-100 dark:bg-orange-900 rounded-full mr-3">
-            <svg class="w-6 h-6 text-orange-600 dark:text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a5 5 0 00-5 5v10a5 5 0 0010 0V7a5 5 0 00-5-5zM9 21v-6a3 3 0 013-3h6"></path>
+      <div class="p-6 md:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700">
+        <div class="flex items-center mb-4">
+          <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg mr-4">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">租户管理</h3>
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">平台可无限多开分站点，输入租户相关信息和域名，即可创建新分站与管理员账号。</p>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">平台可无限多开分站点，输入租户相关信息和域名，即可创建新分站与管理员账号。</p>
       </div>
     </div>
   </div>
@@ -122,9 +123,9 @@ import Structure from '../components/Hero/Structure.astro';
        <div class="mb-12 md:mb-24">
           <div class="grid gap-8 md:gap-12 items-center mb-8 md:mb-12 md:grid-cols-2">
             <div>
-              <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
-                数字分身
-              </span>
+              <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
+             数字分身
+           </span>
               <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">数字分身</h2>
               <p class="text-gray-600 dark:text-gray-300 mb-6">
                 轻松创建你的AI虚拟数字人！只需上传一段视频，即可高品质、批量克隆你的形象！
@@ -181,7 +182,7 @@ import Structure from '../components/Hero/Structure.astro';
            <img src="/assets/img/human2.png" alt="声音克隆演示" class="w-full h-auto" />
          </div>
          <div class="order-1 md:order-2">
-           <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+           <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
              高级版
            </span>
            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">声音克隆</h2>
@@ -233,7 +234,7 @@ import Structure from '../components/Hero/Structure.astro';
            <img src="/assets/img/human4.png" alt="声音合成演示" class="w-full h-auto" />
          </div>
          <div class="order-2 md:order-1">
-           <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+           <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
              企业版
            </span>
            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">声音合成</h2>
@@ -285,7 +286,7 @@ import Structure from '../components/Hero/Structure.astro';
            <img src="/assets/img/human3.png" alt="租户管理演示" class="w-full h-auto" />
          </div>
          <div class="order-2 md:order-2">
-           <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
+           <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
              企业版
            </span>
            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">租户管理</h2>
@@ -391,169 +392,170 @@ import Structure from '../components/Hero/Structure.astro';
       </div>
 
       <!-- 声音克隆 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-green-50/20 to-transparent dark:from-green-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-green-100/50 dark:bg-green-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">声音克隆</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">仅需一段语音即可克隆声音的音色，让AI说话更自然</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 声音合成 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-50/20 to-transparent dark:from-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-purple-100/50 dark:bg-purple-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">声音合成</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">根据文案生成所选音色的语音，可调节语速，打造完美配音</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-fuchsia-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 移动端自适应 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-red-50/20 to-transparent dark:from-red-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-red-100/50 dark:bg-red-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7"></path>
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">移动端自适应</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">支持手机、平板、电脑访问，完美解决移动端管理需求，一套系统多端应用</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 自定义装修 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-yellow-50/20 to-transparent dark:from-yellow-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-yellow-100/50 dark:bg-yellow-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">自定义装修</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">首页可自定义设置标题、轮播图、案例视频等模块，打造专属界面</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 个人中心 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/20 to-transparent dark:from-indigo-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-indigo-100/50 dark:bg-indigo-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a5 5 0 110-10 5 5 0 010 10zm0 0c1.657 0 3-4.03 3-9s-1.343-9-3-9-3 4.03-3 9 1.343 9 3 9z"></path>
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">个人中心</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">用户可自助充值，秒到账，随时查看算力使用明细，轻松管理账户</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 营销中心 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-pink-50/20 to-transparent dark:from-pink-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-pink-100/50 dark:bg-pink-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">营销中心</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">支持自定义充值套餐、卡密兑换等功能，灵活配合营销推广活动</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 功能管理 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-teal-50/20 to-transparent dark:from-teal-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-teal-100/50 dark:bg-teal-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">功能管理</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">自主调整各项功能计费配置，实时查看算力消费记录，掌控成本</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 租户管理 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-transparent dark:from-orange-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-orange-100/50 dark:bg-orange-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a5 5 0 00-5 5v10a5 5 0 0010 0V7a5 5 0 00-5-5zM9 21v-6a3 3 0 013-3h6"></path>
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">租户管理</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">平台支持无限多开分站点，快速创建新站点与管理员账号，轻松扩展业务</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- AI文案 -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-cyan-50/20 to-transparent dark:from-cyan-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex items-center mb-6 relative z-10">
-          <div class="p-3 bg-cyan-100/50 dark:bg-cyan-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-cyan-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white">AI文案</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">快速生成内容文案，选题推荐，热点话题分析，提升内容创作效率</p>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 数据分析 -->
 <!-- 数据分析卡片 -->
-<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/20 to-transparent dark:from-emerald-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   <div class="flex items-center mb-6 relative z-10">
-    <div class="p-3 bg-emerald-100/50 dark:bg-emerald-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-      <svg class="w-8 h-8 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+      <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
       </svg>
     </div>
     <h3 class="text-2xl font-bold text-gray-900 dark:text-white">数据分析</h3>
   </div>
   <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">选题推荐快速生成内容文案，提供热点话题分析，助力内容创作效率提升</p>
-  <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 </div>
 
 <!-- 热点话题 -->
-<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700 group relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-rose-50/20 to-transparent dark:from-rose-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100 dark:border-blue-700 group relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   <div class="flex items-center mb-6 relative z-10">
-    <div class="p-3 bg-rose-100/50 dark:bg-rose-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
-      <svg class="w-8 h-8 text-rose-600 dark:text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <div class="p-3 bg-blue-100/50 dark:bg-blue-900/30 rounded-xl mr-4 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+      <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
       </svg>
     </div>
     <h3 class="text-2xl font-bold text-gray-900 dark:text-white">热点话题</h3>
   </div>
   <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg relative z-10">实时追踪热点话题,快速生成相关内容文案,抓住流量红利</p>
-  <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 </div>
 
 </div>
@@ -609,107 +611,115 @@ import Structure from '../components/Hero/Structure.astro';
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       <!-- 企业场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-3 bg-blue-100 dark:bg-blue-900 rounded-full mr-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">企业应用</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">企业应用</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">打造数字代言人、创始人IP，用于品宣、获客</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 自媒体场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-2 sm:p-3 bg-green-100 dark:bg-green-900 rounded-full mr-3 sm:mr-4">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">自媒体</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">自媒体</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">帮助不想或害怕出镜的人打造个人IP</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 医疗场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-3 bg-red-100 dark:bg-red-900 rounded-full mr-4">
-            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">医疗科普</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">医疗科普</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">替代真人出镜，制作健康医学科普视频</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 法律场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-3 bg-yellow-100 dark:bg-yellow-900 rounded-full mr-4">
-            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">法律普法</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">法律普法</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">用于日常普法、案例分析，引流获客</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 媒体场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-3 bg-purple-100 dark:bg-purple-900 rounded-full mr-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">媒体播报</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">媒体播报</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">克隆记者/主播形象用于日常播报</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 教育场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full mr-4">
-            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">教育培训</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">教育培训</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">批量化打造数字课堂，支持多语言</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 金融场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-3 bg-pink-100 dark:bg-pink-900 rounded-full mr-4">
-            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">金融科普</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">金融科普</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">进行金融财经知识科普，打造品牌</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
       <!-- 文旅场景 -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300">
+      <div class="bg-white dark:bg-gray-800 rounded-xl border border-blue-100 dark:border-blue-900/30 shadow-sm hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800/50 p-6 transition-all duration-300 group">
         <div class="flex items-center mb-4">
-          <div class="p-3 bg-teal-100 dark:bg-teal-900 rounded-full mr-4">
-            <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 rounded-full mr-4 group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold">文旅推广</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">文旅推广</h3>
         </div>
         <p class="text-gray-600 dark:text-gray-300">用于景区介绍与推广咨询服务</p>
+        <div class="mt-4 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
     </div>
   </div>
