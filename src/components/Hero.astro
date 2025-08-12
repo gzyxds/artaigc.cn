@@ -254,27 +254,33 @@ const cards: Card[] = [
 
       <!-- 右侧展示区 -->
       <div class="relative mt-8 lg:mt-0">
-        <div class="bg-white/90 dark:bg-gray-800/90 rounded-2xl p-8 sm:p-10 backdrop-blur-sm">
+        <div class="bg-white/95 dark:bg-gray-800/95 rounded-2xl p-8 sm:p-10 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
           <!-- 装饰文案 -->
           <div class="flex flex-wrap gap-3 mb-6 sm:mb-8">
             {features.slice(0, 4).map((feature) => (
               <span 
-                class={`px-3 sm:px-4 py-1.5 text-sm sm:text-base bg-${feature.color}-50 dark:bg-${feature.color}-900/30 text-${feature.color}-600 dark:text-${feature.color}-300 rounded-lg`}
+                class="px-3 sm:px-4 py-1.5 text-sm sm:text-base bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg border border-gray-200 dark:border-gray-600"
               >
                 {feature.name}
               </span>
             ))}
           </div>
 
-          <!-- 功能卡片 -->
+          <!-- 功能卡片 - 模拟面简洁样式 -->
           <div class="grid grid-cols-2 gap-4 sm:gap-6">
             {cards.map((card) => (
-              <div class={`bg-gradient-to-br ${card.gradient} p-3 sm:p-4 rounded-xl`}>
-                <i class={`material-icons w-16 sm:w-20 h-16 sm:h-20 text-${card.gradient.split('-')[1]}-600 -mb-5 flex items-start justify-start text-4xl sm:text-5xl`}>
-                  {card.icon}
-                </i>
-                <h4 class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg text-left">{card.title}</h4>
-                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-left">{card.description}</p>
+              <div class="bg-white dark:bg-gray-800 p-4 sm:p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <!-- 简洁图标区域 -->
+                <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-3">
+                  <i class="material-icons text-gray-600 dark:text-gray-400 text-2xl">
+                    {card.icon}
+                  </i>
+                </div>
+                <!-- 内容区域 -->
+                <div class="space-y-1">
+                  <h4 class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg">{card.title}</h4>
+                  <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{card.description}</p>
+                </div>
               </div>
             ))}
           </div>
