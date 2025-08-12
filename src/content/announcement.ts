@@ -38,19 +38,19 @@ export const currentAnnouncement: AnnouncementConfig = {
       <div style="border-bottom: 1px solid #d1d5db; margin: 10px 0;"></div>
       
       <div style="margin: 8px 0;">
-        1、<span style="color: #3598db;"><strong>AI数字人</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>6800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>4999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>oXu3x1IZD</strong></span>
+        1、<span style="color: #3598db;"><strong>数字分身</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>6800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>4999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>oXu3x1IZD</strong></span>
       </div>
       
       <div style="margin: 8px 0;">
-        2、<span style="color: #e03e2d;"><strong>AI知识库</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>9800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>6600</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>Ju9han9Z6</strong></span>
+        2、<span style="color: #e03e2d;"><strong>企业知识库</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>9800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>6600</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>Ju9han9Z6</strong></span>
       </div>
       
       <div style="margin: 8px 0;">
-        3、<span style="color: #169179;"><strong>AI聊天绘画</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>3800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>2999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>4ZKgZfv9M</strong></span>
+        3、<span style="color: #169179;"><strong>聊天绘画</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>3800</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>2999</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>4ZKgZfv9M</strong></span>
       </div>
       
       <div style="margin: 8px 0;">
-        4、<span style="color: #236fa1;"><strong>AI论文写作</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>4698</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>3200</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>lbCG2L0Fq</strong></span>
+        4、<span style="color: #236fa1;"><strong>论文写作</strong></span> 原价: ¥<span style="text-decoration: line-through; color: #e03e2d;"><strong>4698</strong></span> / 特惠价: ¥<span style="color: #e03e2d;"><strong>3200</strong></span> 优惠码: <span style="color: #e03e2d;"><strong>lbCG2L0Fq</strong></span>
       </div>
       
       <div style="margin-top: 15px; padding: 8px; background-color: #fef2f2; border-radius: 6px; color: #dc2626; font-weight: 600;">
