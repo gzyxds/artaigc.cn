@@ -117,32 +117,35 @@ const {
      * 添加平滑滚动和改进的显示/隐藏动画
      */
     document.addEventListener('astro:page-load', () => {
-      const backToTop = document.getElementById('back-to-top');
-      let scrollTimer;
-      let lastScrollY = window.scrollY;
+      const backToTop: HTMLElement | null = document.getElementById('back-to-top');
+      let scrollTimer: number | null = null;
+      let lastScrollY: number = window.scrollY;
+      
+      // 如果按钮不存在，直接返回
+      if (!backToTop) return;
       
       // 优化的滚动事件处理，使用节流技术减少事件触发频率
-      const handleScroll = () => {
+      const handleScroll = (): void => {
         if (scrollTimer) return;
         
         scrollTimer = setTimeout(() => {
           // 检测滚动方向和位置
-          const currentScrollY = window.scrollY;
-          const scrollingDown = currentScrollY > lastScrollY;
+          const currentScrollY: number = window.scrollY;
+          const scrollingDown: boolean = currentScrollY > lastScrollY;
           lastScrollY = currentScrollY;
           
           if (currentScrollY > 300) {
-            backToTop.classList.add('opacity-100', 'scale-100');
-            backToTop.classList.remove('opacity-0', 'scale-90');
+            backToTop!.classList.add('opacity-100', 'scale-100');
+            backToTop!.classList.remove('opacity-0', 'scale-90');
             
             // 如果向下滚动且已经显示，添加一点动画效果
             if (scrollingDown) {
-              backToTop.classList.add('pulse');
-              setTimeout(() => backToTop.classList.remove('pulse'), 500);
+              backToTop!.classList.add('pulse');
+              setTimeout(() => backToTop!.classList.remove('pulse'), 500);
             }
           } else {
-            backToTop.classList.remove('opacity-100', 'scale-100');
-            backToTop.classList.add('opacity-0', 'scale-90');
+            backToTop!.classList.remove('opacity-100', 'scale-100');
+            backToTop!.classList.add('opacity-0', 'scale-90');
           }
           
           scrollTimer = null;
@@ -152,8 +155,8 @@ const {
       window.addEventListener('scroll', handleScroll);
       
       // 点击事件 - 平滑滚动到顶部并添加点击反馈
-      backToTop.addEventListener('click', () => {
-        backToTop.classList.add('active');
+      backToTop.addEventListener('click', (): void => {
+        backToTop!.classList.add('active');
         
         window.scrollTo({
           top: 0,
@@ -162,7 +165,7 @@ const {
         
         // 滚动完成后移除活动状态
         setTimeout(() => {
-          backToTop.classList.remove('active');
+          backToTop!.classList.remove('active');
         }, 500);
       });
     });

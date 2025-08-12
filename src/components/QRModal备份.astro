@@ -188,6 +188,11 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     closeModal();
   }
 
+  // 监听自定义事件openQRModal
+  document.addEventListener('openQRModal', () => {
+    openModal();
+  });
+
   // 点击背景关闭模态框
   document.getElementById('qr-modal')?.addEventListener('click', (e) => {
     const target = e.currentTarget as HTMLElement;

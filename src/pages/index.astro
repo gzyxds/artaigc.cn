@@ -25,6 +25,11 @@ import EnterpriseOS from '../components/EnterpriseOS.astro';
 // 其他组件
 import Testimonials from '../components/Testimonials.astro';
 import FQA from '../components/FQA.astro';
+import AnnouncementPopup from '../components/AnnouncementPopup.astro';
+import { getCurrentAnnouncement } from '../content/announcement.ts';
+
+// 获取当前公告配置
+const announcementConfig = getCurrentAnnouncement();
 ---
 
 <Layout 
@@ -65,4 +70,17 @@ import FQA from '../components/FQA.astro';
     <FQA />
   </main>
   <Footer />
+  
+  <!-- 公告弹窗组件 -->
+  <AnnouncementPopup 
+    title={announcementConfig.title}
+    content={announcementConfig.content}
+    actionUrl={announcementConfig.actionUrl}
+    actionText={announcementConfig.actionText}
+    closeText={announcementConfig.closeText}
+    closeUrl={announcementConfig.closeUrl}
+    autoShowInterval={announcementConfig.autoShowInterval}
+    isOpen={announcementConfig.isOpen}
+  />
+<!-- 公告弹窗组件 -->
 </Layout>

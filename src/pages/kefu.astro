@@ -1,0 +1,61 @@
+---
+/**
+ * 企业客服联系页面
+ * 这是一个专门的客服联系页面，提供简洁的企业微信联系方式
+ * 包含以下功能：
+ * 1. 企业客服头像和介绍
+ * 2. 微信二维码展示
+ * 3. 联系方式说明
+ * 4. 响应式设计支持
+ */
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="企业客服 - 艺创AIGC" description="联系我们的企业客服，获取专业的AI系统解决方案咨询服务">
+  <main class="min-h-screen bg-white flex items-center justify-center px-4 py-8">
+    <!-- 客服联系区域 -->
+    <div class="max-w-sm mx-auto text-center">
+      <!-- 客服头像 -->
+      <div class="mb-8">
+        <div class="w-20 h-20 mx-auto bg-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
+          <!-- 使用客服头像图片 -->
+          <img 
+            src="/assets/workkefu.png"
+            alt="客服头像"
+            class="w-full h-full object-cover rounded-2xl"
+          />
+        </div>
+      </div>
+      
+      <!-- 标题 -->
+      <h1 class="text-xl font-medium text-gray-800 mb-8 leading-relaxed">
+        “添加我的企业微信与我联系吧”
+      </h1>
+      
+      <!-- 二维码区域 -->
+      <div class="mb-8">
+        <div class="w-[20rem] h-[24rem] mx-auto bg-gray-100 rounded-lg flex items-center justify-center p-8">
+          <!-- 二维码图片 -->
+          <img 
+            src="/assets/qrcode.png" 
+            alt="企业微信二维码" 
+            class="w-56 h-56 object-contain"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+          />
+          <!-- 备用二维码占位符 -->
+          <div class="w-56 h-56 bg-gray-200 rounded-lg hidden items-center justify-center flex-col">
+            <svg class="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+            </svg>
+            <span class="text-sm text-gray-500">二维码</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 底部提示文字 -->
+      <p class="text-gray-600 text-base">
+        请用微信手机端扫码加好友
+      </p>
+    </div>
+  </main>
+</Layout>

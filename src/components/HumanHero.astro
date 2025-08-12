@@ -2,16 +2,16 @@
 import QRModal from './QRModal.astro';
 ---
 
-<section class="relative py-12 sm:py-16 md:py-20 lg:py-28 flex items-center bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-700 dark:to-slate-900 overflow-hidden">
+<section class="relative py-12 sm:py-16 md:py-20 lg:py-28 flex items-center overflow-hidden" style="background: linear-gradient(135deg, #0055ff 0%, #003db8 100%);">
   <!-- 背景装饰 -->
   <div class="absolute inset-0">
-    <div class="absolute top-0 -right-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-blue-400/40 dark:bg-blue-700/30 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 -left-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-purple-400/40 dark:bg-purple-700/30 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 -right-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 -left-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-white/15 rounded-full blur-3xl"></div>
   </div>
   <div class="container-custom relative">
     <!-- 装饰元素 -->
-    <div class="absolute -top-20 -left-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-purple-200/20 dark:bg-purple-800/15 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-20 -right-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-blue-200/20 dark:bg-blue-800/15 rounded-full blur-3xl"></div>
+    <div class="absolute -top-20 -left-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-white/5 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-20 -right-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-white/8 rounded-full blur-3xl"></div>
     
     <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
       <!-- 左侧内容区 -->
@@ -24,36 +24,36 @@ import QRModal from './QRModal.astro';
             <div class="absolute inset-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full"></div>
           </div>
           
-          <h1 class="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-3 sm:mb-5 animate-fade-in">
+          <h1 class="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100 mb-3 sm:mb-5 animate-fade-in">
             艺创AI
-            <span class="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-3 sm:mt-4 text-gray-800 dark:text-gray-200 font-medium tracking-wide animate-slide-up">
-              超级IP数字人
+            <span class="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-3 sm:mt-4 text-white/90 font-medium tracking-wide animate-slide-up">
+              数字分身解决方案
             </span>
           </h1>
         </div>
         
-        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
+        <p class="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
           打造智能化企业解决方案，让每个企业都能轻松驾驭AI技术。
         </p>
 
         <!-- 特性标签 -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4 mb-8 sm:mb-14">
-          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-medium">形象克隆</span>
-          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-xs sm:text-sm font-medium">声音克隆</span>
-          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-xs sm:text-sm font-medium">数字人合成</span>
-          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-medium">AI热点创作</span>
+          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/20 text-white text-xs sm:text-sm font-medium">形象克隆</span>
+          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/20 text-white text-xs sm:text-sm font-medium">声音克隆</span>
+          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/20 text-white text-xs sm:text-sm font-medium">数字人合成</span>
+          <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/20 text-white text-xs sm:text-sm font-medium">AI热点创作</span>
         </div>
         
         <!-- CTA按钮 -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6">
-          <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+          <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center hover:bg-blue-50">
             <span>联系客服</span>
             <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
             </svg>
           </a>
           
-          <a href="/demo" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center">
+          <a href="/demo" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-white/20 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all text-sm sm:text-base flex items-center justify-center hover:bg-white/30">
             <span>查看演示</span>
             <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>

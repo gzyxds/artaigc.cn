@@ -152,9 +152,17 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     const modal = document.getElementById('qr-modal');
     if (modal) {
       modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
+      
+      // 检查是否有其他弹窗已经打开
+      const announcementPopup = document.getElementById('announcement-popup');
+      const isAnnouncementOpen = announcementPopup && announcementPopup.classList.contains('active');
+      
+      // 只有在没有其他弹窗打开时才修改body样式
+      if (!isAnnouncementOpen) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+      }
       
       // 每次打开模态框时重新绑定关闭按钮事件
       bindCloseButton();
@@ -166,8 +174,16 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     const modal = document.getElementById('qr-modal');
     if (modal) {
       modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-      document.body.style.position = 'static';
+      
+      // 检查是否有其他弹窗仍然打开
+      const announcementPopup = document.getElementById('announcement-popup');
+      const isAnnouncementOpen = announcementPopup && announcementPopup.classList.contains('active');
+      
+      // 只有在没有其他弹窗打开时才恢复body样式
+      if (!isAnnouncementOpen) {
+        document.body.style.overflow = 'auto';
+        document.body.style.position = 'static';
+      }
     }
   }
 
@@ -183,7 +199,7 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
   }
 
   // 处理关闭按钮点击事件
-  function handleCloseClick(e: Event) {
+  function handleCloseClick(e) {
     e.stopPropagation();
     closeModal();
   }
@@ -195,21 +211,20 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
 
   // 点击背景关闭模态框
   document.getElementById('qr-modal')?.addEventListener('click', (e) => {
-    const target = e.currentTarget as HTMLElement;
-    if (e.target === target && target) {
+    if (e.target === e.currentTarget) {
       closeModal();
     }
   });
 
   // 点击页面其他区域关闭模态框
   document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
+    const target = e.target;
     const modal = document.getElementById('qr-modal');
     
     // 如果点击的是触发按钮
     if (target?.closest('[onclick*="qr-modal"]')) {
       e.preventDefault();
-      const modalContent = modal?.querySelector('.modal-content') as HTMLElement;
+      const modalContent = modal?.querySelector('.modal-content');
       
       if (modal && modalContent) {
         // 计算模态框居中位置
