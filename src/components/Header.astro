@@ -124,13 +124,14 @@ const faqItems: MenuItem[] = [
     <div class="flex h-16 items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-2">
-          <img src={astroLogo.src} alt="艺创AI Logo" class="h-8 w-8" />
-          <span class="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+        <a href="/" class="flex items-center relative">
+          <div>
+            <img src={astroLogo.src} alt="艺创AI Logo" class="h-8 w-8" />
+          </div>
+          <span class="ml-2 text-xl font-bold" style="color: rgba(32, 90, 239, 1);">
             艺创AI
           </span>
-        </a>
-      </div>
+       </div>
 
       <!-- Desktop Navigation -->
       <nav class="hidden xl:flex xl:items-center xl:space-x-8">
@@ -150,7 +151,7 @@ const faqItems: MenuItem[] = [
                 {products.map((product) => (
                   <a href={product.url} class="menu-item group/item">
                     <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
-                      <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${product.color}-100 dark:bg-${product.color}-900/30 text-${product.color}-600 dark:text-${product.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
+                      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800/50 text-blue-600 dark:text-blue-400 group-hover/item:scale-110 transition-transform duration-300">
                         <span class="w-5 h-5" set:html={svgIcons[product.icon]}></span>
                       </span>
                       <div class="flex-1 min-w-0">
@@ -186,7 +187,7 @@ const faqItems: MenuItem[] = [
                 {docItems.map((item) => (
                   <a href={item.url} target={item.target} class="menu-item group/item">
                     <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
-                      <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
+                      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800/50 text-blue-600 dark:text-blue-400 group-hover/item:scale-110 transition-transform duration-300">
                         <span class="w-5 h-5" set:html={svgIcons[item.icon]}></span>
                       </span>
                       <div class="flex-1 min-w-0">
@@ -226,7 +227,7 @@ const faqItems: MenuItem[] = [
                 {supportItems.map((item) => (
                   <a href={item.url} class="menu-item group/item">
                     <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
-                      <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
+                      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800/50 text-blue-600 dark:text-blue-400 group-hover/item:scale-110 transition-transform duration-300">
                         <span class="w-5 h-5" set:html={svgIcons[item.icon]}></span>
                       </span>
                       <div class="flex-1 min-w-0">
@@ -346,8 +347,8 @@ const faqItems: MenuItem[] = [
                   <a href={product.url} class="mobile-menu-item">
                     <div class="flex flex-col">
                       <div class="flex items-center space-x-2">
-                        <span class={`w-4 h-4 text-${product.color}-600 dark:text-${product.color}-400`} set:html={svgIcons[product.icon]}></span>
-                        <span class={`font-medium text-${product.color}-600 dark:text-${product.color}-400`}>{product.name}</span>
+                        <span class="w-4 h-4 text-blue-600 dark:text-blue-400" set:html={svgIcons[product.icon]}></span>
+                        <span class="font-medium text-blue-600 dark:text-blue-400">{product.name}</span>
                       </div>
                       <span class="text-xs text-gray-500 mt-1">{product.desc}</span>
                     </div>
@@ -381,8 +382,8 @@ const faqItems: MenuItem[] = [
                   <a href={item.url} target={item.target} class="mobile-menu-item">
                     <div class="flex flex-col">
                       <div class="flex items-center space-x-2">
-                        <span class={`w-4 h-4 text-${item.color}-600 dark:text-${item.color}-400`} set:html={svgIcons[item.icon]}></span>
-                        <span class={`font-medium text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
+                        <span class="w-4 h-4 text-blue-600 dark:text-blue-400" set:html={svgIcons[item.icon]}></span>
+                        <span class="font-medium text-blue-600 dark:text-blue-400">{item.name}</span>
                       </div>
                       <span class="text-xs text-gray-500 mt-1">{item.desc}</span>
                     </div>
@@ -420,8 +421,8 @@ const faqItems: MenuItem[] = [
                   <a href={item.url} class="mobile-menu-item">
                     <div class="flex flex-col">
                       <div class="flex items-center space-x-2">
-                        <span class={`w-4 h-4 text-${item.color}-600 dark:text-${item.color}-400`} set:html={svgIcons[item.icon]}></span>
-                        <span class={`font-medium text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
+                        <span class="w-4 h-4 text-blue-600 dark:text-blue-400" set:html={svgIcons[item.icon]}></span>
+                        <span class="font-medium text-blue-600 dark:text-blue-400">{item.name}</span>
                       </div>
                       <span class="text-xs text-gray-500 mt-1">{item.desc}</span>
                     </div>

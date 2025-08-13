@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Popup from '../components/Popup/Popup.astro';
+import PromotionContent from '../components/Popup/PromotionContent.astro';
 
 // 首屏组件
 import AigcHero from '../components/Hero.astro';
@@ -25,11 +27,7 @@ import EnterpriseOS from '../components/EnterpriseOS.astro';
 // 其他组件
 import Testimonials from '../components/Testimonials.astro';
 import FQA from '../components/FQA.astro';
-import AnnouncementPopup from '../components/AnnouncementPopup.astro';
-import { getCurrentAnnouncement } from '../content/announcement.ts';
 
-// 获取当前公告配置
-const announcementConfig = getCurrentAnnouncement();
 ---
 
 <Layout 
@@ -71,16 +69,7 @@ const announcementConfig = getCurrentAnnouncement();
   </main>
   <Footer />
   
-  <!-- 公告弹窗组件 -->
-  <AnnouncementPopup 
-    title={announcementConfig.title}
-    content={announcementConfig.content}
-    actionUrl={announcementConfig.actionUrl}
-    actionText={announcementConfig.actionText}
-    closeText={announcementConfig.closeText}
-    closeUrl={announcementConfig.closeUrl}
-    autoShowInterval={announcementConfig.autoShowInterval}
-    isOpen={announcementConfig.isOpen}
-  />
-<!-- 公告弹窗组件 -->
+  <!-- 网站公告弹窗 -->
+  <PromotionContent />
+ 
 </Layout>

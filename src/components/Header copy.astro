@@ -15,7 +15,7 @@
  * 定义所有页面的导航链接
  * 用于构建主导航菜单
  */
- const allPages = [
+const allPages = [
   { text: "常见问题", url: "/faqs" },
   { text: "更新日志", url: "/changelog" },
   { text: "集成", url: "/integrations" },
@@ -28,19 +28,54 @@
 import astroLogo from '../assets/logo.svg';
 
 /**
+ * SVG图标类型定义
+ * 定义图标键名的联合类型，确保类型安全
+ */
+type IconKey = 'user' | 'brain' | 'chat' | 'edit' | 'target' | 'monitor' | 'lightbulb' | 'shield';
+
+/**
+ * SVG图标组件定义
+ * 定义各种功能的SVG图标
+ * 使用Record类型确保类型安全的索引访问
+ */
+const svgIcons: Record<IconKey, string> = {
+  user: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+  brain: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3v1a3 3 0 0 0 3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3-3V8a3 3 0 0 0-3-3 3 3 0 0 0-3-3z"/></svg>`,
+  chat: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  edit: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+  target: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+  monitor: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+  lightbulb: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21h6"/><path d="M12 17v4"/><path d="M12 3a6 6 0 0 1 6 6c0 3-2 5.5-2 8H8c0-2.5-2-5-2-8a6 6 0 0 1 6-6z"/></svg>`,
+  shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+};
+
+/**
+ * 菜单项接口定义
+ * 定义菜单项的数据结构，确保类型安全
+ */
+interface MenuItem {
+  name: string;
+  url: string;
+  icon: IconKey;
+  desc: string;
+  color: string;
+  target?: string;
+}
+
+/**
  * 产品菜单项
  * 定义产品下拉菜单中的项目
  * 每个项目包含名称、URL、图标、描述和颜色
  */
-const products = [
-  { name: "AI数字人", url: "/human", icon: "👤", desc: "智能数字人解决方案", color: "blue" },
-  { name: "AI知识库", url: "/ai", icon: "🧠", desc: "智能知识管理平台", color: "green" },
-  { name: "AI聊天绘画", url: "/chat", icon: "💬", desc: "智能对话与创作", color: "purple" },
-  { name: "AI论文创作", url: "/paper", icon: "📝", desc: "智能论文写作助手", color: "orange" },
-  { name: "产品中心", url: "/shop", icon: "🎯", desc: "全部产品导航", color: "pink" },
-  { name: "产品演示", url: "/demo", icon: "🖥️", desc: "在线体验中心", color: "orange" },
-  { name: "AI提示词", url: "/tips", icon: "💡", desc: "AI提示词大全", color: "orange" },
-  { name: "授权中心", url: "http://auth.cnai.art", icon: "👤", desc: "授权管理与使用", color: "orange", target: "_blank" },
+const products: MenuItem[] = [
+  { name: "数字分身", url: "/human", icon: "user", desc: "智能数字人解决方案", color: "blue" },
+  { name: "全能知识库", url: "/ai", icon: "lightbulb", desc: "企业级全能AI平台", color: "green" },
+  { name: "聊天绘画", url: "/chat", icon: "chat", desc: "智能对话与创作", color: "purple" },
+  { name: "论文创作", url: "/paper", icon: "edit", desc: "智能论文写作助手", color: "orange" },
+  { name: "产品中心", url: "/shop", icon: "target", desc: "全部产品导航", color: "pink" },
+  { name: "产品演示", url: "/demo", icon: "monitor", desc: "在线体验中心", color: "orange" },
+  { name: "AI提示词", url: "/tips", icon: "lightbulb", desc: "AI提示词大全", color: "orange" },
+  { name: "授权中心", url: "http://auth.cnai.art", icon: "shield", desc: "授权管理与使用", color: "orange", target: "_blank" },
 ];
 
 /**
@@ -48,13 +83,13 @@ const products = [
  * 定义支持下拉菜单中的项目
  * 每个项目包含名称、URL、图标、描述和颜色
  */
-const supportItems = [
-  { name: "更新日志", url: "/changelog", icon: "🛠️", desc: "获取最新更新", color: "teal" },
-  { name: "联系我们", url: "/contact", icon: "📞", desc: "获取专业支持服务", color: "indigo" },
-  { name: "集成与API", url: "/integrations", icon: "🔌", desc: "连接您喜爱的工具", color: "blue" },
-  { name: "合作伙伴", url: "/cooperate", icon: "🤝", desc: "查看合作机会", color: "yellow" },
-  { name: "渠道合作", url: "/channel", icon: "🤝", desc: "渠道合作与加盟", color: "yellow" },
-  { name: "APP下载", url: "/app", icon: "📱", desc: "多终端APP下载", color: "green" },
+const supportItems: MenuItem[] = [
+  { name: "更新日志", url: "/changelog", icon: "shield", desc: "获取最新更新", color: "teal" },
+  { name: "联系我们", url: "/contact", icon: "chat", desc: "获取专业支持服务", color: "indigo" },
+  { name: "集成与API", url: "/integrations", icon: "monitor", desc: "连接您喜爱的工具", color: "blue" },
+  { name: "合作伙伴", url: "/cooperate", icon: "user", desc: "查看合作机会", color: "yellow" },
+  { name: "渠道合作", url: "/channel", icon: "target", desc: "渠道合作与加盟", color: "yellow" },
+  { name: "APP下载", url: "/app", icon: "lightbulb", desc: "多终端APP下载", color: "green" },
 ];
 
 /**
@@ -62,21 +97,25 @@ const supportItems = [
  * 定义文档下拉菜单中的项目
  * 每个项目包含名称、URL、图标、描述和颜色
  */
-const docItems = [
-  { name: "项目文档", url: "https://doc.artaigc.cn/", icon: "📄", desc: "5分钟快速上手", color: "red", target: "_blank" },
-  { name: "飞书文档", url: "https://rwm01l8tn3x.feishu.cn/wiki/VqNCwBO0KiqWIWkSfdHcDigGnZg?from=from_copylink", icon: "🔍", desc: "详细功能说明", color: "blue" },
-  { name: "AI数字人", url: "https://doc.artaigc.cn/human/", icon: "👤", desc: "数字人部署文档", color: "green" },
-  { name: "AI知识库", url: "https://doc.artaigc.cn/work/deployment/demo.html", icon: "🧠", desc: "企业知识库数文档", color: "purple" },
-  { name: "AI聊天绘画", url: "https://doc.artaigc.cn/chat/", icon: "🎨", desc: "聊天绘画企业知识库数文档", color: "yellow" },
-  { name: "AI论文创作", url: "https://doc.artaigc.cn/Paper/deployment/bt.html", icon: "📝", desc: "论文创作文档", color: "yellow" },
+const docItems: MenuItem[] = [
+  { name: "项目文档", url: "https://doc.artaigc.cn/", icon: "lightbulb", desc: "5分钟快速上手", color: "red", target: "_blank" },
+  { name: "飞书文档", url: "https://rwm01l8tn3x.feishu.cn/wiki/VqNCwBO0KiqWIWkSfdHcDigGnZg?from=from_copylink", icon: "monitor", desc: "详细功能说明", color: "blue" },
+  { name: "数字分身", url: "https://doc.artaigc.cn/human/", icon: "user", desc: "数字人部署文档", color: "green" },
+  { name: "全能知识库", url: "https://doc.artaigc.cn/work/deployment/demo.html", icon: "brain", desc: "企业知识库数文档", color: "purple" },
+  { name: "聊天绘画", url: "https://doc.artaigc.cn/chat/", icon: "chat", desc: "聊天绘画企业知识库数文档", color: "yellow" },
+  { name: "论文创作", url: "https://doc.artaigc.cn/Paper/deployment/bt.html", icon: "edit", desc: "论文创作文档", color: "yellow" },
 ];
 
-const faqItems = [
-  { name: "使用指南", url: "/faqs/guide", icon: "📖", desc: "产品使用教程", color: "blue" },
-  { name: "支付问题", url: "/faqs/payment", icon: "💳", desc: "支付方式与发票", color: "green" },
-  { name: "技术支持", url: "/faqs/support", icon: "🛠️", desc: "技术支持服务", color: "purple" },
-  { name: "API问题", url: "/faqs/api", icon: "🔌", desc: "接口使用问题", color: "orange" },
-  { name: "账号问题", url: "/faqs/account", icon: "👤", desc: "账号管理指南", color: "red" }
+/**
+ * FAQ菜单项
+ * 定义常见问题菜单项
+ */
+const faqItems: MenuItem[] = [
+  { name: "使用指南", url: "/faqs/guide", icon: "lightbulb", desc: "产品使用教程", color: "blue" },
+  { name: "支付问题", url: "/faqs/payment", icon: "target", desc: "支付方式与发票", color: "green" },
+  { name: "技术支持", url: "/faqs/support", icon: "shield", desc: "技术支持服务", color: "purple" },
+  { name: "API问题", url: "/faqs/api", icon: "monitor", desc: "接口使用问题", color: "orange" },
+  { name: "账号问题", url: "/faqs/account", icon: "user", desc: "账号管理指南", color: "red" }
 ];
 ---
 
@@ -85,16 +124,17 @@ const faqItems = [
     <div class="flex h-16 items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-2">
-          <img src={astroLogo.src} alt="艺创AI Logo" class="h-8 w-8" />
-          <span class="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+        <a href="/" class="flex items-center relative">
+          <div>
+            <img src={astroLogo.src} alt="艺创AI Logo" class="h-8 w-8" />
+          </div>
+          <span class="ml-2 text-xl font-bold" style="color: rgba(32, 90, 239, 1);">
             艺创AI
           </span>
-        </a>
-      </div>
+       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex lg:items-center lg:space-x-8">
+      <nav class="hidden xl:flex xl:items-center xl:space-x-8">
         <a href="/" class="nav-link">首页</a>
         
         <!-- Products Dropdown -->
@@ -112,7 +152,7 @@ const faqItems = [
                   <a href={product.url} class="menu-item group/item">
                     <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
                       <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${product.color}-100 dark:bg-${product.color}-900/30 text-${product.color}-600 dark:text-${product.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
-                        {product.icon}
+                        <span class="w-5 h-5" set:html={svgIcons[product.icon]}></span>
                       </span>
                       <div class="flex-1 min-w-0">
                         <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
@@ -148,7 +188,7 @@ const faqItems = [
                   <a href={item.url} target={item.target} class="menu-item group/item">
                     <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
                       <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
-                        {item.icon}
+                        <span class="w-5 h-5" set:html={svgIcons[item.icon]}></span>
                       </span>
                       <div class="flex-1 min-w-0">
                         <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
@@ -188,7 +228,7 @@ const faqItems = [
                   <a href={item.url} class="menu-item group/item">
                     <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-700/50 transition-all duration-200">
                       <span class={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-600 dark:text-${item.color}-400 group-hover/item:scale-110 transition-transform duration-300`}>
-                        {item.icon}
+                        <span class="w-5 h-5" set:html={svgIcons[item.icon]}></span>
                       </span>
                       <div class="flex-1 min-w-0">
                         <div class="font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-200">
@@ -228,7 +268,7 @@ const faqItems = [
         </button>
 
         <!-- Auth Buttons -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+        <div class="flex flex-wrap justify-center xl:justify-start gap-4">
           <a 
             href="https://auth.cnai.art/regist.htm"
             target="_blank"
@@ -252,7 +292,7 @@ const faqItems = [
         <button 
           x-data="{open: false}"
           x-on:click="open = !open; $dispatch('toggle-mobile-menu', {open})"
-          class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+          class="xl:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
           aria-label="切换菜单"
         >
           <svg x-bind:class="{'hidden': open, 'block': !open}" class="h-6 w-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -277,7 +317,7 @@ const faqItems = [
     x-transition:leave="transition ease-in duration-150"
     x-transition:leave-start="opacity-100 translate-y-0"
     x-transition:leave-end="opacity-0 -translate-y-4"
-    class="lg:hidden fixed inset-x-0 top-16 z-50 w-full overflow-hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
+    class="xl:hidden fixed inset-x-0 top-16 z-50 w-full overflow-hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
     x-cloak
   >
     <nav class="relative max-h-[calc(100vh-4rem)] overflow-y-auto p-4 space-y-4">
@@ -307,7 +347,7 @@ const faqItems = [
                   <a href={product.url} class="mobile-menu-item">
                     <div class="flex flex-col">
                       <div class="flex items-center space-x-2">
-                        <span class={`text-${product.color}-600 dark:text-${product.color}-400`}>{product.icon}</span>
+                        <span class={`w-4 h-4 text-${product.color}-600 dark:text-${product.color}-400`} set:html={svgIcons[product.icon]}></span>
                         <span class={`font-medium text-${product.color}-600 dark:text-${product.color}-400`}>{product.name}</span>
                       </div>
                       <span class="text-xs text-gray-500 mt-1">{product.desc}</span>
@@ -342,7 +382,7 @@ const faqItems = [
                   <a href={item.url} target={item.target} class="mobile-menu-item">
                     <div class="flex flex-col">
                       <div class="flex items-center space-x-2">
-                        <span class={`text-${item.color}-600 dark:text-${item.color}-400`}>{item.icon}</span>
+                        <span class={`w-4 h-4 text-${item.color}-600 dark:text-${item.color}-400`} set:html={svgIcons[item.icon]}></span>
                         <span class={`font-medium text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
                       </div>
                       <span class="text-xs text-gray-500 mt-1">{item.desc}</span>
@@ -381,7 +421,7 @@ const faqItems = [
                   <a href={item.url} class="mobile-menu-item">
                     <div class="flex flex-col">
                       <div class="flex items-center space-x-2">
-                        <span class={`text-${item.color}-600 dark:text-${item.color}-400`}>{item.icon}</span>
+                        <span class={`w-4 h-4 text-${item.color}-600 dark:text-${item.color}-400`} set:html={svgIcons[item.icon]}></span>
                         <span class={`font-medium text-${item.color}-600 dark:text-${item.color}-400`}>{item.name}</span>
                       </div>
                       <span class="text-xs text-gray-500 mt-1">{item.desc}</span>
@@ -416,7 +456,7 @@ const faqItems = [
 
 <style>
   .nav-link {
-    @apply px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 relative overflow-hidden;
+    @apply px-2 xl:px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 relative overflow-hidden;
   }
 
   .nav-link::after {
@@ -429,7 +469,7 @@ const faqItems = [
   }
 
   .menu-item {
-    @apply flex items-center space-x-3 p-2 rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-800/50;
+    @apply flex items-center space-x-2 xl:space-x-3 p-2 rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-800/50;
   }
 
   .mobile-nav-item {

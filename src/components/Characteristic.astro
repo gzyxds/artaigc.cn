@@ -28,7 +28,7 @@
     </div>
 
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {[
         {
           title: "AI 聊天",
@@ -87,7 +87,7 @@
           </div>
           
           <div class="relative flex items-center space-x-5 mb-6">
-            <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-blue-100 to-blue-100 dark:from-blue-900/50 dark:to-blue-900/50 p-3 sm:p-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+            <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-gray-100 to-gray-100 dark:from-gray-800/50 dark:to-gray-800/50 p-2 sm:p-3 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
               <svg class="w-full h-full text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {service.icon === "chat" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>}
                 {service.icon === "paint" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>}
@@ -350,7 +350,7 @@
         <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100/80 to-indigo-100/80 dark:from-blue-800/30 dark:to-indigo-800/30 transform rotate-45 translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
         <div class="p-6 sm:p-8 relative z-10 h-full flex flex-col">
           <div class="flex items-center mb-6">
-            <div class="w-14 h-14 flex items-center justify-center bg-blue-100/80 dark:bg-blue-900/40 rounded-xl mr-5 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
+            <div class="w-14 h-14 flex items-center justify-center bg-gray-100/80 dark:bg-gray-800/40 rounded-xl mr-5 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
@@ -408,7 +408,7 @@
         <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100/80 to-indigo-100/80 dark:from-blue-800/30 dark:to-indigo-800/30 transform rotate-45 translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
         <div class="p-6 sm:p-8 relative z-10 h-full flex flex-col">
           <div class="flex items-center mb-6">
-            <div class="w-14 h-14 flex items-center justify-center bg-blue-100/80 dark:bg-blue-900/40 rounded-xl mr-5 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
+            <div class="w-14 h-14 flex items-center justify-center bg-gray-100/80 dark:bg-gray-800/40 rounded-xl mr-5 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
@@ -466,9 +466,9 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-16 relative">
       <!-- 卡片1：开箱即用 -->
       <a href="https://www.cnai.art" class="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100/50 dark:border-gray-700/50 flex flex-col h-full transform hover:-translate-y-2 hover:scale-[1.02] relative">
-        <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-blue-100/80 to-indigo-100/80 dark:from-blue-800/30 dark:to-indigo-800/30 transform rotate-45 translate-x-6 -translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
+        <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-gray-100/80 to-gray-200/80 dark:from-gray-800/30 dark:to-gray-700/30 transform rotate-45 translate-x-6 -translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
         <div class="p-5 sm:p-6 relative z-10">
-          <div class="w-12 h-12 flex items-center justify-center bg-blue-100/80 dark:bg-blue-900/40 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
+          <div class="w-12 h-12 flex items-center justify-center bg-gray-100/80 dark:bg-gray-800/40 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
             </svg>
@@ -493,7 +493,7 @@
       <a href="https://www.cnai.art" class="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100/50 dark:border-gray-700/50 flex flex-col h-full transform hover:-translate-y-2 hover:scale-[1.02] relative">
         <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-blue-100/80 to-indigo-100/80 dark:from-blue-800/30 dark:to-indigo-800/30 transform rotate-45 translate-x-6 -translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
         <div class="p-5 sm:p-6 relative z-10">
-          <div class="w-12 h-12 flex items-center justify-center bg-blue-100/80 dark:bg-blue-900/40 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
+          <div class="w-12 h-12 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/40 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
@@ -518,7 +518,7 @@
       <a href="https://www.cnai.art" class="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100/50 dark:border-gray-700/50 flex flex-col h-full transform hover:-translate-y-2 hover:scale-[1.02] relative">
         <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-blue-100/80 to-indigo-100/80 dark:from-blue-800/30 dark:to-indigo-800/30 transform rotate-45 translate-x-6 -translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
         <div class="p-5 sm:p-6 relative z-10">
-          <div class="w-12 h-12 flex items-center justify-center bg-blue-100/80 dark:bg-blue-900/40 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
+          <div class="w-12 h-12 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/40 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-500 shadow-md group-hover:shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
