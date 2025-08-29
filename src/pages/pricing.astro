@@ -440,13 +440,13 @@ const faqData = [
 
 ---
 
-<Layout 
+<Layout
   title={title}
   description={description}
   keywords={keywords}
 >
   <Header />
-  
+
   <main class="min-h-screen bg-white">
     <!-- 页面标题区域 - 简洁现代设计 -->
     <section class="relative py-20 lg:py-32 bg-gradient-to-b from-slate-50 to-white">
@@ -456,7 +456,7 @@ const faqData = [
         <div class="absolute top-40 right-20 w-24 h-24 bg-blue-200 opacity-20"></div>
         <div class="absolute bottom-20 left-1/3 w-16 h-16 bg-indigo-100 opacity-40"></div>
       </div>
-      
+
       <div class="container-custom text-center">
         <div class="space-y-8">
           <!-- 标题 -->
@@ -468,7 +468,7 @@ const faqData = [
               专业的人工智能产品套件，为企业数字化转型提供核心技术支撑
             </p>
           </div>
-          
+
           <!-- 核心数据展示 -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mt-20">
             <div class="text-center">
@@ -503,7 +503,7 @@ const faqData = [
             为您提供全方位的技术支持与服务保障
           </p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {serviceFeatures.map((feature) => (
             <div class="text-center p-10 bg-gray-50 hover:bg-blue-50 transition-colors duration-300">
@@ -533,7 +533,7 @@ const faqData = [
                   热门
                 </div>
               )}
-              
+
               <!-- 产品头部 -->
               <div class="p-10 border-b border-gray-100">
                 <div class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center mb-8">
@@ -543,7 +543,7 @@ const faqData = [
                 </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
                 <p class="text-base text-gray-600 mb-8 leading-relaxed">{product.subtitle}</p>
-                
+
                 <!-- 价格信息 -->
                 <div class="space-y-3">
                   <div class="flex items-baseline space-x-3">
@@ -571,13 +571,13 @@ const faqData = [
                 <!-- 操作按钮 -->
                 <div class="space-y-3">
                   <a
-                    href="https://auth.cnai.art" 
+                    href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
                     target="_blank"
                     class="w-full bg-blue-600 text-white py-3 px-6 text-center font-medium hover:bg-blue-700 transition-colors duration-300 block"
                   >
                     立即购买
                   </a>
-                  <button 
+                  <button
                     onclick="document.getElementById('qr-modal').classList.add('active')"
                     class="w-full border border-gray-300 text-gray-700 py-3 px-6 text-center font-medium hover:border-blue-600 hover:text-blue-600 transition-colors duration-300"
                   >
@@ -603,7 +603,7 @@ const faqData = [
                 专业团队为您提供定制化解决方案，助力企业数字化转型升级
               </p>
             </div>
-            
+
             <!-- 服务特性网格 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
               <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
@@ -617,7 +617,7 @@ const faqData = [
                   根据企业特定需求，提供完全定制化的AI系统开发服务
                 </p>
               </div>
-              
+
               <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
                 <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -629,7 +629,7 @@ const faqData = [
                   配备专业技术团队，提供7x24小时技术支持与咨询服务
                 </p>
               </div>
-              
+
               <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
                 <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -642,10 +642,10 @@ const faqData = [
                 </p>
               </div>
             </div>
-            
+
             <!-- 联系按钮 -->
             <div class="pt-12">
-              <button 
+              <button
                 onclick="document.getElementById('qr-modal').classList.add('active')"
                 class="bg-white text-blue-600 px-8 py-4 font-semibold hover:bg-gray-50 transition-colors duration-300"
               >
@@ -668,11 +668,11 @@ const faqData = [
             解答您关于产品和服务的常见疑问
           </p>
         </div>
-        
+
         <div class="space-y-8">
           {faqData.map((faq, index) => (
             <div class="bg-white border border-gray-200 overflow-hidden">
-              <button 
+              <button
                 class="w-full px-10 py-8 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300"
                 onclick={`document.getElementById('faq-${index}').classList.toggle('hidden')`}
               >
@@ -692,7 +692,7 @@ const faqData = [
   </main>
 
   <Footer />
-  
+
   <!-- 二维码弹窗组件 -->
   <QRModal qrCodeUrl="/assets/qrcode.png" />
 </Layout>
@@ -703,11 +703,11 @@ const faqData = [
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
   }
-  
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   /* 渐变文字效果 */
   .gradient-text {
     background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
@@ -715,19 +715,19 @@ const faqData = [
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   /* 卡片悬停效果 */
   .pricing-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .pricing-card:hover {
     transform: translateY(-8px) scale(1.02);
   }
-  
+
   /* 背景装饰 */
   .bg-pattern {
-    background-image: 
+    background-image:
       radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
   }

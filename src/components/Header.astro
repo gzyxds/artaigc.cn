@@ -136,7 +136,7 @@ const faqItems: MenuItem[] = [
       <!-- Desktop Navigation -->
       <nav class="hidden xl:flex xl:items-center xl:space-x-8">
         <a href="/" class="nav-link">首页</a>
-        
+
         <!-- Products Dropdown -->
         <div class="relative group">
           <button class="nav-link flex items-center">
@@ -254,7 +254,7 @@ const faqItems: MenuItem[] = [
       <!-- Right Side Actions -->
       <div class="flex items-center space-x-4">
         <!-- Dark Mode Toggle -->
-        <button 
+        <button
           x-on:click="darkMode = !darkMode"
           class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
           aria-label="切换暗黑模式"
@@ -269,17 +269,17 @@ const faqItems: MenuItem[] = [
 
         <!-- Auth Buttons -->
         <div class="flex flex-wrap justify-center xl:justify-start gap-4">
-          <a 
-            href="https://auth.cnai.art/regist.htm"
+          <a
+            href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
             target="_blank"
             rel="noopener noreferrer"
             class="group hidden sm:inline-flex items-center px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all"
           >
             <span>立即购买</span>
           </a>
-          
-          <a 
-            href="https://auth.cnai.art/regist.htm"
+
+          <a
+            href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
             target="_blank"
             rel="noopener noreferrer"
             class="group hidden sm:inline-flex items-center px-6 py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold shadow-lg hover:shadow-xl transition-all"
@@ -287,9 +287,9 @@ const faqItems: MenuItem[] = [
             <span>登入/注册</span>
           </a>
         </div>
-        
+
         <!-- Mobile Menu Button -->
-        <button 
+        <button
           x-data="{open: false}"
           x-on:click="open = !open; $dispatch('toggle-mobile-menu', {open})"
           class="xl:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
@@ -307,7 +307,7 @@ const faqItems: MenuItem[] = [
   </div>
 
   <!-- Mobile Menu -->
-  <div 
+  <div
     x-data="{ open: false }"
     x-on:toggle-mobile-menu.window="open = $event.detail.open"
     x-show="open"
@@ -323,23 +323,23 @@ const faqItems: MenuItem[] = [
     <nav class="relative max-h-[calc(100vh-4rem)] overflow-y-auto p-4 space-y-4">
       <div class="space-y-4">
         <a href="/" class="mobile-nav-item">首页</a>
-        
+
         <!-- Mobile Products Menu -->
         <div x-data="{expanded: false}" class="space-y-2">
-          <button 
+          <button
             x-on:click="expanded = !expanded"
             class="mobile-nav-item w-full flex items-center justify-between group"
           >
             <span x-bind:class="{'text-primary-600 dark:text-primary-400': expanded}">产品中心</span>
-            <svg 
+            <svg
               x-bind:class="{'rotate-180 text-primary-600 dark:text-primary-400': expanded}"
-              class="h-5 w-5 transition-all duration-200 group-hover:text-primary-600 dark:group-hover:text-primary-400" 
+              class="h-5 w-5 transition-all duration-200 group-hover:text-primary-600 dark:group-hover:text-primary-400"
               fill="none" viewBox="0 0 24 24" stroke="currentColor"
             >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          
+
           <div x-show="expanded" x-collapse x-cloak>
             <div class="pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
               <div class="grid grid-cols-2 gap-2">
@@ -361,20 +361,20 @@ const faqItems: MenuItem[] = [
 
         <!-- Mobile Documentation Menu -->
         <div x-data="{expanded: false}" class="space-y-2">
-          <button 
+          <button
             x-on:click="expanded = !expanded"
             class="mobile-nav-item w-full flex items-center justify-between group"
           >
             <span x-bind:class="{'text-primary-600 dark:text-primary-400': expanded}">产品文档</span>
-            <svg 
+            <svg
               x-bind:class="{'rotate-180 text-primary-600 dark:text-primary-400': expanded}"
-              class="h-5 w-5 transition-all duration-200 group-hover:text-primary-600 dark:group-hover:text-primary-400" 
+              class="h-5 w-5 transition-all duration-200 group-hover:text-primary-600 dark:group-hover:text-primary-400"
               fill="none" viewBox="0 0 24 24" stroke="currentColor"
             >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          
+
           <div x-show="expanded" x-collapse x-cloak>
             <div class="pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
               <div class="grid grid-cols-2 gap-2">
@@ -400,20 +400,20 @@ const faqItems: MenuItem[] = [
 
         <!-- Mobile Support Menu -->
         <div x-data="{expanded: false}" class="space-y-2">
-          <button 
+          <button
             x-on:click="expanded = !expanded"
             class="mobile-nav-item w-full flex items-center justify-between group"
           >
             <span x-bind:class="{'text-primary-600 dark:text-primary-400': expanded}">支持与服务</span>
-            <svg 
+            <svg
               x-bind:class="{'rotate-180 text-primary-600 dark:text-primary-400': expanded}"
-              class="h-5 w-5 transition-all duration-200 group-hover:text-primary-600 dark:group-hover:text-primary-400" 
+              class="h-5 w-5 transition-all duration-200 group-hover:text-primary-600 dark:group-hover:text-primary-400"
               fill="none" viewBox="0 0 24 24" stroke="currentColor"
             >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          
+
           <div x-show="expanded" x-collapse x-cloak>
             <div class="pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
               <div class="grid grid-cols-2 gap-2">
@@ -437,14 +437,14 @@ const faqItems: MenuItem[] = [
 
       <!-- Mobile Auth Buttons -->
       <div class="pt-6 space-y-4">
-        <a 
-          href="https://auth.cnai.art/regist.htm" 
+        <a
+          href="https://auth.cnai.art/regist.htm"
           class="block w-full text-center px-4 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors duration-200"
         >
           会员中心
         </a>
-        <a 
-          href="https://auth.cnai.art/regist.htm" 
+        <a
+          href="https://auth.cnai.art/regist.htm"
           class="block w-full text-center px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium transition-colors duration-200"
         >
           登录/注册
@@ -480,8 +480,8 @@ const faqItems: MenuItem[] = [
     @apply flex items-center w-full px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:translate-x-1;
   }
 
-  [x-cloak] { 
-    display: none !important; 
+  [x-cloak] {
+    display: none !important;
   }
 </style>
 
@@ -504,9 +504,9 @@ const faqItems: MenuItem[] = [
   function handleScroll() {
     if (!header) header = document.querySelector('header');
     if (!header) return;
-    
+
     const currentScrollY = window.scrollY;
-    
+
     if (!ticking) {
       window.requestAnimationFrame(() => {
         if (currentScrollY > 20) {
@@ -514,27 +514,27 @@ const faqItems: MenuItem[] = [
         } else {
           header.classList.remove('shadow-md');
         }
-        
+
         lastScrollY = currentScrollY;
         ticking = false;
       });
-      
+
       ticking = true;
     }
   }
 
   // 使用防抖优化滚动事件
   const debouncedScroll = debounce(handleScroll, 10);
-  
+
   // 添加滚动事件监听
   window.addEventListener('scroll', debouncedScroll, { passive: true });
-  
+
   // DOM加载完成后初始化
   document.addEventListener('DOMContentLoaded', () => {
     header = document.querySelector('header');
     handleScroll();
   });
-  
+
   // 初始检查滚动位置
   handleScroll();
 </script>
