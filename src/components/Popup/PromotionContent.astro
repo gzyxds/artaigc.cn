@@ -1,7 +1,7 @@
 ---
 /**
  * 限时特惠活动弹窗内容组件
- * 
+ *
  * 功能特性:
  * - 展示限时特惠活动信息
  * - 产品优势说明
@@ -11,7 +11,7 @@
  * - 暗黑模式支持
  * - 自动关闭功能
  * - 跟随滚动
- * 
+ *
  * @component PromotionContent
  * @author AI Assistant
  * @version 2.0.0
@@ -50,7 +50,7 @@ const popupConfig = {
   showButtons: true,
   primaryButtonText: "立即购买",
   secondaryButtonText: "联系客服",
-  primaryButtonUrl: "https://auth.cnai.art/regist.htm",
+  primaryButtonUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
   secondaryButtonUrl: "/kefu"
 };
 
@@ -129,8 +129,8 @@ const products = [
               <td class="sale-price">¥{product.salePrice}</td>
               <td class="coupon-code">{product.couponCode}</td>
               <td class="action-cell">
-                <button 
-                  class="copy-btn" 
+                <button
+                  class="copy-btn"
                   data-code={product.couponCode}
                   title="点击复制优惠码"
                 >
@@ -142,7 +142,7 @@ const products = [
         </tbody>
       </table>
     </div>
-    
+
     <!-- 名额限制 -->
     <div class="limit-section">
       <span class="limit-text">📌 名额限制: 每个优惠码仅限10个，抢完即止！</span>
@@ -159,13 +159,13 @@ const products = [
     color: #333;
     background: #fff;
   }
-  
+
   /* 产品列表样式 */
   .products-section {
     margin-bottom: clamp(20px, 5vw, 24px);
     overflow-x: auto;
   }
-  
+
   .products-table {
     width: 100%;
     border-collapse: collapse;
@@ -174,7 +174,7 @@ const products = [
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   .products-table th {
     background: #007bff;
     color: white;
@@ -183,42 +183,42 @@ const products = [
     font-weight: 600;
     font-size: clamp(13px, 3vw, 14px);
   }
-  
+
   .products-table td {
     padding: clamp(8px, 2vw, 10px);
     text-align: center;
     border-bottom: 1px solid #e9ecef;
     font-size: clamp(12px, 2.8vw, 13px);
   }
-  
+
   .product-row:nth-child(even) {
     background: #f8f9fa;
   }
-  
+
   .product-row:hover {
     background: #e3f2fd;
   }
-  
+
   .product-number {
     font-weight: 600;
     color: #007bff;
   }
-  
+
   .product-name {
     font-weight: 700;
     color: #2c3e50;
   }
-  
+
   .original-price {
     color: #6c757d;
     text-decoration: line-through;
   }
-  
+
   .sale-price {
     font-weight: 700;
     color: #dc3545;
   }
-  
+
   .coupon-code {
     font-family: 'Courier New', monospace;
     background: #fff3cd;
@@ -230,7 +230,7 @@ const products = [
     letter-spacing: 0.5px;
     font-size: clamp(11px, 2.5vw, 12px);
   }
-  
+
   .copy-btn {
     background: #007bff;
     color: white;
@@ -242,20 +242,20 @@ const products = [
     transition: all 0.2s ease;
     font-weight: 500;
   }
-  
+
   .copy-btn:hover {
     background: #0056b3;
     transform: translateY(-1px);
   }
-  
+
   .copy-btn:active {
     transform: translateY(0);
   }
-  
+
   .copy-btn.copied {
     background: #28a745;
   }
-  
+
   /* 名额限制样式 */
   .limit-section {
     text-align: center;
@@ -265,29 +265,29 @@ const products = [
     border: 1px solid #ffeaa7;
     border-radius: clamp(6px, 1.5vw, 8px);
   }
-  
+
   .limit-text {
     font-size: clamp(13px, 3.2vw, 14px);
     color: #856404;
     font-weight: 600;
   }
-  
+
   /* 响应式设计 */
   @media (max-width: 768px) {
     .products-table {
       font-size: 12px;
     }
-    
+
     .products-table th,
     .products-table td {
       padding: 6px 4px;
     }
-    
+
     .coupon-code {
       font-size: 10px;
       padding: 2px 4px;
     }
-    
+
     .copy-btn {
       padding: 4px 8px;
       font-size: 10px;
@@ -302,26 +302,26 @@ const products = [
    */
   function initCopyButtons() {
     const copyButtons = document.querySelectorAll('.copy-btn');
-    
+
     copyButtons.forEach(button => {
       const htmlButton = button as HTMLElement;
       htmlButton.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        
+
         const code = htmlButton.getAttribute('data-code');
         if (!code) {
           console.warn('复制按钮缺少优惠码数据');
           return;
         }
-        
+
         try {
           // 尝试使用现代 Clipboard API
           await navigator.clipboard.writeText(code);
           showCopySuccess(htmlButton);
         } catch (err) {
           console.warn('Clipboard API 失败，尝试降级方案:', err);
-          
+
           // 降级方案：使用传统方法
           try {
             const textArea = document.createElement('textarea');
@@ -332,10 +332,10 @@ const products = [
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
-            
+
             const successful = document.execCommand('copy');
             document.body.removeChild(textArea);
-            
+
             if (successful) {
               showCopySuccess(htmlButton);
             } else {
@@ -349,7 +349,7 @@ const products = [
       });
     });
   }
-  
+
   /**
    * 显示复制成功状态
    * @param {HTMLElement} button - 复制按钮元素
@@ -357,17 +357,17 @@ const products = [
   function showCopySuccess(button: HTMLElement) {
     const copyText = button.querySelector('.copy-text') as HTMLElement;
     const copySuccess = button.querySelector('.copy-success') as HTMLElement;
-    
+
     if (copyText && copySuccess) {
       copyText.style.display = 'none';
       copySuccess.style.display = 'inline';
     } else {
       button.textContent = '已复制';
     }
-    
+
     button.classList.add('copied');
     (button as any).disabled = true;
-    
+
     // 2秒后恢复原状
     setTimeout(() => {
       if (copyText && copySuccess) {
@@ -376,12 +376,12 @@ const products = [
       } else {
         button.textContent = '复制';
       }
-      
+
       button.classList.remove('copied');
       (button as any).disabled = false;
     }, 2000);
   }
-  
+
   /**
    * 显示复制错误状态
    * @param {HTMLElement} button - 复制按钮元素
@@ -390,13 +390,13 @@ const products = [
     const originalText = button.textContent;
     button.textContent = '复制失败';
     button.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
-    
+
     setTimeout(() => {
       button.textContent = originalText;
       button.style.background = '';
     }, 2000);
   }
-  
+
   /**
    * 页面加载完成后初始化
    */
@@ -408,14 +408,14 @@ const products = [
       console.error('促销弹窗初始化失败:', error);
     }
   }
-  
+
   // 确保在 DOM 加载完成后执行
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initPromotion);
   } else {
     initPromotion();
   }
-  
+
   // 支持动态加载的情况
   if (typeof window !== 'undefined') {
     (window as any).initPromotion = initPromotion;

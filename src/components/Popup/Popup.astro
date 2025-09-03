@@ -289,16 +289,16 @@ const positionType = followScroll ? 'absolute' : 'fixed';
     )}
     
     {showButtons && (
-      <div class="mt-6 flex flex-col sm:flex-row gap-6 justify-center pb-10">
+      <div class="mt-6 flex flex-row gap-3 sm:gap-6 justify-center pb-10">
         <a 
           href={primaryButtonUrl} 
-          class="px-12 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md transition-all duration-200 transform hover:-translate-y-1 text-center text-lg"
+          class="px-6 sm:px-12 py-2 sm:py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md transition-all duration-200 transform hover:-translate-y-1 text-center text-sm sm:text-lg"
         >
           {primaryButtonText}
         </a>
         <a 
           href={secondaryButtonUrl} 
-          class="px-12 py-3 bg-white hover:bg-gray-100 text-primary-600 border border-primary-600 font-medium rounded-md transition-all duration-200 transform hover:-translate-y-1 text-center text-lg"
+          class="px-6 sm:px-12 py-2 sm:py-3 bg-white hover:bg-gray-100 text-primary-600 border border-primary-600 font-medium rounded-md transition-all duration-200 transform hover:-translate-y-1 text-center text-sm sm:text-lg"
         >
           {secondaryButtonText}
         </a>
