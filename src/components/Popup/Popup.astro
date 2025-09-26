@@ -95,8 +95,44 @@ const validateProps = (props: Props): void => {
   if (props.delay && props.delay < 0) {
     console.warn('Popup: delay should be a positive number');
   }
-  if (props.width && !props.width.match(/^(\d+(%|px|em|rem|vw|vh))|auto$/)) {
-    console.warn('Popup: width should be a valid CSS unit (px, %, em, rem, vw, vh) or "auto"');
+  
+  // 检查width属性是否有效
+  if (props.width) {
+    // 如果是数字，则视为有效（后面会自动添加px单位）
+    if (typeof props.width === 'number') {
+      return;
+    }
+    
+    // 如果是字符串，检查是否包含有效的CSS单位或者是"auto"
+    if (typeof props.width === 'string') {
+      const trimmedWidth = props.width.trim();
+      
+      // 检查是否为"auto"
+      if (trimmedWidth === 'auto') {
+        return;
+      }
+      
+      // 检查是否是CSS函数（如min(), max(), clamp()等）
+      const cssFunctionPattern = /^(min|max|clamp|calc|fit-content|env|var)\s*\([^)]*\)$/;
+      if (cssFunctionPattern.test(trimmedWidth)) {
+        return;
+      }
+      
+      // 检查是否包含有效的CSS单位
+      const validUnits = ['px', '%', 'em', 'rem', 'vw', 'vh', 'vmin', 'vmax', 'cm', 'mm', 'in', 'pt', 'pc'];
+      const hasValidUnit = validUnits.some(unit => trimmedWidth.endsWith(unit));
+      
+      // 如果没有单位，检查是否可以转换为数字（后面会自动添加px单位）
+      if (!hasValidUnit) {
+        const numValue = parseFloat(trimmedWidth);
+        if (!isNaN(numValue)) {
+          return;
+        }
+      }
+      
+      // 如果以上条件都不满足，则发出警告
+      console.warn('Popup: width should be a valid CSS unit (px, %, em, rem, vw, vh, vmin, vmax, cm, mm, in, pt, pc), CSS function (min(), max(), clamp(), calc(), etc.) or "auto"');
+    }
   }
 };
 
@@ -129,6 +165,43 @@ const {
 
 // 验证属性
 validateProps(Astro.props);
+
+// 处理width属性，确保它有有效的CSS单位
+const processedWidth = (() => {
+  // 如果width是数字，默认添加px单位
+  if (typeof width === 'number') {
+    return `${width}px`;
+  }
+  
+  // 如果width是字符串，检查是否包含有效的CSS单位
+  if (typeof width === 'string') {
+    // 移除可能的空格
+    const trimmedWidth = width.trim();
+    
+    // 检查是否是CSS函数（如min(), max(), clamp()等）
+    const cssFunctionPattern = /^(min|max|clamp|calc|fit-content|env|var)\s*\([^)]*\)$/;
+    if (cssFunctionPattern.test(trimmedWidth)) {
+      return trimmedWidth;
+    }
+    
+    // 检查是否已经包含有效的CSS单位
+    const validUnits = ['px', '%', 'em', 'rem', 'vw', 'vh', 'vmin', 'vmax', 'cm', 'mm', 'in', 'pt', 'pc'];
+    const hasValidUnit = validUnits.some(unit => trimmedWidth.endsWith(unit));
+    
+    if (hasValidUnit) {
+      return trimmedWidth;
+    }
+    
+    // 如果没有单位，尝试转换为数字并添加px单位
+    const numValue = parseFloat(trimmedWidth);
+    if (!isNaN(numValue)) {
+      return `${numValue}px`;
+    }
+  }
+  
+  // 默认宽度
+  return 'auto';
+})();
 
 // 根据位置设置样式类
 const positionClasses: Record<PopupPosition, string> = {
@@ -268,7 +341,7 @@ const positionType = followScroll ? 'absolute' : 'fixed';
   aria-labelledby={title ? `${id}-title` : undefined}
   aria-describedby={content ? `${id}-content` : undefined}
   aria-modal={!followScroll}
-  style={`background-color: var(--bg-color); color: var(--text-color); max-width: ${CONSTANTS.MAX_WIDTH_PERCENTAGE}%; max-height: ${CONSTANTS.MAX_HEIGHT_PERCENTAGE}vh; width: ${width}; overflow-y: auto; z-index: ${CONSTANTS.Z_INDEX_POPUP};`}
+  style={`background-color: var(--bg-color); color: var(--text-color); max-width: ${CONSTANTS.MAX_WIDTH_PERCENTAGE}%; max-height: ${CONSTANTS.MAX_HEIGHT_PERCENTAGE}vh; width: ${processedWidth}; overflow-y: auto; z-index: ${CONSTANTS.Z_INDEX_POPUP};`}
 >
   <div class="relative p-5">
     {title && <h3 id={`${id}-title`} class="text-lg font-semibold mb-3 pr-8 text-center pt-4">{title}</h3>}

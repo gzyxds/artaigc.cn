@@ -28,7 +28,7 @@ const defaultProducts: Product[] = [
     id: 1,
     title: "超级IP数字人SaaS系统「PHP源码版」",
     description: "为企业主、个人博主打造短视频IP的数字人源码系统，支持真人声音+形象克隆，一键合成,基于SaaS多开模式的架构设计，支持无限OEM贴牌开通站点",
-    image: "/assets/saas.svg",
+    image: "/assets/saas.webp",
     category: "AI数字人",
     price: 4999,
     originalPrice: 6800,
@@ -41,7 +41,7 @@ const defaultProducts: Product[] = [
     id: 2,
     title: "艺创全能AI知识库系统「PHP源码版」",
     description: "全能AI知识库系统Java版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持问答式和文档式知识库，能够导入txt、doc、docx、pdf、md等多种格式文档",
-    image: "/assets/work.svg",
+    image: "/assets/work.webp",
     category: "AI写作",
     price: 6600,
     originalPrice: 9800,
@@ -54,7 +54,7 @@ const defaultProducts: Product[] = [
     id: 3,
     title: "艺创AI聊天绘画系统「PHP源码版」",
     description: "实现了AI对话+AI绘画的融合使用。系统功能包括：AI智能对话、AI创作模型、AI绘画、分销推广、会员套餐、充值套餐、卡密兑换、模型计费、会员回流优惠券等丰富的营销功能",
-    image: "/assets/ai.svg",
+    image: "/assets/ai.webp",
     category: "智能聊天",
     price: 2999,
     originalPrice: 3800,
@@ -199,7 +199,7 @@ const {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
         {products.map((product, index) => (
           <div 
-            class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            class="group overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-xl h-full flex flex-col transform hover:-translate-y-1 dark:bg-slate-800 dark:border-gray-700"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
           >
@@ -278,7 +278,7 @@ const {
       <div class="space-y-6 md:space-y-8">
         {products.map((product, index) => (
           <div 
-            class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            class="group overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-xl transform hover:-translate-y-1 dark:bg-slate-800 dark:border-gray-700"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
           >
@@ -359,7 +359,7 @@ const {
       <div class="grid grid-cols-1 gap-6 md:gap-8">
         {products.map((product, index) => (
           <div 
-            class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            class="group overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-xl transform hover:-translate-y-1 dark:bg-slate-800 dark:border-gray-700"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
           >

@@ -8,6 +8,7 @@ import PromotionContent from '../components/Popup/PromotionContent.astro';
 // 首屏组件
 import AigcHero from '../components/Hero.astro';
 import ServiceFeatures from '../components/ServiceFeatures.astro';
+import Carousel from '../components/Hero/Carousel.astro';
 
 // 产品展示组件
 import Aisd from '../components/Aisd.astro';
@@ -45,8 +46,9 @@ import FQA from '../components/FQA.astro';
   <Header />
   <main>
     <!-- 首屏组件 -->
-    <AigcHero />
-    <ServiceFeatures />
+    
+    <Carousel />
+    <!-- <ServiceFeatures /> -->
 
     <!-- 产品展示区域 -->
     <Aisd />
@@ -70,6 +72,6 @@ import FQA from '../components/FQA.astro';
   <Footer />
 
   <!-- 网站公告弹窗 -->
-  <PromotionContent />
+  
 
 </Layout>
