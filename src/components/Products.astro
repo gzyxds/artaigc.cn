@@ -34,7 +34,7 @@ const defaultProducts: Product[] = [
     originalPrice: 6800,
     features: ["声音克隆", "形象克隆", "视频生成", "AI文案", "热点话题"],
     demoUrl: "https://v.cnai.art",
-    purchaseUrl: "https://auth.cnai.art",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "blue"
   },
   {
@@ -47,7 +47,7 @@ const defaultProducts: Product[] = [
     originalPrice: 9800,
     features: ["多格式导入", "向量检索", "智能问答", "多端支持"],
     demoUrl: "https://www.cnai.art",
-    purchaseUrl: "https://auth.cnai.art",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "green"
   },
   {
@@ -60,7 +60,7 @@ const defaultProducts: Product[] = [
     originalPrice: 3800,
     features: ["AI绘画", "智能聊天", "场景定制", "一键部署"],
     demoUrl: "https://cnai.art",
-    purchaseUrl: "https://auth.cnai.art",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "green"
   },
   {
@@ -73,7 +73,7 @@ const defaultProducts: Product[] = [
     originalPrice: 4698,
     features: ["快速生成大纲", "一键生成论文", "可下载资料", "走马灯通知"],
     demoUrl: "https://www.cnai.art",
-    purchaseUrl: "https://auth.cnai.art",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "purple"
   },
   {
@@ -139,21 +139,23 @@ const {
 } = Astro.props;
 ---
 
-<div class="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
-  <!-- 背景装饰 -->
-  <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-b-[100%] blur-xl"></div>
-  
-  <!-- 装饰元素 - 左上角 -->
-  <div class="absolute left-0 top-1/4 w-64 h-64 bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
-  
-  <!-- 装饰元素 - 右上角 -->
-  <div class="absolute right-0 top-1/3 w-80 h-80 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
-  
-  <!-- 装饰元素 - 左下角 -->
-  <div class="absolute left-1/4 bottom-1/4 w-72 h-72 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
-  
-  <!-- 装饰元素 - 右下角 -->
-  <div class="absolute right-1/4 bottom-1/3 w-60 h-60 bg-accent-100/40 dark:bg-accent-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 3s;"></div>
+<!-- 产品展示区域 -->
+<section class="py-10 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+  <div class="relative">
+    <!-- 背景装饰 -->
+    <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-b-[100%] blur-xl"></div>
+    
+    <!-- 装饰元素 - 左上角 -->
+    <div class="absolute left-0 top-1/4 w-64 h-64 bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
+    
+    <!-- 装饰元素 - 右上角 -->
+    <div class="absolute right-0 top-1/3 w-80 h-80 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
+    
+    <!-- 装饰元素 - 左下角 -->
+    <div class="absolute left-1/4 bottom-1/4 w-72 h-72 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+    
+    <!-- 装饰元素 - 右下角 -->
+    <div class="absolute right-1/4 bottom-1/3 w-60 h-60 bg-accent-100/40 dark:bg-accent-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 3s;"></div>
 
   <div class="container-custom">
     <!-- 页面标题和视图切换 -->
@@ -199,73 +201,77 @@ const {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
         {products.map((product, index) => (
           <div 
-            class="group overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-xl h-full flex flex-col transform hover:-translate-y-1 dark:bg-slate-800 dark:border-gray-700"
+            class="group relative rounded-xl p-3 sm:p-4 md:p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-200 flex flex-col h-full overflow-hidden"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
           >
-            <div class="relative overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 aspect-[16/9]">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-              <img 
-                src={product.image} 
-                alt={product.title}
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-bl-lg z-20 shadow-md">
-                {product.category}
-              </div>
-              <div class="absolute bottom-2 left-2 z-20">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 text-primary-600 dark:bg-gray-800/90 dark:text-primary-400 shadow-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span>
-                  热门
-                </span>
+            <!-- 商品图片区域 - 16:9比例 -->
+            <div class="relative mb-3 sm:mb-4">
+              <div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20" style="aspect-ratio: 16/9;">
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-full shadow-md">
+                  {product.category}
+                </div>
               </div>
             </div>
-            <div class="p-4 sm:p-5 md:p-6 flex-grow flex flex-col">
-              <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white line-clamp-2 group-hover:text-primary-500 transition-colors duration-300">
+            
+            <!-- 商品信息区域 -->
+            <div class="flex-1 flex flex-col">
+              <h3 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-200 line-clamp-2 leading-tight mb-2">
                 {product.title}
               </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-3 sm:mb-4 line-clamp-2 flex-grow">
+              
+              <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2 mb-3">
                 {product.description}
               </p>
-              <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                {product.features.map(feature => (
-                  <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
+
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                {product.features.slice(0, 3).map(feature => (
+                  <span class="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs rounded-full transition-colors duration-200">
                     {feature}
                   </span>
                 ))}
               </div>
-              <div class="flex items-center justify-between mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
-                <div>
-                  <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
-                  {product.originalPrice && (
-                    <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
-                  )}
+              
+              <div class="mt-auto pt-3 border-t border-gray-100 dark:border-gray-700">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="text-lg sm:text-xl font-bold text-primary-500 dark:text-primary-400">
+                    ¥{product.price}
+                    {product.originalPrice && (
+                      <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
+                    )}
+                  </div>
                 </div>
-                <div class="flex space-x-2">
-                  <a 
-                    href={product.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                    演示
-                  </a>
-                  <a 
-                    href={product.purchaseUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    购买
-                  </a>
-                </div>
+                <div class="flex gap-2">
+                   <a 
+                     href={product.demoUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 text-sm font-medium"
+                   >
+                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                     </svg>
+                     演示
+                   </a>
+                   <a 
+                     href={product.purchaseUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg"
+                   >
+                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                     </svg>
+                     购买
+                   </a>
+                 </div>
               </div>
             </div>
           </div>
@@ -278,71 +284,62 @@ const {
       <div class="space-y-6 md:space-y-8">
         {products.map((product, index) => (
           <div 
-            class="group overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-xl transform hover:-translate-y-1 dark:bg-slate-800 dark:border-gray-700"
+            class="group relative rounded-xl p-4 sm:p-5 md:p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-200 overflow-hidden"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
           >
-            <div class="flex flex-col md:flex-row">
-              <div class="md:w-1/3 relative overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-                <img 
-                  src={product.image} 
-                  alt={product.title}
-                  class="w-full h-48 md:h-full object-cover"
-                  loading="lazy"
-                />
-                <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-bl-lg z-20 shadow-md">
-                  {product.category}
-                </div>
-                <div class="absolute bottom-2 left-2 z-20">
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 text-primary-600 dark:bg-gray-800/90 dark:text-primary-400 shadow-sm">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span>
-                    热门
-                  </span>
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+              <div class="md:w-1/4 flex-shrink-0">
+                <div class="w-full rounded-lg bg-primary-500 shadow-md group-hover:shadow-lg transition-all duration-200 overflow-hidden" style="aspect-ratio: 16/9;">
+                  <img 
+                    src={product.image} 
+                    alt={product.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
               </div>
-              <div class="p-4 sm:p-5 md:p-6 md:w-2/3">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
-                  {product.title}
-                </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-3 sm:mb-4">
-                  {product.description}
-                </p>
-                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                  {product.features.map(feature => (
-                    <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-                <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
-                  <div>
-                    <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
+              <div class="flex-1">
+                 <div class="flex items-center gap-2 mb-2">
+                   <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-200">
+                     {product.title}
+                   </h3>
+                   <span class="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs rounded-full transition-colors duration-200 whitespace-nowrap">
+                     {product.category}
+                   </span>
+                 </div>
+                 <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-3 sm:mb-4">
+                   {product.description}
+                 </p>
+                 <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                   {product.features.map(feature => (
+                     <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full transition-colors duration-200">
+                       {feature}
+                     </span>
+                   ))}
+                 </div>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+                  <div class="text-lg sm:text-xl font-bold text-primary-500 dark:text-primary-400">
+                    ¥{product.price}
                     {product.originalPrice && (
                       <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
                     )}
                   </div>
-                  <div class="flex space-x-2">
+                  <div class="flex gap-2 sm:gap-3">
                     <a 
-                      href={product.demoUrl}
+                       href={product.demoUrl}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-center rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 text-sm font-medium"
+                     >
+                       演示
+                     </a>
+                     <a 
+                       href={product.purchaseUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg"
+                      class="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white text-center rounded-lg hover:bg-primary-600 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                      演示
-                    </a>
-                    <a 
-                      href={product.purchaseUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
                       购买
                     </a>
                   </div>
@@ -404,7 +401,7 @@ const {
                     href={product.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg"
+                    class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 transition-all duration-200"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -415,7 +412,7 @@ const {
                     href={product.purchaseUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg"
+                    class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
