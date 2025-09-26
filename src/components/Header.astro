@@ -99,43 +99,79 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
       <nav class="hidden lg:flex items-center space-x-2 xl:space-x-4 2xl:space-x-6">
         <a href="/" class="nav-link">首页</a>
 
-        <!-- 优化的下拉菜单组件 -->
+        <!-- 企业级简约下拉菜单组件 -->
         {Object.entries(menuData).map(([key, items]) => {
           const menuName = key === 'products' ? '产品中心' : key === 'docs' ? '产品文档' : '支持与服务';
           return (
             <div class="relative group">
-              <button class="nav-link flex items-center whitespace-nowrap">
-                {menuName}
-                <svg class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.chevron} />
+              <button class="nav-link flex items-center whitespace-nowrap group/btn">
+                <span class="group-hover/btn:text-blue-600 dark:group-hover/btn:text-blue-400 transition-colors duration-200">
+                  {menuName}
+                </span>
+                <svg class="ml-2 h-3.5 w-3.5 transition-all duration-300 group-hover:rotate-180 text-gray-400 group-hover/btn:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={icons.chevron} />
                 </svg>
               </button>
-              <div class="absolute left-0 mt-3 w-[520px] rounded-2xl bg-white dark:bg-gray-800 shadow-2xl border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                <div class="p-6">
-                  <div class="grid grid-cols-2 gap-4">
+              
+              <!-- 企业级简约下拉容器 -->
+              <div class="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-[480px] bg-white dark:bg-gray-900 shadow-xl border border-gray-200/60 dark:border-gray-700/60 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0 backdrop-blur-sm">
+                
+                <!-- 箭头指示器 -->
+                <div class="absolute -top-2 left-1/2 transform -translate-x-1/2">
+                  <div class="w-4 h-4 bg-white dark:bg-gray-900 border-l border-t border-gray-200/60 dark:border-gray-700/60 transform rotate-45"></div>
+                </div>
+                
+                <!-- 菜单标题区域 -->
+                <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800">
+                  <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 tracking-wide">
+                    {menuName}
+                  </h3>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    {key === 'products' ? '探索我们的AI产品解决方案' : 
+                     key === 'docs' ? '查看详细的产品文档和指南' : 
+                     '获取专业支持和服务'}
+                  </p>
+                </div>
+
+                <!-- 菜单项网格 -->
+                <div class="p-4">
+                  <div class="grid grid-cols-2 gap-2">
                     {items.map((item) => (
-                      <a href={item.url} target={(item as MenuItem).target || undefined} class="menu-item group/item">
-                        <div class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 transition-all duration-300 border border-transparent hover:border-blue-100 dark:hover:border-blue-800/50 hover:shadow-lg">
-                          <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/50 dark:to-indigo-900/50 text-blue-600 dark:text-blue-400 group-hover/item:scale-110 group-hover/item:shadow-lg transition-all duration-300 border border-blue-100 dark:border-blue-800/50">
-                            <span class="w-6 h-6" set:html={Icon({ name: item.icon, className: "w-6 h-6" })}></span>
-                          </span>
+                      <a href={item.url} target={(item as MenuItem).target || undefined} class="enterprise-menu-item group/item">
+                        <div class="flex items-start space-x-3 p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                          
+                          <!-- 简约图标区域 -->
+                          <div class="flex-shrink-0 mt-0.5">
+                            <div class="w-8 h-8 rounded-md bg-gray-100 dark:bg-gray-800 flex items-center justify-center group-hover/item:bg-blue-50 dark:group-hover/item:bg-blue-900/30 transition-colors duration-200">
+                              <span class="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400 transition-colors duration-200" set:html={Icon({ name: item.icon, className: "w-4 h-4" })}></span>
+                            </div>
+                          </div>
+                          
+                          <!-- 文本内容区域 -->
                           <div class="flex-1 min-w-0">
-                            <div class="font-semibold text-gray-900 dark:text-gray-100 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400 transition-colors duration-300 text-sm">
+                            <div class="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400 transition-colors duration-200 leading-tight">
                               {item.name}
                             </div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400 truncate mt-1 group-hover/item:text-gray-600 dark:group-hover/item:text-gray-300 transition-colors duration-300">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed line-clamp-2">
                               {item.desc}
                             </div>
                           </div>
-                          <svg class="h-5 w-5 text-gray-300 dark:text-gray-600 opacity-0 group-hover/item:opacity-100 group-hover/item:text-blue-500 dark:group-hover/item:text-blue-400 transition-all duration-300 transform group-hover/item:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.arrow} />
-                          </svg>
+                          
+                          <!-- 简约箭头指示器 -->
+                          <div class="flex-shrink-0 mt-1">
+                            <svg class="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 opacity-0 group-hover/item:opacity-100 group-hover/item:text-blue-500 dark:group-hover/item:text-blue-400 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
                         </div>
                       </a>
                     ))}
                   </div>
-                </div>
-              </div>
+
+                 <!-- 底部灰色装饰线 -->
+                 <div class="h-px bg-gray-200 dark:bg-gray-700"></div>
+               </div>
+               </div>
             </div>
           );
         })}
@@ -168,7 +204,7 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
             href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center px-4 xl:px-6 py-2 xl:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium xl:font-semibold text-sm xl:text-base shadow-lg hover:shadow-xl transition-all rounded-lg"
+            class="inline-flex items-center px-4 xl:px-6 py-2 xl:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium xl:font-semibold text-sm xl:text-base shadow-lg hover:shadow-xl transition-all"
           >
             <span>立即购买</span>
           </a>
@@ -177,7 +213,7 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
             href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center px-4 xl:px-6 py-2 xl:py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-medium xl:font-semibold text-sm xl:text-base shadow-lg hover:shadow-xl transition-all rounded-lg border border-gray-200 dark:border-gray-600"
+            class="inline-flex items-center px-4 xl:px-6 py-2 xl:py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-medium xl:font-semibold text-sm xl:text-base shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-600"
           >
             <span>登录/注册</span>
           </a>
@@ -223,15 +259,15 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
         {Object.entries(menuData).map(([key, items]) => {
           const menuName = key === 'products' ? '产品中心' : key === 'docs' ? '产品文档' : '支持与服务';
           return (
-            <div x-data="{expanded: false}" class="space-y-2">
+            <div x-data="{expanded: false}" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow-sm">
               <button
                 x-on:click="expanded = !expanded"
-                class="mobile-nav-item w-full flex items-center justify-between group"
+                class="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group"
               >
-                <span x-bind:class="{'text-primary-600 dark:text-primary-400': expanded}">{menuName}</span>
+                <span class="font-semibold text-gray-900 dark:text-white" x-bind:class="{'text-blue-600 dark:text-blue-400': expanded}">{menuName}</span>
                 <svg
-                  x-bind:class="{'rotate-180 text-primary-600 dark:text-primary-400': expanded}"
-                  class="h-5 w-5 transition-all duration-200 group-hover:text-primary-600 dark:group-hover:text-primary-400"
+                  x-bind:class="{'rotate-180 text-blue-600 dark:text-blue-400': expanded}"
+                  class="h-5 w-5 text-gray-500 dark:text-gray-400 transition-all duration-200 group-hover:text-blue-600 dark:group-hover:text-blue-400"
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.chevron} />
@@ -239,19 +275,23 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
               </button>
 
               <div x-show="expanded" x-collapse x-cloak>
-                <div class="pt-2 pl-4 border-l-2 border-primary-100 dark:border-primary-900">
-                  <div class="grid grid-cols-2 gap-2">
-                    {items.map(item => (
-                      <a href={item.url} target={(item as MenuItem).target || undefined} class="mobile-menu-item">
-                        <div class="flex flex-col">
-                          <div class="flex items-center space-x-2">
-                            <span class="w-4 h-4 text-blue-600 dark:text-blue-400" set:html={Icon({ name: item.icon, className: "w-4 h-4" })}></span>
-                            <span class="font-medium text-blue-600 dark:text-blue-400">{item.name}</span>
+                <div class="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-750">
+                  <div class="p-4">
+                    <div class="grid grid-cols-2 gap-3">
+                      {items.map(item => (
+                        <a href={item.url} target={(item as MenuItem).target || undefined} class="group block p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600 hover:shadow-sm">
+                          <div class="flex flex-col items-center text-center space-y-2">
+                            <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 transition-colors duration-200">
+                              <span class="w-5 h-5 text-blue-600 dark:text-blue-400" set:html={Icon({ name: item.icon, className: "w-5 h-5" })}></span>
+                            </div>
+                            <div class="space-y-1">
+                              <div class="font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 text-sm leading-tight">{item.name}</div>
+                              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{item.desc}</div>
+                            </div>
                           </div>
-                          <span class="text-xs text-gray-500 mt-1">{item.desc}</span>
-                        </div>
-                      </a>
-                    ))}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -266,19 +306,21 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
       </div>
 
       <!-- 移动端用户操作 -->
-      <div class="pt-6 space-y-4">
-        <a
-          href="https://auth.cnai.art/regist.htm"
-          class="block w-full text-center px-4 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors duration-200"
-        >
-          会员中心
-        </a>
-        <a
-          href="https://auth.cnai.art/regist.htm"
-          class="block w-full text-center px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium transition-colors duration-200"
-        >
-          登录/注册
-        </a>
+      <div class="pt-6">
+        <div class="flex space-x-3">
+          <a
+            href="https://auth.cnai.art/regist.htm"
+            class="flex-1 text-center px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors duration-200"
+          >
+            会员中心
+          </a>
+          <a
+            href="https://auth.cnai.art/regist.htm"
+            class="flex-1 text-center px-4 py-3 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium transition-colors duration-200"
+          >
+            登录/注册
+          </a>
+        </div>
       </div>
     </nav>
   </div>
