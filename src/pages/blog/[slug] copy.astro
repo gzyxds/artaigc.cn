@@ -179,15 +179,14 @@ const relatedPosts = allPosts
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {relatedPosts.map((relatedPost) => (
                     <a href={'/blog/' + relatedPost.id.replace('.md', '')} 
-                       class="group block bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                       class="group block bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
                       <div class="relative aspect-[16/9] overflow-hidden">
                         <img 
                           src={relatedPost.image} 
                           alt={relatedPost.title}
-                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                          class="w-full h-full object-cover"
                           loading="lazy"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
                       <div class="p-6">
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2 mb-2">

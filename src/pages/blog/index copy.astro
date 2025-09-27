@@ -59,17 +59,16 @@ const categories = [...new Set(posts.map(post => post.category))];
       <!-- 博客文章卡片网格 -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post, index) => (
-          <article class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 slide-up border border-gray-100 dark:border-gray-700 hover:-translate-y-1" 
+          <article class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 slide-up border border-gray-100 dark:border-gray-700" 
                    style={'animation-delay: ' + (index * 100) + 'ms'}>
             <!-- 文章封面图片 -->
             <a href={'/blog/' + post.id.replace('.md', '')} class="block relative overflow-hidden aspect-[16/9]">
               <img 
                 src={post.image} 
                 alt={post.title}
-                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
             <!-- 文章内容区域 -->
             <div class="p-6">

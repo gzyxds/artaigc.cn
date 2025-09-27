@@ -236,15 +236,14 @@ const relatedPosts = allPosts
            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
              {relatedPosts.map((relatedPost) => (
                <a href={'/blog/' + relatedPost.id.replace('.md', '')} 
-                  class="group block bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:-translate-y-1">
+                  class="group block bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300">
                  <div class="relative aspect-[16/9] overflow-hidden">
                    <img 
                      src={relatedPost.image} 
                      alt={relatedPost.title}
-                     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                     class="w-full h-full object-cover"
                      loading="lazy"
                    />
-                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                  </div>
                  <div class="p-6">
                    <h4 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 mb-3">
@@ -494,9 +493,12 @@ const relatedPosts = allPosts
       // 添加平滑滚动点击事件
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const href = link.getAttribute('href');
+        if (href) {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       });
       
@@ -530,9 +532,10 @@ const relatedPosts = allPosts
     shareButtons.forEach(button => {
       button.addEventListener('click', (e) => {
         // 添加点击反馈动画
-        button.style.transform = 'scale(0.95)';
+        const htmlButton = button as HTMLElement;
+        htmlButton.style.transform = 'scale(0.95)';
         setTimeout(() => {
-          button.style.transform = 'scale(1)';
+          htmlButton.style.transform = 'scale(1)';
         }, 150);
       });
     });

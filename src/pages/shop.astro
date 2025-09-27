@@ -5,7 +5,8 @@ import Layout from '../layouts/Layout.astro';
 // 页面组件
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import ShopModule from '../components/Hero/ShopModule.astro';
+import ShopModule from '../components/Hero/ShopModule.astro';// 数字人
+import Carousel from '../components/Hero/Carousel.astro';
 
 // 功能组件
 import Aisd from '../components/Aisd.astro';
@@ -14,13 +15,14 @@ import Calltoaction from '../components/Calltoaction.astro';
 import Terminal from '../components/Terminal.astro';
 ---
 
-<Layout 
+<Layout
   title="艺创AI_AI系统源码_AI数字人源码_AI数字人系统源码"
   description="艺创AI提供AI数字人源码、AI数字人系统源码、AI数字人SaaS系统源码等产品,支持私有化部署,提供数字人克隆、语音合成、视频生成等功能,是企业打造数字化转型的理想选择。"
   keywords="AI数字人源码,AI数字人系统源码,AI数字人SaaS系统源码,数字人源码,数字人系统源码,数字人saas源码"
 >
   <Header />
-  <ShopModule />
+
+  <Carousel />
   <Aisd />
 
   <!-- 产品展示区域 -->
@@ -284,4 +286,3 @@ import Terminal from '../components/Terminal.astro';
     <Contact />
     <Footer />
 </Layout>
-    

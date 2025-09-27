@@ -112,23 +112,23 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
                   <path stroke-linecap="round" stroke-linejoin="round" d={icons.chevron} />
                 </svg>
               </button>
-              
+
               <!-- 企业级简约下拉容器 -->
               <div class="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-[480px] bg-white dark:bg-gray-900 shadow-xl border border-gray-200/60 dark:border-gray-700/60 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0 backdrop-blur-sm">
-                
+
                 <!-- 箭头指示器 -->
                 <div class="absolute -top-2 left-1/2 transform -translate-x-1/2">
                   <div class="w-4 h-4 bg-white dark:bg-gray-900 border-l border-t border-gray-200/60 dark:border-gray-700/60 transform rotate-45"></div>
                 </div>
-                
+
                 <!-- 菜单标题区域 -->
                 <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800">
                   <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 tracking-wide">
                     {menuName}
                   </h3>
                   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {key === 'products' ? '探索我们的AI产品解决方案' : 
-                     key === 'docs' ? '查看详细的产品文档和指南' : 
+                    {key === 'products' ? '探索我们的AI产品解决方案' :
+                     key === 'docs' ? '查看详细的产品文档和指南' :
                      '获取专业支持和服务'}
                   </p>
                 </div>
@@ -139,14 +139,14 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
                     {items.map((item) => (
                       <a href={item.url} target={(item as MenuItem).target || undefined} class="enterprise-menu-item group/item">
                         <div class="flex items-start space-x-3 p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
-                          
+
                           <!-- 简约图标区域 -->
                           <div class="flex-shrink-0 mt-0.5">
                             <div class="w-8 h-8 rounded-md bg-gray-100 dark:bg-gray-800 flex items-center justify-center group-hover/item:bg-blue-50 dark:group-hover/item:bg-blue-900/30 transition-colors duration-200">
                               <span class="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400 transition-colors duration-200" set:html={Icon({ name: item.icon, className: "w-4 h-4" })}></span>
                             </div>
                           </div>
-                          
+
                           <!-- 文本内容区域 -->
                           <div class="flex-1 min-w-0">
                             <div class="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400 transition-colors duration-200 leading-tight">
@@ -156,7 +156,7 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
                               {item.desc}
                             </div>
                           </div>
-                          
+
                           <!-- 简约箭头指示器 -->
                           <div class="flex-shrink-0 mt-1">
                             <svg class="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 opacity-0 group-hover/item:opacity-100 group-hover/item:text-blue-500 dark:group-hover/item:text-blue-400 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -381,7 +381,7 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
 
   // 使用passive监听器优化性能
   window.addEventListener('scroll', handleScroll, { passive: true });
-  
+
   // 初始化
   document.addEventListener('DOMContentLoaded', () => {
     header = document.querySelector('header');

@@ -83,13 +83,13 @@ if (highlightText) {
     <div class={`max-w-[1200px] ${alignment === 'center' ? 'mx-auto text-center' : 'ml-0 mr-auto text-left'} py-6`}>
       <!-- 标题区域 - 增强的动画和排版 -->
       <h1 
-        class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-wide mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-blue-400 dark:to-cyan-400 animate-slide-down [text-wrap:balance]"
+        class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-wide mb-4 sm:mb-6 text-blue-600 dark:text-blue-400 animate-slide-down [text-wrap:balance]"
         style="animation-delay: 100ms"
       >
         {highlightText ? (
           <>
             {titleStart}
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 dark:from-blue-300 dark:via-blue-400 dark:to-blue-500 animate-pulse-subtle">
+            <span class="text-blue-600 dark:text-blue-400 animate-pulse-subtle">
               {highlightText}
             </span>
             {titleEnd}
