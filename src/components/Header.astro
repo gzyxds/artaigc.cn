@@ -167,10 +167,12 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
                       </a>
                     ))}
                   </div>
+                </div>
 
-                 <!-- 底部灰色装饰线 -->
-                 <div class="h-px bg-gray-200 dark:bg-gray-700"></div>
-               </div>
+                <!-- 底部灰色装饰线 - 位置向下调整，增加间距 -->
+                <div class="px-4 pb-3">
+                  <div class="h-px bg-gray-200 dark:bg-gray-700 opacity-60"></div>
+                </div>
                </div>
             </div>
           );
@@ -328,12 +330,12 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
 
 <style>
   .nav-link {
-    @apply px-2 lg:px-3 xl:px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 relative overflow-hidden text-sm lg:text-sm xl:text-base whitespace-nowrap;
+    @apply px-2 lg:px-3 xl:px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-300 relative overflow-hidden text-sm lg:text-sm xl:text-base whitespace-nowrap;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary-600 dark:bg-primary-400 transform scale-x-0 transition-transform duration-300 origin-left;
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-400 transform scale-x-0 transition-transform duration-300 origin-left;
   }
 
   .nav-link:hover::after {
