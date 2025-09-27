@@ -103,10 +103,10 @@ const defaultProducts: Product[] = [
     color: "yellow"
   },
   {
-    id: 5,  
-    title: "艺创AI数字人SaaS系统2.0-PRO源码版",
+    id: 5,
+    title: "艺创AI数字人SaaS系统2.0",
     description: "支持多格式文档智能解析、内容提取与结构化，适用于企业知识管理与数据挖掘。",
-    image: "https://server.mddai.cn/uploads/images/20241128195610379379917.png",
+    image: "/assets/szrpro.webp",
     category: "AI数字人",
     price: 6600,
     originalPrice: 9800,
@@ -131,9 +131,9 @@ const defaultProducts: Product[] = [
 ];
 
 // 默认属性值
-const { 
-  products = defaultProducts, 
-  title = "我们的产品", 
+const {
+  products = defaultProducts,
+  title = "我们的产品",
   showViewToggle = true,
   defaultView = 'grid'
 } = Astro.props;
@@ -144,16 +144,16 @@ const {
   <div class="relative">
     <!-- 背景装饰 -->
     <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-b-[100%] blur-xl"></div>
-    
+
     <!-- 装饰元素 - 左上角 -->
     <div class="absolute left-0 top-1/4 w-64 h-64 bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
-    
+
     <!-- 装饰元素 - 右上角 -->
     <div class="absolute right-0 top-1/3 w-80 h-80 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
-    
+
     <!-- 装饰元素 - 左下角 -->
     <div class="absolute left-1/4 bottom-1/4 w-72 h-72 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
-    
+
     <!-- 装饰元素 - 右下角 -->
     <div class="absolute right-1/4 bottom-1/3 w-60 h-60 bg-accent-100/40 dark:bg-accent-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 3s;"></div>
 
@@ -171,7 +171,7 @@ const {
       <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-6">
         探索我们的创新产品系列，为您的业务提供最佳解决方案
       </p>
-      
+
       {showViewToggle && (
         <div class="flex items-center justify-start space-x-3 p-2 rounded-lg">
           <button id="grid-view" class={`p-3 rounded-md ${defaultView === 'grid' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="网格视图">
@@ -200,7 +200,7 @@ const {
     <div id="grid-view-container" class={defaultView === 'grid' ? '' : 'hidden'}>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
         {products.map((product, index) => (
-          <div 
+          <div
             class="group relative rounded-xl p-3 sm:p-4 md:p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-200 flex flex-col h-full overflow-hidden"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
@@ -208,8 +208,8 @@ const {
             <!-- 商品图片区域 - 16:9比例 -->
             <div class="relative mb-3 sm:mb-4">
               <div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20" style="aspect-ratio: 16/9;">
-                <img 
-                  src={product.image} 
+                <img
+                  src={product.image}
                   alt={product.title}
                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
@@ -220,13 +220,13 @@ const {
                 </div>
               </div>
             </div>
-            
+
             <!-- 商品信息区域 -->
             <div class="flex-1 flex flex-col">
               <h3 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-200 line-clamp-2 leading-tight mb-2">
                 {product.title}
               </h3>
-              
+
               <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2 mb-3">
                 {product.description}
               </p>
@@ -238,7 +238,7 @@ const {
                   </span>
                 ))}
               </div>
-              
+
               <div class="mt-auto pt-3 border-t border-gray-100 dark:border-gray-700">
                 <div class="flex items-center justify-between mb-3">
                   <div class="text-lg sm:text-xl font-bold text-primary-500 dark:text-primary-400">
@@ -249,7 +249,7 @@ const {
                   </div>
                 </div>
                 <div class="flex gap-2">
-                   <a 
+                   <a
                      href={product.demoUrl}
                      target="_blank"
                      rel="noopener noreferrer"
@@ -260,7 +260,7 @@ const {
                      </svg>
                      演示
                    </a>
-                   <a 
+                   <a
                      href={product.purchaseUrl}
                      target="_blank"
                      rel="noopener noreferrer"
@@ -283,7 +283,7 @@ const {
     <div id="list-view-container" class={defaultView === 'list' ? '' : 'hidden'}>
       <div class="space-y-6 md:space-y-8">
         {products.map((product, index) => (
-          <div 
+          <div
             class="group relative rounded-xl p-4 sm:p-5 md:p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-200 overflow-hidden"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
@@ -291,8 +291,8 @@ const {
             <div class="flex flex-col md:flex-row gap-4 md:gap-6">
               <div class="md:w-1/4 flex-shrink-0">
                 <div class="w-full rounded-lg bg-primary-500 shadow-md group-hover:shadow-lg transition-all duration-200 overflow-hidden" style="aspect-ratio: 16/9;">
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.title}
                     class="w-full h-full object-cover"
                     loading="lazy"
@@ -326,7 +326,7 @@ const {
                     )}
                   </div>
                   <div class="flex gap-2 sm:gap-3">
-                    <a 
+                    <a
                        href={product.demoUrl}
                        target="_blank"
                        rel="noopener noreferrer"
@@ -334,7 +334,7 @@ const {
                      >
                        演示
                      </a>
-                     <a 
+                     <a
                        href={product.purchaseUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -355,7 +355,7 @@ const {
     <div id="card-view-container" class={defaultView === 'card' ? '' : 'hidden'}>
       <div class="grid grid-cols-1 gap-6 md:gap-8">
         {products.map((product, index) => (
-          <div 
+          <div
             class="group overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-xl transform hover:-translate-y-1 dark:bg-slate-800 dark:border-gray-700"
             transition:animate="slide"
             style={`transition-delay: ${index * 0.1}s`}
@@ -363,8 +363,8 @@ const {
             <div class="p-4 sm:p-5 md:p-6">
               <div class="flex items-center mb-4">
                 <div class="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 ring-2 ring-primary-100 dark:ring-primary-800">
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.title}
                     class="w-full h-full object-cover"
                     loading="lazy"
@@ -397,7 +397,7 @@ const {
                   )}
                 </div>
                 <div class="flex space-x-2">
-                  <a 
+                  <a
                     href={product.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -408,7 +408,7 @@ const {
                     </svg>
                     演示
                   </a>
-                  <a 
+                  <a
                     href={product.purchaseUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -440,7 +440,7 @@ const {
       transform: scale(1.05);
     }
   }
-  
+
   .animate-pulse-slow {
     animation: pulse-slow 8s infinite ease-in-out;
   }
@@ -452,50 +452,50 @@ const {
     const gridViewBtn = document.getElementById('grid-view');
     const listViewBtn = document.getElementById('list-view');
     const cardViewBtn = document.getElementById('card-view');
-    
+
     const gridViewContainer = document.getElementById('grid-view-container');
     const listViewContainer = document.getElementById('list-view-container');
     const cardViewContainer = document.getElementById('card-view-container');
-    
+
     // 检查元素是否存在
-    if (!gridViewBtn || !listViewBtn || !cardViewBtn || 
+    if (!gridViewBtn || !listViewBtn || !cardViewBtn ||
         !gridViewContainer || !listViewContainer || !cardViewContainer) {
       console.error('无法找到视图切换元素');
       return;
     }
-    
+
     // 默认显示网格视图
     let currentView = 'grid';
-    
+
     // 从本地存储中获取上次选择的视图
     const savedView = localStorage.getItem('productViewMode');
     if (savedView && ['grid', 'list', 'card'].includes(savedView)) {
       switchView(savedView as 'grid' | 'list' | 'card');
     }
-    
+
     // 切换视图函数
     function switchView(view: 'grid' | 'list' | 'card') {
       // 隐藏所有视图
       if (gridViewContainer) gridViewContainer.classList.add('hidden');
       if (listViewContainer) listViewContainer.classList.add('hidden');
       if (cardViewContainer) cardViewContainer.classList.add('hidden');
-      
+
       // 重置所有按钮样式
       if (gridViewBtn) {
         gridViewBtn.classList.remove('bg-primary-500', 'text-white');
         gridViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
       }
-      
+
       if (listViewBtn) {
         listViewBtn.classList.remove('bg-primary-500', 'text-white');
         listViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
       }
-      
+
       if (cardViewBtn) {
         cardViewBtn.classList.remove('bg-primary-500', 'text-white');
         cardViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
       }
-      
+
       // 显示选中的视图
       if (view === 'grid' && gridViewContainer && gridViewBtn) {
         gridViewContainer.classList.remove('hidden');
@@ -510,12 +510,12 @@ const {
         cardViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
         cardViewBtn.classList.add('bg-primary-500', 'text-white');
       }
-      
+
       // 保存当前视图到本地存储
       localStorage.setItem('productViewMode', view);
       currentView = view;
     }
-    
+
     // 添加按钮点击事件
     if (gridViewBtn) gridViewBtn.addEventListener('click', () => switchView('grid'));
     if (listViewBtn) listViewBtn.addEventListener('click', () => switchView('list'));
