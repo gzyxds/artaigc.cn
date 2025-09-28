@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # JetBrains IDE配置目录
 .idea/
+
+# 设计样式参考目录
+设计样式参考/
