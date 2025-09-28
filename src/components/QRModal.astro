@@ -1,7 +1,7 @@
 ---
 /**
  * 二维码模态框组件
- * 
+ *
  * 功能特性：
  * - 响应式设计，适配移动端和桌面端
  * - 支持自定义标题、描述和二维码图片
@@ -9,7 +9,7 @@
  * - 优化的动画效果和过渡
  * - 完整的可访问性支持
  * - 与其他组件的交互集成
- * 
+ *
  * @component QRModal
  */
 
@@ -24,16 +24,16 @@ interface Props {
   isOpen?: boolean;
 }
 
-const { 
-  qrCodeUrl, 
-  title = "扫描二维码联系客服", 
-  description = "使用微信扫描下方二维码，即可添加客服微信", 
-  isOpen = false 
+const {
+  qrCodeUrl,
+  title = "扫描二维码联系客服",
+  description = "使用微信扫描下方二维码，即可添加客服微信",
+  isOpen = false
 } = Astro.props;
 ---
 
-<div 
-  class={`modal-overlay ${isOpen ? 'active' : ''}`} 
+<div
+  class={`modal-overlay ${isOpen ? 'active' : ''}`}
   id="qr-modal"
   role="dialog"
   aria-labelledby="modal-title"
@@ -41,9 +41,9 @@ const {
   aria-hidden={!isOpen}
 >
   <div class="modal-content">
-    <button 
-      class="close-button" 
-      aria-label="关闭二维码" 
+    <button
+      class="close-button"
+      aria-label="关闭二维码"
       id="close-modal"
       tabindex="0"
     >
@@ -230,7 +230,7 @@ const {
 
       // 每次打开模态框时重新绑定关闭按钮事件
       bindCloseButton();
-      
+
       // 聚焦到关闭按钮，提高可访问性
       setTimeout(() => {
         const closeButton = document.getElementById('close-modal');

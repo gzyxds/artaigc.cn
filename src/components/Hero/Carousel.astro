@@ -52,6 +52,8 @@ interface ProductCard {
   style: string;
   /** 卡片类型 */
   type?: string;
+  /** 背景颜色类名 */
+  bgColor?: string;
 }
 
 /**
@@ -71,25 +73,25 @@ export interface Props {
 // 默认轮播数据配置
 const defaultSlides: CarouselSlide[] = [
   {
-    id: 1, order: 1, title: '全方位AI解决方案', subtitle: '智能AI系统',
+    id: 1, order: 1, title: '全方位AI解决方案', subtitle: '智能AI系统 · 一站式企业级服务',
     description: '支持AI数字人、知识库、聊天绘画、论文创作等多种AI应用，为企业提供专业安全的AI服务，助力数字化转型升级',
     imagePath: '/assets/carousel5.webp', imageAlt: '全方位AI解决方案',
     primaryButtonText: '立即体验', primaryButtonHref: '/demo'
   },
   {
-    id: 2, order: 2, title: 'AI数字人系统', subtitle: '数字人克隆技术',
+    id: 2, order: 2, title: 'AI数字人系统', subtitle: '数字人克隆技术 · 声音形象双克隆',
     description: '支持声音克隆、形象克隆、数字人合成等功能，为企业主、个人博主打造专属数字人IP，实现24小时在线服务',
     imagePath: '/assets/carouseszr.webp', imageAlt: 'AI数字人系统',
     primaryButtonText: '了解详情', primaryButtonHref: '/human'
   },
   {
-    id: 3, order: 3, title: '企业知识库系统', subtitle: '智能问答平台',
+    id: 3, order: 3, title: '企业知识库系统', subtitle: '智能问答平台 · 文档秒变知识库',
     description: '企业可以上传产品文档、合同内容等信息，完成训练后提供智能问答服务，提高企业内部信息流动性和客户服务效率',
     imagePath: '/assets/carousel3.webp', imageAlt: '企业知识库系统',
     primaryButtonText: '立即咨询', primaryButtonHref: '/ai'
   },
   {
-    id: 4, order: 4, title: 'AI聊天绘画系统', subtitle: '创意无限可能',
+    id: 4, order: 4, title: 'AI聊天绘画系统', subtitle: '创意无限可能 · 文字秒出高清图',
     description: '集成先进的AI绘画技术，支持文字生成图片、图片编辑、创意设计等功能，为用户提供强大的AI创作工具',
     imagePath: '/assets/carousel4.webp', imageAlt: 'AI聊天绘画系统',
     primaryButtonText: '开始创作', primaryButtonHref: '/chat'
@@ -101,7 +103,7 @@ const defaultCards: ProductCard[] = [
   { id: 1, title: 'AI数字人', description: '声音形象克隆，24小时在线', icon: 'person', style: 'modern' },
   { id: 2, title: '知识库系统', description: '智能问答，企业文档管理', icon: 'library_books', style: 'rounded' },
   { id: 3, title: '聊天绘画', description: 'AI创作，文字生成图片', icon: 'palette', style: 'gradient' },
-  { id: 4, title: '源码定制', description: 'PHP&Java双版本，私有部署，专业团队技术支持', icon: 'code', style: 'extended', type: 'special' }
+  { id: 4, title: '源码定制', description: 'PHP&Java双版本，私有部署，专业团队技术支持', icon: 'code', style: 'extended', type: 'special', bgColor: 'bg-blue-600' }
 ];
 
 // 设置组件Props，支持外部数据传入
@@ -297,28 +299,34 @@ const transitionDuration = 300;
               class="title-button group relative text-left bg-gradient-to-b from-white to-gray-50 p-3 sm:p-4 border-2 border-white shadow-[8px_8px_20px_0_rgba(55,99,170,0.1)] max-w-[200px] sm:max-w-[250px]"
               :class="{ 'border-blue-300 -translate-y-1 shadow-[8px_8px_25px_0_rgba(55,99,170,0.15)]': active === index }"
             >
-              <!-- 序号 -->
-              <div class="absolute left-3 top-1/2 -translate-y-1/2 z-10">
-                <span
-                  class="inline-flex items-center justify-center w-7 h-7 text-xs font-bold transition-all duration-300"
-                  :class="active === index ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 text-gray-500 border border-gray-200'"
-                  x-text="String(slide.order).padStart(2, '0')"
-                ></span>
-              </div>
-
               <!-- 标题内容 -->
-              <div class="relative pl-12">
-                <h3
-                  class="text-sm lg:text-base font-bold leading-tight mb-1 transition-colors duration-300"
-                  :class="active === index ? 'text-gray-900' : 'text-gray-800 group-hover:text-gray-900'"
-                  x-text="slide.title"
-                ></h3>
-                <p
-                  class="text-xs leading-relaxed line-clamp-2 transition-colors duration-300"
-                  :class="active === index ? 'text-gray-600' : 'text-gray-500 group-hover:text-gray-600'"
-                  x-text="slide.subtitle"
-                ></p>
-              </div>
+              <div class="relative">
+                <!-- 标题行：序号与主标题在同一行 -->
+                <div class="flex items-baseline gap-2 mb-1">
+                  <!-- 简约序号 -->
+                  <span
+                    class="text-sm lg:text-base font-bold transition-colors duration-300 flex-shrink-0"
+                    :class="active === index ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-500'"
+                    x-text="String(slide.order).padStart(2, '0') + '.'"
+                  ></span>
+
+                  <!-- 主标题 -->
+                  <h3
+                    class="text-sm lg:text-base font-bold leading-tight transition-colors duration-300 flex-1"
+                    :class="active === index ? 'text-gray-900' : 'text-gray-800 group-hover:text-gray-900'"
+                    x-text="slide.title"
+                  ></h3>
+                </div>
+
+                <!-- 副标题 -->
+                 <div>
+                    <p
+                      class="text-xs leading-relaxed line-clamp-2 transition-colors duration-300"
+                      :class="active === index ? 'text-gray-600' : 'text-gray-500 group-hover:text-gray-600'"
+                      x-text="slide.subtitle"
+                    ></p>
+                 </div>
+               </div>
 
               <!-- 进度条 -->
               <div
@@ -397,8 +405,8 @@ const transitionDuration = 300;
     <div class="hidden lg:flex justify-center items-center gap-4 container-custom">
       <template x-for="card in cards" :key="card.id">
         <div
-          class="transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 border-white bg-white shadow-md rounded-lg"
-          :class="card.style === 'extended' ? 'flex-[2] max-w-[420px] bg-gradient-to-r from-blue-600 to-blue-700' : 'flex-1'"
+          class="transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-md overflow-hidden outline-1 outline-gray-200 hover:shadow-lg hover:outline-gray-300"
+          :class="card.style === 'extended' ? 'flex-[2] max-w-[420px] ' + (card.bgColor || 'bg-gradient-to-r from-blue-500 to-blue-600') : 'flex-1 bg-gradient-to-b from-gray-100 to-white'"
         >
           <div
             class="flex flex-col items-start text-left"
@@ -429,19 +437,24 @@ const transitionDuration = 300;
     <div class="lg:hidden px-4">
       <div class="grid grid-cols-2 gap-3 pb-2">
         <template x-for="card in cards" :key="card.id">
-          <div class="bg-white dark:bg-gray-800 border-2 border-white dark:border-gray-700 shadow-md dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3)] rounded-lg transition-all duration-300 hover:shadow-lg dark:hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.4)] cursor-pointer">
+          <div class="border-2 border-white dark:border-gray-700 shadow-[0_6px_20px_#dce0e8] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3)] rounded-md overflow-hidden outline-1 outline-gray-200 transition-all duration-300 hover:shadow-lg hover:outline-gray-300 dark:hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.4)] cursor-pointer"
+            :class="card.type === 'special' ? (card.bgColor || 'bg-gradient-to-r from-blue-500 to-blue-600') : 'bg-gradient-to-b from-gray-100 to-white dark:bg-gray-800'">
             <div class="p-3">
               <h3
                 class="font-bold flex items-center gap-2 text-sm mb-1.5"
-                :class="card.type === 'special' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-900 dark:text-white'"
+                :class="card.type === 'special' ? 'text-white' : 'text-gray-900 dark:text-white'"
               >
                 <i
-                  class="material-icons flex-shrink-0 w-5 h-5 text-blue-600 dark:text-blue-400"
+                  class="material-icons flex-shrink-0 w-5 h-5"
+                  :class="card.type === 'special' ? 'text-white' : 'text-blue-600 dark:text-blue-400'"
                   x-text="card.icon"
                 ></i>
                 <span x-text="card.title"></span>
               </h3>
-              <p class="text-gray-600 dark:text-gray-300 text-xs line-clamp-2" x-text="card.description"></p>
+              <p
+                class="text-xs line-clamp-2"
+                :class="card.type === 'special' ? 'text-white/90' : 'text-gray-600 dark:text-gray-300'"
+                x-text="card.description"></p>
             </div>
           </div>
         </template>
