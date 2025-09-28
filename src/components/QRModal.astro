@@ -1,17 +1,52 @@
 ---
+/**
+ * 二维码模态框组件
+ * 
+ * 功能特性：
+ * - 响应式设计，适配移动端和桌面端
+ * - 支持自定义标题、描述和二维码图片
+ * - 多种关闭方式：关闭按钮、点击背景、ESC键
+ * - 优化的动画效果和过渡
+ * - 完整的可访问性支持
+ * - 与其他组件的交互集成
+ * 
+ * @component QRModal
+ */
+
 interface Props {
+  /** 二维码图片URL */
   qrCodeUrl: string;
+  /** 模态框标题 */
   title?: string;
+  /** 模态框描述文本 */
   description?: string;
+  /** 是否默认打开 */
   isOpen?: boolean;
 }
 
-const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用微信扫描下方二维码，即可添加客服微信", isOpen = false } = Astro.props;
+const { 
+  qrCodeUrl, 
+  title = "扫描二维码联系客服", 
+  description = "使用微信扫描下方二维码，即可添加客服微信", 
+  isOpen = false 
+} = Astro.props;
 ---
 
-<div class={`modal-overlay ${isOpen ? 'active' : ''}`} id="qr-modal">
+<div 
+  class={`modal-overlay ${isOpen ? 'active' : ''}`} 
+  id="qr-modal"
+  role="dialog"
+  aria-labelledby="modal-title"
+  aria-modal="true"
+  aria-hidden={!isOpen}
+>
   <div class="modal-content">
-    <button class="close-button" aria-label="关闭二维码" id="close-modal">
+    <button 
+      class="close-button" 
+      aria-label="关闭二维码" 
+      id="close-modal"
+      tabindex="0"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -19,10 +54,10 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     </button>
 
     <div class="modal-body">
-      <h2 class="modal-title">{title}</h2>
+      <h2 class="modal-title" id="modal-title">{title}</h2>
       <p class="modal-description">{description}</p>
       <div class="qr-container">
-        <img src={qrCodeUrl} alt="客服二维码" class="qr-code" />
+        <img src={qrCodeUrl} alt="客服二维码" class="qr-code" loading="lazy" />
       </div>
     </div>
   </div>
@@ -59,20 +94,20 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     position: absolute;
     max-width: 90%;
     width: 400px;
-    transform: translateY(-20px);
+    transform: translateY(-20px) scale(0.95);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    will-change: transform;
+    will-change: transform, opacity;
   }
 
   .modal-overlay.active .modal-content {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 
   .modal-content:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   }
 
@@ -88,12 +123,20 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     color: #666;
     transition: all 0.2s ease;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .close-button:hover {
+  .close-button:hover, .close-button:focus {
     color: #333;
     background: rgba(0, 0, 0, 0.1);
     transform: rotate(90deg);
+    outline: none;
+  }
+
+  .close-button:focus-visible {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
   }
 
   .modal-body {
@@ -117,18 +160,25 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     background: #f5f5f5;
     border-radius: 8px;
     display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .qr-container:hover {
+    transform: scale(1.02);
   }
 
   .qr-code {
     width: 200px;
     height: 200px;
     object-fit: contain;
+    border-radius: 4px;
   }
 
   @media (max-width: 480px) {
     .modal-content {
       padding: 1.5rem;
       width: 90%;
+      margin: 0 auto;
     }
 
     .modal-title {
@@ -144,14 +194,27 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
       height: 180px;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .modal-overlay,
+    .modal-content,
+    .close-button,
+    .qr-container {
+      transition: none;
+    }
+  }
 </style>
 
 <script>
-  // 打开模态框函数
+  /**
+   * 打开模态框函数
+   * 显示二维码模态框并处理页面滚动
+   */
   function openModal() {
     const modal = document.getElementById('qr-modal');
     if (modal) {
       modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
 
       // 检查是否有其他弹窗已经打开
       const announcementPopup = document.getElementById('announcement-popup');
@@ -162,18 +225,29 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
+        document.body.style.top = `-${window.scrollY}px`;
       }
 
       // 每次打开模态框时重新绑定关闭按钮事件
       bindCloseButton();
+      
+      // 聚焦到关闭按钮，提高可访问性
+      setTimeout(() => {
+        const closeButton = document.getElementById('close-modal');
+        if (closeButton) closeButton.focus();
+      }, 100);
     }
   }
 
-  // 关闭模态框函数
+  /**
+   * 关闭模态框函数
+   * 隐藏二维码模态框并恢复页面滚动
+   */
   function closeModal() {
     const modal = document.getElementById('qr-modal');
     if (modal) {
       modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
 
       // 检查是否有其他弹窗仍然打开
       const announcementPopup = document.getElementById('announcement-popup');
@@ -181,13 +255,20 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
 
       // 只有在没有其他弹窗打开时才恢复body样式
       if (!isAnnouncementOpen) {
+        const scrollY = document.body.style.top;
         document.body.style.overflow = 'auto';
         document.body.style.position = 'static';
+        document.body.style.width = 'auto';
+        document.body.style.top = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
     }
   }
 
-  // 绑定关闭按钮事件
+  /**
+   * 绑定关闭按钮事件
+   * 确保事件监听器不会重复添加
+   */
   function bindCloseButton() {
     const closeButton = document.getElementById('close-modal');
     if (closeButton) {
@@ -198,7 +279,10 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
     }
   }
 
-  // 处理关闭按钮点击事件
+  /**
+   * 处理关闭按钮点击事件
+   * @param {Event} e - 点击事件对象
+   */
   function handleCloseClick(e: Event) {
     e.stopPropagation();
     closeModal();
@@ -238,10 +322,6 @@ const { qrCodeUrl, title = "扫描二维码联系客服", description = "使用�
         // 打开模态框
         openModal();
       }
-    }
-    // 如果点击的是模态框以外的区域
-    else if (modal?.classList.contains('active') && !target?.closest('.modal-content')) {
-      closeModal();
     }
   });
 
