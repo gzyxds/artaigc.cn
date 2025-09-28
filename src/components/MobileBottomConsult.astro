@@ -1,0 +1,256 @@
+---
+/**
+ * 手机端底部业务咨询组件
+ * @module MobileBottomConsult
+ */
+
+/**
+ * 手机端底部业务咨询组件属性接口
+ * @interface Props
+ */
+export interface Props {
+  /**
+   * 咨询电话号码
+   * @default "400-123-4567"
+   */
+  phoneNumber?: string;
+
+  /**
+   * 售前客服二维码URL
+   * @default "/assets/qrcode.png"
+   */
+  presalesQR?: string;
+
+  /**
+   * 售后客服二维码URL
+   * @default "/assets/qrcode.png"
+   */
+  aftersalesQR?: string;
+}
+
+/**
+ * 手机端底部业务咨询组件
+ * 参考火山引擎的设计风格，提供移动端底部固定的业务咨询功能
+ * 功能特性：
+ * 1. 固定在移动端底部，不影响页面内容
+ * 2. 包含咨询电话、售前客服、售后客服三个主要功能
+ * 3. 响应式设计，仅在移动端显示
+ * 4. 支持暗黑模式
+ * 5. 集成Alpine.js实现交互功能
+ */
+const {
+  phoneNumber = "400-123-4567",
+  presalesQR = "/assets/qrcode.png",
+  aftersalesQR = "/assets/qrcode.png"
+} = Astro.props;
+
+// 图标组件定义
+const icons = {
+  demo: `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" fill="currentColor"/>
+    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" fill="currentColor"/>
+  </svg>`,
+
+  contact: `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm6 5H6v-.99c.2-.72 3.3-2.01 6-2.01s5.8 1.29 6 2v1z" fill="currentColor"/>
+  </svg>`,
+
+  qq: `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="currentColor"/>
+  </svg>`,
+
+  close: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+  </svg>`
+};
+---
+
+<!-- 手机端底部业务咨询组件 -->
+<div
+  class="mobile-consult-wrap fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-700 z-50 md:hidden"
+  x-data={`{
+    showQR: false,
+    qrType: '',
+    qrUrl: '',
+    qrTitle: '',
+    qrDescription: '',
+    phoneNumber: '${phoneNumber}',
+    presalesQR: '${presalesQR}',
+    aftersalesQR: '${aftersalesQR}',
+
+    openQR(type, url, title, description) {
+      this.qrType = type;
+      this.qrUrl = url;
+      this.qrTitle = title;
+      this.qrDescription = description;
+      this.showQR = true;
+    },
+
+    closeQR() {
+      this.showQR = false;
+    }
+  }`}
+>
+  <!-- 左右分离布局：左侧图标按钮，右侧业务咨询按钮 -->
+  <div class="flex items-center justify-between px-4 py-2">
+
+    <!-- 左侧三个图标按钮容器 -->
+    <div class="flex items-center gap-4">
+      <!-- 查看演示按钮 -->
+      <button
+        class="flex flex-col items-center justify-center py-2 px-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+        @click="window.location.href = '/demo'"
+        aria-label="查看产品演示"
+      >
+        <img src="/assets/demo.svg" alt="演示" class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400" />
+        <span class="text-xs text-gray-700 dark:text-gray-300 font-medium leading-tight">演示</span>
+      </button>
+
+      <!-- 联系客服按钮 -->
+      <button
+        class="flex flex-col items-center justify-center py-2 px-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+        @click="openQR('presales', presalesQR, '联系客服', '扫描二维码添加客服，获取产品咨询和技术支持')"
+        aria-label="联系客服"
+      >
+        <img src="/assets/contact.svg" alt="联系客服" class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400" />
+        <span class="text-xs text-gray-700 dark:text-gray-300 font-medium leading-tight">客服</span>
+      </button>
+
+      <!-- QQ客服按钮 -->
+      <button
+        class="flex flex-col items-center justify-center py-2 px-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+        @click="openQR('aftersales', aftersalesQR, 'QQ客服', '扫描二维码添加QQ客服，获取技术支持和问题解决')"
+        aria-label="QQ客服"
+      >
+        <img src="/assets/qq.svg" alt="QQ客服" class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400" />
+        <span class="text-xs text-gray-700 dark:text-gray-300 font-medium leading-tight">QQ</span>
+      </button>
+    </div>
+
+    <!-- 业务咨询按钮单独靠右边缘显示 -->
+    <button
+      class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-sm"
+      @click="openQR('business', presalesQR, '业务咨询', '扫描二维码联系我们，获取专业的业务咨询服务')"
+      aria-label="业务咨询"
+    >
+      业务咨询
+    </button>
+  </div>
+
+  <!-- 二维码弹窗 -->
+  <div
+    x-show="showQR"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-x-0 bottom-[120px] flex items-end justify-center z-[60] p-4"
+    @click.self="closeQR()"
+    style="display: none;"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="qr-modal-title"
+  >
+    <div
+      class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-sm w-full mx-4 shadow-xl"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 scale-95"
+      x-transition:enter-end="opacity-100 scale-100"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100 scale-100"
+      x-transition:leave-end="opacity-0 scale-95"
+    >
+      <!-- 弹窗头部 -->
+      <div class="flex justify-between items-center mb-4">
+        <h3 id="qr-modal-title" class="text-lg font-semibold text-gray-900 dark:text-white" x-text="qrTitle"></h3>
+        <button
+          @click="closeQR()"
+          class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+          aria-label="关闭弹窗"
+        >
+          <div set:html={icons.close} />
+        </button>
+      </div>
+
+      <!-- 二维码图片 -->
+      <div class="flex justify-center mb-4">
+        <img
+          :src="qrUrl"
+          :alt="qrTitle + '二维码'"
+          class="w-48 h-48 object-contain border border-gray-200 dark:border-gray-600 rounded-lg"
+        />
+      </div>
+
+      <!-- 描述文字 -->
+      <p class="text-sm text-gray-600 dark:text-gray-400 text-center" x-text="qrDescription"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  /**
+   * 手机端底部咨询组件的JavaScript功能
+   * 处理电话拨打和二维码弹窗交互
+   */
+  document.addEventListener('DOMContentLoaded', function() {
+    // 确保组件在移动端正确显示
+    const consultWrap = document.querySelector('.mobile-consult-wrap');
+    if (consultWrap) {
+      // 添加底部内边距，避免内容被遮挡
+      updateBodyPadding();
+
+      // 使用防抖处理resize事件，提高性能
+      let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateBodyPadding, 100);
+      });
+    }
+
+    /**
+     * 根据窗口宽度更新body的底部内边距
+     */
+    function updateBodyPadding() {
+      if (window.innerWidth >= 768) {
+        document.body.style.paddingBottom = '0';
+      } else {
+        document.body.style.paddingBottom = '120px';
+      }
+    }
+  });
+</script>
+
+<style>
+  /**
+   * 手机端底部咨询组件的自定义样式
+   * 确保在不同设备上的兼容性和美观性
+   */
+  .mobile-consult-wrap {
+    /* 确保在所有移动设备上正确显示 */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    /* 安全区域适配 */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* 按钮点击效果 */
+  .mobile-consult-wrap button:active,
+  .mobile-consult-wrap a:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  /* 确保在iPad等设备上不显示 */
+  @media (min-width: 768px) {
+    .mobile-consult-wrap {
+      display: none !important;
+    }
+
+    body {
+      padding-bottom: 0 !important;
+    }
+  }
+</style>

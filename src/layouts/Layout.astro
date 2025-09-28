@@ -16,6 +16,7 @@ import '../styles/transitions.css';
 import { ViewTransitions } from 'astro:transitions';
 import FloatingButtons from '../components/FloatingButtons.astro';
 import QRModal from '../components/QRModal.astro';
+import MobileBottomConsult from '../components/MobileBottomConsult.astro';
 
 /**
  * 定义组件属性接口
@@ -70,6 +71,13 @@ const {
     
     <!-- 二维码弹窗模态框 -->
     <QRModal qrCodeUrl="/assets/qrcode.png" title="联系客服" description="扫描二维码添加客服微信，获取专业技术支持" />
+    
+    <!-- 手机端底部业务咨询组件 -->
+    <MobileBottomConsult 
+      phoneNumber="400-123-4567"
+      presalesQR="/assets/qrcode.png"
+      aftersalesQR="/assets/qrcode.png"
+    />
     <script>
       /**
        * 暗黑模式初始化
