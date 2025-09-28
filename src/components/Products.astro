@@ -33,20 +33,20 @@ const defaultProducts: Product[] = [
     price: 4999,
     originalPrice: 6800,
     features: ["声音克隆", "形象克隆", "视频生成", "AI文案", "热点话题"],
-    demoUrl: "https://v.cnai.art",
+    demoUrl: "/demo",
     purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "blue"
   },
   {
     id: 2,
-    title: "艺创全能AI知识库系统「PHP源码版」",
-    description: "全能AI知识库系统Java版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持问答式和文档式知识库，能够导入txt、doc、docx、pdf、md等多种格式文档",
+    title: "企业全能AI知识库「PHP源码版」",
+    description: "全能AI知识库系统PHP版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持问答式和文档式知识库，能够导入txt、doc、docx、pdf、md等多种格式文档",
     image: "/assets/work.webp",
     category: "AI写作",
     price: 6600,
     originalPrice: 9800,
     features: ["多格式导入", "向量检索", "智能问答", "多端支持"],
-    demoUrl: "https://www.cnai.art",
+    demoUrl: "/demo",
     purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "green"
   },
@@ -59,7 +59,7 @@ const defaultProducts: Product[] = [
     price: 2999,
     originalPrice: 3800,
     features: ["AI绘画", "智能聊天", "场景定制", "一键部署"],
-    demoUrl: "https://cnai.art",
+    demoUrl: "/demo",
     purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "green"
   },
@@ -72,47 +72,47 @@ const defaultProducts: Product[] = [
     price: 3200,
     originalPrice: 4698,
     features: ["快速生成大纲", "一键生成论文", "可下载资料", "走马灯通知"],
-    demoUrl: "https://www.cnai.art",
+    demoUrl: "/demo",
     purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "purple"
   },
   {
     id: 5,
-    title: "艺创AI知识库系统「Python源码版」",
+    title: "企业全能AI知识库「Python版」",
     description: "支持多格式文档智能解析、内容提取与结构化，适用于企业知识管理与数据挖掘。",
     image: "https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/Python.png",
     category: "AI知识库",
     price: 6999,
     originalPrice: 9800,
     features: ["文档解析", "内容提取", "结构化输出", "多格式支持"],
-    demoUrl: "https://docai.cnai.art",
-    purchaseUrl: "/demo",
+    demoUrl: "/demo",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "yellow"
   },
   {
     id: 5,
-    title: "艺创全能AI知识库系统「Java源码版」",
+    title: "企业全能AI知识库「Java源码版」",
     description: "支持多格式文档智能解析、内容提取与结构化，适用于企业知识管理与数据挖掘。",
     image: "https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/java-ai.svg",
     category: "AI知识库",
     price: 6600,
     originalPrice: 9800,
     features: ["文档解析", "内容提取", "结构化输出", "多格式支持"],
-    demoUrl: "https://docai.cnai.art",
-    purchaseUrl: "/demo",
+    demoUrl: "/demo",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "yellow"
   },
   {
     id: 5,
-    title: "艺创AI数字人SaaS系统2.0",
+    title: "数字分身SaaS系统2.0",
     description: "支持多格式文档智能解析、内容提取与结构化，适用于企业知识管理与数据挖掘。",
     image: "/assets/szrpro.webp",
     category: "AI数字人",
     price: 6600,
     originalPrice: 9800,
     features: ["文档解析", "内容提取", "结构化输出", "多格式支持"],
-    demoUrl: "https://docai.cnai.art",
-    purchaseUrl: "/demo",
+    demoUrl: "/demo",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "yellow"
   },
   {
@@ -124,8 +124,8 @@ const defaultProducts: Product[] = [
     price: 6600,
     originalPrice: 9800,
     features: ["多模态生成", "智能创作", "一站式平台", "高并发支持"],
-    demoUrl: "https://gen.cnai.art",
-    purchaseUrl: "/demo",
+    demoUrl: "/demo",
+    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     color: "orange"
   }
 ];
@@ -258,7 +258,7 @@ const {
                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                      </svg>
-                     演示
+                     详情
                    </a>
                    <a
                      href={product.purchaseUrl}
@@ -332,7 +332,7 @@ const {
                        rel="noopener noreferrer"
                        class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-center rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 text-sm font-medium"
                      >
-                       演示
+                       详情
                      </a>
                      <a
                        href={product.purchaseUrl}
@@ -406,7 +406,7 @@ const {
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
-                    演示
+                    详情
                   </a>
                   <a
                     href={product.purchaseUrl}
