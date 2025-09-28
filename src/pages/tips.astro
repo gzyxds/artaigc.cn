@@ -1246,7 +1246,7 @@ const categories = [...new Set(promptCards.map(card => card.category))];
 <script>
   // 防抖函数
   const debounce = (fn: Function, delay: number) => {
-    let timer: number | null = null;
+    let timer: ReturnType<typeof setTimeout> | null = null;
     return (...args: any[]) => {
       if (timer) clearTimeout(timer);
       timer = setTimeout(() => fn(...args), delay);
