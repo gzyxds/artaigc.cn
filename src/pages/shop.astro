@@ -1,18 +1,21 @@
 ---
+/**
+ * 商店页面 - 艺创AI产品展示
+ * 展示AI数字人系统、知识库系统、论文写作系统、聊天绘画系统等产品
+ */
+
 // 布局组件
 import Layout from '../layouts/Layout.astro';
 
 // 页面组件
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import ShopModule from '../components/Hero/ShopModule.astro';// 数字人
 import Carousel from '../components/Hero/Carousel.astro';
 
 // 功能组件
 import Aisd from '../components/Aisd.astro';
 import Contact from '../components/Contact.astro';
 import Calltoaction from '../components/Calltoaction.astro';
-import Terminal from '../components/Terminal.astro';
 ---
 
 <Layout
@@ -25,19 +28,31 @@ import Terminal from '../components/Terminal.astro';
   <Carousel />
   <Aisd />
 
-  <!-- 产品展示区域 -->
+  <!-- ==================== 产品展示区域 ==================== -->
   <section class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
     <div class="space-y-8 md:space-y-12">
       <div class="grid gap-8 md:gap-12">
+        
         <!-- 产品一：AI数字人系统 -->
         <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-blue-200 transition-all duration-200 hover:shadow-lg hover:outline-blue-300 bg-gradient-to-br from-blue-50 via-indigo-50 to-white border-2 border-blue-100 shadow-[0_6px_20px_rgba(59,130,246,0.15)] rounded-2xl">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <!-- 产品图片区域 -->
             <div class="order-2 lg:order-2">
               <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img src="/assets/saas.svg" alt="AI数字人系统" class="w-full h-auto object-cover" loading="lazy" />
+                <img 
+                  src="/assets/saas.webp" 
+                  alt="AI数字人系统" 
+                  class="w-full h-auto object-cover" 
+                  loading="lazy" 
+                  width="400" 
+                  height="300"
+                />
               </div>
             </div>
+            
+            <!-- 产品信息区域 -->
             <div class="order-1 lg:order-1 space-y-4">
+              <!-- 产品标签 -->
               <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
@@ -45,12 +60,18 @@ import Terminal from '../components/Terminal.astro';
                 </svg>
                 创意工具
               </div>
+              
+              <!-- 产品标题 -->
               <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                 超级IP数字人SaaS系统「PHP源码版」
               </h2>
+              
+              <!-- 产品描述 -->
               <p class="text-base text-gray-600 dark:text-gray-300">
                 专为企业主、个人博主打造短视频IP的数字人源码系统，支持真人声音+形象克隆，一键合成知识付费、课程、带货、形象宣传、行业干货等口播视频。
               </p>
+              
+              <!-- 产品特性标签 -->
               <div class="flex flex-wrap gap-2">
                 <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
                   带货视频
@@ -62,15 +83,29 @@ import Terminal from '../components/Terminal.astro';
                   知识付费
                 </span>
               </div>
+              
+              <!-- 价格信息 -->
               <div class="flex items-center gap-4 my-4">
                 <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥6800</span>
                 <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥4999</span>
               </div>
+              
+              <!-- 操作按钮 -->
               <div class="flex flex-col sm:flex-row gap-3">
-                <a href="https://v.cnai.art" rel="noopener noreferrer" target="_blank" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300">
+                <a 
+                  href="https://v.cnai.art" 
+                  rel="noopener noreferrer" 
+                  target="_blank" 
+                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
+                >
                   立即体验
                 </a>
-                <a href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
+                <a 
+                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                >
                   购买授权
                 </a>
               </div>
@@ -81,24 +116,41 @@ import Terminal from '../components/Terminal.astro';
         <!-- 产品二：AI知识库系统 -->
         <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-emerald-200 transition-all duration-200 hover:shadow-lg hover:outline-emerald-300 bg-gradient-to-br from-emerald-50 via-green-50 to-white border-2 border-emerald-100 shadow-[0_6px_20px_rgba(16,185,129,0.15)] rounded-2xl">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <!-- 产品图片区域 -->
             <div class="order-2 lg:order-1">
               <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img src="/assets/work.svg" alt="AI数字人系统" class="w-full h-auto object-cover" loading="lazy" />
+                <img 
+                  src="/assets/work.webp" 
+                  alt="AI知识库系统" 
+                  class="w-full h-auto object-cover" 
+                  loading="lazy" 
+                  width="400" 
+                  height="300"
+                />
               </div>
             </div>
+            
+            <!-- 产品信息区域 -->
             <div class="order-1 lg:order-2 space-y-4">
+              <!-- 产品标签 -->
               <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
                 </svg>
                 知识库系统
               </div>
+              
+              <!-- 产品标题 -->
               <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                 艺创全能AI知识库系统PHP&Java
               </h2>
+              
+              <!-- 产品描述 -->
               <p class="text-base text-gray-600 dark:text-gray-300">
                 全能AI知识库系统Java版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持问答式和文档式知识库，能够导入txt、doc、docx、pdf、md等多种格式文档。
               </p>
+              
+              <!-- 产品特性标签 -->
               <div class="flex flex-wrap gap-2">
                 <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
                   多格式导入
@@ -110,15 +162,29 @@ import Terminal from '../components/Terminal.astro';
                   智能问答
                 </span>
               </div>
+              
+              <!-- 价格信息 -->
               <div class="flex items-center gap-4 my-4">
                 <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥9800</span>
                 <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥6600</span>
               </div>
+              
+              <!-- 操作按钮 -->
               <div class="flex flex-col sm:flex-row gap-3">
-                <a href="https://www.cnai.art" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300">
+                <a 
+                  href="https://www.cnai.art" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
+                >
                   立即体验
                 </a>
-                <a href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
+                <a 
+                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                >
                   购买授权
                 </a>
               </div>
@@ -126,47 +192,158 @@ import Terminal from '../components/Terminal.astro';
           </div>
         </div>
 
- <!-- 产品二：艺创AI知识库系统「Python源码版」 -->
-        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-2xl">
+ <!-- 产品五：Python源码版 -->
+        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-purple-200 transition-all duration-200 hover:shadow-lg hover:outline-purple-300 bg-gradient-to-br from-purple-50 via-violet-50 to-white border-2 border-purple-100 shadow-[0_6px_20px_rgba(147,51,234,0.15)] rounded-2xl">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <!-- 产品图片区域 -->
             <div class="order-2 lg:order-2">
               <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/Python.png" alt="AI数字人系统" class="w-full h-auto object-cover" loading="lazy" />
+                <img 
+                  src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/Python.png" 
+                  alt="AI知识库系统Python源码版" 
+                  class="w-full h-auto object-cover" 
+                  loading="lazy" 
+                  width="400" 
+                  height="300"
+                />
               </div>
             </div>
+            
+            <!-- 产品信息区域 -->
             <div class="order-1 lg:order-1 space-y-4">
+              <!-- 产品标签 -->
+              <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 text-sm">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                </svg>
+                Python源码版
+              </div>
+              
+              <!-- 产品标题 -->
+              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
+                艺创AI知识库系统「Python源码版」
+              </h2>
+              
+              <!-- 产品描述 -->
+              <p class="text-base text-gray-600 dark:text-gray-300">
+                「Python源码版」，基于前后端分离架构以及Vue3、FastAPI、PostgreSQL、pgvector技术栈开发，包含PC端、H5端。ChatWork支持问答式和文档式知识库
+              </p>
+              
+              <!-- 产品特性标签 -->
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
+                  多格式导入
+                </span>
+                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
+                  向量检索
+                </span>
+                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
+                  智能问答
+                </span>
+              </div>
+              
+              <!-- 价格信息 -->
+              <div class="flex items-center gap-4 my-4">
+                <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥9800</span>
+                <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥6600</span>
+              </div>
+              
+              <!-- 操作按钮 -->
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a 
+                  href="https://www.cnai.art" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
+                >
+                  立即体验
+                </a>
+                <a 
+                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                >
+                  购买授权
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品三：AI聊天绘画系统 -->
+        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-emerald-200 transition-all duration-200 hover:shadow-lg hover:outline-emerald-300 bg-gradient-to-br from-emerald-50 via-green-50 to-white border-2 border-emerald-100 shadow-[0_6px_20px_rgba(16,185,129,0.15)] rounded-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <!-- 产品图片区域 -->
+            <div class="order-2 lg:order-1">
+              <div class="relative rounded-2xl overflow-hidden shadow-lg">
+                <img 
+                  src="/assets/ai.webp" 
+                  alt="AI聊天绘画系统" 
+                  class="w-full h-auto object-cover" 
+                  loading="lazy" 
+                  width="400" 
+                  height="300"
+                />
+              </div>
+            </div>
+            
+            <!-- 产品信息区域 -->
+            <div class="order-1 lg:order-2 space-y-4">
+              <!-- 产品标签 -->
               <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
                 </svg>
-                知识库系统
+                聊天绘画系统
               </div>
+              
+              <!-- 产品标题 -->
               <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-                艺创AI知识库系统「Python源码版」
+                艺创AI聊天绘画系统PHP&Java
               </h2>
+              
+              <!-- 产品描述 -->
               <p class="text-base text-gray-600 dark:text-gray-300">
-                「Python源码版」，基于前后端分离架构以及Vue3、FastAPI、PostgreSQL、pgvector技术栈开发，包含PC端、H5端。ChatWork支持问答式和文档式知识库
+                艺创AI聊天绘画系统Java版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持智能对话、AI绘画、语音合成、语音识别、文档问答、联网搜索、多模态识别等功能。
               </p>
+              
+              <!-- 产品特性标签 -->
               <div class="flex flex-wrap gap-2">
                 <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  多格式导入
+                  智能对话
                 </span>
                 <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  向量检索
+                  AI绘画
                 </span>
                 <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  智能问答
+                  语音合成
                 </span>
               </div>
+              
+              <!-- 价格信息 -->
               <div class="flex items-center gap-4 my-4">
                 <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥9800</span>
                 <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥6600</span>
               </div>
+              
+              <!-- 操作按钮 -->
               <div class="flex flex-col sm:flex-row gap-3">
-                <a href="https://www.cnai.art" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300">
+                <a 
+                  href="https://www.cnai.art" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
+                >
                   立即体验
                 </a>
-                <a href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
+                <a 
+                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                >
                   购买授权
                 </a>
               </div>
@@ -174,27 +351,30 @@ import Terminal from '../components/Terminal.astro';
           </div>
         </div>
 
-        <!-- 产品三：论文写作系统 -->
+        <!-- 产品四：论文写作系统 -->
         <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-orange-200 transition-all duration-200 hover:shadow-lg hover:outline-orange-300 bg-gradient-to-br from-orange-50 via-amber-50 to-white border-2 border-orange-100 shadow-[0_6px_20px_rgba(249,115,22,0.15)] rounded-2xl">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            <div class="order-2 lg:order-1">
-              <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img src="/assets/lw.svg" alt="AI论文写作系统" class="w-full h-auto object-cover" loading="lazy" />
-              </div>
-            </div>
-            <div class="order-1 lg:order-2 space-y-4">
+            <!-- 产品信息区域 -->
+            <div class="order-1 lg:order-1 space-y-4">
+              <!-- 产品标签 -->
               <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 text-sm">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
                 </svg>
                 论文写作系统
               </div>
+              
+              <!-- 产品标题 -->
               <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                 艺创AI-论文写作系统PHP&Java
               </h2>
+              
+              <!-- 产品描述 -->
               <p class="text-base text-gray-600 dark:text-gray-300">
                 10分钟生成3万字论文的系统。你只需要输入论文关键词，AI即可快速为您生成论文大纲，可线上编辑和删除，操作高效快捷！只需要几分钟，AI可为您生成万字长文，AI助手生成全篇论文比自己写作更快，适用于期刊论文、科普文章、学生作业、商业报告、新闻报道等多种场景。
               </p>
+              
+              <!-- 产品特性标签 -->
               <div class="flex flex-wrap gap-2">
                 <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
                   多格式导入
@@ -206,72 +386,45 @@ import Terminal from '../components/Terminal.astro';
                   智能问答
                 </span>
               </div>
+              
+              <!-- 价格信息 -->
               <div class="flex items-center gap-4 my-4">
                 <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥4698</span>
                 <span class="text-orange-600 dark:text-orange-400 font-bold text-xl">特惠价：¥3200</span>
               </div>
+              
+              <!-- 操作按钮 -->
               <div class="flex flex-col sm:flex-row gap-3">
-                <a href="https://www.cnai.art" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300">
+                <a 
+                  href="https://www.cnai.art" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
+                >
                   立即体验
                 </a>
-                <a href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
+                <a 
+                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                >
                   购买授权
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- 产品四：AI聊天绘画系统 -->
-        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-purple-200 transition-all duration-200 hover:shadow-lg hover:outline-purple-300 bg-gradient-to-br from-purple-50 via-violet-50 to-white border-2 border-purple-100 shadow-[0_6px_20px_rgba(147,51,234,0.15)] rounded-2xl">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            
+            <!-- 产品图片区域 -->
             <div class="order-2 lg:order-2">
               <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img src="/assets/ai.svg" alt="AI数字人系统" class="w-full h-auto object-cover" loading="lazy" />
-              </div>
-            </div>
-            <div class="order-1 lg:order-1 space-y-4">
-              <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 text-sm">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                </svg>
-                创意工具
-              </div>
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-                艺创AI聊天绘画PHP&Java
-              </h2>
-              <p class="text-base text-gray-600 dark:text-gray-300">
-                聚合对接MJ绘画、SD绘画、意间AI等多种绘画通道，实现了AI对话+AI绘画的融合使用。系统功能包括：AI智能对话、AI创作模型、AI绘画、分销推广、会员套餐、充值套餐、卡密兑换、模型计费、会员回流优惠券等丰富的营销功能
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  AI绘画
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  智能聊天
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  智能问答
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  全能助手
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  AI创作
-                </span>
-              </div>
-              <div class="flex items-center gap-4 my-4">
-                <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥3800</span>
-                <span class="text-purple-600 dark:text-purple-400 font-bold text-xl">优惠价：¥2999</span>
-              </div>
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a href="https://cnai.art" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300">
-                  立即体验
-                </a>
-                <a href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
-                  购买授权
-                </a>
+                <img 
+                  src="/assets/lw.svg" 
+                  alt="AI论文写作系统" 
+                  class="w-full h-auto object-cover" 
+                  loading="lazy" 
+                  width="400" 
+                  height="300"
+                />
               </div>
             </div>
           </div>
@@ -281,7 +434,7 @@ import Terminal from '../components/Terminal.astro';
       </div>
     </section>
 
-    <!-- 底部组件 -->
+    <!-- ==================== 底部组件区域 ==================== -->
     <Calltoaction />
     <Contact />
     <Footer />
