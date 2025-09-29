@@ -10,6 +10,7 @@ import DemoModule from '../components/Hero/DemoModule.astro';
 import Terminal from '../components/Terminal.astro';
 import Contact from '../components/Contact.astro';
 import Calltoaction from '../components/Calltoaction.astro';
+import Carousel from '../components/Hero/Carousel.astro';
 
 // 页面元数据
 export const title = "艺创AI_AI系统源码_AI数字人源码_AI数字人系统源码_产品演示";
@@ -76,9 +77,9 @@ const demoSystems = [
       {
         title: "体验后台",
         icon: "admin_panel_settings",
-        url: "https://www.cnai.art/admin",
-        account: "联系客服",
-        password: "联系客服"
+        url: "https://ai-demo.chatmoney.cn/admin",
+        account: "admin",
+        password: "123456"
       },
       {
         title: "API文档",
@@ -121,9 +122,9 @@ const demoSystems = [
       {
         title: "管理后台",
         icon: "admin_panel_settings",
-        url: "https://cnai.art/admin",
-        account: "联系客服",
-        password: "联系客服"
+        url: "https://chat-demo.chatmoney.cn/admin",
+        account: "admin",
+        password: "123456"
       },
       {
         title: "API文档",
@@ -152,9 +153,9 @@ const demoSystems = [
       {
         title: "体验后台",
         icon: "admin_panel_settings",
-        url: "https://ai-demo.chatmoney.cn/admin",
+        url: "https://cp-demo.chatmoney.cn/admin",
         account: "admin",
-        password: "admin110"
+        password: "123456"
       },
       {
         title: "论文API",
@@ -177,7 +178,7 @@ const demoSystems = [
 
 <Layout title={title}>
   <Header />
-  <DemoModule />
+  <Carousel />
 
   <!-- 主要内容区域 -->
   <main class="min-h-screen bg-gradient-to-br from-blue-50/90 via-white to-blue-100/90 dark:from-gray-900/95 dark:via-gray-800/95 dark:to-gray-700/95">
@@ -188,7 +189,7 @@ const demoSystems = [
         <div class="absolute top-1/2 -right-16 sm:-right-24 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-gradient-to-br from-purple-300 to-blue-300 rounded-full filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         <div class="absolute -bottom-16 sm:-bottom-24 left-1/4 sm:left-1/3 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-gradient-to-br from-cyan-300 to-blue-300 rounded-full filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
-      
+
       <!-- 内容容器 -->
       <div class="container-custom relative z-10 px-4 sm:px-6 md:px-8 mx-auto">
         <!-- 标题区域 -->
@@ -198,32 +199,32 @@ const demoSystems = [
             体验我们最新的AI产品解决方案，探索无限可能。通过智能化的技术，我们为您提供高效、便捷的服务体验。
           </p>
         </div>
-        
+
         <!-- 演示系统卡片列表 -->
         <div class="space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16">
           {demoSystems.map((system, index) => (
             <div class={`demo-card group flex flex-col md:flex-row items-stretch bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100/50 dark:border-gray-700/50 backdrop-blur-sm ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`} style={`--index: ${index}`}>
               <div class="w-full md:w-1/2 relative overflow-hidden p-6 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 flex items-center justify-center">
-                <img 
-                  src={system.headerImage} 
-                  alt={`${system.title} Header Image`} 
-                  class="w-full h-full object-contain" 
+                <img
+                  src={system.headerImage}
+                  alt={`${system.title} Header Image`}
+                  class="w-full h-full object-contain"
                   loading="lazy"
                 />
               </div>
-              
+
               <div class={`p-4 sm:p-5 md:p-6 md:w-1/2 flex flex-col justify-between relative z-10 backdrop-blur-sm ${system.cardBgColor}`}>
                 <div class="mb-4 sm:mb-5 md:mb-6">
                   <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2 sm:mb-3">{system.title}</h2>
                   <div class="w-16 h-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 mb-3 sm:mb-4"></div>
                 </div>
-                
+
                 <ul class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-5 mt-4">
                   {system.platforms.map((platform, platformIndex) => (
                     <li class="platform-item" style={`--platform-index: ${platformIndex}`}>
-                      <a 
-                        href={platform.url} 
-                        target="_blank" 
+                      <a
+                        href={platform.url}
+                        target="_blank"
                         class="h-full p-3 sm:p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-100 dark:border-gray-600 flex flex-col"
                       >
                         <div class="flex items-center justify-between mb-1 sm:mb-2">
@@ -271,7 +272,7 @@ const demoSystems = [
       </div>
     </section>
   </main>
-  
+
   <!-- 样式定义 -->
   <style>
     /* 动画定义 */
@@ -284,7 +285,7 @@ const demoSystems = [
       66% { transform: translate(-20px, 20px); }
       100% { transform: translate(0px, 0px); }
     }
-    
+
     /* 响应式图片容器 */
     @media (max-width: 479px) {
       .aspect-ratio-container {
@@ -294,7 +295,7 @@ const demoSystems = [
         min-height: 180px;
       }
     }
-    
+
     @media (min-width: 480px) and (max-width: 767px) {
       .aspect-ratio-container {
         max-width: 320px;
@@ -303,22 +304,22 @@ const demoSystems = [
         min-height: 200px;
       }
     }
-    
+
     @media (min-width: 768px) and (max-width: 1023px) {
       .aspect-ratio-container {
         max-width: 90%;
         padding-bottom: 60%;
       }
     }
-    
+
     /* 动画应用 */
     .fade-in { animation: fadeIn 0.8s ease-out forwards; }
     .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-    .demo-card { 
+    .demo-card {
       animation: scaleIn 0.5s ease-out forwards;
       animation-delay: calc(0.1s * var(--index, 0));
     }
-    .platform-item { 
+    .platform-item {
       animation: fadeInUp 0.5s ease-out forwards;
       animation-delay: calc(0.1s * var(--platform-index, 0) + 0.2s);
       opacity: 0;
@@ -326,16 +327,16 @@ const demoSystems = [
     .animate-blob { animation: blob 7s infinite; }
     .animation-delay-2000 { animation-delay: 2s; }
     .animation-delay-4000 { animation-delay: 4s; }
-    
+
     /* 响应式调整 */
     @media (max-width: 640px) {
       .animate-blob { animation: none; opacity: 0.15; }
     }
-    
+
     @media (min-width: 400px) {
       .xs\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    
+
     @media (max-width: 479px) {
       .space-y-8 > :not([hidden]) ~ :not([hidden]) {
         --tw-space-y-reverse: 0;
