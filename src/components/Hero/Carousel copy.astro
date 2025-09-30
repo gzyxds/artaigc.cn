@@ -11,7 +11,6 @@
  *
  * @component Carousel
  */
-import QRModal from '../QRModal.astro';
 
 /**
  * 轮播幻灯片数据接口
@@ -381,7 +380,7 @@ const transitionDuration = 300;
               </a>
 
               <button
-                onclick="document.getElementById('qr-modal').classList.add('active')"
+                @click="document.getElementById('qr-modal')?.classList.add('active')"
                 class="px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-white/90 backdrop-blur-sm text-black font-medium border border-gray-300 hover:bg-white hover:border-gray-400 transition-all duration-300 shadow-md hover:shadow-lg text-sm sm:text-base rounded-lg flex items-center"
               >
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -463,10 +462,3 @@ const transitionDuration = 300;
     </div>
   </div>
 </div>
-
-<!-- QR Modal组件 -->
-<QRModal
-  qrCodeUrl="/assets/qrcode.png"
-  title="联系客服"
-  description="扫描二维码添加客服微信"
-/>
