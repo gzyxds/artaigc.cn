@@ -1,0 +1,7 @@
+{
+  // ESA 部署配置
+  "assets": {
+    // Astro 构建输出目录
+    "directory": "dist"
+  }
+}
