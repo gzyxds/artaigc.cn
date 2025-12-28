@@ -1,6 +1,0 @@
-{
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": "dist",
-  "framework": "astro",
-  "installCommand": "npm install"
-} 
