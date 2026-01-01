@@ -169,21 +169,21 @@ import Calltoaction from '../components/Calltoaction.astro';
           <div class="order-1 md:order-2 relative group">
             <div class="absolute -inset-4 border border-blue-500/20 rounded-none -z-10 group-hover:scale-105 transition-transform duration-500"></div>
             <div class="bento-card p-2 overflow-hidden bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
-              <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/dialogue.png" alt="AI数字人" class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700" />
-            </div>
+            <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/dialogue.png" alt="AI数字人" class="w-full h-auto" />
           </div>
         </div>
+      </div>
 
-        <!-- AI智能创作 -->
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="order-2 md:order-1 relative group">
-            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-10 group-hover:opacity-20 transition duration-500 blur-xl"></div>
-            <div class="bento-card overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
-              <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/create.png" alt="AI智能创作" class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" />
-              <div class="corner-marker corner-marker-tr"></div>
-              <div class="corner-marker corner-marker-bl"></div>
-            </div>
+      <!-- AI智能创作 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-10 group-hover:opacity-20 transition duration-500 blur-xl"></div>
+          <div class="bento-card overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
+            <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/create.png" alt="AI智能创作" class="w-full h-auto" />
+            <div class="corner-marker corner-marker-tr"></div>
+            <div class="corner-marker corner-marker-bl"></div>
           </div>
+        </div>
           <div class="order-1 md:order-2">
             <div class="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-mono text-xs mb-6 uppercase tracking-widest">
               Scenario Adaptation
@@ -223,105 +223,101 @@ import Calltoaction from '../components/Calltoaction.astro';
    <!--AI智能创作 -->
 
     <!-- AI绘画 -->
-    <div class="mb-24">
-      <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
-        <div>
-          <div class="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-mono text-xs mb-6 uppercase tracking-widest">
-            Masterpiece Works
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-mono text-xs mb-6 uppercase tracking-widest">
+          Masterpiece Works
+        </div>
+        <h2 class="font-mono text-3xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-tight">AI绘画</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-sans">
+          适用于各类图像创作需求，包括图片创作、风景生成等场景，持文生图、图生图等功能，满足绘画一系列需求。
+        </p>
+        <div class="grid grid-cols-2 gap-4 mb-10">
+          <div class="flex items-center group">
+            <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
+            <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">MJ</span>
           </div>
-          <h2 class="font-mono text-3xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-tight">AI绘画</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-sans">
-            适用于各类图像创作需求，包括图片创作、风景生成等场景，持文生图、图生图等功能，满足绘画一系列需求。
-          </p>
-          <div class="grid grid-cols-2 gap-4 mb-10">
-            <div class="flex items-center group">
-              <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
-              <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">MJ</span>
-            </div>
-            <div class="flex items-center group">
-              <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
-              <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">SD绘图</span>
-            </div>
-            <div class="flex items-center group">
-              <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
-              <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">DALLE-3</span>
-            </div>
+          <div class="flex items-center group">
+            <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
+            <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">SD绘图</span>
           </div>
-          <div class="flex flex-wrap gap-4">
-            <a href="/demo" target="_blank" class="px-8 py-4 bg-blue-600 text-white font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-blue-700 transition-colors flex items-center justify-center group">
-              获取演示
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <a href="/contact" class="px-8 py-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center group">
-              购买授权
-            </a>
+          <div class="flex items-center group">
+            <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
+            <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">DALLE-3</span>
           </div>
         </div>
-        <div class="relative group">
-          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-10 group-hover:opacity-20 transition duration-500 blur-xl"></div>
-          <div class="bento-card overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
-            <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/draw.png" alt="AI绘画" class="w-full h-auto transition-all duration-700 scale-100 group-hover:scale-105" />
-            <div class="corner-marker corner-marker-tr"></div>
-            <div class="corner-marker corner-marker-bl"></div>
-          </div>
+        <div class="flex flex-wrap gap-4">
+          <a href="/demo" target="_blank" class="px-8 py-4 bg-blue-600 text-white font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-blue-700 transition-colors flex items-center justify-center group">
+            获取演示
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/contact" class="px-8 py-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center group">
+            购买授权
+          </a>
+        </div>
+      </div>
+      <div class="relative group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-10 group-hover:opacity-20 transition duration-500 blur-xl"></div>
+        <div class="bento-card overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
+          <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/draw.png" alt="AI绘画" class="w-full h-auto" />
+          <div class="corner-marker corner-marker-tr"></div>
+          <div class="corner-marker corner-marker-bl"></div>
         </div>
       </div>
     </div>
     <!-- AI绘画 -->
 
     <!-- 创作模型 -->
-      <div class="py-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
-          <div class="relative group">
-            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-10 group-hover:opacity-20 transition duration-500 blur-xl"></div>
-            <div class="bento-card overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
-              <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/model.png" alt="创作模型" class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" />
-              <div class="corner-marker corner-marker-tr"></div>
-              <div class="corner-marker corner-marker-bl"></div>
-            </div>
-          </div>
-          <div>
-            <div class="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-mono text-xs mb-6 uppercase tracking-widest">
-              Diverse Creation
-            </div>
-            <h2 class="font-mono text-3xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-tight">创作模型</h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-sans">
-              创作多元化模态、一键生成思维导图、AI实时语音翻译、真人语音合成、大数据分析、办公文档AI处理、AI文档模式。
-            </p>
-            <div class="grid grid-cols-2 gap-4 mb-10">
-              <div class="flex items-center group">
-                <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
-                <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">多元化模态</span>
-              </div>
-              <div class="flex items-center group">
-                <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
-                <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">思维导图</span>
-              </div>
-              <div class="flex items-center group">
-                <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
-                <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">语音翻译</span>
-              </div>
-              <div class="flex items-center group">
-                <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
-                <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">AI文档模式</span>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-4">
-              <a href="/demo" target="_blank" class="px-8 py-4 bg-blue-600 text-white font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-blue-700 transition-colors flex items-center justify-center group">
-                获取演示
-                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
-                </svg>
-              </a>
-              <a href="/contact" class="px-8 py-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center group">
-                购买授权
-              </a>
-            </div>
-          </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="relative group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-10 group-hover:opacity-20 transition duration-500 blur-xl"></div>
+        <div class="bento-card overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
+          <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/model.png" alt="创作模型" class="w-full h-auto" />
+          <div class="corner-marker corner-marker-tr"></div>
+          <div class="corner-marker corner-marker-bl"></div>
         </div>
       </div>
+      <div>
+        <div class="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-mono text-xs mb-6 uppercase tracking-widest">
+          Diverse Creation
+        </div>
+        <h2 class="font-mono text-3xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-tight">创作模型</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-sans">
+          创作多元化模态、一键生成思维导图、AI实时语音翻译、真人语音合成、大数据分析、办公文档AI处理、AI文档模式。
+        </p>
+        <div class="grid grid-cols-2 gap-4 mb-10">
+          <div class="flex items-center group">
+            <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
+            <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">多元化模态</span>
+          </div>
+          <div class="flex items-center group">
+            <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
+            <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">思维导图</span>
+          </div>
+          <div class="flex items-center group">
+            <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
+            <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">语音翻译</span>
+          </div>
+          <div class="flex items-center group">
+            <div class="w-1.5 h-1.5 bg-blue-600 mr-3 group-hover:scale-150 transition-transform"></div>
+            <span class="text-gray-700 dark:text-gray-300 font-mono text-xs uppercase tracking-wider">AI文档模式</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href="/demo" target="_blank" class="px-8 py-4 bg-blue-600 text-white font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-blue-700 transition-colors flex items-center justify-center group">
+            获取演示
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/contact" class="px-8 py-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm font-bold uppercase tracking-wider rounded-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center group">
+            购买授权
+          </a>
+        </div>
+      </div>
+    </div>
     <!-- 创作模型 -->
 
 
@@ -538,7 +534,7 @@ import Calltoaction from '../components/Calltoaction.astro';
       <div class="order-1 md:order-2 group relative">
         <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-10 group-hover:opacity-20 transition duration-500 blur-xl"></div>
         <div class="bento-card overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
-          <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/chat.png" alt="AI聊天绘画系统演示" class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" />
+          <img src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/chat.png" alt="AI聊天绘画系统演示" class="w-full h-auto" />
           <div class="corner-marker corner-marker-tr"></div>
           <div class="corner-marker corner-marker-bl"></div>
         </div>
