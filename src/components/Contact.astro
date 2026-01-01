@@ -102,50 +102,53 @@ const supports = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
 
       <!-- 1. 核心联系 (大卡片) - 微信/公众号 -->
-      <div class="lg:col-span-2 lg:row-span-2 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-8 relative overflow-hidden group hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-300">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 dark:bg-blue-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors"></div>
+      <div class="lg:col-span-2 lg:row-span-2 bento-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-none p-8 relative overflow-hidden group hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300">
+        <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+        <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 dark:bg-blue-900/20 rounded-none blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors"></div>
 
         <div class="flex flex-col h-full relative z-10">
           <div class="flex items-center gap-3 mb-8">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+            <div class="w-10 h-10 rounded-none bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">扫码快速联系</h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">微信扫一扫，直连人工客服</p>
+              <h3 class="text-xl font-bold font-mono text-gray-900 dark:text-white">扫码快速联系</h3>
+              <p class="text-sm font-mono text-gray-500 dark:text-gray-400">微信扫一扫，直连人工客服</p>
             </div>
           </div>
 
           <div class="flex-1 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12">
             <!-- 微信客服二维码 -->
             <div class="flex flex-col items-center gap-4">
-              <div class="relative w-40 h-40 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 group-hover:scale-105 transition-transform duration-500">
-                <img src="/assets/qrcode.png" alt="微信客服" class="w-full h-full object-contain rounded-xl" />
+              <div class="relative w-40 h-40 bg-white p-3 rounded-none shadow-sm border border-gray-200 dark:border-gray-700 group-hover:scale-105 transition-transform duration-500">
+                <img src="/assets/qrcode.png" alt="微信客服" class="w-full h-full object-contain rounded-none" />
                 <!-- 扫描线动画 -->
-                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl">
-                  <div class="absolute top-0 left-0 w-full h-1 bg-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.5)] animate-scan"></div>
+                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-none">
+                  <div class="absolute top-0 left-0 w-full h-0.5 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)] animate-scan"></div>
                 </div>
               </div>
               <div class="text-center">
-                <p class="font-bold text-gray-900 dark:text-white">客服微信</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">USERHLC</p>
+                <p class="font-bold font-mono text-gray-900 dark:text-white">客服微信</p>
+                <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">USERHLC</p>
               </div>
             </div>
 
             <!-- 公众号二维码 -->
             <div class="flex flex-col items-center gap-4">
-              <div class="relative w-40 h-40 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 group-hover:scale-105 transition-transform duration-500 delay-75">
-                <img src="/assets/wchatpay.png" alt="公众号" class="w-full h-full object-contain rounded-xl" />
+              <div class="relative w-40 h-40 bg-white p-3 rounded-none shadow-sm border border-gray-200 dark:border-gray-700 group-hover:scale-105 transition-transform duration-500 delay-75">
+                <img src="/assets/wchatpay.png" alt="公众号" class="w-full h-full object-contain rounded-none" />
                 <!-- 扫描线动画 -->
-                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl">
-                  <div class="absolute top-0 left-0 w-full h-1 bg-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.5)] animate-scan animation-delay-2000"></div>
+                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-none">
+                  <div class="absolute top-0 left-0 w-full h-0.5 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)] animate-scan animation-delay-2000"></div>
                 </div>
               </div>
               <div class="text-center">
-                <p class="font-bold text-gray-900 dark:text-white">公众号</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">最新资讯获取</p>
+                <p class="font-bold font-mono text-gray-900 dark:text-white">公众号</p>
+                <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">最新资讯获取</p>
               </div>
             </div>
           </div>
@@ -153,24 +156,27 @@ const supports = [
       </div>
 
       <!-- 2. 在线咨询 (简约风格) -->
-      <div class="lg:col-span-2 bg-blue-50/50 dark:bg-gray-800/50 border border-blue-100 dark:border-gray-700 rounded-3xl p-8 relative overflow-hidden group hover:border-blue-200 dark:hover:border-blue-600 transition-all duration-300">
+      <div class="lg:col-span-2 bento-card bg-blue-50/50 dark:bg-gray-800/50 border border-blue-100 dark:border-gray-700 rounded-none p-8 relative overflow-hidden group hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300">
+        <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+        <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
         <!-- 装饰背景 -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100/50 dark:bg-blue-900/20 rounded-none blur-3xl -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 h-full">
           <div>
             <div class="flex items-center gap-2 mb-3 text-blue-600 dark:text-blue-400">
-              <div class="p-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+              <div class="p-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-none border border-blue-200 dark:border-blue-800">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                   </svg>
               </div>
-              <span class="font-bold text-sm tracking-wide uppercase">在线客服</span>
+              <span class="font-bold font-mono text-sm tracking-wide uppercase">在线客服</span>
             </div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">有疑问需要解答？</h3>
-            <p class="text-gray-600 dark:text-gray-400 max-w-sm leading-relaxed">我们的专业团队在线为您提供即时帮助，解决您的任何技术或业务问题。</p>
+            <h3 class="text-2xl font-bold font-mono mb-3 text-gray-900 dark:text-white">有疑问需要解答？</h3>
+            <p class="text-gray-600 dark:text-gray-400 max-w-sm leading-relaxed font-mono text-sm">我们的专业团队在线为您提供即时帮助，解决您的任何技术或业务问题。</p>
           </div>
-          <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-500/20 shrink-0 group-hover:scale-105 transition-transform">
+          <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-bold font-mono rounded-none hover:bg-blue-700 border border-transparent hover:border-blue-400 shrink-0 group-hover:scale-105 transition-all duration-300">
             立即咨询
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path>
@@ -180,15 +186,18 @@ const supports = [
       </div>
 
       <!-- 3. 电话咨询 -->
-      <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-6 hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300 group">
-        <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
+      <div class="bento-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-none p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 group relative">
+        <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+        <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
+        <div class="w-12 h-12 rounded-none bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-105 transition-transform">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">电话咨询</h3>
-        <p class="text-xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">400-123-4567</p>
-        <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <h3 class="text-lg font-bold font-mono text-gray-900 dark:text-white mb-1">电话咨询</h3>
+        <p class="text-xl font-bold font-mono text-gray-900 dark:text-white mb-2 tracking-tight">400-123-4567</p>
+        <div class="flex items-center gap-2 text-sm font-mono text-gray-500 dark:text-gray-400">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
@@ -199,17 +208,20 @@ const supports = [
       <!-- 4. 邮件沟通 -->
       <div
         x-data="{ copied: false }"
-        class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-6 hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300 group cursor-pointer"
+        class="bento-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-none p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 group cursor-pointer relative"
         @click="navigator.clipboard.writeText('support@artaigc.cn'); copied = true; setTimeout(() => copied = false, 2000)"
       >
-        <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
+        <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+        <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
+        <div class="w-12 h-12 rounded-none bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-105 transition-transform">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
           </svg>
         </div>
         <div class="flex items-center justify-between mb-1">
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white">商务合作</h3>
-          <div x-show="copied" x-transition class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full flex items-center gap-1">
+          <h3 class="text-lg font-bold font-mono text-gray-900 dark:text-white">商务合作</h3>
+          <div x-show="copied" x-transition class="text-xs font-mono text-blue-600 bg-blue-50 border border-blue-100 px-2 py-1 rounded-none flex items-center gap-1">
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
@@ -221,31 +233,34 @@ const supports = [
             </svg>
           </div>
         </div>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 break-all">support@artaigc.cn</p>
-        <p class="text-xs text-gray-400 dark:text-gray-500">通常在 24 小时内回复</p>
+        <p class="text-sm font-mono text-gray-500 dark:text-gray-400 mb-3 break-all">support@artaigc.cn</p>
+        <p class="text-xs font-mono text-gray-400 dark:text-gray-500">通常在 24 小时内回复</p>
       </div>
 
     </div>
+bento-card 2noneberdark:borderbu500
+    <!-- 服务支持区域 -->"corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+            <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
 
-    <!-- 服务支持区域 -->
+            <div class=
     <div class="mb-16">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">我们的服务支持</h3>
-        <p class="text-gray-600 dark:text-gray-300">
+        <p class="text-gray-600 dark:text-gray-none">0 border border-blue-100 dark:border-blue-80
           我们提供全方位的服务支持，确保您的系统顺利运行
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {supports.map(item => (
+        {supports.map(item => (none font-mono00 border border-blue-2 dark:border-blue-700
           <div class={`group relative overflow-hidden bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-6 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300 ${item.className}`}>
             <div class={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${item.featured ? 'from-blue-50/80 via-white to-white dark:from-blue-900/20 dark:via-gray-800 dark:to-gray-800' : 'from-gray-50 via-transparent to-transparent dark:from-gray-700/30'}`}></div>
 
             <div class="relative z-10 h-full flex flex-col">
               <div class="flex items-start justify-between mb-4">
                 <div class={`w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 transform transition-transform duration-300 ${item.rotate} group-hover:scale-110 shadow-sm`}>
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
+                  <svg class="w-6 h-6" fill="fonn-mono tone" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokem font--onolinecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
                   </svg>
                 </div>
                 {item.featured && (

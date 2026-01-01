@@ -151,16 +151,16 @@ const iconInactiveClass = "text-gray-400";
 
               <div class="flex flex-wrap gap-1.5 mb-4">
                 {product.isPlugin ? (
-                  <span class="px-2 py-0.5 border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-300 text-xs font-mono">
+                  <span class="px-2 py-0.5 border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-300 text-xs font-mono rounded-none">
                     应用插件
                   </span>
                 ) : (
-                  <span class="px-2 py-0.5 border border-indigo-200 bg-indigo-50 text-indigo-600 dark:bg-indigo-900/20 dark:border-indigo-800 dark:text-indigo-300 text-xs font-mono">
+                  <span class="px-2 py-0.5 border border-indigo-200 bg-indigo-50 text-indigo-600 dark:bg-indigo-900/20 dark:border-indigo-800 dark:text-indigo-300 text-xs font-mono rounded-none">
                     独立系统
                   </span>
                 )}
                 {product.features.slice(0, 3).map(feature => (
-                  <span class="px-2 py-0.5 border border-gray-200 bg-gray-50 text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 text-xs font-mono transition-colors duration-200">
+                  <span class="px-2 py-0.5 border border-gray-200 bg-gray-50 text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 text-xs font-mono transition-colors duration-200 rounded-none">
                     {feature}
                   </span>
                 ))}
@@ -176,7 +176,7 @@ const iconInactiveClass = "text-gray-400";
                        ¥{product.price}
                     </span>
                     {product.originalPrice && product.originalPrice > product.price && (
-                      <span class="text-xs text-red-500 font-mono ml-auto border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-800 px-1">
+                      <span class="text-xs text-red-500 font-mono ml-auto border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-800 px-1 rounded-none">
                         省¥{Math.round(product.originalPrice - product.price)}
                       </span>
                     )}
@@ -195,7 +195,7 @@ const iconInactiveClass = "text-gray-400";
                      href={product.link}
                      target="_blank"
                      rel="noopener noreferrer"
-                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 text-xs font-mono font-medium"
+                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 text-xs font-mono font-medium rounded-none"
                    >
                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -206,7 +206,7 @@ const iconInactiveClass = "text-gray-400";
                      href={product.buyLink}
                      target="_blank"
                      rel="noopener noreferrer"
-                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 text-xs font-mono font-medium"
+                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 text-xs font-mono font-medium rounded-none"
                    >
                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
