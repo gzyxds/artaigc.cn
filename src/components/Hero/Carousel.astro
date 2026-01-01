@@ -86,7 +86,7 @@ const featureList = [
         </div>
 
         <div class="flex justify-center lg:justify-start">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 rounded-none bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-gray-800 shadow-sm backdrop-blur-sm transition-transform hover:scale-105 duration-300">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 rounded-none bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-gray-800 backdrop-blur-sm transition-colors hover:border-blue-500/50 duration-300">
             <span class="flex h-2 w-2 relative">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-none bg-blue-400 opacity-75"></span>
               <span class="relative inline-flex rounded-none h-2 w-2 bg-blue-500"></span>
@@ -145,8 +145,8 @@ const featureList = [
         <div class="pt-8 max-w-3xl mx-auto lg:mx-0 border-t border-gray-100 dark:border-gray-800/50 mt-8">
           <div class="grid grid-cols-2 gap-4">
             {featureList.map((item) => (
-              <div class="bento-card group flex items-start gap-3 p-4 rounded-none bg-white/50 dark:bg-gray-800/30 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 border border-transparent hover:bg-white dark:hover:bg-gray-800">
-                <div class="shrink-0 mt-0.5 p-2 rounded-none bg-blue-50 dark:bg-blue-900/20 text-blue-600 border border-blue-100 dark:border-blue-800 group-hover:scale-105 transition-transform duration-300">
+              <div class="bento-card bento-card-hover group flex items-start gap-3 p-4 bg-white/50 dark:bg-gray-800/30 hover:bg-white dark:hover:bg-gray-800">
+                <div class="shrink-0 mt-0.5 p-2 rounded-none bg-blue-50 dark:bg-blue-900/20 text-blue-600 border border-blue-100 dark:border-blue-800 transition-transform duration-300 group-hover:translate-y-[-2px]">
                   <Fragment set:html={icons[item.icon as keyof typeof icons]} />
                 </div>
                 <div>
@@ -171,7 +171,7 @@ const featureList = [
             <div class="flex shrink-0 gap-4 flex-row animate-marquee-horizontal" style="animation-duration: 30s;">
               {marqueeImages.first.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
-                  <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden group-hover:border-blue-500 transition-colors duration-300">
+                  <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                     <img
                       src={img}
                       alt={`Product Preview ${index + 1}`}
@@ -184,7 +184,7 @@ const featureList = [
               ))}
                {marqueeImages.first.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
-                  <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden group-hover:border-blue-500 transition-colors duration-300">
+                  <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                     <img
                       src={img}
                       alt={`Product Preview ${index + 1}`}
@@ -203,7 +203,7 @@ const featureList = [
             <div class="flex shrink-0 gap-4 flex-row animate-marquee-horizontal" style="animation-direction: reverse; animation-duration: 35s;">
               {marqueeImages.second.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
-                  <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden group-hover:border-blue-500 transition-colors duration-300">
+                  <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                     <img
                       src={img}
                       alt={`Product Preview ${index + 1}`}
@@ -216,7 +216,7 @@ const featureList = [
               ))}
                {marqueeImages.second.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
-                  <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden group-hover:border-blue-500 transition-colors duration-300">
+                  <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                     <img
                       src={img}
                       alt={`Product Preview ${index + 1}`}
@@ -251,9 +251,9 @@ const featureList = [
         <div class="flex shrink-0 gap-4 flex-col animate-marquee-vertical" style="animation-duration: 50s;">
           {marqueeImages.first.map((img, index) => (
             <a href="/shop" class="block w-full mb-6 group">
-              <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 overflow-hidden group-hover:border-blue-500 transition-all duration-300 group-hover:scale-[1.02]">
-                <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="bento-card bento-card-hover relative w-full overflow-hidden">
+                <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <img
                   src={img}
                   alt={`Product Preview ${index + 1}`}
@@ -266,9 +266,9 @@ const featureList = [
           ))}
           {marqueeImages.first.map((img, index) => (
             <a href="/shop" class="block w-full mb-6 group">
-              <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 overflow-hidden group-hover:border-blue-500 transition-all duration-300 group-hover:scale-[1.02]">
-                <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="bento-card bento-card-hover relative w-full overflow-hidden">
+                <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <img
                   src={img}
                   alt={`Product Preview ${index + 1}`}
@@ -287,9 +287,9 @@ const featureList = [
         <div class="flex shrink-0 gap-4 flex-col animate-marquee-vertical" style="animation-direction: reverse; animation-duration: 60s;">
           {marqueeImages.second.map((img, index) => (
             <a href="/shop" class="block w-full mb-6 group">
-              <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 overflow-hidden group-hover:border-blue-500 transition-all duration-300 group-hover:scale-[1.02]">
-                <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="bento-card bento-card-hover relative w-full overflow-hidden">
+                <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <img
                   src={img}
                   alt={`Product Preview ${index + 1}`}
@@ -302,9 +302,9 @@ const featureList = [
           ))}
           {marqueeImages.second.map((img, index) => (
             <a href="/shop" class="block w-full mb-6 group">
-              <div class="relative w-full rounded-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 overflow-hidden group-hover:border-blue-500 transition-all duration-300 group-hover:scale-[1.02]">
-                <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="bento-card bento-card-hover relative w-full overflow-hidden">
+                <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <img
                   src={img}
                   alt={`Product Preview ${index + 1}`}

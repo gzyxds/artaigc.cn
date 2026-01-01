@@ -1154,21 +1154,27 @@ const categories = [...new Set(promptCards.map(card => card.category))];
   <Header />
   <main>
     <!-- 页面标题区域 -->
-    <HeroSection 
-      title="AI提示词库" 
+    <HeroSection
+      title="AI提示词库"
       highlightText="提示词"
       description="精选高效AI提示词模板，助您快速获取AI精准回复"
     />
-    
+
     <!-- 分类筛选区域 -->
-    <section class="py-8 bg-gray-50 dark:bg-gray-800/50">
+    <section class="py-8 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
       <div class="container mx-auto px-4">
-        <div class="flex flex-wrap justify-center gap-3 mb-4">
-          <button class="category-btn active px-4 py-2 rounded-full bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors" data-category="all">
-            全部
+        <div class="flex flex-wrap justify-center gap-2 mb-4">
+          <button
+            class="category-btn active px-6 py-2.5 rounded-none bg-blue-600 text-white font-mono text-xs font-bold tracking-widest uppercase border border-blue-600 transition-all duration-300"
+            data-category="all"
+          >
+            ALL / 全部
           </button>
           {categories.map(category => (
-            <button class="category-btn px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-category={category}>
+            <button
+              class="category-btn px-6 py-2.5 rounded-none bg-transparent text-gray-600 dark:text-gray-400 font-mono text-xs font-bold tracking-widest uppercase border border-gray-200 dark:border-gray-800 hover:border-blue-500 hover:text-blue-500 transition-all duration-300"
+              data-category={category}
+            >
               {category}
             </button>
           ))}
@@ -1177,47 +1183,55 @@ const categories = [...new Set(promptCards.map(card => card.category))];
     </section>
 
     <!-- 提示词卡片展示区域 -->
-    <section class="py-12 bg-white dark:bg-gray-800">
+    <section class="py-16 bg-gray-50/30 dark:bg-gray-900/50">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {promptCards.map(card => (
             <div class="prompt-card group" data-category={card.category}>
-              <div class="h-full bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+              <div class="bento-card bento-card-hover h-full flex flex-col p-0 relative overflow-hidden group">
+                <!-- 装饰角标 -->
+                <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
                 <!-- 卡片头部 -->
-                <div class="p-4 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/80">
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                      <span class="text-2xl mr-2">{card.icon}</span>
-                      <h3 class="text-lg font-semibold text-gray-900 dark:text-white truncate">{card.title}</h3>
-                    </div>
-                    <span class="px-2 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full">
-                      {card.difficulty}
-                    </span>
+                <div class="p-5 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between bg-white dark:bg-gray-900/50">
+                  <div class="flex items-center gap-3">
+                    <span class="text-2xl filter grayscale group-hover:grayscale-0 transition-all duration-300">{card.icon}</span>
+                    <h3 class="text-base font-bold text-gray-900 dark:text-white truncate font-mono tracking-tight">{card.title}</h3>
                   </div>
+                  <span class="px-2 py-0.5 text-[10px] font-mono font-bold border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 rounded-none bg-blue-50/50 dark:bg-blue-900/20">
+                    {card.difficulty.toUpperCase()}
+                  </span>
                 </div>
-                
+
                 <!-- 卡片内容 -->
-                <div class="p-4">
-                  <div class="h-32 overflow-hidden relative mb-4">
-                    <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-5">{card.prompt}</p>
-                    <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-gray-800 to-transparent"></div>
+                <div class="p-6 flex flex-col flex-grow">
+                  <div class="flex-grow mb-6">
+                    <div class="relative">
+                      <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-4 leading-relaxed font-sans italic">
+                        "{card.prompt}"
+                      </p>
+                    </div>
                   </div>
-                  
+
                   <!-- 标签区域 -->
-                  <div class="flex flex-wrap gap-2 mb-4">
+                  <div class="flex flex-wrap gap-1.5 mb-6">
                     {card.tags.map(tag => (
-                      <span class="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-200">
-                        #{tag}
+                      <span class="px-2 py-0.5 text-[10px] font-mono text-gray-500 dark:text-gray-500 border border-gray-100 dark:border-gray-800 rounded-none bg-gray-50 dark:bg-gray-800/50">
+                        #{tag.toUpperCase()}
                       </span>
                     ))}
                   </div>
-                  
+
                   <!-- 复制按钮 -->
-                  <button class="copy-btn w-full mt-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg transition-colors flex items-center justify-center" data-prompt={card.prompt}>
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  <button
+                    class="copy-btn w-full mt-auto px-4 py-3 bg-white dark:bg-gray-950 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-800 rounded-none font-mono text-xs font-bold tracking-widest uppercase hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    data-prompt={card.prompt}
+                  >
+                    <svg class="w-4 h-4 transition-transform group-hover/btn:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                     </svg>
-                    复制提示词
+                    COPY PROMPT
                   </button>
                 </div>
               </div>
@@ -1228,15 +1242,18 @@ const categories = [...new Set(promptCards.map(card => card.category))];
     </section>
 
     <!-- 提交新提示词按钮 -->
-    <div class="mt-12 mb-16 text-center">
-      <a 
-        href="/contact" 
-        class="inline-flex items-center px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-medium transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
+    <div class="mt-16 mb-24 text-center">
+      <a
+        href="/contact"
+        class="inline-flex items-center px-10 py-4 rounded-none bg-blue-600 text-white font-mono text-sm font-bold tracking-[0.2em] uppercase hover:bg-blue-700 transition-all duration-300 border border-blue-600 relative group overflow-hidden"
       >
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-        提交您的提示词
+        <span class="relative z-10 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          SUBMIT YOUR PROMPT
+        </span>
+        <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
       </a>
     </div>
   </main>
@@ -1257,29 +1274,29 @@ const categories = [...new Set(promptCards.map(card => card.category))];
   const initCategoryFilter = () => {
     const categoryButtons = document.querySelectorAll('.category-btn');
     const promptCards = document.querySelectorAll('.prompt-card');
-    
+
     // 使用事件委托处理分类按钮点击
     const handleCategoryClick = (e: Event) => {
       const target = e.target as HTMLElement;
       const button = target.closest('.category-btn');
-      
+
       if (button) {
         const category = button.getAttribute('data-category');
         if (!category) return;
-        
+
         // 更新按钮状态
         categoryButtons.forEach(btn => {
-          btn.classList.remove('active', 'bg-primary-600', 'text-white');
-          btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-200');
+          btn.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+          btn.classList.add('bg-transparent', 'text-gray-600', 'dark:text-gray-400', 'border-gray-200', 'dark:border-gray-800');
         });
-        button.classList.add('active', 'bg-primary-600', 'text-white');
-        button.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-200');
-        
+        button.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+        button.classList.remove('bg-transparent', 'text-gray-600', 'dark:text-gray-400', 'border-gray-200', 'dark:border-gray-800');
+
         // 筛选卡片
         promptCards.forEach(card => {
           const cardElement = card as HTMLElement;
           const cardCategory = card.getAttribute('data-category');
-          
+
           if (category === 'all' || cardCategory === category) {
             cardElement.style.display = 'block';
           } else {
@@ -1298,29 +1315,29 @@ const categories = [...new Set(promptCards.map(card => card.category))];
   // 初始化复制功能
   const initCopyButtons = () => {
     const copyButtons = document.querySelectorAll('.copy-btn');
-    
+
     copyButtons.forEach(button => {
       // 移除旧的事件监听器
       const newButton = button.cloneNode(true) as HTMLElement;
       button.parentNode?.replaceChild(newButton, button);
-      
+
       newButton.addEventListener('click', async () => {
         const prompt = newButton.getAttribute('data-prompt');
         if (!prompt) return;
-        
+
         try {
           await navigator.clipboard.writeText(prompt);
-          
+
           const originalText = newButton.innerHTML;
           const originalClasses = newButton.className;
-          
+
           // 更新按钮状态
-          newButton.innerHTML = '<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>复制成功！';
+          newButton.innerHTML = '<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7" /></svg>COPIED!';
           newButton.className = originalClasses.replace(
-            'bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200',
-            'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+            'bg-white dark:bg-gray-950 text-gray-900 dark:text-white border-gray-200 dark:border-gray-800',
+            'bg-green-600 border-green-600 text-white'
           );
-          
+
           // 2秒后恢复原始状态
           setTimeout(() => {
             newButton.innerHTML = originalText;

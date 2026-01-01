@@ -40,24 +40,33 @@ const {
   aria-modal="true"
   aria-hidden={!isOpen}
 >
-  <div class="modal-content">
+  <div class="modal-content bento-card p-0 overflow-hidden">
+    <!-- 角标装饰 -->
+    <div class="corner-marker corner-marker-tr"></div>
+    <div class="corner-marker corner-marker-bl"></div>
+
     <button
       class="close-button"
       aria-label="关闭二维码"
       id="close-modal"
       tabindex="0"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
 
-    <div class="modal-body">
-      <h2 class="modal-title" id="modal-title">{title}</h2>
-      <p class="modal-description">{description}</p>
-      <div class="qr-container">
-        <img src={qrCodeUrl} alt="客服二维码" class="qr-code" loading="lazy" />
+    <div class="modal-body p-8 sm:p-10">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="w-6 h-px bg-blue-500"></span>
+        <span class="text-blue-600 dark:text-blue-400 font-mono text-[10px] font-bold uppercase tracking-widest">Connect Support</span>
+      </div>
+      <h2 class="modal-title font-mono font-bold text-xl uppercase tracking-tight text-gray-900 dark:text-white mb-2" id="modal-title">{title}</h2>
+      <p class="modal-description text-gray-500 dark:text-gray-400 text-sm font-sans mb-8">{description}</p>
+      <div class="qr-container border border-gray-100 dark:border-gray-800 p-4 bg-gray-50/50 dark:bg-gray-900/50 rounded-none relative group">
+        <div class="corner-marker corner-marker-tr opacity-20 group-hover:opacity-100 transition-opacity"></div>
+        <img src={qrCodeUrl} alt="客服二维码" class="qr-code w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-500" loading="lazy" />
       </div>
     </div>
   </div>
@@ -89,89 +98,52 @@ const {
 
   .modal-content {
     background: white;
-    padding: 2rem;
-    border-radius: 0;
-    position: absolute;
+    position: relative;
     max-width: 90%;
-    width: 400px;
-    transform: translateY(-20px) scale(0.95);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 420px;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    will-change: transform, opacity;
+  }
+
+  :global(.dark) .modal-content {
+    background: #0a0a0a;
   }
 
   .modal-overlay.active .modal-content {
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     opacity: 1;
-  }
-
-  .modal-content:hover {
-    transform: translateY(-5px) scale(1);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   }
 
   .close-button {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: rgba(0, 0, 0, 0.05);
-    border: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #666;
     cursor: pointer;
     padding: 0.5rem;
-    border-radius: 0;
-    color: #666;
     transition: all 0.2s ease;
-    z-index: 1;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .close-button:hover, .close-button:focus {
-    color: #333;
-    background: rgba(0, 0, 0, 0.1);
-    transform: rotate(90deg);
-    outline: none;
+  .close-button:hover {
+    border-color: #ef4444;
+    color: #ef4444;
   }
 
-  .close-button:focus-visible {
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-  }
-
-  .modal-body {
-    text-align: center;
-  }
-
-  .modal-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-
-  .modal-description {
-    color: #666;
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-  }
-
-  .qr-container {
-    padding: 1rem;
-    background: #f5f5f5;
-    border-radius: 0;
-    display: inline-block;
-    transition: transform 0.3s ease;
-  }
-
-  .qr-container:hover {
-    transform: scale(1.02);
+  :global(.dark) .close-button {
+    color: #999;
   }
 
   .qr-code {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 0;
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 
   @media (max-width: 480px) {

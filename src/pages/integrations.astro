@@ -70,26 +70,26 @@ const integrations = [
 <Layout title="集成与API - 艺创AI">
   <Header />
   <main>
-    <HeroSection 
-      title="集成与API" 
+    <HeroSection
+      title="集成与API"
       highlightText="集成"
       description="将艺创AI与您喜爱的工具和服务连接，简化工作流程。"
       backgroundImage="/images/integrations-hero.jpg"
     />
-    
+
     <!-- 集成分类导航 -->
-    <section class="py-12 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <section class="py-12 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
       <div class="container-custom">
         <div class="flex flex-wrap justify-center gap-4">
           {categories.map(category => (
-            <a 
+            <a
               href={`#${category.id}`}
-              class={`group px-6 py-3 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:shadow-lg transition-all duration-300 flex items-center gap-2 border border-gray-200 dark:border-gray-700 hover:border-transparent hover:bg-gradient-to-r ${category.color}`}
+              class="group px-6 py-3 rounded-none bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 font-mono text-xs font-bold tracking-wider hover:border-blue-500 transition-all duration-300 flex items-center gap-2 border border-gray-200 dark:border-gray-800"
             >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={category.icon} />
+              <svg class="w-4 h-4 transition-colors group-hover:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d={category.icon} />
               </svg>
-              {category.name}
+              {category.name.toUpperCase()}
             </a>
           ))}
         </div>
@@ -97,46 +97,47 @@ const integrations = [
     </section>
 
     <!-- 集成展示区 -->
-    <section class="py-20 bg-white dark:bg-slate-800">
+    <section class="py-20 bg-white dark:bg-gray-900">
       <div class="container-custom">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">连接您喜爱的工具</h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            艺创AI-集成了50多个流行工具和服务，帮助您创建无缝工作流程并最大化生产力。
+          <h2 class="text-4xl font-black text-gray-900 dark:text-white mb-4 tracking-tighter">连接您喜爱的工具</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-mono">
+            艺创AI集成了50多个流行工具和服务，帮助您创建无缝工作流程并最大化生产力。
           </p>
         </div>
-        
+
         <!-- 集成卡片网格 -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {integrations.map((integration, index) => (
-            <div 
-              class="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:shadow-primary-500/20 hover:-translate-y-2 transition-all duration-500"
+            <div
+              class="bento-card bento-card-hover group p-8"
               transition:animate="slide"
               style={`transition-delay: ${index * 0.1}s`}
             >
-              <!-- 背景装饰 -->
-              <div class={`absolute inset-0 bg-gradient-to-br ${integration.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
-              
+              {/* 角标装饰 */}
+              <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
               <!-- 内容区域 -->
-              <div class="relative">
+              <div class="relative z-10">
                 <div class="flex items-center gap-4 mb-6">
-                  <div class={`w-16 h-16 rounded-xl bg-gradient-to-br ${integration.color} flex items-center justify-center`}>
-                    <img src={integration.icon} alt={integration.title} class="w-10 h-10 object-contain" />
+                  <div class="w-16 h-16 rounded-none bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors duration-300">
+                    <img src={integration.icon} alt={integration.title} class="w-10 h-10 object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
                   </div>
-                  <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors duration-300 font-mono">
                     {integration.title}
                   </h3>
                 </div>
-                
-                <p class="text-gray-600 dark:text-gray-300 mb-6">
+
+                <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                   {integration.description}
                 </p>
 
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 gap-3 border-t border-gray-100 dark:border-gray-800 pt-6">
                   {integration.features.map(feature => (
-                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                      <svg class="w-4 h-4 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    <div class="flex items-center text-xs font-mono font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <svg class="w-3 h-3 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"></path>
                       </svg>
                       <span>{feature}</span>
                     </div>
@@ -146,12 +147,12 @@ const integrations = [
             </div>
           ))}
         </div>
-        
+
         <div class="text-center mt-16">
-          <a href="#" class="inline-flex items-center px-8 py-4 rounded-lg bg-gradient-to-r from-primary-600 to-primary-500 text-white font-medium hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300">
+          <a href="#" class="inline-flex items-center px-10 py-5 rounded-none bg-blue-600 text-white font-bold text-lg tracking-wider hover:bg-blue-700 transition-all duration-300 border border-transparent">
             查看所有集成
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
         </div>
@@ -159,74 +160,65 @@ const integrations = [
     </section>
 
     <!-- API部分 -->
-    <section class="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <section class="py-20 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
       <div class="container-custom">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <span class="inline-block px-4 py-1 rounded-full bg-gradient-to-r from-sky-400 to-sky-500 text-white font-medium text-sm mb-4">
-              开发者API
+            <span class="inline-block px-3 py-1 rounded-none border border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+              DEVELOPER API
             </span>
-            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">构建自定义集成</h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            <h2 class="text-4xl font-black text-gray-900 dark:text-white mb-6 tracking-tighter">构建自定义集成</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 font-mono leading-relaxed">
               我们全面的API允许您构建自定义集成，扩展艺创AI的功能以满足特定需求。通过详细的文档和开发者支持，您可以在艺创AI和内部工具之间创建无缝连接。
             </p>
-            <div class="space-y-4 mb-8">
-              <div class="flex items-start">
-                <svg class="w-6 h-6 text-green-500 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <p class="text-lg text-gray-600 dark:text-gray-300">完整的RESTful API接口</p>
-              </div>
-              <div class="flex items-start">
-                <svg class="w-6 h-6 text-green-500 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <p class="text-lg text-gray-600 dark:text-gray-300">OAuth 2.0安全认证</p>
-              </div>
-              <div class="flex items-start">
-                <svg class="w-6 h-6 text-green-500 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <p class="text-lg text-gray-600 dark:text-gray-300">实时事件通知Webhook</p>
-              </div>
-              <div class="flex items-start">
-                <svg class="w-6 h-6 text-green-500 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <p class="text-lg text-gray-600 dark:text-gray-300">主流编程语言SDK支持</p>
-              </div>
+            <div class="space-y-4 mb-10">
+              {[
+                "完整的RESTful API接口",
+                "OAuth 2.0安全认证",
+                "实时事件通知Webhook",
+                "主流编程语言SDK支持"
+              ].map(item => (
+                <div class="flex items-center group">
+                  <div class="w-6 h-6 rounded-none border border-blue-200 dark:border-blue-800 flex items-center justify-center mr-3 group-hover:border-blue-500 transition-colors">
+                    <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <p class="text-lg text-gray-700 dark:text-gray-300 font-mono">{item}</p>
+                </div>
+              ))}
             </div>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="#" class="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-sky-400 to-sky-500 text-white font-medium hover:shadow-lg hover:shadow-sky-500/30 transition-all duration-300">
+            <div class="flex flex-col sm:flex-row gap-6">
+              <a href="#" class="group relative inline-flex items-center justify-center px-10 py-5 rounded-none bg-blue-600 text-white font-bold text-lg tracking-wider hover:bg-blue-700 transition-all duration-300">
                 查看API文档
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
               </a>
-              <a href="#" class="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-violet-400 to-violet-500 text-white font-medium hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300">
+              <a href="#" class="group relative inline-flex items-center justify-center px-10 py-5 rounded-none border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white font-bold text-lg tracking-wider hover:border-blue-500 transition-all duration-300">
                 访问开发者中心
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
+                <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </a>
             </div>
           </div>
-          <div class="rounded-xl overflow-hidden shadow-2xl hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gray-900 text-white p-6 font-mono text-sm">
-              <div class="flex items-center mb-4">
-                <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <div class="bento-card p-1">
+            <div class="bg-gray-950 text-white p-8 font-mono text-sm overflow-x-auto scrollbar-hide">
+              <div class="flex items-center gap-1.5 mb-6 border-b border-gray-800 pb-4">
+                <div class="w-2.5 h-2.5 rounded-none bg-red-500/50"></div>
+                <div class="w-2.5 h-2.5 rounded-none bg-yellow-500/50"></div>
+                <div class="w-2.5 h-2.5 rounded-none bg-green-500/50"></div>
+                <span class="ml-2 text-gray-500 text-xs uppercase tracking-widest">terminal — bash</span>
               </div>
-              <pre class="text-green-400">
-# Example API Request
-curl -X GET \
+              <pre class="text-blue-400">
+<span class="text-gray-500"># Example API Request</span>
+<span class="text-pink-500">curl</span> -X <span class="text-yellow-500">GET</span> \
   https://api.cnai.art/v1/users \
-  -H 'Authorization: Bearer YOUR_API_KEY' \
-  -H 'Content-Type: application/json'
+  -H <span class="text-emerald-500">'Authorization: Bearer YOUR_API_KEY'</span> \
+  -H <span class="text-emerald-500">'Content-Type: application/json'</span>
               </pre>
-              <pre class="text-blue-400 mt-4">
-# Response
+              <pre class="text-gray-400 mt-6">
+<span class="text-gray-500"># Response</span>
 {`{
   "users": [
     {
@@ -251,4 +243,4 @@ curl -X GET \
     </section>
   </main>
   <Footer />
-</Layout> 
+</Layout>
