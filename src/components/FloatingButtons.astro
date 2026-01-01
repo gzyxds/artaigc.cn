@@ -42,14 +42,14 @@ const { qrCodeUrl = "/assets/qrcode.png" } = Astro.props;
   x-show="isVisible"
   x-transition
 >
-  <!-- 售前咨询按钮 - 蓝色渐变 -->
+  <!-- 售前咨询按钮 - 蓝色实色 -->
   <div
     class="relative"
     @mouseenter="showQRCode = true"
     @mouseleave="showQRCode = false"
   >
     <button
-      class="w-12 h-24 sm:w-12 sm:h-28 bg-gradient-to-b from-blue-500 to-blue-400 text-white shadow-lg flex flex-col items-center justify-center transition-all hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded-none"
+      class="w-12 h-24 sm:w-12 sm:h-28 bg-blue-600 hover:bg-blue-700 text-white border border-blue-600 hover:border-blue-700 flex flex-col items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded-none"
       aria-label="售前咨询"
       @click="document.dispatchEvent(new CustomEvent('openQRModal'))"
     >
@@ -57,7 +57,7 @@ const { qrCodeUrl = "/assets/qrcode.png" } = Astro.props;
       <svg class="h-5 w-5 sm:h-6 sm:w-6 mb-1 sm:mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
       </svg>
-      <div class="text-sm font-medium leading-tight">
+      <div class="text-sm font-medium leading-tight font-mono">
         <div>售前</div>
         <div>咨询</div>
       </div>
@@ -65,27 +65,24 @@ const { qrCodeUrl = "/assets/qrcode.png" } = Astro.props;
 
     <!-- 二维码弹窗 - 悬停显示 -->
     <div
-      class="absolute bottom-0 right-full mr-2 sm:mr-3 bg-white shadow-2xl border border-gray-100 min-w-[160px] sm:min-w-[200px] backdrop-blur-sm rounded-none opacity-0 scale-80 translate-y-2 transition-all duration-200 pointer-events-none"
+      class="absolute bottom-0 right-full mr-2 sm:mr-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 min-w-[160px] sm:min-w-[200px] rounded-none opacity-0 scale-95 translate-y-2 transition-all duration-200 pointer-events-none"
       :class="{ 'opacity-100 scale-100 translate-y-0 pointer-events-auto': showQRCode }"
-      style="box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
     >
       <div class="p-3 sm:p-5">
         <div class="text-center">
-          <div class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">扫码联系客服</div>
+          <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 font-mono">扫码联系客服</div>
           <div class="flex justify-center">
             <img
               src={qrCodeUrl}
               alt="客服二维码"
-              class="w-28 h-28 sm:w-36 sm:h-36 object-contain border border-gray-200 rounded-none"
+              class="w-28 h-28 sm:w-36 sm:h-36 object-contain border border-gray-200 dark:border-gray-700 rounded-none p-1"
             />
           </div>
         </div>
       </div>
 
-      <!-- 小三角指示器 -->
-      <div class="absolute top-5 left-full w-0 h-0 border-t-[6px] border-b-[6px] border-l-[6px] border-transparent border-l-white"></div>
-      <!-- 装饰性边框 -->
-      <div class="absolute inset-0 border border-gray-100/50 pointer-events-none rounded-none"></div>
+      <!-- 小三角指示器 (可选，Bento风格通常可以省略，或者用简单的边框连接) -->
+      <!-- 为了保持极简，这里移除复杂的小三角，依靠对齐和边框 -->
     </div>
   </div>
 
@@ -95,46 +92,43 @@ const { qrCodeUrl = "/assets/qrcode.png" } = Astro.props;
     @mouseenter="showAfterSales = true"
     @mouseleave="showAfterSales = false"
   >
-    <div class="w-12 h-24 sm:w-12 sm:h-28 bg-white shadow-lg border border-gray-200/50 flex flex-col overflow-hidden rounded-none">
+    <div class="w-12 h-24 sm:w-12 sm:h-28 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex flex-col overflow-hidden rounded-none">
       <!-- 售后选项 -->
-      <button class="flex-1 flex flex-col items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors border-b border-gray-100">
+      <button class="flex-1 flex flex-col items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-b border-gray-100 dark:border-gray-800">
         <!-- 用户图标 -->
         <svg class="h-4 w-4 sm:h-4 sm:w-4 mb-0.5 sm:mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
         </svg>
-        <span class="text-sm font-medium">售后</span>
+        <span class="text-sm font-medium font-mono">售后</span>
       </button>
 
       <!-- 活动选项 -->
-      <button class="flex-1 flex flex-col items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors">
+      <button class="flex-1 flex flex-col items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
         <!-- 礼品图标 -->
         <svg class="h-4 w-4 sm:h-4 sm:w-4 mb-0.5 sm:mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
         </svg>
-        <span class="text-sm font-medium">活动</span>
+        <span class="text-sm font-medium font-mono">活动</span>
       </button>
     </div>
 
     <!-- 售后详情弹窗 -->
     <div
-      class="absolute bottom-0 right-full mr-2 sm:mr-3 bg-white shadow-2xl border border-gray-100 min-w-[140px] sm:min-w-[180px] backdrop-blur-sm rounded-none opacity-0 scale-80 translate-y-2 transition-all duration-200 pointer-events-none"
+      class="absolute bottom-0 right-full mr-2 sm:mr-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 min-w-[140px] sm:min-w-[180px] rounded-none opacity-0 scale-95 translate-y-2 transition-all duration-200 pointer-events-none"
       :class="{ 'opacity-100 scale-100 translate-y-0 pointer-events-auto': showAfterSales }"
     >
       <div class="p-3 sm:p-5">
         <div class="text-center">
-          <div class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">售后服务</div>
-          <div class="text-xs text-gray-500">专业售后团队为您服务</div>
+          <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-2 sm:mb-3 font-mono">售后服务</div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 font-mono">专业售后团队为您服务</div>
         </div>
       </div>
-
-      <!-- 小三角指示器 -->
-      <div class="absolute top-5 left-full w-0 h-0 border-t-[6px] border-b-[6px] border-l-[6px] border-transparent border-l-white"></div>
     </div>
   </div>
 
-  <!-- 返回顶部按钮 - 白色圆形 -->
+  <!-- 返回顶部按钮 - 白色方块 -->
   <button
-    class="w-12 h-12 sm:w-12 sm:h-12 bg-white text-gray-700 shadow-lg flex items-center justify-center transition-all hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 border border-gray-200/50 rounded-none hover:-translate-y-1"
+    class="w-12 h-12 sm:w-12 sm:h-12 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-400 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded-none"
     aria-label="返回顶部"
     @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
   >
@@ -148,38 +142,6 @@ const { qrCodeUrl = "/assets/qrcode.png" } = Astro.props;
 
 
 <style>
-  /* 暗黑模式适配 */
-  @media (prefers-color-scheme: dark) {
-    #floating-buttons .bg-white {
-      background-color: rgb(31 41 55);
-      border-color: rgb(55 65 81);
-    }
-
-    #floating-buttons .text-gray-700 {
-      color: rgb(209 213 219);
-    }
-
-    #floating-buttons .text-gray-600 {
-      color: rgb(156 163 175);
-    }
-
-    #floating-buttons .text-gray-500 {
-      color: rgb(107 114 128);
-    }
-
-    #floating-buttons .border-gray-100 {
-      border-color: rgb(55 65 81);
-    }
-
-    #floating-buttons .border-gray-200 {
-      border-color: rgb(75 85 99);
-    }
-
-    #floating-buttons .hover\\:bg-gray-50:hover {
-      background-color: rgb(55 65 81);
-    }
-  }
-
   /* 自定义动画增强 */
   #floating-buttons button {
     transform-origin: center;
@@ -190,14 +152,14 @@ const { qrCodeUrl = "/assets/qrcode.png" } = Astro.props;
     transform: scale(0.95);
   }
 
-  /* 悬停效果增强 */
+  /* 悬停效果增强 - 移除位移，保持静态稳定感，或仅保留微小位移 */
   #floating-buttons button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
   /* 焦点样式优化 */
   #floating-buttons button:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
   }
 </style>
