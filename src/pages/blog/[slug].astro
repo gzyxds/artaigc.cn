@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => {
     return import.meta.env.PROD ? !data.draft : true;
   });
-  
+
   return posts.map((post) => ({
     params: { slug: post.id.replace('.md', '') },
     props: { post },
@@ -43,179 +43,150 @@ const relatedPosts = allPosts
 
 <Layout title={post.data.title + " - 艺创AI"} description={post.data.excerpt}>
   <Header />
-  
+
   <!-- 主要内容区域 - 采用现代企业级设计 -->
-  <main class="min-h-screen w-full bg-gradient-to-br from-slate-50 via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/20 dark:to-slate-800">
-    
+  <main class="min-h-screen w-full bg-white dark:bg-gray-950 relative">
+    <!-- 背景网格装饰 -->
+    <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-fixed opacity-5 pointer-events-none"></div>
+
     <!-- 顶部导航栏 - 简洁固定设计 -->
-    <div class="sticky top-16 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50">
+    <div class="sticky top-16 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800">
       <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-4">
         <div class="flex items-center justify-between">
           <!-- 返回按钮 -->
-          <a href="/blog" class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 group">
+          <a href="/blog" class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 group font-mono text-sm uppercase tracking-wider">
             <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
-            <span class="font-medium">返回文章列表</span>
+            <span>Back to Index</span>
           </a>
-          
+
           <!-- 阅读进度指示器 -->
-          <div class="flex items-center gap-3">
-            <span class="text-sm text-slate-500 dark:text-slate-400">阅读进度</span>
-            <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-              <div class="reading-progress-bar h-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300" style="width: 0%"></div>
+          <div class="flex items-center gap-4">
+            <span class="text-[10px] font-mono text-gray-500 dark:text-gray-400 uppercase tracking-widest">Progress</span>
+            <div class="w-24 h-1 bg-gray-100 dark:bg-gray-800 rounded-none overflow-hidden">
+              <div class="reading-progress-bar h-full bg-blue-600 transition-all duration-300" style="width: 0%"></div>
             </div>
-            <span class="reading-progress text-sm font-medium text-blue-600 dark:text-blue-400 min-w-[3rem]">0%</span>
+            <span class="reading-progress text-[10px] font-mono text-blue-600 dark:text-blue-400 min-w-[2rem]">0%</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 文章容器 - 左右布局设计 -->
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-8">
+    <div class="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-12">
       <div class="grid lg:grid-cols-12 gap-8">
-        
+
         <!-- 左侧内容区域 -->
         <article class="lg:col-span-8">
-          
+
           <!-- 文章头部信息卡片 -->
-          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8 mb-8">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 lg:p-12 mb-8">
             <!-- 分类和日期标签 -->
-            <div class="flex items-center gap-4 mb-6">
-              <span class="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium">
-                <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/>
-                </svg>
+            <div class="flex flex-wrap items-center gap-6 mb-8">
+              <span class="inline-flex items-center px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-mono uppercase tracking-widest border border-blue-100 dark:border-blue-800 rounded-none">
                 {post.data.category}
               </span>
-              <div class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
-                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="flex items-center text-gray-400 dark:text-gray-500 text-[10px] font-mono uppercase tracking-widest">
+                <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
                 <time>{post.data.date}</time>
               </div>
             </div>
-            
+
             <!-- 文章标题 -->
-            <h1 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+            <h1 class="text-3xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-8 leading-tight tracking-tight">
               {post.data.title}
             </h1>
-            
+
             <!-- 文章摘要 -->
-            <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+            <p class="text-lg text-gray-500 dark:text-gray-400 leading-relaxed mb-10 border-l-2 border-blue-600 pl-6 italic font-light">
               {post.data.excerpt}
             </p>
-            
+
             <!-- 作者信息 -->
-            <div class="flex items-center gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
-              <img 
-                src="/assets/logo.png" 
-                alt={post.data.author} 
-                class="w-12 h-12 object-cover border-2 border-white dark:border-slate-700"
+            <div class="flex items-center gap-5 pt-8 border-t border-gray-100 dark:border-gray-800">
+              <img
+                src="/assets/logo.png"
+                alt={post.data.author}
+                class="w-12 h-12 object-cover border border-gray-200 dark:border-gray-700 p-0.5 rounded-none"
               />
               <div>
-                <p class="font-semibold text-slate-900 dark:text-white">{post.data.author}</p>
-                <p class="text-sm text-slate-500 dark:text-slate-400">{post.data.authorRole}</p>
+                <p class="font-mono text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">{post.data.author}</p>
+                <p class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest">{post.data.authorRole}</p>
               </div>
             </div>
           </div>
 
           <!-- 文章内容区域 -->
-          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8">
-            <div class="prose dark:prose-invert prose-lg max-w-none
-              prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white
-              prose-h1:text-3xl prose-h1:mb-8 prose-h1:border-b prose-h1:border-slate-200 dark:prose-h1:border-slate-700 prose-h1:pb-4
-              prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-blue-900 dark:prose-h2:text-blue-100
-              prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-blue-800 dark:prose-h3:text-blue-200
-              prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-p:leading-relaxed prose-p:text-base prose-p:mb-6
-              prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-a:font-medium
-              prose-strong:text-slate-900 dark:prose-strong:text-white prose-strong:font-semibold
-              prose-ul:list-none prose-ul:pl-0 prose-ul:space-y-2
-              prose-li:relative prose-li:pl-6 prose-li:text-slate-700 dark:prose-li:text-slate-300
-              prose-li:before:content-['▸'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:text-blue-500 prose-li:before:font-bold
-              prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-950/20 prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:italic prose-blockquote:text-slate-700 dark:prose-blockquote:text-slate-300
-              prose-code:text-blue-600 dark:prose-code:text-blue-400 prose-code:bg-blue-50 dark:prose-code:bg-blue-950/30 prose-code:px-2 prose-code:py-1 prose-code:font-mono prose-code:text-sm
-              prose-pre:bg-slate-900 dark:prose-pre:bg-slate-800 prose-pre:text-slate-100 prose-pre:border prose-pre:border-slate-700
-              prose-img:border prose-img:border-slate-200 dark:prose-img:border-slate-700
-              prose-hr:border-slate-300 dark:prose-hr:border-slate-600 prose-hr:my-12">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 lg:p-12">
+            <div class="prose dark:prose-invert prose-lg max-w-none">
               <Content />
             </div>
           </div>
 
           <!-- 分享功能卡片 -->
-          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 mt-8">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 mt-8">
+            <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
               </svg>
-              分享这篇文章
+              Share Knowledge
             </h3>
-            <div class="flex gap-3">
-              <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`} 
-                 target="_blank" 
+            <div class="flex flex-wrap gap-4">
+              <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+                 target="_blank"
                  rel="noopener noreferrer"
-                 class="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-colors text-sm font-medium border border-blue-200 dark:border-blue-800">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
-                </svg>
+                 class="share-btn flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-gray-900 transition-all text-[10px] font-mono uppercase tracking-widest border border-gray-100 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400">
                 Twitter
               </a>
-              <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.data.title)}`} 
-                 target="_blank" 
+              <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.data.title)}`}
+                 target="_blank"
                  rel="noopener noreferrer"
-                 class="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-colors text-sm font-medium border border-blue-200 dark:border-blue-800">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
+                 class="share-btn flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-gray-900 transition-all text-[10px] font-mono uppercase tracking-widest border border-gray-100 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400">
                 LinkedIn
-              </a>
-              <a href={`mailto:?subject=${encodeURIComponent(post.data.title)}&body=${encodeURIComponent(Astro.url.href)}`} 
-                 class="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-colors text-sm font-medium border border-blue-200 dark:border-blue-800">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-                邮件
               </a>
             </div>
           </div>
         </article>
 
         <!-- 右侧边栏 -->
-        <aside class="lg:col-span-4 space-y-6">
-          
+        <aside class="lg:col-span-4 space-y-8">
+
           <!-- 目录导航卡片 -->
-          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 sticky top-32">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 sticky top-32">
+            <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest border-b border-gray-100 dark:border-gray-800 pb-4">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
               </svg>
-              文章目录
+              Navigation
             </h3>
-            <nav class="space-y-1" id="toc">
+            <nav class="space-y-4" id="toc">
               <!-- 目录内容将通过JavaScript动态生成 -->
             </nav>
           </div>
 
           <!-- 文章统计信息卡片 -->
-          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8">
+            <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest border-b border-gray-100 dark:border-gray-800 pb-4">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 00-2-2z"/>
               </svg>
-              文章信息
+              Technical Specs
             </h3>
-            <div class="space-y-4">
-              <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
-                <span class="text-slate-600 dark:text-slate-400">发布日期</span>
-                <span class="font-medium text-slate-900 dark:text-white">{post.data.date}</span>
+            <div class="space-y-6">
+              <div class="flex justify-between items-center py-2 border-b border-gray-50 dark:border-gray-800/50">
+                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Published</span>
+                <span class="text-[10px] font-mono font-bold text-gray-900 dark:text-white">{post.data.date}</span>
               </div>
-              <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-700">
-                <span class="text-slate-600 dark:text-slate-400">分类</span>
-                <span class="font-medium text-blue-600 dark:text-blue-400">{post.data.category}</span>
+              <div class="flex justify-between items-center py-2 border-b border-gray-50 dark:border-gray-800/50">
+                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Category</span>
+                <span class="text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400">{post.data.category}</span>
               </div>
               <div class="flex justify-between items-center py-2">
-                <span class="text-slate-600 dark:text-slate-400">预计阅读</span>
-                <span class="font-medium text-slate-900 dark:text-white">5 分钟</span>
+                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Read Time</span>
+                <span class="text-[10px] font-mono font-bold text-gray-900 dark:text-white">~5 MIN</span>
               </div>
             </div>
           </div>
@@ -225,60 +196,46 @@ const relatedPosts = allPosts
 
      <!-- 相关文章推荐区域 -->
      {relatedPosts.length > 0 && (
-       <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] pb-16">
-         <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8">
-           <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-             <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+       <div class="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] pb-24">
+         <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 lg:p-12">
+           <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-10 flex items-center gap-3 uppercase tracking-widest">
+             <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
              </svg>
-             相关推荐文章
+             Related Insights
            </h3>
-           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 dark:bg-gray-800 border border-gray-100 dark:border-gray-800">
              {relatedPosts.map((relatedPost) => (
-               <a href={'/blog/' + relatedPost.id.replace('.md', '')} 
-                  class="group block bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300">
-                 <div class="relative aspect-[16/9] overflow-hidden">
-                   <img 
-                     src={relatedPost.image} 
+               <a href={'/blog/' + relatedPost.id.replace('.md', '')}
+                  class="group block bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 p-6">
+                 <div class="relative aspect-[16/10] overflow-hidden mb-6 border border-gray-100 dark:border-gray-800">
+                   <img
+                     src={relatedPost.image}
                      alt={relatedPost.title}
-                     class="w-full h-full object-cover"
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                      loading="lazy"
                    />
                  </div>
-                 <div class="p-6">
-                   <h4 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 mb-3">
+                 <div>
+                   <time class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest block mb-3">{relatedPost.date}</time>
+                   <h4 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
                      {relatedPost.title}
                    </h4>
-                   <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 mb-3">
-                     {relatedPost.excerpt}
-                   </p>
-                   <time class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                     </svg>
-                     {relatedPost.date}
-                   </time>
                  </div>
                </a>
              ))}
            </div>
-         </div>
-       </div>
-     )}
-   </main>
-   <Footer />
+        </div>
+      </div>
+    )}
+  </main>
+  <Footer />
 </Layout>
 
 <style>
   /* 现代化企业级样式 */
   :root {
     --header-height: 4rem;
-    --primary-color: #3b82f6;
-    --primary-hover: #2563eb;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --bg-card: #ffffff;
-    --border-color: #e2e8f0;
   }
 
   /* 平滑滚动 */
@@ -293,11 +250,15 @@ const relatedPosts = allPosts
   }
 
   .prose h1, .prose h2, .prose h3, .prose h4 {
-    @apply text-slate-900 dark:text-white font-bold;
+    @apply text-slate-900 dark:text-white font-bold tracking-tight;
+  }
+
+  .prose h1 {
+    @apply text-3xl mb-8 pb-4;
   }
 
   .prose h2 {
-    @apply text-2xl mt-12 mb-6 pb-3 border-b border-slate-200 dark:border-slate-700;
+    @apply text-2xl mt-12 mb-6 pb-3 border-b border-slate-200 dark:border-slate-700 text-blue-600 dark:text-blue-400;
   }
 
   .prose h3 {
@@ -305,39 +266,65 @@ const relatedPosts = allPosts
   }
 
   .prose p {
-    @apply mb-6 leading-relaxed;
+    @apply mb-6 leading-relaxed text-base text-gray-600 dark:text-gray-400;
   }
 
-  .prose blockquote {
-    @apply border-l-4 border-blue-500 pl-6 py-4 bg-blue-50 dark:bg-blue-900/20 italic;
+  .prose a {
+    @apply text-blue-600 dark:text-blue-400 no-underline hover:underline font-mono text-sm transition-colors;
   }
 
-  .prose code {
-    @apply bg-slate-100 dark:bg-slate-800 px-2 py-1 text-sm font-mono rounded border border-slate-200 dark:border-slate-700;
+  .prose strong {
+    @apply text-gray-900 dark:text-white font-bold;
   }
 
-  .prose pre {
-    @apply bg-slate-900 dark:bg-slate-800 p-6 overflow-x-auto rounded border border-slate-200 dark:border-slate-700;
+  .prose ul {
+    @apply list-none pl-0 space-y-4 mb-6;
   }
 
-  .prose pre code {
-    @apply bg-transparent border-none p-0 text-slate-100;
-  }
-
-  .prose ul, .prose ol {
+  .prose ol {
     @apply mb-6 pl-6;
   }
 
   .prose li {
-    @apply mb-2;
+    @apply relative pl-8 text-gray-600 dark:text-gray-400 mb-2;
   }
 
-  .prose a {
-    @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors;
+  .prose ul li::before {
+    content: '';
+    @apply absolute left-0 top-3 w-4 h-px bg-blue-600;
+  }
+
+  .prose blockquote {
+    @apply border-l-0 bg-gray-50 dark:bg-gray-800/50 pl-10 py-8 italic text-gray-600 dark:text-gray-400 relative;
+  }
+
+  .prose blockquote::before {
+    content: '"';
+    @apply absolute left-4 top-4 text-4xl text-blue-600/20;
+  }
+
+  .prose code {
+    @apply text-blue-600 dark:text-blue-400 bg-gray-50 dark:bg-gray-800 px-1.5 py-0.5 font-mono text-[0.9em] rounded-none border-none;
+  }
+
+  .prose code::before, .prose code::after {
+    content: '';
+  }
+
+  .prose pre {
+    @apply bg-slate-900 dark:bg-black p-6 overflow-x-auto rounded-none border border-gray-800;
+  }
+
+  .prose pre code {
+    @apply bg-transparent border-none p-0 text-gray-300;
   }
 
   .prose img {
-    @apply rounded border border-slate-200 dark:border-slate-700;
+    @apply rounded-none border border-gray-100 dark:border-gray-800;
+  }
+
+  .prose hr {
+    @apply border-gray-100 dark:border-gray-800 my-12;
   }
 
   /* 阅读进度条动画 */
@@ -349,42 +336,18 @@ const relatedPosts = allPosts
   #toc a {
     display: block;
     padding: 0.75rem 1rem;
-    color: #64748b;
-    border-radius: 0.5rem;
+    @apply text-gray-500 dark:text-gray-400 font-mono text-xs uppercase tracking-wider;
+    border-radius: 0;
     transition: all 0.2s ease;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
   }
 
   #toc a:hover {
-    background-color: #f1f5f9;
-    color: #3b82f6;
+    @apply bg-gray-50 dark:bg-gray-800 text-blue-600 dark:text-blue-400;
     transform: translateX(4px);
   }
 
   #toc a.active {
-    background-color: #dbeafe;
-    color: #2563eb;
-    border-left: 3px solid #3b82f6;
-    font-weight: 600;
-  }
-
-  /* 暗色模式目录样式 */
-  @media (prefers-color-scheme: dark) {
-    #toc a {
-      color: #94a3b8;
-    }
-
-    #toc a:hover {
-      background-color: #334155;
-      color: #60a5fa;
-    }
-
-    #toc a.active {
-      background-color: #1e3a8a;
-      color: #93c5fd;
-      border-left-color: #60a5fa;
-    }
+    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-bold border-l-2 border-blue-600;
   }
 
   /* 响应式调整 */
@@ -399,7 +362,7 @@ const relatedPosts = allPosts
       padding-left: 1rem;
       padding-right: 1rem;
     }
-    
+
     .prose {
       font-size: 16px;
     }
@@ -412,31 +375,7 @@ const relatedPosts = allPosts
 
   .card-hover:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-
-  /* 按钮样式 */
-  .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    transition: all 0.2s ease;
-  }
-
-  .btn-primary:hover {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    transform: translateY(-1px);
-  }
-
-  /* 分享按钮动画 */
-  .share-btn {
-    transition: all 0.2s ease;
-  }
-
-  .share-btn:hover {
-    transform: scale(1.05);
-  }
-
-  .share-btn:active {
-    transform: scale(0.95);
+    @apply border-blue-500 dark:border-blue-400;
   }
 </style>
 
@@ -446,7 +385,7 @@ const relatedPosts = allPosts
     const article = document.querySelector('article');
     const progressBar = document.querySelector('.reading-progress-bar') as HTMLElement;
     const progressText = document.querySelector('.reading-progress') as HTMLElement;
-    
+
     if (!article || !progressBar || !progressText) return;
 
     const updateProgress = () => {
@@ -454,12 +393,12 @@ const relatedPosts = allPosts
       const windowHeight = window.innerHeight;
       const scrolled = window.scrollY;
       const articleTop = article.offsetTop;
-      
+
       const progress = Math.min(
         Math.max((scrolled - articleTop + windowHeight) / articleHeight, 0),
         1
       );
-      
+
       const percentage = Math.round(progress * 100);
       progressBar.style.width = `${percentage}%`;
       progressText.textContent = `${percentage}%`;
@@ -474,22 +413,22 @@ const relatedPosts = allPosts
   const generateTOC = () => {
     const headings = document.querySelectorAll('article h2, article h3');
     const toc = document.getElementById('toc');
-    
+
     if (!headings.length || !toc) return;
 
     // 清空现有目录
     toc.innerHTML = '';
     const fragment = document.createDocumentFragment();
-    
+
     headings.forEach((heading, index) => {
       const id = `heading-${index}`;
       heading.id = id;
-      
+
       const link = document.createElement('a');
       link.href = `#${id}`;
       link.textContent = heading.textContent;
       link.className = heading.tagName === 'H3' ? 'ml-4 text-sm' : 'text-sm';
-      
+
       // 添加平滑滚动点击事件
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -501,10 +440,10 @@ const relatedPosts = allPosts
           }
         }
       });
-      
+
       fragment.appendChild(link);
     });
-    
+
     toc.appendChild(fragment);
 
     // 跟踪当前阅读的标题
@@ -512,13 +451,13 @@ const relatedPosts = allPosts
       entries.forEach((entry) => {
         const id = entry.target.id;
         const link = toc.querySelector(`a[href="#${id}"]`);
-        
+
         if (entry.isIntersecting) {
           toc.querySelectorAll('a').forEach(a => a.classList.remove('active'));
           link?.classList.add('active');
         }
       });
-    }, { 
+    }, {
       threshold: 0.5,
       rootMargin: '-100px 0px -50% 0px'
     });

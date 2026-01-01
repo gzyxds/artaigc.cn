@@ -76,61 +76,76 @@ const categories = [...new Set(posts.map(post => post.category))];
 <!-- 博客页面布局 -->
 <Layout title="艺创AI_新闻资讯" description="了解我们最新的产品更新、功能发布和公司新闻。" keywords="新闻,资讯,产品更新,功能发布,公司新闻">
   <Header />
-  <main class="bg-gray-50 dark:bg-gray-900">
+  <main class="bg-white dark:bg-gray-950 relative">
+    <!-- 背景网格装饰 -->
+    <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-fixed opacity-5 pointer-events-none"></div>
+
     <!-- 英雄区块：页面标题和描述 -->
-    <HeroSection 
-      title="新闻资讯" 
+    <HeroSection
+      title="新闻资讯"
       description="了解我们最新的产品更新、功能发布和公司新闻"
+      hasPattern={true}
     />
-    
+
     <!-- 博客内容区域 -->
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-6">
+    <div class="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-12">
 
       <!-- 博客文章卡片网格 - 4列布局设计 -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800">
         {posts.map((post, index) => (
-          <article class="group bg-white dark:bg-gray-800 overflow-hidden transition-all duration-300 slide-up border border-gray-100 dark:border-gray-700" 
+          <article class="group bg-white dark:bg-gray-900 overflow-hidden transition-all duration-300 slide-up flex flex-col h-full"
                    style={'animation-delay: ' + (index * 100) + 'ms'}>
             <!-- 文章封面图片 - 4列布局优化比例 -->
-            <a href={'/blog/' + post.id.replace('.md', '')} class="block relative overflow-hidden aspect-[4/3]">
-              <img 
-                src={post.image} 
+            <a href={'/blog/' + post.id.replace('.md', '')} class="block relative overflow-hidden aspect-[16/10] border-b border-gray-100 dark:border-gray-800">
+              <img
+                src={post.image}
                 alt={post.title}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
-            </a>
-            <!-- 文章内容区域 - 4列布局优化 -->
-            <div class="p-4">
-              <!-- 分类和日期信息 - 适中的间距 -->
-              <div class="flex items-center mb-3">
-                <span class="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-medium rounded">
+              <div class="absolute top-4 left-4">
+                <span class="px-2 py-1 bg-white/90 dark:bg-gray-900/90 text-blue-600 dark:text-blue-400 text-[10px] font-mono uppercase tracking-wider border border-blue-200 dark:border-blue-800 rounded-none backdrop-blur-sm">
                   {post.category}
                 </span>
-                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
-                <time class="text-xs text-gray-500 dark:text-gray-400">{post.date}</time>
+              </div>
+            </a>
+            <!-- 文章内容区域 - 4列布局优化 -->
+            <div class="p-6 flex flex-col flex-grow">
+              <!-- 日期信息 -->
+              <div class="flex items-center mb-4">
+                <time class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest">{post.date}</time>
               </div>
               <!-- 文章标题 - 适中的字体 -->
-              <a href={'/blog/' + post.id.replace('.md', '')} class="block mb-2 group">
-                <h2 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
+              <a href={'/blog/' + post.id.replace('.md', '')} class="block mb-4 group/title">
+                <h2 class="text-lg font-bold text-gray-900 dark:text-white group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors line-clamp-2 leading-tight">
                   {post.title}
                 </h2>
               </a>
               <!-- 文章摘要 - 适中的字体和间距 -->
-              <p class="text-gray-600 dark:text-gray-300 mb-3 line-clamp-2 text-sm leading-relaxed">
+              <p class="text-gray-500 dark:text-gray-400 mb-6 line-clamp-3 text-sm leading-relaxed">
                 {post.excerpt}
               </p>
-              <!-- 作者信息 - 适中的头像和间距 -->
-              <div class="flex items-center pt-3 border-t border-gray-100 dark:border-gray-700">
-                <img 
-                  src={post.authorAvatar} 
-                  alt={post.author} 
-                  class="w-6 h-6 mr-2 object-cover ring-1 ring-white dark:ring-gray-700"
-                  loading="lazy"
-                />
-                <div>
-                  <p class="font-medium text-gray-900 dark:text-white text-sm">{post.author}</p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">{post.authorRole}</p>
+
+              <div class="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                <!-- 作者信息 -->
+                <div class="flex items-center">
+                  <img
+                    src={post.authorAvatar}
+                    alt={post.author}
+                    class="w-8 h-8 mr-3 object-cover border border-gray-200 dark:border-gray-700 p-0.5"
+                    loading="lazy"
+                  />
+                  <div>
+                    <p class="font-mono text-xs font-bold text-gray-900 dark:text-white">{post.author}</p>
+                    <p class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase">{post.authorRole}</p>
+                  </div>
+                </div>
+
+                <!-- 阅读更多箭头 -->
+                <div class="text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -139,12 +154,10 @@ const categories = [...new Set(posts.map(post => post.category))];
       </div>
 
       <!-- 加载更多按钮 -->
-      <div class="mt-8 flex justify-center">
-        <a href="#" class="group inline-flex items-center px-8 py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:-translate-y-0.5 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md">
-          加载更多
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-y-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
-          </svg>
+      <div class="mt-12 flex justify-center">
+        <a href="#" class="group inline-flex items-center px-10 py-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-mono text-xs uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 border border-gray-200 dark:border-gray-800 rounded-none relative overflow-hidden">
+          <span class="relative z-10">Load More Content</span>
+          <div class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
         </a>
       </div>
     </div>
@@ -157,21 +170,21 @@ const categories = [...new Set(posts.map(post => post.category))];
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* 优化卡片动画 */
   .slide-up {
     opacity: 0;
     transform: translateY(20px);
     animation: slideUp 0.6s ease-out forwards;
   }
-  
+
   @keyframes slideUp {
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   /* 优化文本截断 */
   .line-clamp-2 {
     display: -webkit-box;
@@ -179,7 +192,7 @@ const categories = [...new Set(posts.map(post => post.category))];
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;

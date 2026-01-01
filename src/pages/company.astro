@@ -9,54 +9,48 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="艺创AI - 专注于AIGC系统源码解决方案">
   <Header />
-  <main class="bg-white">
+  <main class="bg-white dark:bg-gray-950">
     <!-- 企业级英雄区域 -->
-    <section class="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 py-24 lg:py-32 overflow-hidden">
+    <section class="relative py-24 lg:py-32 overflow-hidden border-b border-gray-200 dark:border-gray-800">
       <!-- 科技感背景装饰 -->
-      <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-20 left-20 w-96 h-96 border border-blue-200 rounded-none transform rotate-45"></div>
-        <div class="absolute bottom-20 right-20 w-64 h-64 border border-blue-300 rounded-none transform -rotate-12"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-blue-100 rounded-none opacity-30"></div>
-      </div>
+      <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center opacity-30"></div>
       
       <div class="container mx-auto px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
           <!-- 企业标识 -->
-          <div class="inline-flex items-center px-6 py-2 bg-blue-600 text-white text-sm font-medium mb-8 tracking-wide">
-            <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
+          <div class="inline-flex items-center px-3 py-1 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 text-xs font-mono mb-8 tracking-wide">
+            <span class="mr-2">■</span>
             ENTERPRISE SOLUTION
           </div>
           
           <!-- 主标题 -->
-          <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 mb-8 tracking-tight">
+          <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-8 tracking-tight">
             艺创<span class="text-blue-600">AI</span>
           </h1>
           
           <!-- 副标题 -->
-          <p class="text-xl lg:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+          <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto">
             一站式渐进式AIGC系统解决方案<br>
-            <span class="text-blue-600 font-medium">面向个人用户 (ToC) · 开发者 (ToD) · 企业 (ToB)</span>
+            <span class="text-blue-600 font-mono text-base mt-2 block">面向个人用户 (ToC) · 开发者 (ToD) · 企业 (ToB)</span>
           </p>
           
-          <!-- 核心数据展示 -->
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-            <div class="text-center">
-              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">50W+</div>
-              <div class="text-gray-600 font-medium">客户信赖</div>
+          <!-- 核心数据展示 - Bento Grid Style -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 mt-16">
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2 font-mono">50W<span class="text-lg align-top">+</span></div>
+              <div class="text-gray-500 dark:text-gray-400 text-xs font-mono uppercase tracking-wider">客户信赖</div>
             </div>
-            <div class="text-center">
-              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">100+</div>
-              <div class="text-gray-600 font-medium">企业服务</div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2 font-mono">100<span class="text-lg align-top">+</span></div>
+              <div class="text-gray-500 dark:text-gray-400 text-xs font-mono uppercase tracking-wider">企业服务</div>
             </div>
-            <div class="text-center">
-              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">28</div>
-              <div class="text-gray-600 font-medium">城市覆盖</div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2 font-mono">28</div>
+              <div class="text-gray-500 dark:text-gray-400 text-xs font-mono uppercase tracking-wider">城市覆盖</div>
             </div>
-            <div class="text-center">
-              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">300+</div>
-              <div class="text-gray-600 font-medium">服务商</div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2 font-mono">300<span class="text-lg align-top">+</span></div>
+              <div class="text-gray-500 dark:text-gray-400 text-xs font-mono uppercase tracking-wider">服务商</div>
             </div>
           </div>
         </div>
@@ -64,94 +58,94 @@ import Footer from '../components/Footer.astro';
     </section>
 
     <!-- 数据统计详细展示 -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800">
       <div class="container mx-auto px-6 lg:px-8">
         <!-- 标题区域 -->
         <div class="text-center mb-20">
-          <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 text-sm font-medium mb-6 tracking-wide">
+          <div class="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 text-xs font-mono mb-6 tracking-wide">
             DATA INSIGHTS
           </div>
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">业务数据概览</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">业务数据概览</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             通过数据驱动的方式，展现艺创AI在AIGC领域的技术实力与市场影响力
           </p>
         </div>
 
         <!-- 数据卡片网格 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- 客户数量卡片 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 dark:hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
+              <div class="text-xs font-mono text-gray-400">01</div>
             </div>
-            <div class="text-4xl font-bold text-gray-900 mb-2">50W+</div>
-            <div class="text-gray-600 font-medium mb-4">客户信赖之选</div>
-            <div class="text-sm text-gray-500">覆盖全国各行业客户群体</div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2 font-mono">50W+</div>
+            <div class="text-gray-900 dark:text-white font-bold mb-4">客户信赖之选</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">覆盖全国各行业客户群体</div>
           </div>
 
           <!-- 企业服务卡片 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 dark:hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
+              <div class="text-xs font-mono text-gray-400">02</div>
             </div>
-            <div class="text-4xl font-bold text-gray-900 mb-2">100+</div>
-            <div class="text-gray-600 font-medium mb-4">企业级服务</div>
-            <div class="text-sm text-gray-500">提供定制化企业解决方案</div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2 font-mono">100+</div>
+            <div class="text-gray-900 dark:text-white font-bold mb-4">企业级服务</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">提供定制化企业解决方案</div>
           </div>
 
           <!-- 城市覆盖卡片 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 dark:hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
+              <div class="text-xs font-mono text-gray-400">03</div>
             </div>
-            <div class="text-4xl font-bold text-gray-900 mb-2">28个</div>
-            <div class="text-gray-600 font-medium mb-4">城市代理覆盖</div>
-            <div class="text-sm text-gray-500">建立全国服务网络体系</div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2 font-mono">28</div>
+            <div class="text-gray-900 dark:text-white font-bold mb-4">城市代理覆盖</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">建立全国服务网络体系</div>
           </div>
 
           <!-- 服务商卡片 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 dark:hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
+              <div class="text-xs font-mono text-gray-400">04</div>
             </div>
-            <div class="text-4xl font-bold text-gray-900 mb-2">300+</div>
-            <div class="text-gray-600 font-medium mb-4">签约服务商</div>
-            <div class="text-sm text-gray-500">构建完善的生态合作体系</div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2 font-mono">300+</div>
+            <div class="text-gray-900 dark:text-white font-bold mb-4">签约服务商</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">构建完善的生态合作体系</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 公司介绍 -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
       <div class="container mx-auto px-6 lg:px-8">
         <!-- 标题区域 -->
         <div class="text-center mb-20">
-          <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 text-sm font-medium mb-6 tracking-wide">
+          <div class="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 text-xs font-mono mb-6 tracking-wide">
             ABOUT US
           </div>
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">艺创AI：引领AIGC技术创新</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">艺创AI：引领AIGC技术创新</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             专注于人工智能生成内容（AIGC）技术的研发与应用，为全球用户提供前沿的AI解决方案
           </p>
         </div>
@@ -160,40 +154,40 @@ import Footer from '../components/Footer.astro';
         <div class="w-full">
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- 公司成立 -->
-            <div class="bg-gray-50 border border-gray-200 p-8">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center mb-6">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V6a2 2 0 012-2h4a2 2 0 012 2v1m-6 0h6m-6 0l6 0m-6 0v10a2 2 0 002 2h4a2 2 0 002-2V7m-6 0H4a2 2 0 00-2 2v10a2 2 0 002 2h4m-6-4h.01M16 11h.01" />
+            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors">
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V6a2 2 0 012-2h4a2 2 0 012 2v1m-6 0h6m-6 0l6 0m-6 0v10a2 2 0 002 2h4a2 2 0 002-2V7m-6 0H4a2 2 0 00-2 2v10a2 2 0 002 2h4m-6-4h.01M16 11h.01" />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-4">公司成立</h3>
-              <p class="text-gray-600 leading-relaxed">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">公司成立</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
                 艺创AI成立于2023年，是一家专注于人工智能生成内容（AIGC）技术的创新型科技公司。
               </p>
             </div>
 
             <!-- 技术团队 -->
-            <div class="bg-gray-50 border border-gray-200 p-8">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center mb-6">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors">
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-4">专业团队</h3>
-              <p class="text-gray-600 leading-relaxed">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">专业团队</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
                 拥有资深AI专家、算法工程师和产品设计师组成的专业团队，在NLP、CV、深度学习等领域具有丰富经验。
               </p>
             </div>
 
             <!-- 产品服务 -->
-            <div class="bg-gray-50 border border-gray-200 p-8">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center mb-6">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors">
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-4">产品矩阵</h3>
-              <p class="text-gray-600 leading-relaxed">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">产品矩阵</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
                 产品涵盖AI数字人、智能知识库、AI聊天绘画、AI论文创作等多个领域，提供全方位智能化服务。
               </p>
             </div>
@@ -201,10 +195,10 @@ import Footer from '../components/Footer.astro';
 
           <!-- 公司理念 -->
           <div class="mt-16 text-center">
-            <div class="bg-blue-50 border border-blue-200 p-12">
-              <h3 class="text-2xl font-bold text-gray-900 mb-6">企业理念</h3>
-              <p class="text-lg text-gray-700 leading-relaxed max-w-5xl mx-auto">
-                秉承"让AI技术普惠大众"的理念，艺创AI不断推动AIGC技术的创新与应用，致力于成为全球领先的AI内容生成平台，为数字化时代的内容创作和智能交互开辟新的可能性。
+            <div class="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900 p-12">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">企业理念</h3>
+              <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-5xl mx-auto font-serif italic">
+                "秉承'让AI技术普惠大众'的理念，艺创AI不断推动AIGC技术的创新与应用，致力于成为全球领先的AI内容生成平台，为数字化时代的内容创作和智能交互开辟新的可能性。"
               </p>
             </div>
           </div>
@@ -213,15 +207,15 @@ import Footer from '../components/Footer.astro';
     </section>
 
     <!-- 使命愿景理念 -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800">
       <div class="container mx-auto px-6 lg:px-8">
         <!-- 标题区域 -->
         <div class="text-center mb-20">
-          <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 text-sm font-medium mb-6 tracking-wide">
+          <div class="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 text-xs font-mono mb-6 tracking-wide">
             MISSION & VISION
           </div>
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">使命愿景理念</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">使命愿景理念</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             以技术创新为驱动，以客户价值为导向，构建AI时代的数字化未来
           </p>
         </div>
@@ -229,126 +223,122 @@ import Footer from '../components/Footer.astro';
         <!-- 使命愿景理念卡片 -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- 使命卡片 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300">
-            <div class="w-16 h-16 mb-6 bg-blue-100 flex items-center justify-center">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors">
+            <div class="w-16 h-16 mb-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
               <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">使命</h3>
-            <p class="text-gray-600 leading-relaxed">以开发者为核心，加速企业数字化进程，让AI技术普惠大众，推动社会智能化发展。</p>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">使命</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">以开发者为核心，加速企业数字化进程，让AI技术普惠大众，推动社会智能化发展。</p>
           </div>
 
           <!-- 愿景卡片 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300">
-            <div class="w-16 h-16 mb-6 bg-blue-100 flex items-center justify-center">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors">
+            <div class="w-16 h-16 mb-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
               <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">愿景</h3>
-            <p class="text-gray-600 leading-relaxed">成为全球领先的AIGC技术平台，构建开放共享的AI生态，引领智能内容创作新时代。</p>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">愿景</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">成为全球领先的AIGC技术平台，构建开放共享的AI生态，引领智能内容创作新时代。</p>
           </div>
 
           <!-- 理念卡片 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300">
-            <div class="w-16 h-16 mb-6 bg-blue-100 flex items-center justify-center">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors">
+            <div class="w-16 h-16 mb-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
               <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">理念</h3>
-            <p class="text-gray-600 leading-relaxed">开放共享，创新引领，信任合作，共铸未来，坚持技术驱动与价值创造并重。</p>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">理念</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">开放共享，创新引领，信任合作，共铸未来，坚持技术驱动与价值创造并重。</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 核心价值观 -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
       <div class="container mx-auto px-6 lg:px-8">
         <!-- 标题区域 -->
         <div class="text-center mb-20">
-          <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 text-sm font-medium mb-6 tracking-wide">
+          <div class="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 text-xs font-mono mb-6 tracking-wide">
             CORE VALUES
           </div>
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">核心价值观</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">核心价值观</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             这些价值观指导着我们的每一个决策，塑造着我们的企业文化，推动着我们不断前进
           </p>
         </div>
 
         <!-- 价值观卡片网格 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- 创新驱动 -->
-          <div class="bg-gray-50 border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">创新驱动</h3>
-            <p class="text-gray-600 leading-relaxed">持续技术创新，引领行业发展，为用户创造更大价值，推动AIGC技术边界不断拓展。</p>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">创新驱动</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">持续技术创新，引领行业发展，为用户创造更大价值，推动AIGC技术边界不断拓展。</p>
           </div>
 
           <!-- 开放共享 -->
-          <div class="bg-gray-50 border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">开放共享</h3>
-            <p class="text-gray-600 leading-relaxed">拥抱开源精神，共建技术生态，实现合作共赢，构建开放包容的AI技术社区。</p>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">开放共享</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">拥抱开源精神，共建技术生态，实现合作共赢，构建开放包容的AI技术社区。</p>
           </div>
 
           <!-- 用户至上 -->
-          <div class="bg-gray-50 border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">用户至上</h3>
-            <p class="text-gray-600 leading-relaxed">以用户需求为导向，提供优质产品和服务体验，持续优化用户体验和价值创造。</p>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">用户至上</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">以用户需求为导向，提供优质产品和服务体验，持续优化用户体验和价值创造。</p>
           </div>
 
           <!-- 诚信负责 -->
-          <div class="bg-gray-50 border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">诚信负责</h3>
-            <p class="text-gray-600 leading-relaxed">坚持诚信经营，承担社会责任，建立信任关系，以负责任的态度推动AI技术发展。</p>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">诚信负责</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">坚持诚信经营，承担社会责任，建立信任关系，以负责任的态度推动AI技术发展。</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 公司承诺 -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800">
       <div class="container mx-auto px-6 lg:px-8">
         <!-- 标题区域 -->
         <div class="text-center mb-20">
-          <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 text-sm font-medium mb-6 tracking-wide">
+          <div class="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 text-xs font-mono mb-6 tracking-wide">
             OUR COMMITMENT
           </div>
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">我们的承诺</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">我们的承诺</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             我们致力于通过创新技术和负责任的实践，为客户创造持久价值
           </p>
         </div>
@@ -356,49 +346,46 @@ import Footer from '../components/Footer.astro';
         <!-- 承诺卡片网格 -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- 技术与伦理 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">技术与伦理</h3>
-            <p class="text-gray-600 leading-relaxed">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">技术与伦理</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
               我们在追求技术创新的同时坚守伦理底线。我们致力于开发负责任的AI系统，确保技术发展与人类价值观相协调，为客户提供值得信赖的解决方案。
             </p>
           </div>
 
           <!-- 创新与前瞻 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">创新与前瞻</h3>
-            <p class="text-gray-600 leading-relaxed">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">创新与前瞻</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
               我们不断探索AI技术的前沿领域，将最新的研究成果转化为实用的产品和服务。我们致力于开发具有创造力的AI系统，帮助客户在数字化转型中保持竞争优势。
             </p>
           </div>
 
           <!-- 赋能与共创 -->
-          <div class="bg-white border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 group">
+          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 hover:border-blue-500 transition-colors group">
             <div class="flex items-center justify-between mb-6">
-              <div class="w-12 h-12 bg-blue-100 flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <div class="w-2 h-2 bg-blue-600 group-hover:bg-blue-700 transition-colors"></div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">赋能与共创</h3>
-            <p class="text-gray-600 leading-relaxed">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">赋能与共创</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
               我们相信AI技术的价值在于赋能各行各业。我们与客户紧密合作，深入理解其业务需求，共同打造能够创造实际价值的AI解决方案，实现技术与业务的完美融合。
             </p>
           </div>
@@ -407,23 +394,26 @@ import Footer from '../components/Footer.astro';
      </section>
 
      <!-- 联系我们 -->
-     <section class="py-24 bg-blue-600">
-       <div class="container mx-auto px-6 lg:px-8">
-         <div class="text-center">
+     <section class="py-24 bg-gray-900 dark:bg-black text-white relative overflow-hidden">
+       <!-- 装饰背景 -->
+       <div class="absolute inset-0 opacity-10 bg-[url('/grid-pattern.svg')]"></div>
+       
+       <div class="container mx-auto px-6 lg:px-8 relative z-10">
+         <div class="text-center max-w-3xl mx-auto">
            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">携手共创AI未来</h2>
-           <p class="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
+           <p class="text-xl text-gray-400 mb-12">
              让我们一起探索AIGC技术的无限可能，为您的业务注入智能化动力
            </p>
            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-             <a href="/contact" class="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-medium hover:bg-gray-50 transition-colors duration-300">
+             <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-mono text-sm hover:bg-blue-700 transition-colors duration-300 rounded-none">
                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                </svg>
                联系我们
              </a>
-             <a href="/products" class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-medium hover:bg-white hover:text-blue-600 transition-colors duration-300">
+             <a href="/products" class="inline-flex items-center justify-center px-8 py-4 border border-gray-700 text-white font-mono text-sm hover:bg-gray-800 transition-colors duration-300 rounded-none">
                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                </svg>
                查看产品
              </a>

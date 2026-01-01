@@ -9,15 +9,10 @@ import QRModal from '../components/QRModal.astro';
 import Products from '../components/Products.astro';
 import Carousel from '../components/Hero/Carousel.astro';
 
-
-
-
 // 页面元数据
 const title = "艺创AI_一站式AI系统源码平台_AI数字人_ai聊天绘画_ai创作系统源码及定价方案";
 const description = "艺创AI提供多种AI系统解决方案，包括AI数字人、AI知识库、AI聊天绘画和AI论文写作系统，价格透明，支持私有部署，专业团队提供技术支持。";
 const keywords = "AI系统价格,AI系统定价,AI数字人价格,AI知识库价格,AI聊天系统价格,AI论文系统价格,PHP AI系统价格,Java AI系统价格";
-
-
 
 // 服务特性数据
 const serviceFeatures = [
@@ -70,8 +65,6 @@ const faqData = [
     answer: '是的，我们提供专业的定制开发服务。可根据您的具体需求进行功能定制、界面调整和系统集成，确保产品完全符合您的业务需求。'
   }
 ];
-
-
 ---
 
 <Layout
@@ -81,45 +74,45 @@ const faqData = [
 >
   <Header />
   <Carousel />
-  <main class="min-h-screen bg-white">
-    <!-- 页面标题区域 - 简洁现代设计 -->
-    <section class="relative py-20 lg:py-32 bg-gradient-to-b from-slate-50 to-white">
-      <!-- 几何装饰元素 -->
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute top-20 left-10 w-32 h-32 bg-blue-100 opacity-30"></div>
-        <div class="absolute top-40 right-20 w-24 h-24 bg-blue-200 opacity-20"></div>
-        <div class="absolute bottom-20 left-1/3 w-16 h-16 bg-indigo-100 opacity-40"></div>
-      </div>
+  <main class="min-h-screen bg-white dark:bg-gray-950">
+    <!-- 页面标题区域 - Bento/Linear 设计 -->
+    <section class="relative py-20 lg:py-32 border-b border-gray-200 dark:border-gray-800">
+      <!-- 网格背景 -->
+      <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
 
-      <div class="container-custom text-center">
-        <div class="space-y-8">
+      <div class="container-custom relative z-10">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
           <!-- 标题 -->
           <div class="space-y-6">
-            <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
-              企业级AI解决方案
+            <div class="inline-flex items-center px-3 py-1 rounded-none border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-mono mb-4">
+              PRICING & SOLUTIONS
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white tracking-tight">
+              企业级 AI <span class="text-blue-600">解决方案</span>
             </h1>
-            <p class="text-2xl lg:text-3xl text-gray-600 leading-relaxed">
-              专业的人工智能产品套件，为企业数字化转型提供核心技术支撑
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              专业的人工智能产品套件，为企业数字化转型提供核心技术支撑。
+              <span class="font-mono text-sm block mt-2 text-gray-500">源码交付 · 私有部署 · 永久授权</span>
             </p>
           </div>
 
-          <!-- 核心数据展示 -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mt-20">
-            <div class="text-center">
-              <div class="text-5xl lg:text-6xl font-bold text-blue-600 mb-4">1000+</div>
-              <div class="text-lg lg:text-xl text-gray-600">企业客户</div>
+          <!-- 核心数据展示 - Bento Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 mt-20">
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 font-mono group-hover:text-blue-600 transition-colors">1000<span class="text-blue-600">+</span></div>
+              <div class="text-sm text-gray-500 font-mono uppercase tracking-wider">企业客户</div>
             </div>
-            <div class="text-center">
-              <div class="text-5xl lg:text-6xl font-bold text-blue-600 mb-4">99.9%</div>
-              <div class="text-lg lg:text-xl text-gray-600">系统稳定性</div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 font-mono group-hover:text-blue-600 transition-colors">99.9<span class="text-sm text-gray-400">%</span></div>
+              <div class="text-sm text-gray-500 font-mono uppercase tracking-wider">系统稳定性</div>
             </div>
-            <div class="text-center">
-              <div class="text-5xl lg:text-6xl font-bold text-blue-600 mb-4">24/7</div>
-              <div class="text-lg lg:text-xl text-gray-600">技术支持</div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 font-mono group-hover:text-blue-600 transition-colors">24/7</div>
+              <div class="text-sm text-gray-500 font-mono uppercase tracking-wider">技术支持</div>
             </div>
-            <div class="text-center">
-              <div class="text-5xl lg:text-6xl font-bold text-blue-600 mb-4">永久</div>
-              <div class="text-lg lg:text-xl text-gray-600">永久免费升级</div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 font-mono group-hover:text-blue-600 transition-colors">INF</div>
+              <div class="text-sm text-gray-500 font-mono uppercase tracking-wider">永久升级</div>
             </div>
           </div>
         </div>
@@ -127,94 +120,104 @@ const faqData = [
     </section>
 
     <Products />
+
     <!-- 服务特性区域 -->
-    <section class="py-24 lg:py-40 bg-white">
+    <section class="py-24 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
       <div class="container-custom">
-        <div class="text-center space-y-6 mb-20">
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
-            专业服务保障
-          </h2>
-          <p class="text-2xl text-gray-600 leading-relaxed">
-            为您提供全方位的技术支持与服务保障
-          </p>
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 dark:border-gray-800 pb-8">
+          <div class="space-y-4">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
+              专业服务保障
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400">
+              为您提供全方位的技术支持与服务保障
+            </p>
+          </div>
+          <div class="font-mono text-sm text-gray-500 mt-4 md:mt-0">
+            SERVICE & SUPPORT
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {serviceFeatures.map((feature) => (
-            <div class="text-center p-10 bg-gray-50 hover:bg-blue-50 transition-colors duration-300">
-              <div class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-8">
-                <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}></path>
+            <div class="bento-card group p-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-colors">
+              <div class="w-12 h-12 border border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6 group-hover:border-blue-500 transition-colors">
+                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={feature.icon}></path>
                 </svg>
               </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-              <p class="text-gray-600 text-base leading-relaxed">{feature.description}</p>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-    <!-- 企业服务区域 - 现代简洁设计 -->
-    <section class="py-20 lg:py-32 bg-blue-600">
-      <div class="container-custom">
-        <div class="text-center">
+
+    <!-- 企业服务区域 -->
+    <section class="py-24 bg-gray-900 dark:bg-black text-white relative overflow-hidden">
+      <!-- 装饰背景 -->
+      <div class="absolute inset-0 opacity-10 bg-[url('/grid-pattern.svg')]"></div>
+
+      <div class="container-custom relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div class="space-y-8">
             <div class="space-y-4">
-              <h2 class="text-3xl lg:text-4xl font-bold text-white">
+              <div class="text-blue-400 font-mono text-sm">ENTERPRISE</div>
+              <h2 class="text-3xl lg:text-5xl font-bold text-white">
                 企业级定制服务
               </h2>
-              <p class="text-xl text-blue-100 leading-relaxed">
-                专业团队为您提供定制化解决方案，助力企业数字化转型升级
+              <p class="text-xl text-gray-400 leading-relaxed">
+                专业团队为您提供定制化解决方案，助力企业数字化转型升级。
               </p>
             </div>
 
-            <!-- 服务特性网格 -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-              <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
-                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
-                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                  </svg>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-3">定制开发</h3>
-                <p class="text-blue-100 text-sm leading-relaxed">
-                  根据企业特定需求，提供完全定制化的AI系统开发服务
-                </p>
-              </div>
+            <div class="pt-4">
+              <button
+                onclick="document.getElementById('qr-modal').classList.add('active')"
+                class="bg-blue-600 text-white px-8 py-4 font-mono text-sm hover:bg-blue-700 transition-colors duration-300 rounded-none border border-transparent hover:border-blue-400"
+              >
+                联系企业服务团队 ->
+              </button>
+            </div>
+          </div>
 
-              <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
-                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
-                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-3">专属支持</h3>
-                <p class="text-blue-100 text-sm leading-relaxed">
-                  配备专业技术团队，提供7x24小时技术支持与咨询服务
-                </p>
+          <!-- 服务特性网格 -->
+          <div class="grid gap-4">
+            <div class="border border-gray-800 bg-gray-900/50 p-6 flex gap-6 hover:border-blue-900/50 transition-colors">
+              <div class="w-12 h-12 border border-gray-700 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
               </div>
-
-              <div class="bg-white/10 border border-white/20 p-8 text-center rounded-lg">
-                <div class="w-16 h-16 bg-white/20 flex items-center justify-center mx-auto mb-6 rounded-lg">
-                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-3">质量保证</h3>
-                <p class="text-blue-100 text-sm leading-relaxed">
-                  严格的质量管控体系，确保交付产品的稳定性与可靠性
-                </p>
+              <div>
+                <h3 class="text-lg font-bold text-white mb-2">定制开发</h3>
+                <p class="text-gray-400 text-sm">根据企业特定需求，提供完全定制化的AI系统开发服务</p>
               </div>
             </div>
 
-            <!-- 联系按钮 -->
-            <div class="pt-12">
-              <button
-                onclick="document.getElementById('qr-modal').classList.add('active')"
-                class="bg-white text-blue-600 px-8 py-4 font-semibold hover:bg-gray-50 transition-colors duration-300"
-              >
-                联系企业服务团队
-              </button>
+            <div class="border border-gray-800 bg-gray-900/50 p-6 flex gap-6 hover:border-blue-900/50 transition-colors">
+              <div class="w-12 h-12 border border-gray-700 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white mb-2">专属支持</h3>
+                <p class="text-gray-400 text-sm">配备专业技术团队，提供7x24小时技术支持与咨询服务</p>
+              </div>
+            </div>
+
+            <div class="border border-gray-800 bg-gray-900/50 p-6 flex gap-6 hover:border-blue-900/50 transition-colors">
+              <div class="w-12 h-12 border border-gray-700 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white mb-2">质量保证</h3>
+                <p class="text-gray-400 text-sm">严格的质量管控体系，确保交付产品的稳定性与可靠性</p>
+              </div>
             </div>
           </div>
         </div>
@@ -222,31 +225,39 @@ const faqData = [
     </section>
 
     <!-- FAQ区域 -->
-    <section class="py-24 lg:py-40 bg-white">
+    <section class="py-24 bg-white dark:bg-gray-950">
       <div class="container-custom">
-        <div class="text-center space-y-6 mb-20">
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+        <div class="text-center space-y-6 mb-16">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
             常见问题
           </h2>
-          <p class="text-xl text-gray-600 leading-relaxed">
-            解答您关于产品和服务的常见疑问
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            FAQ & ANSWERS
           </p>
         </div>
 
-        <div class="space-y-8">
+        <div class="max-w-3xl mx-auto border-t border-gray-200 dark:border-gray-800">
           {faqData.map((faq, index) => (
-            <div class="bg-white border border-gray-200 overflow-hidden">
+            <div class="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950" x-data="{ open: false }">
               <button
-                class="w-full px-10 py-8 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300"
-                onclick={`document.getElementById('faq-${index}').classList.toggle('hidden')`}
+                class="w-full py-6 text-left flex items-center justify-between group"
+                @click="open = !open"
               >
-                <h3 class="text-xl font-semibold text-gray-900 pr-6">{faq.question}</h3>
-                <svg class="w-6 h-6 text-gray-500 transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white pr-6 group-hover:text-blue-600 transition-colors font-mono">
+                  <span class="text-blue-600 mr-2">0{index + 1}.</span>
+                  {faq.question}
+                </h3>
+                <div class="relative w-6 h-6 flex items-center justify-center">
+                  <span class="absolute w-full h-px bg-gray-400 transform transition-transform duration-300" :class="{ 'rotate-180': open }"></span>
+                  <span class="absolute h-full w-px bg-gray-400 transform transition-transform duration-300" :class="{ 'rotate-90': open, 'rotate-0': !open }"></span>
+                </div>
               </button>
-              <div id={`faq-${index}`} class="hidden px-10 pb-8">
-                <p class="text-gray-600 text-base leading-relaxed">{faq.answer}</p>
+              <div
+                x-show="open"
+                x-collapse
+                class="pb-6 text-gray-600 dark:text-gray-400 text-base leading-relaxed pl-8 border-l-2 border-blue-600 ml-2"
+              >
+                {faq.answer}
               </div>
             </div>
           ))}
@@ -281,18 +292,12 @@ const faqData = [
   }
 
   /* 卡片悬停效果 */
-  .pricing-card {
+  .bento-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .pricing-card:hover {
-    transform: translateY(-8px) scale(1.02);
   }
 
   /* 背景装饰 */
   .bg-pattern {
-    background-image:
-      radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    background-image: url('/grid-pattern.svg');
   }
 </style>
