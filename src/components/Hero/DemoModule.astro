@@ -69,8 +69,8 @@ const cards: Card[] = [
   <!-- AI产品背景装饰 -->
   <div class="absolute inset-0 opacity-30">
     <!-- 主要光晕背景 -->
-    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[#0055ff]/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#0055ff]/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[#0055ff]/10 rounded-none blur-3xl"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#0055ff]/5 rounded-none blur-3xl"></div>
 
     <!-- AI产品图标装饰 -->
     <!-- AI芯片图标 -->
@@ -150,7 +150,7 @@ const cards: Card[] = [
           </h1>
 
           <!-- 简洁装饰线 -->
-          <div class="w-20 h-1 bg-[#0055ff] mx-auto lg:mx-0 rounded-full"></div>
+          <div class="w-20 h-1 bg-[#0055ff] mx-auto lg:mx-0 rounded-none"></div>
         </div>
 
         <!-- 描述文本 -->
@@ -161,7 +161,7 @@ const cards: Card[] = [
         <!-- 特性标签 - 统一蓝色调 -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-3">
           {features.map((feature) => (
-            <a href={feature.href} class="px-4 py-2 bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-lg text-sm font-medium hover:bg-[#0055ff]/20 transition-colors">
+            <a href={feature.href} class="px-4 py-2 bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-none text-sm font-medium hover:bg-[#0055ff]/20 transition-colors">
               {feature.name}
             </a>
           ))}
@@ -172,7 +172,7 @@ const cards: Card[] = [
           <a
             href="javascript:void(0)"
             onclick="document.getElementById('qr-modal').classList.add('active')"
-            class="px-8 py-3 bg-[#0055ff] hover:bg-[#0044dd] text-white font-semibold rounded-lg border border-[#0055ff] shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center"
+            class="px-8 py-3 bg-[#0055ff] hover:bg-[#0044dd] text-white font-semibold rounded-none border border-[#05f] shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center"
             aria-label="联系客服"
           >
             <span>联系客服</span>
@@ -185,7 +185,7 @@ const cards: Card[] = [
             href="https://auth.cnai.art/"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-lg border border-gray-300 dark:border-gray-600 shadow-md hover:shadow-lg hover:border-[#0055ff] transition-all duration-200 flex items-center justify-center"
+            class="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-none border border-gray-300 dark:border-gray-600 shadow-md hover:shadow-lg hover:border-[#0055ff] transition-all duration-200 flex items-center justify-center"
             aria-label="立即授权"
           >
             <span>立即授权</span>
@@ -198,12 +198,12 @@ const cards: Card[] = [
 
       <!-- 右侧展示区 - 简洁模拟面设计 -->
       <div class="relative mt-8 lg:mt-0">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8">
+        <div class="bg-white dark:bg-gray-800 rounded-none border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8">
 
           <!-- 顶部标签区 -->
           <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
             {topTags.map((tag) => (
-              <span class="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-md">
+              <span class="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-none">
                 {tag.name}
               </span>
             ))}
@@ -212,9 +212,9 @@ const cards: Card[] = [
           <!-- 功能卡片网格 -->
           <div class="grid grid-cols-2 gap-3 sm:gap-4">
             {cards.map((card) => (
-              <div class="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl p-3 sm:p-4 lg:p-6 hover:shadow-md hover:border-[#0055ff]/30 transition-all duration-200">
+              <div class="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-none p-3 sm:p-4 lg:p-6 hover:shadow-md hover:border-[#0055ff]/30 transition-all duration-200">
                 <!-- 图标区域 -->
-                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#0055ff]/10 rounded-lg flex items-center justify-center mb-2 sm:mb-4">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#0055ff]/10 rounded-none flex items-center justify-center mb-2 sm:mb-4">
                   <i class="material-icons text-[#0055ff] text-lg sm:text-xl">
                     {card.icon}
                   </i>

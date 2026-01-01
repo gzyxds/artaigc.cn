@@ -1,213 +1,123 @@
 ---
-// 产品数据接口
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  category: string;
-  price: number;
-  originalPrice: number;
-  features: string[];
-  demoUrl: string;
-  purchaseUrl: string;
-  color: string;
-}
+// 首页产品数据接口
+import { products as defaultProducts, type Product, getCategory } from '../data/products';
+
+// 定义图标路径
+const icons = {
+  zap: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+  database: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
+  video: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+  penTool: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z",
+  briefcase: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  layoutGrid: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+};
+
+// 分类定义
+const categories = [
+  { id: 'all', name: '全部应用', icon: icons.zap },
+  { id: 'independent', name: '独立系统', icon: icons.database },
+  { id: 'video', name: '图像视频', icon: icons.video },
+  { id: 'writing', name: '智能写作', icon: icons.penTool },
+  { id: 'enterprise', name: '企业工具', icon: icons.briefcase },
+  { id: 'efficiency', name: '效率工具', icon: icons.layoutGrid },
+];
+
+// 辅助函数：根据 subtitle 获取分类 ID
+// 已从 ../data/products 导入
 
 // 组件属性
 interface Props {
   products?: Product[];
   title?: string;
-  showViewToggle?: boolean;
-  defaultView?: 'grid' | 'list' | 'card';
 }
 
-// 默认产品数据
-const defaultProducts: Product[] = [
-  {
-    id: 1,
-    title: "超级IP数字人SaaS系统「PHP源码版」",
-    description: "为企业主、个人博主打造短视频IP的数字人源码系统，支持真人声音+形象克隆，一键合成,基于SaaS多开模式的架构设计，支持无限OEM贴牌开通站点",
-    image: "/assets/saas.webp",
-    category: "AI数字人",
-    price: 4999,
-    originalPrice: 6800,
-    features: ["声音克隆", "形象克隆", "视频生成", "AI文案", "热点话题"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "blue"
-  },
-  {
-    id: 2,
-    title: "企业全能AI知识库「PHP源码版」",
-    description: "全能AI知识库系统PHP版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持问答式和文档式知识库，能够导入txt、doc、docx、pdf、md等多种格式文档",
-    image: "/assets/work.webp",
-    category: "AI写作",
-    price: 6600,
-    originalPrice: 9800,
-    features: ["多格式导入", "向量检索", "智能问答", "多端支持"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "green"
-  },
-  {
-    id: 3,
-    title: "艺创AI聊天绘画系统「PHP源码版」",
-    description: "实现了AI对话+AI绘画的融合使用。系统功能包括：AI智能对话、AI创作模型、AI绘画、分销推广、会员套餐、充值套餐、卡密兑换、模型计费、会员回流优惠券等丰富的营销功能",
-    image: "/assets/ai.webp",
-    category: "智能聊天",
-    price: 2999,
-    originalPrice: 3800,
-    features: ["AI绘画", "智能聊天", "场景定制", "一键部署"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "green"
-  },
-  {
-    id: 4,
-    title: "艺创AI论文写作系统「PHP源码版」",
-    description: "10分钟可生成几万字长文的系统。只需要输入主题关键词，AI即可快速为您生成主题大纲，可任意修改章节内容，操作高效快捷",
-    image: "/assets/lw.svg",
-    category: "论文创作",
-    price: 3200,
-    originalPrice: 4698,
-    features: ["快速生成大纲", "一键生成论文", "可下载资料", "走马灯通知"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "purple"
-  },
-  {
-    id: 5,
-    title: "企业全能AI知识库「Python版」",
-    description: "支持多格式文档智能解析、内容提取与结构化，适用于企业知识管理与数据挖掘。",
-    image: "https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/Python.png",
-    category: "AI知识库",
-    price: 6999,
-    originalPrice: 9800,
-    features: ["文档解析", "内容提取", "结构化输出", "多格式支持"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "yellow"
-  },
-  {
-    id: 5,
-    title: "企业全能AI知识库「Java源码版」",
-    description: "支持多格式文档智能解析、内容提取与结构化，适用于企业知识管理与数据挖掘。",
-    image: "https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/java-ai.svg",
-    category: "AI知识库",
-    price: 6600,
-    originalPrice: 9800,
-    features: ["文档解析", "内容提取", "结构化输出", "多格式支持"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "yellow"
-  },
-  {
-    id: 5,
-    title: "AI数字人SaaS系统2.0",
-    description: "支持真人声音+形象克隆，一键合成知识付费、课程、带货、形象宣传。",
-    image: "/assets/szrpro.webp",
-    category: "AI数字人",
-    price: 6600,
-    originalPrice: 9800,
-    features: ["真人声音", "形象克隆", "视频生成", "AI文案", "热点话题"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "yellow"
-  },
-  {
-    id: 6,
-    title: "AI短剧小说创作",
-    description: "AI短剧写作是一款专注于短剧本和网络小说创作的辅助工具，适合自媒体创作者、编剧、网络作家及内容团队使用",
-    image: "https://server.buildingai.cc/uploads/image/2025/12/4feba1bd-c936-446f-a726-1f9738d11ef4.png",
-    category: "插件版",
-    price: 1388,
-    originalPrice: 899,
-    features: ["独立应用", "智能写作", "官方推荐", "效率工具"],
-    demoUrl: "/demo",
-    purchaseUrl: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    color: "orange"
-  }
-];
+// 默认产品数据 (来自 products.ts)
+// 已改为从 ../data/products 导入
 
 // 默认属性值
 const {
   products = defaultProducts,
   title = "我们的产品",
-  showViewToggle = true,
-  defaultView = 'grid'
 } = Astro.props;
+
+// 为产品添加分类属性
+const productsWithCategory = products.map(product => ({
+  ...product,
+  category: getCategory(product.subtitle)
+}));
+
+// 定义样式常量
+const btnActiveClass = "bg-primary-500 text-white border-primary-500 shadow-md transform scale-105";
+const btnInactiveClass = "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700";
+const iconActiveClass = "text-white";
+const iconInactiveClass = "text-gray-400";
 ---
 
 <!-- 产品展示区域 -->
 <section class="py-10 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-  <div class="relative">
+  <div class="relative" x-data="{ activeCategory: 'all' }">
     <!-- 背景装饰 -->
-    <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-b-[100%] blur-xl"></div>
+    <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-none blur-xl"></div>
 
     <!-- 装饰元素 - 左上角 -->
-    <div class="absolute left-0 top-1/4 w-64 h-64 bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
+    <div class="absolute left-0 top-1/4 w-64 h-64 bg-blue-100/40 dark:bg-blue-900/20 rounded-none blur-3xl -z-10 animate-pulse-slow"></div>
 
     <!-- 装饰元素 - 右上角 -->
-    <div class="absolute right-0 top-1/3 w-80 h-80 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
+    <div class="absolute right-0 top-1/3 w-80 h-80 bg-primary-100/40 dark:bg-primary-900/20 rounded-none blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
 
     <!-- 装饰元素 - 左下角 -->
-    <div class="absolute left-1/4 bottom-1/4 w-72 h-72 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute left-1/4 bottom-1/4 w-72 h-72 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-none blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
 
     <!-- 装饰元素 - 右下角 -->
-    <div class="absolute right-1/4 bottom-1/3 w-60 h-60 bg-accent-100/40 dark:bg-accent-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 3s;"></div>
+    <div class="absolute right-1/4 bottom-1/3 w-60 h-60 bg-accent-100/40 dark:bg-accent-900/20 rounded-none blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 3s;"></div>
 
   <div class="container-custom">
-    <!-- 页面标题和视图切换 -->
+    <!-- 页面标题和分类切换 -->
     <div class="text-center mb-8">
       <div class="inline-block mb-4">
-        <span class="inline-block px-3 py-1 text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-full">
+        <span class="inline-block px-3 py-1 text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-none">
           精选产品
         </span>
       </div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 lg:mb-10 text-blue-600 dark:text-blue-400 animate-fade-in hover:scale-105 transition-transform duration-300">
         {title}
       </h1>
-      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-6">
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-8">
         探索我们的创新产品系列，为您的业务提供最佳解决方案
       </p>
 
-      {showViewToggle && (
-        <div class="flex items-center justify-start space-x-3 p-2 rounded-lg">
-          <button id="grid-view" class={`p-3 rounded-md ${defaultView === 'grid' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="网格视图">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+      <!-- 分类标签栏 -->
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
+        {categories.map((cat) => (
+          <button
+            @click={`activeCategory = '${cat.id}'`}
+            class="inline-flex items-center px-4 py-2 rounded-none text-sm font-medium transition-all duration-300 border"
+            :class={`activeCategory === '${cat.id}' ? btnActiveClass : btnInactiveClass`}
+          >
+            <svg class="w-4 h-4 mr-2" :class={`activeCategory === '${cat.id}' ? iconActiveClass : iconInactiveClass`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d={cat.icon} />
             </svg>
+            {cat.name}
           </button>
-          <button id="list-view" class={`p-3 rounded-md ${defaultView === 'list' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="列表视图">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-          <button id="card-view" class={`p-3 rounded-md ${defaultView === 'card' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="卡片视图">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </button>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
 
     <!-- 产品列表容器 -->
-    <div id="grid-view-container" class={defaultView === 'grid' ? '' : 'hidden'}>
+    <div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-        {products.map((product, index) => (
+        {productsWithCategory.map((product, index) => (
           <div
-            class="group relative rounded-xl p-3 sm:p-4 md:p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-200 flex flex-col h-full overflow-hidden"
-            transition:animate="slide"
-            style={`transition-delay: ${index * 0.1}s`}
+            x-show={`activeCategory === 'all' || activeCategory === '${product.category}'`}
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform scale-95"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            class="group relative rounded-none p-3 sm:p-4 md:p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-200 flex flex-col h-full overflow-hidden"
+            style={`transition-delay: ${index * 0.05}s`}
           >
             <!-- 商品图片区域 - 16:9比例 -->
             <div class="relative mb-3 sm:mb-4">
-              <div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20" style="aspect-ratio: 16/9;">
+              <div class="relative overflow-hidden rounded-none bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20" style="aspect-ratio: 16/9;">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -215,25 +125,39 @@ const {
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-full shadow-md">
-                  {product.category}
-                </div>
+
+                {product.subtitle && (
+                  <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-none shadow-md z-10">
+                    {product.subtitle.replace(/[\[\]]/g, '')}
+                  </div>
+                )}
               </div>
             </div>
 
             <!-- 商品信息区域 -->
             <div class="flex-1 flex flex-col">
-              <h3 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-200 line-clamp-2 leading-tight mb-2">
-                {product.title}
-              </h3>
+              <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+                <h3 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-200 leading-tight">
+                  {product.title}
+                </h3>
+              </div>
 
               <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2 mb-3">
                 {product.description}
               </p>
 
               <div class="flex flex-wrap gap-1.5 mb-3">
+                {product.isPlugin ? (
+                  <span class="px-2 py-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-none shadow-sm">
+                    应用插件
+                  </span>
+                ) : (
+                  <span class="px-2 py-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-xs rounded-none shadow-sm">
+                    独立系统
+                  </span>
+                )}
                 {product.features.slice(0, 3).map(feature => (
-                  <span class="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs rounded-full transition-colors duration-200">
+                  <span class="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs rounded-none transition-colors duration-200">
                     {feature}
                   </span>
                 ))}
@@ -241,30 +165,46 @@ const {
 
               <div class="mt-auto pt-3 border-t border-gray-100 dark:border-gray-700">
                 <div class="flex items-center justify-between mb-3">
-                  <div class="text-lg sm:text-xl font-bold text-primary-500 dark:text-primary-400">
-                    ¥{product.price}
+                  <div class="flex items-center gap-2 flex-wrap">
                     {product.originalPrice && (
-                      <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
+                       <span class="text-xs text-gray-400 line-through">¥{product.originalPrice}</span>
                     )}
+                    <span class="px-2.5 py-0.5 bg-gray-900 dark:bg-black text-[#FFD700] text-sm font-medium rounded-none border border-gray-800 shadow-sm flex items-center gap-1">
+                       <span class="text-xs font-normal text-gray-300">折后</span>
+                       ¥{product.price}
+                    </span>
+                    {product.originalPrice && product.originalPrice > product.price && (
+                      <span class="text-xs text-red-500 font-medium ml-auto">
+                        省¥{Math.round(product.originalPrice - product.price)}
+                      </span>
+                    )}
+                  </div>
+                  <div class="flex items-center text-xs text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-yellow-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span>{product.rating}</span>
+                    <span class="mx-1">·</span>
+                    <span>已售 {product.sales}</span>
                   </div>
                 </div>
                 <div class="flex gap-2">
                    <a
-                     href={product.demoUrl}
+                     href={product.link}
                      target="_blank"
                      rel="noopener noreferrer"
-                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 text-sm font-medium"
+                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-none hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 text-sm font-medium"
                    >
                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                      </svg>
-                     详情
+                     演示
                    </a>
                    <a
-                     href={product.purchaseUrl}
+                     href={product.buyLink}
                      target="_blank"
                      rel="noopener noreferrer"
-                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg"
+                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-primary-500 text-white rounded-none hover:bg-primary-600 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg"
                    >
                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -278,156 +218,8 @@ const {
         ))}
       </div>
     </div>
-
-    <!-- 列表视图容器 -->
-    <div id="list-view-container" class={defaultView === 'list' ? '' : 'hidden'}>
-      <div class="space-y-6 md:space-y-8">
-        {products.map((product, index) => (
-          <div
-            class="group relative rounded-xl p-4 sm:p-5 md:p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-200 overflow-hidden"
-            transition:animate="slide"
-            style={`transition-delay: ${index * 0.1}s`}
-          >
-            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-              <div class="md:w-1/4 flex-shrink-0">
-                <div class="w-full rounded-lg bg-primary-500 shadow-md group-hover:shadow-lg transition-all duration-200 overflow-hidden" style="aspect-ratio: 16/9;">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              <div class="flex-1">
-                 <div class="flex items-center gap-2 mb-2">
-                   <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-200">
-                     {product.title}
-                   </h3>
-                   <span class="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs rounded-full transition-colors duration-200 whitespace-nowrap">
-                     {product.category}
-                   </span>
-                 </div>
-                 <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-3 sm:mb-4">
-                   {product.description}
-                 </p>
-                 <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                   {product.features.map(feature => (
-                     <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full transition-colors duration-200">
-                       {feature}
-                     </span>
-                   ))}
-                 </div>
-                <div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
-                  <div class="text-lg sm:text-xl font-bold text-primary-500 dark:text-primary-400">
-                    ¥{product.price}
-                    {product.originalPrice && (
-                      <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
-                    )}
-                  </div>
-                  <div class="flex gap-2 sm:gap-3">
-                    <a
-                       href={product.demoUrl}
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-center rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 text-sm font-medium"
-                     >
-                       详情
-                     </a>
-                     <a
-                       href={product.purchaseUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white text-center rounded-lg hover:bg-primary-600 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg"
-                    >
-                      购买
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- 卡片视图容器 -->
-    <div id="card-view-container" class={defaultView === 'card' ? '' : 'hidden'}>
-      <div class="grid grid-cols-1 gap-6 md:gap-8">
-        {products.map((product, index) => (
-          <div
-            class="group overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:shadow-lg hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white shadow-[0_6px_20px_#dce0e8] rounded-xl transform hover:-translate-y-1 dark:bg-slate-800 dark:border-gray-700"
-            transition:animate="slide"
-            style={`transition-delay: ${index * 0.1}s`}
-          >
-            <div class="p-4 sm:p-5 md:p-6">
-              <div class="flex items-center mb-4">
-                <div class="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 ring-2 ring-primary-100 dark:ring-primary-800">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
-                    {product.title}
-                  </h3>
-                  <div class="bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs px-2 py-1 rounded-full inline-block shadow-sm">
-                    {product.category}
-                  </div>
-                </div>
-              </div>
-              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                {product.description}
-              </p>
-              <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
-                {product.features.map(feature => (
-                  <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
-                    {feature}
-                  </span>
-                ))}
-              </div>
-              <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
-                <div>
-                  <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
-                  {product.originalPrice && (
-                    <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
-                  )}
-                </div>
-                <div class="flex space-x-2">
-                  <a
-                    href={product.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 transition-all duration-200"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                    详情
-                  </a>
-                  <a
-                    href={product.purchaseUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    购买
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
   </div>
-</div>
+</section>
 
 <style>
   @keyframes pulse-slow {
@@ -445,80 +237,3 @@ const {
     animation: pulse-slow 8s infinite ease-in-out;
   }
 </style>
-
-<script>
-  // 视图切换功能
-  document.addEventListener('DOMContentLoaded', () => {
-    const gridViewBtn = document.getElementById('grid-view');
-    const listViewBtn = document.getElementById('list-view');
-    const cardViewBtn = document.getElementById('card-view');
-
-    const gridViewContainer = document.getElementById('grid-view-container');
-    const listViewContainer = document.getElementById('list-view-container');
-    const cardViewContainer = document.getElementById('card-view-container');
-
-    // 检查元素是否存在
-    if (!gridViewBtn || !listViewBtn || !cardViewBtn ||
-        !gridViewContainer || !listViewContainer || !cardViewContainer) {
-      console.error('无法找到视图切换元素');
-      return;
-    }
-
-    // 默认显示网格视图
-    let currentView = 'grid';
-
-    // 从本地存储中获取上次选择的视图
-    const savedView = localStorage.getItem('productViewMode');
-    if (savedView && ['grid', 'list', 'card'].includes(savedView)) {
-      switchView(savedView as 'grid' | 'list' | 'card');
-    }
-
-    // 切换视图函数
-    function switchView(view: 'grid' | 'list' | 'card') {
-      // 隐藏所有视图
-      if (gridViewContainer) gridViewContainer.classList.add('hidden');
-      if (listViewContainer) listViewContainer.classList.add('hidden');
-      if (cardViewContainer) cardViewContainer.classList.add('hidden');
-
-      // 重置所有按钮样式
-      if (gridViewBtn) {
-        gridViewBtn.classList.remove('bg-primary-500', 'text-white');
-        gridViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
-      }
-
-      if (listViewBtn) {
-        listViewBtn.classList.remove('bg-primary-500', 'text-white');
-        listViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
-      }
-
-      if (cardViewBtn) {
-        cardViewBtn.classList.remove('bg-primary-500', 'text-white');
-        cardViewBtn.classList.add('text-gray-600', 'dark:text-gray-300');
-      }
-
-      // 显示选中的视图
-      if (view === 'grid' && gridViewContainer && gridViewBtn) {
-        gridViewContainer.classList.remove('hidden');
-        gridViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
-        gridViewBtn.classList.add('bg-primary-500', 'text-white');
-      } else if (view === 'list' && listViewContainer && listViewBtn) {
-        listViewContainer.classList.remove('hidden');
-        listViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
-        listViewBtn.classList.add('bg-primary-500', 'text-white');
-      } else if (view === 'card' && cardViewContainer && cardViewBtn) {
-        cardViewContainer.classList.remove('hidden');
-        cardViewBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
-        cardViewBtn.classList.add('bg-primary-500', 'text-white');
-      }
-
-      // 保存当前视图到本地存储
-      localStorage.setItem('productViewMode', view);
-      currentView = view;
-    }
-
-    // 添加按钮点击事件
-    if (gridViewBtn) gridViewBtn.addEventListener('click', () => switchView('grid'));
-    if (listViewBtn) listViewBtn.addEventListener('click', () => switchView('list'));
-    if (cardViewBtn) cardViewBtn.addEventListener('click', () => switchView('card'));
-  });
-</script>

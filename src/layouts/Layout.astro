@@ -17,6 +17,7 @@ import { ViewTransitions } from 'astro:transitions';
 import FloatingButtons from '../components/FloatingButtons.astro';
 import QRModal from '../components/QRModal.astro';
 import MobileBottomConsult from '../components/MobileBottomConsult.astro';
+import BackgroundGrid from '../components/BackgroundGrid.astro';
 
 /**
  * 定义组件属性接口
@@ -45,8 +46,34 @@ const {
 
 <!doctype html>
 <!-- 使用Alpine.js管理暗黑模式状态 -->
-<html lang="zh-CN" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
+<html lang="zh-CN" 
+  x-data="{ 
+    darkMode: localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  }" 
+  x-init="$watch('darkMode', val => {
+    localStorage.setItem('darkMode', val);
+    if (val) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  })"
+  :class="{ 'dark': darkMode }"
+>
   <head>
+    <script is:inline>
+      // 防闪烁脚本：在页面加载前立即执行主题检测
+      (function() {
+        const getTheme = () => {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('darkMode')) {
+            return localStorage.getItem('darkMode') === 'true';
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        };
+        if (getTheme()) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -60,20 +87,23 @@ const {
     <ViewTransitions />
   </head>
   <!-- 使用Tailwind设置基础样式和暗黑模式 -->
-  <body class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300">
+  <body class="antialiased bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors duration-300 scroll-animation relative">
+    <!-- 全局网格背景 -->
+    <BackgroundGrid />
+
     <!-- 页面包装器，用于过渡动画 -->
-    <div id="page-wrapper" class="page-transition-wrapper">
+    <div id="page-wrapper" class="page-transition-wrapper relative z-10 flex flex-col min-h-screen">
       <slot />
     </div>
-    
+
     <!-- 悬浮按钮组：客服咨询和返回顶部 -->
     <FloatingButtons qrCodeUrl="/assets/qrcode.png" />
-    
+
     <!-- 二维码弹窗模态框 -->
     <QRModal qrCodeUrl="/assets/qrcode.png" title="联系客服" description="扫描二维码添加客服微信，获取专业技术支持" />
-    
+
     <!-- 手机端底部业务咨询组件 -->
-    <MobileBottomConsult 
+    <MobileBottomConsult
       phoneNumber="400-123-4567"
       presalesQR="/assets/qrcode.png"
       aftersalesQR="/assets/qrcode.png"
@@ -94,6 +124,30 @@ const {
       }
 
       /**
+       * 滚动动画观察者
+       * 当元素进入视口时添加 .scroll-animated 类
+       */
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-animated');
+            observer.unobserve(entry.target); // 动画只播放一次
+          }
+        });
+      }, observerOptions);
+
+      function initScrollAnimation() {
+        const elements = document.querySelectorAll('.scroll-animate, .col:not(.no-scroll-animation)');
+        elements.forEach(el => observer.observe(el));
+      }
+
+      /**
        * 页面过渡效果处理
        * 在页面加载完成后添加过渡类
        */
@@ -103,6 +157,8 @@ const {
         if (pageWrapper) {
           pageWrapper.classList.add('page-loaded');
         }
+        // 初始化滚动动画
+        initScrollAnimation();
       });
 
       /**

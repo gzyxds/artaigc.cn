@@ -1,0 +1,31 @@
+---
+/**
+ * BackgroundGrid 组件
+ *
+ * 实现类似 Tailwind UI 风格的网格背景：
+ * 1. 使用 container-custom 确保与页面内容完全对齐
+ * 2. 装饰性侧边栏（Gutter）填充在容器的 padding 区域
+ * 3. 响应式适配，利用 global.css 中定义的变量确保对齐
+ */
+---
+
+<div class="fixed inset-0 pointer-events-none z-0 flex flex-col items-center justify-center">
+  <!--
+    使用 container-custom 匹配页面布局
+    设置 z-index 确保位于背景层
+  -->
+  <div class="container-custom h-full !z-auto relative">
+    <!-- 内容区域边界线 (对应 container 的内容区域) -->
+    <div class="h-full w-full border-x border-grid relative">
+
+      <!-- 左侧装饰列 (定位在 padding 区域) -->
+      <div class="absolute top-0 bottom-0 -left-[var(--gutter-width)] w-[var(--gutter-width)] border-l border-grid bg-grid-pattern hidden md:block"></div>
+
+      <!-- 右侧装饰列 (定位在 padding 区域) -->
+      <div class="absolute top-0 bottom-0 -right-[var(--gutter-width)] w-[var(--gutter-width)] border-r border-grid bg-grid-pattern hidden md:block"></div>
+
+      <!-- 可选：中间区域的网格线，如果需要更密集的网格 -->
+      <!-- 目前保持简洁，只显示主边框和两侧装饰 -->
+    </div>
+  </div>
+</div>

@@ -4,10 +4,8 @@
 const categories = [
   {
     title: "AI数字人",
-    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/>
-      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
-    </svg>`,
+    desc: "打造24小时不间断直播的数字员工，支持多平台部署与应用",
+    icon: "smart_toy",
     items: [
       {text: "宝塔面板部署"},
       {text: "通用部署"},
@@ -25,10 +23,8 @@ const categories = [
   },
   {
     title: "AI知识库",
-    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" fill="currentColor"/>
-      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
-    </svg>`,
+    desc: "企业级私有化知识库问答系统，智能客服最佳解决方案",
+    icon: "menu_book",
     items: [
       {text: "宝塔面板部署"},
       {text: "通用部署"},
@@ -46,10 +42,8 @@ const categories = [
   },
   {
     title: "聊天绘画",
-    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/>
-      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
-    </svg>`,
+    desc: "集合智能对话与AI绘画创作，激发无限创意灵感",
+    icon: "palette",
     items: [
       {text: "宝塔面板部署"},
       {text: "通用部署"},
@@ -67,10 +61,8 @@ const categories = [
   },
   {
     title: "论文写作",
-    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" fill="currentColor"/>
-      <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
-    </svg>`,
+    desc: "专业的AI学术论文辅助写作工具，提高写作效率",
+    icon: "article",
     items: [
       {text: "宝塔面板部署"},
       {text: "通用部署"},
@@ -87,107 +79,74 @@ const categories = [
     ]
   },
 ];
-
 ---
-<div class="text-center mb-3 sm:mb-4 lg:mb-5 mt-8 sm:mt-12 lg:mt-16">
-  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-display text-[#05f] dark:text-[#05f] mb-4 sm:mb-5 lg:mb-6">
+
+<div class="text-center mb-16 mt-20 px-4">
+  <div class="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-full border border-blue-100 dark:border-blue-800">
+    文档中心
+  </div>
+  <h1 class="text-4xl md:text-5xl font-bold font-display text-gray-900 dark:text-white mb-6 tracking-tight">
     产品文档中心
   </h1>
-  <p class="text-lg sm:text-xl text-[#4a4a4a] dark:text-[#4a4a4a] max-w-3xl mx-auto">
-    全面的产品使用指南，帮助您快速上手和深入了解我们的产品功能
+  <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+    全面的产品使用指南，帮助您快速上手和深入了解我们的产品功能，让部署和开发更简单。
   </p>
 </div>
 
-<section class="relative py-4 sm:py-6 lg:py-8">
+<section class="relative pb-24">
   <div class="container-custom">
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {categories.map((category, index) => (
         <div
-          class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700 hover:-translate-y-1 transition-all duration-500"
-          style={`transition-delay: ${index * 100}ms`}
+          class="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full"
           data-aos="fade-up"
           data-aos-delay={index * 100}
         >
-          {/* 装饰背景 */}
-          <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+          {/* 装饰背景 - 悬停显示 */}
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
 
-          {/* 装饰角标 */}
-          <div class="absolute top-0 right-0">
-            <div class="w-24 h-24 bg-gradient-to-br from-blue-100/50 to-transparent dark:from-blue-800/20 dark:to-transparent rounded-bl-[100px] group-hover:from-blue-200/70 dark:group-hover:from-blue-700/30 transition-colors duration-300"></div>
-          </div>
-
-          <div class="relative flex items-center space-x-5 mb-6">
-            <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-50/60 dark:bg-blue-900/30 p-1.5 sm:p-2 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 text-blue-500">
-              <div set:html={category.icon}></div>
+          {/* 顶部图标和标题 */}
+          <div class="relative z-10 flex-1">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm shrink-0">
+                <i class="material-icons text-3xl">{category.icon}</i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {category.title}
+              </h3>
             </div>
-            <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300">{category.title}</h3>
+
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 h-10 line-clamp-2 leading-relaxed">
+              {category.desc}
+            </p>
+
+            {/* 列表项 */}
+            <div class="space-y-3 mb-8">
+              {category.items.slice(0, 6).map((item) => (
+                <div class="flex items-center text-sm text-gray-600 dark:text-gray-300 group/item hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600 mr-3 group-hover/item:bg-blue-500 transition-colors shrink-0"></span>
+                  <span class="group-hover/item:translate-x-1 transition-transform duration-200">{item.text}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <ul class="relative space-y-3 mb-8">
-            {category.items.slice(0, 6).map((item) => (
-              <li class="flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer transition-all duration-200 group/item">
-                <span class="group-hover/item:translate-x-1 transition-transform duration-200">{item.text}</span>
-              </li>
-            ))}
-          </ul>
-
-          <a href="https://doc.artaigc.cn/" class="relative inline-flex items-center text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition-all duration-200 group/link">
-            查看更多
-            <svg class="w-5 h-5 ml-1 transform group-hover/link:translate-x-1 transition-transform duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-
-          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl"></div>
+          {/* 底部按钮 */}
+          <div class="relative z-10 mt-auto">
+            <a
+              href="https://doc.artaigc.cn/"
+              target="_blank"
+              class="inline-flex items-center justify-center w-full py-3 px-4 bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl font-medium group-hover:bg-blue-600 group-hover:text-white transition-all duration-300"
+            >
+              查看文档
+              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<style>
-  .container-custom {
-    max-width: 1550px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  @media (max-width: 639px) {
-    .container-custom {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-    .grid {
-      gap: 0.75rem;
-    }
-
-    .material-icons {
-      font-size: 1.125rem !important;
-    }
-
-    h3 {
-      font-size: 1rem;
-    }
-
-    li {
-      font-size: 0.875rem;
-    }
-  }
-
-  @media (min-width: 640px) {
-    .container-custom {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container-custom {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-  }
-</style>

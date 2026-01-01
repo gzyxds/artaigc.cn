@@ -1,10 +1,26 @@
+---
+/**
+ * Characteristic.astro
+ *
+ * 功能：展示平台的核心AI服务和特性
+ * 布局：
+ * 1. 顶部：6个核心功能卡片，采用 Bento Grid 布局（2行3列）
+ * 2. 底部：4个详细产品卡片，采用 Bento Grid 布局（不对称4-2/2-4结构）
+ *
+ * 交互：
+ * - 响应式设计：移动端垂直堆叠，桌面端网格布局
+ * - 悬停效果：卡片悬停时可能有微交互（目前主要体现在底部卡片的图片缩放）
+ * - 暗黑模式：完全支持暗黑模式适配
+ */
+---
+
 <!-- 智能交互体验 -->
-<div class="bg-gradient-to-br from-blue-25 to-indigo-25 dark:from-blue-950 dark:to-indigo-950 py-12 sm:py-20 lg:py-28 xl:py-32 overflow-hidden">
+<div class="bg-gradient-to-br from-blue-25 to-indigo-25 dark:from-blue-950 dark:to-indigo-950 py-12 sm:py-16 lg:py-20 xl:py-24 overflow-hidden">
   <div class="container-custom">
     <!-- 标题区域 -->
     <div class="text-center space-y-4 mb-10 sm:mb-14 lg:mb-20 relative">
       <!-- 装饰背景元素 -->
-      <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-blue-200/20 dark:bg-blue-500/10 rounded-none blur-3xl"></div>
 
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-[#015bfe] via-[#0b44ff] to-[#3b82f6] bg-clip-text text-transparent font-display leading-tight max-w-4xl mx-auto relative z-10">
         不只是聊天伙伴，更是学习工作好帮手
@@ -28,205 +44,122 @@
     </div>
 
 
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+    <!-- 核心功能网格 (Top Grid) -->
+    <!--
+      布局逻辑：
+      - 移动端 (grid-cols-1): 垂直堆叠，首尾卡片有特定圆角
+      - 桌面端 (lg:grid-cols-6): 2行3列布局，每个卡片跨2列 (col-span-2)
+      - 圆角逻辑：通过 bgRounded/outlineRounded 控制外层圆角，形成整体大圆角矩形效果
+    -->
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-6 lg:grid-rows-2">
       {[
         {
           title: "AI 聊天",
           description: "支持多种问答模型，具备联网功能，能够识别图片、文件和视频等多种内容。",
           icon: "chat",
           color: "blue",
-          features: ["多模型支持", "联网功能", "多媒体识别", "实时响应"]
+          features: ["多模型支持", "联网功能", "多媒体识别", "实时响应"],
+          colSpan: "lg:col-span-3",
+          // 左上角圆角
+          bgRounded: "max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]",
+          contentRounded: "max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]",
+          outlineRounded: "max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]"
         },
         {
           title: "AI 绘画",
           description: "对接最新的 Midjourney 模型，一键生成各种风格的图片和连续微调。",
           icon: "paint",
           color: "purple",
-          features: ["风格多样", "连续微调", "高清输出", "快速生成"]
+          features: ["风格多样", "连续微调", "高清输出", "快速生成"],
+          colSpan: "lg:col-span-3",
+          // 右上角圆角
+          bgRounded: "lg:rounded-tr-[2rem]",
+          contentRounded: "lg:rounded-tr-[calc(2rem+1px)]",
+          outlineRounded: "lg:rounded-tr-[2rem]"
+        },
+        {
+          title: "AI 音视频",
+          description: "支持多种音乐风格和视频生成，一键创作属于你的视听盛宴，支持灵活编辑。",
+          icon: "video",
+          color: "red",
+          features: ["音乐生成", "视频创作", "风格多样", "快速渲染"],
+          colSpan: "lg:col-span-2",
+          // 左下角圆角
+          bgRounded: "lg:rounded-bl-[2rem]",
+          contentRounded: "lg:rounded-bl-[calc(2rem+1px)]",
+          outlineRounded: "lg:rounded-bl-[2rem]"
         },
         {
           title: "AI 艺术二维码",
           description: "支持多种艺术二维码风格，允许上传已有二维码，轻松将其艺术化，打造独特的视觉效果。",
           icon: "qr",
           color: "green",
-          features: ["多种风格", "自定义上传", "艺术效果", "高清输出"]
-        },
-        {
-          title: "AI 音乐",
-          description: "支持多种音乐风格，轻松生成你想要的音乐，并支持灵活的长度扩展选项。",
-          icon: "music",
-          color: "yellow",
-          features: ["风格多样", "长度可调", "音质优化", "快速生成"]
-        },
-        {
-          title: "AI 视频",
-          description: "对接最新的 Luma 模型，一键生成自定义的视频，并支持灵活的视频扩展选项。",
-          icon: "video",
-          color: "red",
-          features: ["高清画质", "灵活编辑", "特效丰富", "快速渲染"]
+          features: ["多种风格", "自定义上传", "艺术效果", "高清输出"],
+          colSpan: "lg:col-span-2",
+          // 中间无圆角
+          bgRounded: "",
+          contentRounded: "",
+          outlineRounded: ""
         },
         {
           title: "AI 证件照",
           description: "对接最新的 AI 模型，一键生成自定义模板的证件照，并支持多种分格的证件照。",
           icon: "photo",
           color: "indigo",
-          features: ["多种规格", "一键生成", "智能优化", "快速输出"]
+          features: ["多种规格", "一键生成", "智能优化", "快速输出"],
+          colSpan: "lg:col-span-2",
+          // 右下角圆角 (移动端为底部圆角)
+          bgRounded: "max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]",
+          contentRounded: "max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]",
+          outlineRounded: "max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]"
         }
       ].map((service, index) => (
-        <div
-          class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-6 lg:p-8 border border-gray-100 dark:border-gray-700 shadow-xl shadow-blue-500/10 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-1"
-          style={`transition-delay: ${index * 100}ms`}
-          data-aos="fade-up"
-          data-aos-delay={index * 100}
-        >
-          <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-blue-50/50 dark:from-blue-900/20 dark:to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+        <div class={`relative ${service.colSpan}`}>
+          <!-- Background Layer -->
+          <div class={`absolute inset-0 bg-white dark:bg-gray-800 ${service.bgRounded}`}></div>
 
-          <!-- 右上角装饰元素 -->
-          <div class="absolute top-0 right-0">
-            <div class="w-24 h-24 bg-gradient-to-br from-blue-100/50 to-transparent dark:from-blue-800/20 dark:to-transparent rounded-bl-[100px] group-hover:from-blue-200/70 dark:group-hover:from-blue-700/30 transition-colors duration-300"></div>
-          </div>
-
-          <div class="relative flex items-center space-x-3 sm:space-x-5 mb-4 sm:mb-6">
-            <div class="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-gray-100 to-gray-100 dark:from-gray-800/50 dark:to-gray-800/50 p-1.5 sm:p-2 lg:p-3 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-              <svg class="w-full h-full text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {service.icon === "chat" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>}
-                {service.icon === "paint" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>}
-                {service.icon === "qr" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>}
-                {service.icon === "music" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>}
-                {service.icon === "video" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>}
-                {service.icon === "photo" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>}
-              </svg>
-            </div>
-            <h3 class="text-sm sm:text-lg lg:text-2xl font-bold font-display text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300 leading-tight">{service.title}</h3>
-          </div>
-
-          <p class="relative text-xs sm:text-sm lg:text-base text-slate-600 dark:text-slate-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed">{service.description}</p>
-
-          <div class="relative grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
-            {service.features.map(feature => (
-              <div class="flex items-center text-xs sm:text-sm lg:text-base text-slate-700 dark:text-slate-300">
-                <svg class="flex-shrink-0 w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-blue-500 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          <!-- Content Layer -->
+          <div class={`relative flex h-full flex-col overflow-hidden p-6 sm:p-8 ${service.contentRounded}`}>
+            <div class="relative flex items-center space-x-3 sm:space-x-5 mb-4 sm:mb-6">
+              <div class="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl bg-gray-50 dark:bg-gray-700/50 p-1.5 sm:p-2 lg:p-3">
+                <svg class="w-full h-full text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {service.icon === "chat" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>}
+                  {service.icon === "paint" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>}
+                  {service.icon === "qr" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>}
+                  {service.icon === "music" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>}
+                  {service.icon === "video" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>}
+                  {service.icon === "photo" && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>}
                 </svg>
-                <span class="truncate">{feature}</span>
               </div>
-            ))}
-          </div>
+              <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{service.title}</h3>
+            </div>
 
-          <div class="absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl sm:rounded-b-2xl"></div>
-        </div>
-      ))}
-      </div>
-      <div class="pb-16"></div>
-    </section>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-grow">{service.description}</p>
 
-
-    <!-- 带图片卡片布局 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-7 lg:gap-9">
-      {[
-        {
-          title: "Sora2短剧视频创作",
-          description: "Sora2短剧视频创作是一款聚焦高效优质视频创作的AI智能生成工具，它能深度理解用户输入的文字提示词，将创意快速转化为具有高视觉的丰富视频内容。只需简单描述创作构想，就能生成细腻的视频作品，让每一个创意都能高效落地。",
-          icon: "🤖",
-          image: "/assets/img/Sora2.png",
-          primaryAction: "开始创作",
-          secondaryAction: "了解更多",
-          color: "blue",
-          primaryLink: "https://www.cnai.art/dialogue/chat",
-          secondaryLink: "https://www.cnai.art/",
-          target: "_blank"
-        },
-        {
-          title: "香蕉绘画Pro版-Nano banana",
-          description: "Nano Banana是一款基于AI技术的智能绘画工具，它能够根据用户的描述和创意，生成高质量的绘画作品。用户只需输入简单的文字描述，即可获得精美的绘画结果。",
-          icon: "✍️",
-          image: "/assets/img/Nanobanana.png",
-          primaryAction: "立即创作",
-          secondaryAction: "了解更多",
-          color: "indigo",
-          primaryLink: "https://www.cnai.art/dialogue/chat",
-          secondaryLink: "https://www.cnai.art/",
-          target: "_blank"
-        },
-        {
-          title: "小红书内容复刻",
-          description: "小红书助手是专为小红书平台内容创作者打造的运营工具，涵盖笔记创作、排版优化、标签推荐、热点追踪及数据分析等功能。支持图文美化、视频封面制作、文案灵感生成，帮助用户提升笔记曝光与互动率。内置合规检测与发布时间建议，助力账号健康增长，实现内容创作与流量变现的高效结合，是小红书达人的必备辅助神器。",
-          icon: "🎬",
-          image: "/assets/img/小红书内容复刻.png",
-          primaryAction: "开始制作",
-          secondaryAction: "了解更多",
-          color: "purple",
-          primaryLink: "https://www.cnai.art/dialogue/chat",
-          secondaryLink: "https://www.cnai.art/",
-          target: "_blank"
-        },
-        {
-          title: "热门视频混剪",
-          description: "热门视频混剪是一款专业的视频编辑工具，它能够帮助用户将多个视频片段进行混剪，组合成一个新的视频。用户可以根据自己的需求，选择不同的视频片段进行混剪，从而创建出符合自己需求的视频。",
-          icon: "🎨",
-          image: "/assets/img/热门视频混剪.png",
-          primaryAction: "开始设计",
-          secondaryAction: "了解更多",
-          color: "cyan",
-          primaryLink: "https://www.cnai.art/dialogue/chat",
-          secondaryLink: "https://www.cnai.art/",
-          target: "_blank"
-        }
-      ].map((feature, index) => (
-        <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100/50 dark:border-gray-700/50 flex flex-col h-full">
-          <div class="relative h-48 sm:h-52 md:h-56 p-4">
-            <img
-              src={feature.image}
-              alt={feature.title}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 rounded-xl"
-              loading="lazy"
-            />
-          </div>
-          <div class="p-5 sm:p-6 md:p-7 flex-grow flex flex-col">
-            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
-              {feature.title}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed flex-grow">
-              {feature.description}
-            </p>
-            <div class="flex gap-3 sm:gap-4 mt-auto">
-              <a
-                href={feature.primaryLink}
-                class="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-[#015bfe] to-[#0b44ff] text-white rounded-xl font-medium
-                       shadow-md hover:shadow-xl hover:shadow-blue-500/30
-                       transform hover:-translate-y-1
-                       transition-all duration-300
-                       flex items-center justify-center gap-2 text-sm"
-              >
-                <span>{feature.primaryAction}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </a>
-              <a
-                href={feature.secondaryLink}
-                class="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-medium
-                       hover:bg-gray-50 dark:hover:bg-gray-600
-                       shadow-md hover:shadow-xl
-                       transform hover:-translate-y-1
-                       transition-all duration-300
-                       flex items-center justify-center gap-2 text-sm"
-              >
-                <span>{feature.secondaryAction}</span>
-              </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-auto">
+              {service.features.map(feature => (
+                <div class="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                  <svg class="w-4 h-4 text-blue-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="truncate">{feature}</span>
+                </div>
+              ))}
             </div>
           </div>
+
+          <!-- Outline Layer -->
+          <div class={`pointer-events-none absolute inset-0 shadow-sm ring-1 ring-black/5 dark:ring-white/10 ${service.outlineRounded}`}></div>
         </div>
       ))}
     </div>
 
     <!-- 移动端滑动指示器 -->
     <div class="mt-10 flex justify-center items-center gap-2 lg:hidden">
-      <span class="w-3 h-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/50"></span>
-      <span class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
-      <span class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
-      <span class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+      <span class="w-3 h-3 rounded-none bg-blue-500 shadow-md shadow-blue-500/50"></span>
+      <span class="w-2.5 h-2.5 rounded-none bg-gray-300 dark:bg-gray-600"></span>
+      <span class="w-2.5 h-2.5 rounded-none bg-gray-300 dark:bg-gray-600"></span>
+      <span class="w-2.5 h-2.5 rounded-none bg-gray-300 dark:bg-gray-600"></span>
     </div>
-
   </div>
 </div>

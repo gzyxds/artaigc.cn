@@ -1,441 +1,427 @@
 ---
 /**
- * 商店页面 - 艺创AI产品展示
- * 展示AI数字人系统、知识库系统、论文写作系统、聊天绘画系统等产品
+ * 商店页面 - 艺创AI产品展示 (重构版)
+ * 复刻 ProductShowcase.tsx 视觉风格
  */
 
-// 布局组件
 import Layout from '../layouts/Layout.astro';
-
-// 页面组件
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Carousel from '../components/Hero/Carousel.astro';
-
-// 功能组件
-import Aisd from '../components/Aisd.astro';
 import Contact from '../components/Contact.astro';
 import Calltoaction from '../components/Calltoaction.astro';
+import { products as rawProducts, getCategory, type Product } from '../data/products';
+
+// 定义图标路径 (SVG Paths)
+const icons = {
+  search: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+  arrowRight: "M5 12h14M12 5l7 7-7 7",
+  checkBadge: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  inbox: "M22 12h-6l-2 3h-4l-2-3H2v12h20V12z", // 简化版
+  star: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
+  shoppingCart: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
+  play: "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z", // Small play
+  sparkles: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z",
+  zap: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+  database: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
+  video: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+  penTool: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z",
+  briefcase: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  layoutGrid: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+};
+
+// 产品数据(: Product)
+const products = rawProducts.map(p => ({
+  ...p,
+  name: p.title,
+  category: p.category || getCategory(p.subtitle)
+}));
+
+const categories = [
+  { id: 'all', name: '全部应用', icon: icons.zap },
+  { id: 'independent', name: '独立系统', icon: icons.database },
+];
+
+const pluginCategories = [
+  { id: 'video', name: '图像视频', icon: icons.video },
+  { id: 'writing', name: '智能写作', icon: icons.penTool },
+  { id: 'enterprise', name: '企业工具', icon: icons.briefcase },
+  { id: 'efficiency', name: '效率工具', icon: icons.layoutGrid },
+];
+
+// 定义样式常量
+const shopBtnActiveClass = "bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/40 border-transparent font-semibold translate-x-1 ring-2 ring-blue-500/20";
+const shopBtnInactiveClass = "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-300 dark:hover:border-blue-700 hover:text-blue-600 dark:hover:text-blue-300";
+const shopIconActiveClass = "text-white";
+const shopIconInactiveClass = "text-gray-400 dark:text-gray-300 group-hover:text-blue-500 transition-colors";
+const shopActiveBgClass = "absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-xl pointer-events-none";
 ---
 
 <Layout
-  title="艺创AI_AI系统源码_AI数字人源码_AI数字人系统源码"
-  description="艺创AI提供AI数字人源码、AI数字人系统源码、AI数字人SaaS系统源码等产品,支持私有化部署,提供数字人克隆、语音合成、视频生成等功能,是企业打造数字化转型的理想选择。"
-  keywords="AI数字人源码,AI数字人系统源码,AI数字人SaaS系统源码,数字人源码,数字人系统源码,数字人saas源码"
+  title="艺创AI产品中心_AI系统源码_数字人系统_知识库系统"
+  description="艺创AI产品中心，提供AI数字人系统、知识库系统、聊天绘画系统、论文写作系统等全方位AI解决方案源码，支持私有化部署。"
+  keywords="AI系统源码,AI数字人,知识库系统,聊天绘画,论文写作,PHP AI源码,Java AI源码"
 >
   <Header />
 
-  <Carousel />
-  <Aisd />
+  <!-- 主体内容区域 -->
+  <div
+    class="min-h-screen bg-gray-50/50 dark:bg-gray-950/50 pt-8 pb-20 relative"
+    x-data={`{
+      searchQuery: '',
+      activeCategory: 'all',
+      visibleCount: ${products.length},
 
-  <!-- ==================== 产品展示区域 ==================== -->
-  <section class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-    <div class="space-y-8 md:space-y-12">
-      <div class="grid gap-8 md:gap-12">
-        
-        <!-- 产品一：AI数字人系统 -->
-        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-blue-200 transition-all duration-200 hover:shadow-lg hover:outline-blue-300 bg-gradient-to-br from-blue-50 via-indigo-50 to-white border-2 border-blue-100 shadow-[0_6px_20px_rgba(59,130,246,0.15)] rounded-2xl">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            <!-- 产品图片区域 -->
-            <div class="order-2 lg:order-2">
-              <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img 
-                  src="/assets/saas.webp" 
-                  alt="AI数字人系统" 
-                  class="w-full h-auto object-cover" 
-                  loading="lazy" 
-                  width="400" 
-                  height="300"
+      updateVisibility() {
+        const query = this.searchQuery.toLowerCase().trim();
+        const items = document.querySelectorAll('.product-item');
+        let count = 0;
+
+        items.forEach(el => {
+          const name = (el.dataset.name || '').toLowerCase();
+          const desc = (el.dataset.desc || '').toLowerCase();
+          const sub = (el.dataset.subtitle || '').toLowerCase();
+          const features = (el.dataset.features || '').toLowerCase();
+          const category = el.dataset.category;
+
+          // 搜索匹配
+          const matchSearch = query === '' ||
+            name.includes(query) ||
+            desc.includes(query) ||
+            sub.includes(query) ||
+            features.includes(query);
+
+          // 分类匹配逻辑
+          let matchCategory = false;
+          if (this.activeCategory === 'all') {
+            matchCategory = true;
+          } else if (this.activeCategory === 'independent') {
+             // 独立系统匹配规则：包含特定关键词
+             matchCategory = /独立系统|源码版/.test(name) || /独立系统|源码版/.test(sub);
+          } else if (this.activeCategory === category) {
+             matchCategory = true;
+          } else {
+             // 备用：基于 subtitle 的模糊匹配 (复刻 React 逻辑)
+             if (this.activeCategory === 'video' && /图像视频|聊天绘画|数字人/.test(sub)) matchCategory = true;
+             if (this.activeCategory === 'writing' && /智能写作|知识库|论文/.test(sub)) matchCategory = true;
+             if (this.activeCategory === 'enterprise' && /企业工具|知识库/.test(sub)) matchCategory = true;
+             if (this.activeCategory === 'efficiency' && /效率工具/.test(sub)) matchCategory = true;
+          }
+
+          if (matchSearch && matchCategory) {
+            el.style.display = ''; // Reset display
+            count++;
+          } else {
+            el.style.display = 'none';
+          }
+        });
+
+        this.visibleCount = count;
+      }
+    }`}
+    x-init="updateVisibility(); $watch('searchQuery', () => updateVisibility()); $watch('activeCategory', () => updateVisibility())"
+  >
+    <!-- 背景装饰 (独立容器防止 overflow-hidden 影响 sticky) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-50/80 to-transparent dark:from-blue-950/20 dark:to-transparent"></div>
+      <div class="absolute -top-[200px] -right-[200px] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[100px]"></div>
+      <div class="absolute top-[200px] -left-[200px] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+
+        <!-- 左侧边栏 -->
+        <aside class="w-full lg:w-72 shrink-0 space-y-8">
+          <div class="sticky top-24 space-y-8">
+            <!-- 搜索框 -->
+            <div class="relative group">
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div class="relative bg-white dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-800 shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:border-blue-500/30">
+                <input
+                  type="text"
+                  placeholder="搜索应用..."
+                  x-model="searchQuery"
+                  class="w-full pl-11 pr-4 py-3.5 bg-transparent outline-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 rounded-2xl"
                 />
+                <div class="absolute left-3.5 top-3.5 text-gray-400 group-focus-within:text-blue-500 transition-colors">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d={icons.search} />
+                  </svg>
+                </div>
               </div>
             </div>
-            
-            <!-- 产品信息区域 -->
-            <div class="order-1 lg:order-1 space-y-4">
-              <!-- 产品标签 -->
-              <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                </svg>
-                创意工具
-              </div>
-              
-              <!-- 产品标题 -->
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-                超级IP数字人SaaS系统「PHP源码版」
-              </h2>
-              
-              <!-- 产品描述 -->
-              <p class="text-base text-gray-600 dark:text-gray-300">
-                专为企业主、个人博主打造短视频IP的数字人源码系统，支持真人声音+形象克隆，一键合成知识付费、课程、带货、形象宣传、行业干货等口播视频。
-              </p>
-              
-              <!-- 产品特性标签 -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  带货视频
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  虚拟数字人IP
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  知识付费
-                </span>
-              </div>
-              
-              <!-- 价格信息 -->
-              <div class="flex items-center gap-4 my-4">
-                <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥6800</span>
-                <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥4999</span>
-              </div>
-              
-              <!-- 操作按钮 -->
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a 
-                  href="https://v.cnai.art" 
-                  rel="noopener noreferrer" 
-                  target="_blank" 
-                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
-                >
-                  立即体验
-                </a>
-                <a 
-                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                >
-                  购买授权
-                </a>
-              </div>
+
+            <!-- 分类导航 -->
+            <div class="space-y-3">
+              <h3 class="px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">分类导航</h3>
+              <nav class="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide">
+                {categories.map((cat) => (
+                  <button
+                    @click={`activeCategory = '${cat.id}'`}
+                    class="relative shrink-0 w-auto lg:w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 group overflow-hidden border focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
+                    :class={`activeCategory === '${cat.id}' ? shopBtnActiveClass : shopBtnInactiveClass`}
+                    :aria-pressed={`activeCategory === '${cat.id}'`}
+                    :aria-selected={`activeCategory === '${cat.id}'`}
+                    role="button"
+                  >
+                    <div
+                      x-show={`activeCategory === '${cat.id}'`}
+                      class={shopActiveBgClass}
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="opacity-0"
+                      x-transition:enter-end="opacity-100"
+                    ></div>
+
+                    <span
+                      x-show={`activeCategory === '${cat.id}'`}
+                      class="absolute left-0 top-0 bottom-0 w-1 bg-blue-500 dark:bg-blue-400"
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="-translate-x-full opacity-0"
+                      x-transition:enter-end="translate-x-0 opacity-100"
+                    ></span>
+
+                    <span class="relative z-10 flex items-center gap-3">
+                      <svg class="w-4 h-4" :class={`activeCategory === '${cat.id}' ? shopIconActiveClass : shopIconInactiveClass`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d={cat.icon} />
+                      </svg>
+                      <span :class={`activeCategory === '${cat.id}' ? 'font-bold' : 'font-medium'`}>{cat.name}</span>
+                      <svg x-show={`activeCategory === '${cat.id}'`} class="w-3.5 h-3.5 text-white/90 dark:text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d={icons.checkBadge} />
+                      </svg>
+                    </span>
+                  </button>
+                ))}
+              </nav>
+            </div>
+
+            <!-- 插件应用 -->
+            <div class="space-y-3 pt-2">
+              <h3 class="px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">插件应用</h3>
+              <nav class="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide">
+                {pluginCategories.map((cat) => (
+                  <button
+                    @click={`activeCategory = '${cat.id}'`}
+                    class="relative shrink-0 w-auto lg:w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 group overflow-hidden border focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
+                    :class={`activeCategory === '${cat.id}' ? shopBtnActiveClass : shopBtnInactiveClass`}
+                    :aria-pressed={`activeCategory === '${cat.id}'`}
+                    :aria-selected={`activeCategory === '${cat.id}'`}
+                    role="button"
+                  >
+                    <div
+                      x-show={`activeCategory === '${cat.id}'`}
+                      class={shopActiveBgClass}
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="opacity-0"
+                      x-transition:enter-end="opacity-100"
+                    ></div>
+
+                    <span
+                      x-show={`activeCategory === '${cat.id}'`}
+                      class="absolute left-0 top-0 bottom-0 w-1 bg-blue-500 dark:bg-blue-400"
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="-translate-x-full opacity-0"
+                      x-transition:enter-end="translate-x-0 opacity-100"
+                    ></span>
+
+                    <span class="relative z-10 flex items-center gap-3">
+                      <svg class="w-4 h-4" :class={`activeCategory === '${cat.id}' ? shopIconActiveClass : shopIconInactiveClass`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d={cat.icon} />
+                      </svg>
+                      <span :class={`activeCategory === '${cat.id}' ? 'font-bold' : 'font-medium'`}>{cat.name}</span>
+                      <svg x-show={`activeCategory === '${cat.id}'`} class="w-3.5 h-3.5 text-white/90 dark:text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d={icons.checkBadge} />
+                      </svg>
+                    </span>
+                  </button>
+                ))}
+              </nav>
             </div>
           </div>
-        </div>
+        </aside>
 
-        <!-- 产品二：AI知识库系统 -->
-        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-emerald-200 transition-all duration-200 hover:shadow-lg hover:outline-emerald-300 bg-gradient-to-br from-emerald-50 via-green-50 to-white border-2 border-emerald-100 shadow-[0_6px_20px_rgba(16,185,129,0.15)] rounded-2xl">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            <!-- 产品图片区域 -->
-            <div class="order-2 lg:order-1">
-              <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img 
-                  src="/assets/work.webp" 
-                  alt="AI知识库系统" 
-                  class="w-full h-auto object-cover" 
-                  loading="lazy" 
-                  width="400" 
-                  height="300"
-                />
+        <!-- 右侧主内容 -->
+        <main class="flex-1 min-w-0">
+          <!-- 促销 Banner -->
+          <div class="relative overflow-hidden rounded-2xl bg-blue-50/50 dark:bg-blue-950/10 border border-blue-100 dark:border-blue-900/20 p-5 mb-8">
+            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div class="space-y-1 max-w-lg">
+                <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 text-xs font-medium bg-blue-100/50 dark:bg-blue-900/20 px-2.5 py-0.5 rounded-full w-fit mb-2">
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.sparkles} /></svg>
+                  <span>限时特惠活动</span>
+                </div>
+                <h2 class="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  解锁 AI 生产力工具
+                </h2>
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                  联系客服领取限时 <span class="text-blue-600 dark:text-blue-400 font-bold">5折优惠码</span>，
+                  助力您的业务快速腾飞。
+                </p>
               </div>
-            </div>
-            
-            <!-- 产品信息区域 -->
-            <div class="order-1 lg:order-2 space-y-4">
-              <!-- 产品标签 -->
-              <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-                </svg>
-                知识库系统
-              </div>
-              
-              <!-- 产品标题 -->
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-                艺创全能AI知识库系统PHP&Java
-              </h2>
-              
-              <!-- 产品描述 -->
-              <p class="text-base text-gray-600 dark:text-gray-300">
-                全能AI知识库系统Java版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持问答式和文档式知识库，能够导入txt、doc、docx、pdf、md等多种格式文档。
-              </p>
-              
-              <!-- 产品特性标签 -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  多格式导入
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  向量检索
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  智能问答
-                </span>
-              </div>
-              
-              <!-- 价格信息 -->
-              <div class="flex items-center gap-4 my-4">
-                <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥9800</span>
-                <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥6600</span>
-              </div>
-              
-              <!-- 操作按钮 -->
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a 
-                  href="https://www.cnai.art" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
-                >
-                  立即体验
-                </a>
-                <a 
-                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                >
-                  购买授权
-                </a>
-              </div>
+              <a
+                href="/contact"
+                class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow-md transition-all duration-300 rounded-full font-semibold px-6 h-9 text-sm"
+              >
+                获取优惠码
+                <svg class="w-3.5 h-3.5 ml-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.arrowRight} /></svg>
+              </a>
             </div>
           </div>
-        </div>
 
- <!-- 产品五：Python源码版 -->
-        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-purple-200 transition-all duration-200 hover:shadow-lg hover:outline-purple-300 bg-gradient-to-br from-purple-50 via-violet-50 to-white border-2 border-purple-100 shadow-[0_6px_20px_rgba(147,51,234,0.15)] rounded-2xl">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            <!-- 产品图片区域 -->
-            <div class="order-2 lg:order-2">
-              <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img 
-                  src="https://artaigc-1307986889.cos.ap-guangzhou.myqcloud.com/Python.png" 
-                  alt="AI知识库系统Python源码版" 
-                  class="w-full h-auto object-cover" 
-                  loading="lazy" 
-                  width="400" 
-                  height="300"
-                />
-              </div>
-            </div>
-            
-            <!-- 产品信息区域 -->
-            <div class="order-1 lg:order-1 space-y-4">
-              <!-- 产品标签 -->
-              <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 text-sm">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                </svg>
-                Python源码版
-              </div>
-              
-              <!-- 产品标题 -->
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-                艺创AI知识库系统「Python源码版」
-              </h2>
-              
-              <!-- 产品描述 -->
-              <p class="text-base text-gray-600 dark:text-gray-300">
-                「Python源码版」，基于前后端分离架构以及Vue3、FastAPI、PostgreSQL、pgvector技术栈开发，包含PC端、H5端。ChatWork支持问答式和文档式知识库
-              </p>
-              
-              <!-- 产品特性标签 -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  多格式导入
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  向量检索
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  智能问答
-                </span>
-              </div>
-              
-              <!-- 价格信息 -->
-              <div class="flex items-center gap-4 my-4">
-                <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥9800</span>
-                <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥6600</span>
-              </div>
-              
-              <!-- 操作按钮 -->
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a 
-                  href="https://www.cnai.art" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
-                >
-                  立即体验
-                </a>
-                <a 
-                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                >
-                  购买授权
-                </a>
-              </div>
-            </div>
+          <!-- 应用列表头 -->
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-blue-500 rounded-full"></span>
+              全部应用
+              <span class="text-sm font-normal text-gray-500 ml-2" x-text="`(${visibleCount})`"></span>
+            </h2>
           </div>
-        </div>
 
-        <!-- 产品三：AI聊天绘画系统 -->
-        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-emerald-200 transition-all duration-200 hover:shadow-lg hover:outline-emerald-300 bg-gradient-to-br from-emerald-50 via-green-50 to-white border-2 border-emerald-100 shadow-[0_6px_20px_rgba(16,185,129,0.15)] rounded-2xl">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            <!-- 产品图片区域 -->
-            <div class="order-2 lg:order-1">
-              <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img 
-                  src="/assets/ai.webp" 
-                  alt="AI聊天绘画系统" 
-                  class="w-full h-auto object-cover" 
-                  loading="lazy" 
-                  width="400" 
-                  height="300"
-                />
+          <!-- 应用卡片网格 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((app) => (
+              <div
+                class="product-item group"
+                data-name={app.name}
+                data-desc={app.description}
+                data-subtitle={app.subtitle}
+                data-category={app.category}
+                data-features={app.features.join(',')}
+              >
+                <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                  <div class="aspect-video bg-gray-100 dark:bg-gray-700 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600"></div>
+                    <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                      <img
+                        src={app.image}
+                        alt={app.name}
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="p-5 flex-1 flex flex-col">
+                    <div class="flex items-start justify-between gap-3 mb-2">
+                      <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                          <h3 class="font-bold text-gray-900 dark:text-white line-clamp-1">{app.name}</h3>
+                          {app.subtitle && (
+                            <span class="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-1.5 py-0.5 rounded whitespace-nowrap">
+                              {app.subtitle.replace(/[\[\]]/g, '')}
+                            </span>
+                          )}
+                        </div>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                          {app.features?.slice(0, 3).map((feature) => (
+                            <span class="text-[10px] text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 mb-4 flex-1">
+                      {app.description}
+                    </p>
+
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-sm text-gray-400 line-through">¥{app.originalPrice.toFixed(2)}</span>
+                        <span class="px-2.5 py-0.5 bg-gray-900 dark:bg-black text-[#FFD700] text-sm font-medium rounded-full border border-gray-800 shadow-sm flex items-center gap-1">
+                           <span class="text-xs font-normal text-gray-300">折后</span>
+                           ¥{app.price.toFixed(2)}
+                        </span>
+                        {app.originalPrice > app.price && (
+                          <span class="text-xs text-red-500 font-medium ml-auto">
+                            省¥{Math.round(app.originalPrice - app.price)}
+                          </span>
+                        )}
+                      </div>
+
+                      <div class="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-2">
+                          <div class="flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.checkBadge} /></svg>
+                            <span>官方认证</span>
+                          </div>
+                          {typeof app.rating === 'number' && (
+                            <div class="flex items-center gap-1">
+                              <svg class="w-3.5 h-3.5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d={icons.star} /></svg>
+                              <span>{app.rating}</span>
+                            </div>
+                          )}
+                        </div>
+                        <span>已售 {app.sales}</span>
+                      </div>
+
+                      <div class="flex gap-2 pt-3">
+                        {app.buyLink && (
+                          <a
+                            href={app.buyLink}
+                            target="_blank"
+                            class="flex-1 inline-flex items-center justify-center h-8 px-2 text-xs font-medium text-blue-600 border border-blue-200 rounded-md hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                          >
+                            <svg class="h-3.5 w-3.5 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.shoppingCart} /></svg>
+                            购买
+                          </a>
+                        )}
+                        {app.link && (
+                          <a
+                            href={app.link}
+                            target="_blank"
+                            class="flex-1 inline-flex items-center justify-center h-8 px-2 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors"
+                          >
+                            <svg class="h-3.5 w-3.5 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.play} /></svg>
+                            演示
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            
-            <!-- 产品信息区域 -->
-            <div class="order-1 lg:order-2 space-y-4">
-              <!-- 产品标签 -->
-              <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-                </svg>
-                聊天绘画系统
-              </div>
-              
-              <!-- 产品标题 -->
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-                艺创AI聊天绘画系统PHP&Java
-              </h2>
-              
-              <!-- 产品描述 -->
-              <p class="text-base text-gray-600 dark:text-gray-300">
-                艺创AI聊天绘画系统Java版，基于前后端分离架构以及Vue3、uni-app、SpringBoot2.5技术栈开发，包含PC端、H5端。该系统支持智能对话、AI绘画、语音合成、语音识别、文档问答、联网搜索、多模态识别等功能。
-              </p>
-              
-              <!-- 产品特性标签 -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  智能对话
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  AI绘画
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  语音合成
-                </span>
-              </div>
-              
-              <!-- 价格信息 -->
-              <div class="flex items-center gap-4 my-4">
-                <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥9800</span>
-                <span class="text-blue-600 dark:text-blue-400 font-bold text-xl">特惠价：¥6600</span>
-              </div>
-              
-              <!-- 操作按钮 -->
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a 
-                  href="https://www.cnai.art" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
-                >
-                  立即体验
-                </a>
-                <a 
-                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                >
-                  购买授权
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
 
-        <!-- 产品四：论文写作系统 -->
-        <div class="relative p-4 sm:p-6 lg:p-8 overflow-hidden outline-1 outline-orange-200 transition-all duration-200 hover:shadow-lg hover:outline-orange-300 bg-gradient-to-br from-orange-50 via-amber-50 to-white border-2 border-orange-100 shadow-[0_6px_20px_rgba(249,115,22,0.15)] rounded-2xl">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            <!-- 产品信息区域 -->
-            <div class="order-1 lg:order-1 space-y-4">
-              <!-- 产品标签 -->
-              <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 text-sm">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-                </svg>
-                论文写作系统
-              </div>
-              
-              <!-- 产品标题 -->
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-                艺创AI-论文写作系统PHP&Java
-              </h2>
-              
-              <!-- 产品描述 -->
-              <p class="text-base text-gray-600 dark:text-gray-300">
-                10分钟生成3万字论文的系统。你只需要输入论文关键词，AI即可快速为您生成论文大纲，可线上编辑和删除，操作高效快捷！只需要几分钟，AI可为您生成万字长文，AI助手生成全篇论文比自己写作更快，适用于期刊论文、科普文章、学生作业、商业报告、新闻报道等多种场景。
-              </p>
-              
-              <!-- 产品特性标签 -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  多格式导入
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  向量检索
-                </span>
-                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm">
-                  智能问答
-                </span>
-              </div>
-              
-              <!-- 价格信息 -->
-              <div class="flex items-center gap-4 my-4">
-                <span class="text-gray-500 dark:text-gray-400 line-through">原价：¥4698</span>
-                <span class="text-orange-600 dark:text-orange-400 font-bold text-xl">特惠价：¥3200</span>
-              </div>
-              
-              <!-- 操作按钮 -->
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a 
-                  href="https://www.cnai.art" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300"
-                >
-                  立即体验
-                </a>
-                <a 
-                  href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="flex-1 text-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                >
-                  购买授权
-                </a>
-              </div>
+          <!-- 空状态 -->
+          <div
+            x-show="visibleCount === 0"
+            class="flex flex-col items-center justify-center py-20 text-center"
+            style="display: none;"
+          >
+            <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800/50 rounded-full flex items-center justify-center mb-6">
+              <svg class="w-10 h-10 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.inbox} /></svg>
             </div>
-            
-            <!-- 产品图片区域 -->
-            <div class="order-2 lg:order-2">
-              <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                <img 
-                  src="/assets/lw.svg" 
-                  alt="AI论文写作系统" 
-                  class="w-full h-auto object-cover" 
-                  loading="lazy" 
-                  width="400" 
-                  height="300"
-                />
-              </div>
-            </div>
+            <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">未找到相关应用</h3>
+            <p class="text-gray-500 max-w-xs mx-auto">
+              试试更换搜索关键词，或者切换分类看看吧
+            </p>
+            <button
+              @click="searchQuery = ''; activeCategory = 'all'"
+              class="mt-6 inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              重置筛选条件
+            </button>
           </div>
-        </div>
-
-
+        </main>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- ==================== 底部组件区域 ==================== -->
-    <Calltoaction />
-    <Contact />
-    <Footer />
+  <Calltoaction />
+  <Contact />
+  <Footer />
 </Layout>
+
+<style>
+  /* 隐藏滚动条但保留功能 */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

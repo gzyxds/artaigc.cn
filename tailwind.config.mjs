@@ -8,49 +8,63 @@ export default {
     extend: {
       // 自定义颜色配置
       colors: {
-        // 主要颜色系列 - 蓝色调
+        // 主要颜色系列 - 蓝色调 (更新为新设计)
         primary: {
-          50: '#eef7ff',  //最浅色
-          100: '#e0efff',
-          200: '#c7e1ff',
-          300: '#94cbff',
-          400: '#29acfe',
-          500: '#2468f2', //基准色
-          600: '#1d54d9',
-          700: '#1642b3',
-          800: '#123594',
-          900: '#0f2b78',
-          950: '#091a4d',  //最深色
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bedbff',
+          300: '#8ec5ff',
+          400: '#51a2ff',
+          500: '#2b7fff',
+          600: '#155dfc',
+          700: '#1447e6',
+          800: '#193cb8',
+          900: '#1c398e',
+          950: '#162456',
         },
-        // 次要颜色系列 - 灰色调
+        // 中性色系列 (更新为新设计)
+        neutral: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
+          950: '#030712',
+        },
+        // 保留旧的 secondary 以防破坏兼容性，映射到 neutral
         secondary: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
+          950: '#030712',
         },
-        // 强调色系列 - 亮蓝色调
+        // 强调色系列 - 亮蓝色调 (保留但调整为接近 primary)
         accent: {
-          50: '#e6f3ff',
-          100: '#cce7ff', 
-          200: '#99d0ff',
-          300: '#66b8ff',
-          400: '#29acfe',
-          500: '#2468f2',
-          600: '#1d54d9',
-          700: '#1642b3',
-          800: '#123594',
-          900: '#0f2b78',
-          950: '#091a4d',
+          50: '#eff6ff',
+          100: '#dbeafe', 
+          200: '#bedbff',
+          300: '#8ec5ff',
+          400: '#51a2ff',
+          500: '#2b7fff',
+          600: '#155dfc',
+          700: '#1447e6',
+          800: '#193cb8',
+          900: '#1c398e',
+          950: '#162456',
         },
-        // 警告色系列 - 黄色调
+        // 警告色系列 - 黄色调 (保留)
         warning: {
           50: '#fefce8',
           100: '#fef9c3',
@@ -67,32 +81,37 @@ export default {
       },
       // 自定义字体族配置
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],     // 无衬线字体
-        display: ['Lexend', 'system-ui', 'sans-serif'], // 展示用字体
+        sans: ['Clash-Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Clash-Display', 'Lexend', 'system-ui', 'sans-serif'],
+        headings: ['Clash-Display', 'Lexend', 'system-ui', 'sans-serif'], // 新增 headings
+        body: ['Clash-Grotesk', 'Inter', 'system-ui', 'sans-serif'],     // 新增 body
       },
       // 自定义动画配置
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',    // 淡入动画
-        'slide-up': 'slideUp 0.5s ease-in-out',  // 向上滑动动画
-        'slide-down': 'slideDown 0.5s ease-in-out', // 向下滑动动画
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-in-out',
+        'slide-down': 'slideDown 0.5s ease-in-out',
         'scale-in': 'scaleIn 0.5s ease-in-out',
         'rotate-in': 'rotateIn 0.5s ease-in-out',
         'bounce-slow': 'bounce 2s infinite',
         'pulse-slow': 'pulse 3s infinite',
+        // 新增动画
+        'dropdown': 'dropdown 300ms ease-in-out forwards',
+        'fadeUp': 'fadeUp 500ms ease-in-out forwards',
+        'marquee': 'marquee 120s linear infinite',
+        'marqueeFollowup': 'marqueefollowup 120s linear infinite',
+        'pulsing': 'pulsing 8s ease-in-out infinite',
       },
       // 自定义关键帧动画
       keyframes: {
-        // 淡入动画关键帧
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        // 向上滑动动画关键帧
         slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
-        // 向下滑动动画关键帧
         slideDown: {
           '0%': { transform: 'translateY(-20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
@@ -104,6 +123,28 @@ export default {
         rotateIn: {
           '0%': { transform: 'rotate(-5deg)', opacity: '0' },
           '100%': { transform: 'rotate(0)', opacity: '1' },
+        },
+        // 新增关键帧
+        dropdown: {
+          '0%': { transform: 'translateY(-1rem)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        fadeUp: {
+          '0%': { transform: 'translateY(1rem)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marqueefollowup: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        pulsing: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+          '100%': { transform: 'scale(1)' },
         },
       },
       boxShadow: {

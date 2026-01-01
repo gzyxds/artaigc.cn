@@ -38,8 +38,8 @@ const cards = [
 <section class="relative py-16 sm:py-20 md:py-28 lg:py-36 flex items-center bg-gradient-to-br from-gray-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
   <!-- 背景装饰 -->
   <div class="absolute inset-0">
-    <div class="absolute top-0 -right-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/30 dark:bg-[#05f]/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 -left-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/20 dark:bg-[#05f]/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 -right-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/30 dark:bg-[#05f]/20 rounded-none blur-3xl"></div>
+    <div class="absolute bottom-0 -left-4 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/20 dark:bg-[#05f]/15 rounded-none blur-3xl"></div>
 
     <!-- AI知识库背景元素 -->
     <!-- 知识库图标 -->
@@ -100,14 +100,14 @@ const cards = [
     </div>
 
     <!-- 装饰脉动点 -->
-    <div class="absolute top-1/5 left-1/5 w-2 h-2 bg-[#05f] rounded-full opacity-30 animate-ping"></div>
-    <div class="absolute bottom-1/5 right-1/6 w-1.5 h-1.5 bg-[#05f] rounded-full opacity-40 animate-ping" style="animation-delay: 1s;"></div>
-    <div class="absolute top-3/5 left-1/6 w-1 h-1 bg-[#05f] rounded-full opacity-50 animate-ping" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/5 left-1/5 w-2 h-2 bg-[#05f] rounded-none opacity-30 animate-ping"></div>
+    <div class="absolute bottom-1/5 right-1/6 w-1.5 h-1.5 bg-[#05f] rounded-none opacity-40 animate-ping" style="animation-delay: 1s;"></div>
+    <div class="absolute top-3/5 left-1/6 w-1 h-1 bg-[#05f] rounded-none opacity-50 animate-ping" style="animation-delay: 2s;"></div>
   </div>
   <div class="container-custom relative">
     <!-- 装饰元素 -->
-    <div class="absolute -top-20 -left-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/10 dark:bg-[#05f]/10 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-20 -right-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/15 dark:bg-[#05f]/10 rounded-full blur-3xl"></div>
+    <div class="absolute -top-20 -left-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/10 dark:bg-[#05f]/10 rounded-none blur-3xl"></div>
+    <div class="absolute -bottom-20 -right-20 w-48 sm:w-64 md:w-72 h-48 sm:h-64 md:h-72 bg-[#05f]/15 dark:bg-[#05f]/10 rounded-none blur-3xl"></div>
 
     <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
       <!-- 左侧内容区 -->
@@ -115,9 +115,9 @@ const cards = [
         <div class="relative">
           <!-- 标题光效装饰 -->
           <div class="absolute -top-4 -right-4 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28">
-            <div class="absolute inset-0 bg-[#05f]/20 opacity-20 rounded-full animate-pulse"></div>
-            <div class="absolute inset-3 bg-white dark:bg-gray-800 rounded-full"></div>
-            <div class="absolute inset-6 bg-[#05f] rounded-full"></div>
+            <div class="absolute inset-0 bg-[#05f]/20 opacity-20 rounded-none animate-pulse"></div>
+            <div class="absolute inset-3 bg-white dark:bg-gray-800 rounded-none"></div>
+            <div class="absolute inset-6 bg-[#05f] rounded-none"></div>
           </div>
 
           <h1 class="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#05f] to-[#0055cc] dark:from-[#05f] dark:to-[#3385ff] mb-5 sm:mb-7">
@@ -134,24 +134,24 @@ const cards = [
 
         <!-- 特性标签 -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-14">
-            <span class="px-4 py-2 rounded-full bg-[#05f]/10 dark:bg-[#05f]/20 text-[#05f] dark:text-[#66a3ff] text-sm font-medium border border-[#05f]/20 dark:border-[#05f]/30 hover:shadow-md transition-shadow">AI智能对话</span>
-            <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">知识库应用</span>
-            <span class="px-4 py-2 rounded-full bg-[#05f]/10 dark:bg-[#05f]/20 text-[#05f] dark:text-[#66a3ff] text-sm font-medium border border-[#05f]/20 dark:border-[#05f]/30 hover:shadow-md transition-shadow">机器人广场</span>
-            <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">知识库训练</span>
-            <span class="px-4 py-2 rounded-full bg-[#05f]/10 dark:bg-[#05f]/20 text-[#05f] dark:text-[#66a3ff] text-sm font-medium border border-[#05f]/20 dark:border-[#05f]/30 hover:shadow-md transition-shadow">发布网页/js/api</span>
+            <span class="px-4 py-2 rounded-none bg-[#05f]/10 dark:bg-[#05f]/20 text-[#05f] dark:text-[#66a3ff] text-sm font-medium border border-[#05f]/20 dark:border-[#05f]/30 hover:shadow-md transition-shadow">AI智能对话</span>
+            <span class="px-4 py-2 rounded-none bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">知识库应用</span>
+            <span class="px-4 py-2 rounded-none bg-[#05f]/10 dark:bg-[#05f]/20 text-[#05f] dark:text-[#66a3ff] text-sm font-medium border border-[#05f]/20 dark:border-[#05f]/30 hover:shadow-md transition-shadow">机器人广场</span>
+            <span class="px-4 py-2 rounded-none bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">知识库训练</span>
+            <span class="px-4 py-2 rounded-none bg-[#05f]/10 dark:bg-[#05f]/20 text-[#05f] dark:text-[#66a3ff] text-sm font-medium border border-[#05f]/20 dark:border-[#05f]/30 hover:shadow-md transition-shadow">发布网页/js/api</span>
         </div>
 
 
         <!-- CTA按钮 -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6">
-          <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-[#05f] hover:bg-[#0044cc] text-white font-semibold rounded-lg border border-[#05f]/20 shadow-md hover:shadow-lg hover:shadow-[#05f]/20 transition-all duration-300 text-sm sm:text-base flex items-center justify-center">
+          <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-[#05f] hover:bg-[#0044cc] text-white font-semibold rounded-none border border-[#05f]/20 shadow-md hover:shadow-lg hover:shadow-[#05f]/20 transition-all duration-300 text-sm sm:text-base flex items-center justify-center">
             <span>联系客服</span>
             <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
             </svg>
           </a>
 
-          <a href="/demo" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg hover:shadow-gray-300/50 dark:hover:shadow-black/30 transition-all duration-300 text-sm sm:text-base flex items-center justify-center">
+          <a href="/demo" class="group px-6 sm:px-8 py-2.5 sm:py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-none border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg hover:shadow-gray-300/50 dark:hover:shadow-black/30 transition-all duration-300 text-sm sm:text-base flex items-center justify-center">
             <span>查看演示</span>
             <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -162,12 +162,12 @@ const cards = [
 
        <!-- 右侧展示区 - 简洁模拟面设计 -->
       <div class="relative mt-8 lg:mt-0">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8">
+        <div class="bg-white dark:bg-gray-800 rounded-none border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8">
 
           <!-- 顶部标签区 -->
           <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
             {topTags.map((tag) => (
-              <span class="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-md">
+              <span class="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-none">
                 {tag.name}
               </span>
             ))}
@@ -176,9 +176,9 @@ const cards = [
           <!-- 功能卡片网格 -->
           <div class="grid grid-cols-2 gap-3 sm:gap-4">
             {cards.map((card) => (
-              <div class="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl p-3 sm:p-4 lg:p-6 hover:shadow-md hover:border-[#0055ff]/30 transition-all duration-200">
+              <div class="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-none p-3 sm:p-4 lg:p-6 hover:shadow-md hover:border-[#0055ff]/30 transition-all duration-200">
                 <!-- 图标区域 -->
-                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#0055ff]/10 rounded-lg flex items-center justify-center mb-2 sm:mb-4">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#0055ff]/10 rounded-none flex items-center justify-center mb-2 sm:mb-4">
                   <i class="material-icons text-[#0055ff] text-lg sm:text-xl">
                     {card.icon}
                   </i>

@@ -98,7 +98,7 @@ const icons = {
     <div class="flex items-center gap-4">
       <!-- 查看演示按钮 -->
       <button
-        class="flex flex-col items-center justify-center py-2 px-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+        class="flex flex-col items-center justify-center py-2 px-2 rounded-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
         @click="window.location.href = '/demo'"
         aria-label="查看产品演示"
       >
@@ -108,7 +108,7 @@ const icons = {
 
       <!-- 联系客服按钮 -->
       <button
-        class="flex flex-col items-center justify-center py-2 px-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+        class="flex flex-col items-center justify-center py-2 px-2 rounded-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
         @click="openQR('presales', presalesQR, '联系客服', '扫描二维码添加客服，获取产品咨询和技术支持')"
         aria-label="联系客服"
       >
@@ -118,7 +118,7 @@ const icons = {
 
       <!-- QQ客服按钮 -->
       <button
-        class="flex flex-col items-center justify-center py-2 px-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+        class="flex flex-col items-center justify-center py-2 px-2 rounded-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
         @click="openQR('aftersales', aftersalesQR, 'QQ客服', '扫描二维码添加QQ客服，获取技术支持和问题解决')"
         aria-label="QQ客服"
       >
@@ -129,7 +129,7 @@ const icons = {
 
     <!-- 业务咨询按钮单独靠右边缘显示 -->
     <button
-      class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-sm"
+      class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-none transition-colors duration-200 text-sm"
       @click="openQR('business', presalesQR, '业务咨询', '扫描二维码联系我们，获取专业的业务咨询服务')"
       aria-label="业务咨询"
     >
@@ -154,7 +154,7 @@ const icons = {
     aria-labelledby="qr-modal-title"
   >
     <div
-      class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-sm w-full mx-4 shadow-xl"
+      class="bg-white dark:bg-gray-800 rounded-none p-6 max-w-sm w-full mx-4 shadow-xl"
       x-transition:enter="transition ease-out duration-300"
       x-transition:enter-start="opacity-0 scale-95"
       x-transition:enter-end="opacity-100 scale-100"
@@ -179,7 +179,7 @@ const icons = {
         <img
           :src="qrUrl"
           :alt="qrTitle + '二维码'"
-          class="w-48 h-48 object-contain border border-gray-200 dark:border-gray-600 rounded-lg"
+          class="w-48 h-48 object-contain border border-gray-200 dark:border-gray-600 rounded-none"
         />
       </div>
 

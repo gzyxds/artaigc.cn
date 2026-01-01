@@ -3,182 +3,372 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 字体定义 - 暂时注释掉缺失的字体文件以避免 404 错误
+@font-face {
+  font-family: 'Clash-Display';
+  src: local('Clash Display'), local('ClashDisplay-Variable'),
+       url('/fonts/clashdisplay/ClashDisplay-Variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Clash-Grotesk';
+  src: local('Clash Grotesk'), local('ClashGrotesk-Variable'),
+       url('/fonts/clashgrotesk/ClashGrotesk-Variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+*/
+
 /* 基础层样式定义 */
 @layer base {
-  /* 设置所有标题使用display字体 */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+  html {
+    @apply scroll-smooth antialiased;
+
+    /*
+     * 设计系统变量
+     * 参考设计风格: 深灰蓝基调
+     * oklch(0.13 0.028 261.692) -> #1a1d2d
+     * 使用 rgba 实现透明度叠加效果
+     */
+    --grid-line-color: rgba(26, 29, 45, 0.1); /* 浅色模式下的网格线颜色 */
+    --breakpoint-2xl: 96rem;
+
+    /* 响应式 Gutter (与 .container-custom padding 保持一致) */
+    --gutter-width: 1rem; /* px-4 */
   }
 
-  /* 一级标题样式：更细腻的响应式字体大小 */
-  h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
+  @media (min-width: 768px) {
+    html {
+      --gutter-width: 1.5rem; /* md:px-6 */
+    }
   }
 
-  /* 二级标题样式 */
-  h2 {
-    @apply text-2xl sm:text-3xl md:text-4xl font-bold;
+  @media (min-width: 1024px) {
+    html {
+      --gutter-width: 2rem; /* lg:px-8 */
+    }
   }
 
-  /* 三级标题样式 */
-  h3 {
-    @apply text-xl sm:text-2xl md:text-3xl font-semibold;
+  html.dark {
+    /* 深色模式下的网格线颜色，提高对比度 */
+    --grid-line-color: rgba(255, 255, 255, 0.15);
   }
 
-  /* 四级标题样式 */
-  h4 {
-    @apply text-lg sm:text-xl md:text-2xl font-semibold;
+  body {
+    @apply font-body bg-white text-base leading-7 text-neutral-700
+           selection:bg-neutral-950 selection:text-neutral-50
+           dark:bg-neutral-950 dark:text-neutral-200
+           dark:selection:bg-neutral-50 dark:selection:text-neutral-950;
   }
 
-  /* 段落文本样式：优化响应式 */
+  /* 标题样式 */
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    @apply font-headings text-neutral-950 last:mb-0
+           dark:text-white mb-6 font-medium;
+  }
+
+  h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
+    font-weight: inherit;
+  }
+
+  h1, .h1 {
+    @apply text-5xl leading-[1.1] md:text-7xl lg:text-[5.375rem] lg:leading-none lg:tracking-[-2px];
+  }
+
+  h2, .h2 {
+    @apply text-4xl lg:text-[4rem] lg:leading-[1.1];
+  }
+
+  h3, .h3 {
+    @apply text-2xl lg:leading-9;
+  }
+
+  h4, .h4 {
+    @apply text-lg leading-8 lg:text-xl;
+  }
+
+  h5, .h5 {
+    @apply text-sm leading-6 font-normal tracking-wider text-neutral-500 uppercase dark:text-neutral-400;
+  }
+
+  h6, .h6 {
+    @apply text-base lg:text-lg;
+  }
+
   p {
-    @apply text-base sm:text-lg md:text-xl leading-relaxed;
+    @apply mb-6 last:mb-0 text-neutral-700 dark:text-neutral-200 text-base sm:text-lg leading-relaxed;
+  }
+
+  .text-lead {
+    @apply text-[21px] leading-9 font-light;
+  }
+
+  blockquote, .blockquote {
+    @apply font-headings text-2xl leading-relaxed font-light lg:text-4xl relative mb-8 border border-[#E7E5E4] bg-neutral-50/30 py-12 px-8
+           dark:border-neutral-700 dark:bg-neutral-900/40;
+  }
+
+  /* 列表样式 */
+  ul li, ol li {
+    @apply mb-2 ml-4 pl-2 text-neutral-700 dark:text-neutral-400;
+  }
+  ul li {
+    @apply list-disc marker:font-medium marker:text-primary-700 dark:marker:text-primary-300;
+  }
+  ol li {
+    @apply list-decimal marker:text-primary-700 dark:marker:text-primary-300;
+  }
+
+  /* 链接 */
+  main a {
+    @apply text-primary-500 hover:text-primary-600 dark:text-primary-500 dark:hover:text-primary-400;
+  }
+
+  /* 代码块 */
+  pre {
+    @apply mb-6 rounded-none border border-neutral-950 bg-neutral-800 p-6 text-base text-white
+           dark:border-neutral-800 dark:bg-neutral-900;
   }
 }
 
 /* 组件层样式定义 */
 @layer components {
-  /* 基础按钮样式 */
-  .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium
-           transition-all duration-300 focus:outline-none will-change-transform;
+  /*
+   * 背景网格工具类
+   * 封装了复杂的 repeating-linear-gradient 逻辑
+   * 方便统一调用和管理
+   */
+  .bg-grid-pattern {
+    background-size: 10px 10px;
+    background-attachment: fixed;
+    background-image: repeating-linear-gradient(
+      315deg,
+      var(--grid-line-color) 0,
+      var(--grid-line-color) 1px,
+      transparent 0,
+      transparent 50%
+    );
   }
 
-  /* 主要按钮样式 */
-  .btn-primary {
-    @apply btn bg-accent-400 hover:bg-accent-500 text-black
-           shadow-md hover:shadow-lg focus:ring-2 focus:ring-accent-500
-           focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  /* 边框颜色统一工具类 */
+  .border-grid {
+    border-color: var(--grid-line-color);
   }
 
-  /* 次要按钮样式 */
-  .btn-secondary {
-    @apply btn bg-primary-600 hover:bg-primary-700 text-white
-           shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary-500
-           focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  /* Button Styles */
+  .btn, .button {
+    @apply relative inline-flex cursor-pointer items-center justify-center gap-2
+           bg-neutral-950 font-medium whitespace-nowrap text-white
+           transition duration-300 hover:bg-neutral-900
+           focus-visible:outline-none disabled:cursor-not-allowed disabled:shadow-none
+           dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-50
+           rounded-none;
   }
 
-  /* 强调按钮样式 */
-  .btn-accent {
-    @apply btn bg-accent-500 hover:bg-accent-600 text-black
-           shadow-md hover:shadow-lg focus:ring-2 focus:ring-accent-500
-           focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  .btn-lg, .button--lg {
+    @apply h-14 px-8 text-lg;
   }
 
-  /* 轮廓按钮样式 */
-  .btn-outline {
-    @apply btn border-2 border-secondary-300 dark:border-secondary-700
-           hover:bg-secondary-100 dark:hover:bg-secondary-800
-           text-secondary-900 dark:text-secondary-100
-           focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2
-           focus:ring-offset-white dark:focus:ring-offset-secondary-900;
+  .btn-base, .button--base {
+    @apply h-12 px-8 text-base;
   }
 
-  /* 优化容器样式 */
-  .container-custom {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 max-w-[1550px];
+  .btn-sm, .button--sm {
+    @apply h-10 px-4 text-sm;
   }
 
-  /* 内容区域样式 */
+  .btn-primary, .button--primary {
+    @apply bg-primary-500 hover:bg-primary-600 dark:hover:bg-primary-600 text-white shadow-md hover:shadow-lg;
+  }
+
+  .btn-secondary, .button--secondary {
+    @apply bg-neutral-600 hover:bg-neutral-700 text-white shadow-md hover:shadow-lg;
+  }
+
+  .btn-white, .button--white {
+    @apply bg-white hover:bg-gray-50 text-primary-500 dark:hover:bg-primary-600;
+  }
+
+  .btn-link, .button--link {
+    @apply text-primary-900 hover:text-primary-950 dark:text-primary-50 dark:hover:text-primary-100
+           bg-transparent shadow-none hover:bg-transparent h-auto p-0;
+  }
+
+  .btn-outline, .button--outline {
+    @apply border-2 border-neutral-300 dark:border-neutral-700
+           hover:bg-neutral-100 dark:hover:bg-neutral-800
+           text-neutral-900 dark:text-neutral-100 bg-transparent;
+  }
+
+  /* 容器样式 */
+  .container, .container-custom {
+    @apply relative z-10 mx-auto w-full max-w-full px-4 md:px-6 lg:px-8;
+  }
+
   .content-area {
-    @apply max-w-[800px] mx-auto;
+    @apply max-w-[1000px] mx-auto;
   }
 
-  .content-area-wide {
-    @apply max-w-[1200px] mx-auto;
-  }
-
-  /* 网格容器样式 */
-  .grid-container {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
-  }
-
-  /* 网格项样式 */
-  .grid-item {
-    @apply w-full;
-  }
-
-  /* 区块样式：优化间距 */
-  .section {
-    @apply py-12 md:py-16 lg:py-20 xl:py-24;
-  }
-
-  /* 水平间距 */
-  .section-x {
-    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
-  }
-
-  /* 卡片样式：增强暗色模式支持 */
+  /* 卡片样式 */
   .card {
-    @apply bg-white dark:bg-secondary-900 rounded-xl shadow-md hover:shadow-lg
+    @apply bg-white dark:bg-neutral-900 rounded-none shadow-md hover:shadow-lg
            transition-shadow duration-300 overflow-hidden
-           border border-secondary-200 dark:border-secondary-800
-           dark:shadow-secondary-900/50;
+           border border-neutral-200 dark:border-neutral-800
+           dark:shadow-neutral-900/50;
   }
 
-  /* 间距工具类 */
-  .space-y-section {
-    @apply space-y-8 md:space-y-12 lg:space-y-16;
+  /* 双网格线卡片样式 */
+  .card-double-grid-wrapper {
+    /* Define colors and spacing */
+    --grid-color: rgb(229, 234, 255); /* Reference color */
+    --grid-line-width: 1px;
+    --grid-gap: 2px; /* Gap between inner and outer lines */
+
+    /* Extension lengths - different for each corner/side to create interactive feel */
+    --grid-ext-short: 8px;
+    --grid-ext-long: 16px;
+
+    /* Calculate offsets */
+    --grid-offset-start: calc(var(--grid-line-width) + var(--grid-gap));
+    --grid-offset-end: calc(100% - var(--grid-offset-start));
+
+    /* Padding = line + gap + line */
+    padding: calc(var(--grid-line-width) + var(--grid-gap) + var(--grid-line-width));
+
+    position: relative;
+    z-index: 1;
+    isolation: isolate; /* Create new stacking context */
   }
 
-  .space-x-section {
-    @apply space-x-4 md:space-x-6 lg:space-x-8;
+  :global(.dark) .card-double-grid-wrapper {
+    --grid-color: #374151; /* gray-700 */
   }
 
-  /* 性能优化类 */
-  .optimize-rendering {
-    @apply will-change-transform transform-gpu;
+  /* Horizontal Lines (Top/Bottom) - Outer & Inner */
+  .card-double-grid-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* Asymmetric extensions for horizontal lines */
+    left: calc(-1 * var(--grid-ext-long));
+    right: calc(-1 * var(--grid-ext-short));
+    z-index: -1;
+    background:
+      /* Top Outer */
+      linear-gradient(to right, var(--grid-color), var(--grid-color)) 0 0 / 100% var(--grid-line-width) no-repeat,
+      /* Top Inner */
+      linear-gradient(to right, var(--grid-color), var(--grid-color)) 0 var(--grid-offset-start) / 100% var(--grid-line-width) no-repeat,
+      /* Bottom Inner */
+      linear-gradient(to right, var(--grid-color), var(--grid-color)) 0 var(--grid-offset-end) / 100% var(--grid-line-width) no-repeat,
+      /* Bottom Outer */
+      linear-gradient(to right, var(--grid-color), var(--grid-color)) 0 100% / 100% var(--grid-line-width) no-repeat;
+    pointer-events: none;
+    transition: left 0.3s ease, right 0.3s ease;
   }
 
-  /* 加载优化类 */
-  .lazy-load {
-    @apply transition-opacity duration-300 opacity-0;
+  /* Vertical Lines (Left/Right) - Outer & Inner */
+  .card-double-grid-wrapper::after {
+    content: "";
+    position: absolute;
+    /* Asymmetric extensions for vertical lines */
+    top: calc(-1 * var(--grid-ext-short));
+    bottom: calc(-1 * var(--grid-ext-long));
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background:
+      /* Left Outer */
+      linear-gradient(to bottom, var(--grid-color), var(--grid-color)) 0 0 / var(--grid-line-width) 100% no-repeat,
+      /* Left Inner */
+      linear-gradient(to bottom, var(--grid-color), var(--grid-color)) var(--grid-offset-start) 0 / var(--grid-line-width) 100% no-repeat,
+      /* Right Inner */
+      linear-gradient(to bottom, var(--grid-color), var(--grid-color)) var(--grid-offset-end) 0 / var(--grid-line-width) 100% no-repeat,
+      /* Right Outer */
+      linear-gradient(to bottom, var(--grid-color), var(--grid-color)) 100% 0 / var(--grid-line-width) 100% no-repeat;
+    pointer-events: none;
+    transition: top 0.3s ease, bottom 0.3s ease;
   }
 
-  .lazy-load.loaded {
-    @apply opacity-100;
+  /* Inner Content Container */
+  .card-double-grid-inner {
+    height: 100%;
+    width: 100%;
+    /* No border here, lines are drawn by wrapper */
+    border: none;
+    overflow: hidden;
   }
+
+  /* Hover Effects */
+  .card-double-grid-wrapper:hover {
+    --grid-color: rgb(180, 200, 255); /* Lighter blue highlight on hover */
+  }
+
+  /* Animate extensions on hover for interactive feel */
+  .card-double-grid-wrapper:hover::before {
+    left: calc(-1 * var(--grid-ext-short));
+    right: calc(-1 * var(--grid-ext-long));
+  }
+
+  .card-double-grid-wrapper:hover::after {
+    top: calc(-1 * var(--grid-ext-long));
+    bottom: calc(-1 * var(--grid-ext-short));
+  }
+
+  :global(.dark) .card-double-grid-wrapper:hover {
+    --grid-color: #6b7280; /* lighter gray for dark mode hover */
+  }
+
+  /* 滚动动画 */
+  .scroll-animation .col:not(.no-scroll-animation),
+  .scroll-animation .scroll-animate {
+    @apply translate-y-2 scale-y-[0.99] transform opacity-0 blur-sm transition-all duration-1000
+           [&.scroll-animated]:translate-y-0 [&.scroll-animated]:scale-y-100 [&.scroll-animated]:opacity-100 [&.scroll-animated]:blur-none;
+  }
+
+  /* 延迟类 */
+  .delay-50 { transition-delay: 50ms; }
+  .delay-200 { transition-delay: 200ms; }
+  .delay-350 { transition-delay: 350ms; }
+  .delay-400 { transition-delay: 400ms; }
+  .delay-550 { transition-delay: 550ms; }
+  .delay-700 { transition-delay: 700ms; }
+  .delay-850 { transition-delay: 850ms; }
+  .delay-1000 { transition-delay: 1000ms; }
 }
 
 /* 动画效果 */
-.fade-in {
-  @apply animate-fade-in;
-}
+.fade-in { @apply animate-fade-in; }
+.slide-up { @apply animate-slide-up; }
+.slide-down { @apply animate-slide-down; }
 
-.slide-up {
-  @apply animate-slide-up;
-}
-
-.slide-down {
-  @apply animate-slide-down;
-}
-
-/* 可访问性样式 */
+/* 实用工具 */
 .sr-only {
   @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
 }
 
-/* 键盘导航焦点样式：增强可访问性 */
-:focus-visible {
-  @apply outline-none ring-2 ring-primary-500 dark:ring-primary-400
-         ring-offset-2 ring-offset-white dark:ring-offset-secondary-900;
+/* 表单样式 */
+form input, form textarea {
+  @apply relative mb-6 w-full border border-neutral-200 px-4 py-3 rounded-none
+         text-neutral-700 placeholder-neutral-400 bg-white
+         transition-all outline-none
+         focus:border-primary-500 focus:ring-1 focus:ring-primary-500
+         dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200;
 }
 
-/* 高对比度模式支持 */
-@media (prefers-contrast: high) {
-  .btn-primary {
-    @apply border-2 border-black dark:border-white;
-  }
+form label {
+  @apply font-headings text-sm mb-2 block text-neutral-700 dark:text-neutral-300;
+}
 
-  .btn-secondary {
-    @apply border-2 border-black dark:border-white;
-  }
-
-  .btn-accent {
-    @apply border-2 border-black dark:border-white;
-  }
-
-  .btn-outline {
-    @apply border-4;
-  }
+/* 禁用过渡 */
+html.disable-transitions *,
+html.disable-transitions *::before,
+html.disable-transitions *::after {
+  transition: none !important;
+  animation: none !important;
 }
