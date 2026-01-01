@@ -1,6 +1,5 @@
 ---
 import { products } from '../../data/products';
-import QRModal from '../QRModal.astro';
 
 // 数据处理
 // 简单的随机打乱
@@ -322,12 +321,6 @@ const featureList = [
   </div>
 </section>
 
-<QRModal
-  qrCodeUrl="/assets/qrcode.png"
-  title="联系客服"
-  description="扫描二维码添加客服微信"
-/>
-
 <script>
   // 打字机效果
   const sentences = [
@@ -373,11 +366,5 @@ const featureList = [
     type();
   }
 
-  // 监听二维码弹窗事件
-  window.addEventListener('showQRCodeModal', () => {
-    const modal = document.getElementById('qr-modal');
-    if (modal) {
-      modal.classList.add('active');
-    }
-  });
+  // 由 QRModal 统一处理 showQRCodeModal 事件
 </script>

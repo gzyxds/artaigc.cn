@@ -14,8 +14,6 @@
  * 7. 集成二维码弹窗功能
  * 8. 风格：Bento Grid / Linear (直角、边框优先、极简)
  */
-import QRModal from './QRModal.astro';
-
 interface Feature {
   name: string;
 }
@@ -110,7 +108,7 @@ const cards: Card[] = [
         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <a
             href="javascript:void(0)"
-            onclick="document.getElementById('qr-modal').classList.add('active')"
+            onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
             class="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-none overflow-hidden"
             aria-label="联系客服"
           >
@@ -181,11 +179,4 @@ const cards: Card[] = [
       </div>
     </div>
   </div>
-
-  <!-- QR Modal组件 -->
-  <QRModal
-    qrCodeUrl="/assets/qrcode.png"
-    title="联系客服"
-    description="扫描二维码添加客服微信"
-  />
 </section>

@@ -5,7 +5,6 @@ import Layout from '../layouts/Layout.astro';
 // 页面组件
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import QRModal from '../components/QRModal.astro';
 import Products from '../components/Products.astro';
 import Carousel from '../components/Hero/Carousel.astro';
 
@@ -174,7 +173,7 @@ const faqData = [
 
             <div class="pt-4">
               <button
-                onclick="document.getElementById('qr-modal').classList.add('active')"
+                onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal', { detail: { title: '联系企业服务团队', description: '扫描二维码添加客服微信，获取定制方案', qrCodeUrl: '/assets/qrcode.png' } }))"
                 class="bg-blue-600 text-white px-8 py-4 font-mono text-sm hover:bg-blue-700 transition-colors duration-300 rounded-none border border-transparent hover:border-blue-400"
               >
                 联系企业服务团队 ->
@@ -267,9 +266,6 @@ const faqData = [
   </main>
 
   <Footer />
-
-  <!-- 二维码弹窗组件 -->
-  <QRModal qrCodeUrl="/assets/qrcode.png" />
 </Layout>
 
 <style>

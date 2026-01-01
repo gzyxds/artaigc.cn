@@ -5,7 +5,6 @@ import Layout from '../layouts/Layout.astro';
 // 页面组件
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import QRModal from '../components/QRModal.astro';
 
 // 页面元数据
 const title = "定价方案 - 艺创AI";
@@ -393,7 +392,7 @@ const faqData = [
                     立即购买
                   </a>
                   <button 
-                    onclick="document.getElementById('qr-modal').classList.add('active')"
+                    onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal', { detail: { title: '咨询详情', description: '扫描二维码添加客服微信，获取方案详情', qrCodeUrl: '/assets/qrcode.png' } }))"
                     class="w-full border border-gray-300 text-gray-700 py-3 px-6 text-center font-medium hover:border-blue-600 hover:text-blue-600 transition-colors duration-300"
                   >
                     咨询详情
@@ -462,7 +461,7 @@ const faqData = [
             <!-- 联系按钮 -->
             <div class="pt-12">
               <button 
-                onclick="document.getElementById('qr-modal').classList.add('active')"
+                onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal', { detail: { title: '联系企业服务团队', description: '扫描二维码添加客服微信，获取定制方案', qrCodeUrl: '/assets/qrcode.png' } }))"
                 class="bg-white text-blue-600 px-8 py-4 font-semibold hover:bg-gray-50 transition-colors duration-300"
               >
                 联系企业服务团队
@@ -509,8 +508,6 @@ const faqData = [
 
   <Footer />
   
-  <!-- 二维码弹窗组件 -->
-  <QRModal qrCodeUrl="/assets/qrcode.png" />
 </Layout>
 
 <style>

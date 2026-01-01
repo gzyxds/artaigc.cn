@@ -1,6 +1,4 @@
 ---
-import QRModal from '../QRModal.astro';
-
 // 顶部标签数据
 const topTags = [
   { name: "AI知识库" },
@@ -74,7 +72,7 @@ const cards = [
 
         <!-- CTA按钮 -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-          <a href="javascript:void(0)" onclick="document.getElementById('qr-modal').classList.add('active')" class="group px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-none transition-all duration-300 flex items-center justify-center">
+          <a href="javascript:void(0)" onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal', { detail: { title: '联系客服', description: '扫描二维码添加客服微信', qrCodeUrl: '/assets/qrcode.png' } }))" class="group px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-none transition-all duration-300 flex items-center justify-center">
             <span>联系客服</span>
             <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"></path>
@@ -129,10 +127,4 @@ const cards = [
     </div>
   </div>
 
-  <!-- QR Modal组件 -->
-  <QRModal
-    qrCodeUrl="/assets/qrcode.png"
-    title="联系客服"
-    description="扫描二维码添加客服微信"
-  />
 </section>

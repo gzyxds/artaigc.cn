@@ -83,7 +83,7 @@ const {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -178,9 +178,22 @@ const {
 </style>
 
 <script>
+  type QRModalDetail = {
+    qrCodeUrl?: string;
+    title?: string;
+    description?: string;
+  };
+
+  let defaultTitle = '';
+  let defaultDescription = '';
+  let defaultQrCodeUrl = '';
+  let defaultQrCodeAlt = '';
+
   /**
-   * 打开模态框函数
-   * 显示二维码模态框并处理页面滚动
+   * 打开模态框
+   * 功能：显示二维码弹窗、锁定页面滚动、触发定位校正
+   * 参数：无
+   * 返回值：无
    */
   function openModal() {
     const modal = document.getElementById('qr-modal');
@@ -188,17 +201,7 @@ const {
       modal.classList.add('active');
       modal.setAttribute('aria-hidden', 'false');
 
-      // 检查是否有其他弹窗已经打开
-      const announcementPopup = document.getElementById('announcement-popup');
-      const isAnnouncementOpen = announcementPopup && announcementPopup.classList.contains('active');
-
-      // 只有在没有其他弹窗打开时才修改body样式
-      if (!isAnnouncementOpen) {
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`;
-      }
+      lockBodyScroll();
 
       // 每次打开模态框时重新绑定关闭按钮事件
       bindCloseButton();
@@ -208,12 +211,52 @@ const {
         const closeButton = document.getElementById('close-modal');
         if (closeButton) closeButton.focus();
       }, 100);
+
+      // 进行定位校正
+      positionModal();
     }
   }
 
   /**
-   * 关闭模态框函数
-   * 隐藏二维码模态框并恢复页面滚动
+   * 更新模态框内容
+   * 功能：根据传入参数动态更新标题、描述与二维码图片，未传入则使用默认值
+   * 参数：detail QRModalDetail | undefined 内容配置
+   * 返回值：无
+   */
+  function updateModalContent(detail?: QRModalDetail) {
+    const modal = document.getElementById('qr-modal');
+    if (!modal) return;
+
+    const titleEl = document.getElementById('modal-title');
+    const descEl = modal.querySelector('.modal-description') as HTMLElement | null;
+    const imgEl = modal.querySelector('img.qr-code') as HTMLImageElement | null;
+
+    if (titleEl) titleEl.textContent = detail?.title ?? defaultTitle;
+    if (descEl) descEl.textContent = detail?.description ?? defaultDescription;
+    if (imgEl) {
+      imgEl.src = detail?.qrCodeUrl ?? defaultQrCodeUrl;
+      imgEl.alt = defaultQrCodeAlt || '客服二维码';
+    }
+  }
+
+  /**
+   * 外部打开入口
+   * 功能：提供全局函数供内联 onclick 调用，避免事件监听未就绪导致无响应
+   * 参数：detail QRModalDetail | undefined 内容配置
+   * 返回值：无
+   */
+  function exposeGlobalOpen() {
+    (window as any).__openQRCodeModal = (detail?: QRModalDetail) => {
+      updateModalContent(detail);
+      openModal();
+    };
+  }
+
+  /**
+   * 关闭模态框
+   * 功能：隐藏二维码弹窗并恢复页面滚动
+   * 参数：无
+   * 返回值：无
    */
   function closeModal() {
     const modal = document.getElementById('qr-modal');
@@ -221,25 +264,15 @@ const {
       modal.classList.remove('active');
       modal.setAttribute('aria-hidden', 'true');
 
-      // 检查是否有其他弹窗仍然打开
-      const announcementPopup = document.getElementById('announcement-popup');
-      const isAnnouncementOpen = announcementPopup && announcementPopup.classList.contains('active');
-
-      // 只有在没有其他弹窗打开时才恢复body样式
-      if (!isAnnouncementOpen) {
-        const scrollY = document.body.style.top;
-        document.body.style.overflow = 'auto';
-        document.body.style.position = 'static';
-        document.body.style.width = 'auto';
-        document.body.style.top = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
+      unlockBodyScroll();
     }
   }
 
   /**
    * 绑定关闭按钮事件
    * 确保事件监听器不会重复添加
+   * 参数：无
+   * 返回值：无
    */
   function bindCloseButton() {
     const closeButton = document.getElementById('close-modal');
@@ -253,47 +286,119 @@ const {
 
   /**
    * 处理关闭按钮点击事件
-   * @param {Event} e - 点击事件对象
+   * 功能：阻止冒泡并关闭弹窗
+   * 参数：e Event 点击事件对象
+   * 返回值：无
    */
   function handleCloseClick(e: Event) {
     e.stopPropagation();
     closeModal();
   }
 
-  // 监听自定义事件openQRModal
-  document.addEventListener('openQRModal', () => {
-    openModal();
-  });
+  /**
+   * 设备像素对齐
+   * 功能：根据DPR将像素值对齐到设备子像素，避免模糊
+   * 参数：value number 需要对齐的CSS像素值
+   * 返回值：number 对齐后的CSS像素值
+   */
+  function snapToDevicePixel(value: number): number {
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    return Math.round(value * dpr) / dpr;
+  }
 
-  // 点击背景关闭模态框
-  document.getElementById('qr-modal')?.addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-      closeModal();
+  /**
+   * 模态框定位校正
+   * 功能：在不同视窗尺寸下确保模态框不溢出，设置安全边距与最大尺寸
+   * 参数：无
+   * 返回值：无
+   */
+  function positionModal() {
+    const modal = document.getElementById('qr-modal');
+    const content = modal?.querySelector('.modal-content') as HTMLElement | null;
+    if (!modal || !content) return;
+
+    const safeMargin = 16;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // 宽度边界处理
+    const maxWidth = Math.max(280, snapToDevicePixel(vw - safeMargin * 2));
+    content.style.maxWidth = `${maxWidth}px`;
+
+    // 高度边界处理
+    const maxHeight = snapToDevicePixel(vh - safeMargin * 2);
+    content.style.maxHeight = `${maxHeight}px`;
+
+    // 内部滚动处理
+    const body = content.querySelector('.modal-body') as HTMLElement | null;
+    if (body) {
+      body.style.maxHeight = `${maxHeight - 32}px`;
+      body.style.overflowY = 'auto';
+    }
+  }
+
+  /**
+   * 锁定页面滚动
+   * 功能：记录滚动位置并冻结body，避免背景滚动
+   * 参数：无
+   * 返回值：无
+   */
+  function lockBodyScroll() {
+    const announcementPopup = document.getElementById('announcement-popup');
+    const isAnnouncementOpen = announcementPopup && announcementPopup.classList.contains('active');
+    if (isAnnouncementOpen) return;
+    const scrollY = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${scrollY}px`;
+  }
+
+  /**
+   * 解锁页面滚动
+   * 功能：恢复body状态与滚动位置
+   * 参数：无
+   * 返回值：无
+   */
+  function unlockBodyScroll() {
+    const announcementPopup = document.getElementById('announcement-popup');
+    const isAnnouncementOpen = announcementPopup && announcementPopup.classList.contains('active');
+    if (isAnnouncementOpen) return;
+    const scrollY = document.body.style.top;
+    document.body.style.overflow = 'auto';
+    document.body.style.position = 'static';
+    document.body.style.width = 'auto';
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  }
+
+  /**
+   * 处理打开事件
+   * 功能：兼容不同来源的事件，支持携带 detail 动态更新内容
+   * 参数：event Event 事件对象
+   * 返回值：无
+   */
+  function handleOpenEvent(event: Event) {
+    const detail = (event as CustomEvent<QRModalDetail>).detail;
+    updateModalContent(detail);
+    openModal();
+  }
+
+  // 统一监听二维码弹窗事件（兼容旧事件 openQRModal）
+  window.addEventListener('showQRCodeModal', handleOpenEvent);
+  document.addEventListener('openQRModal', handleOpenEvent);
+
+  // 视窗变化时重新定位
+  window.addEventListener('resize', () => {
+    const modal = document.getElementById('qr-modal');
+    if (modal?.classList.contains('active')) {
+      positionModal();
     }
   });
-
-  // 点击页面其他区域关闭模态框
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
+  window.addEventListener('orientationchange', () => {
     const modal = document.getElementById('qr-modal');
-
-    // 如果点击的是触发按钮
-    if (target?.closest('[onclick*="qr-modal"]')) {
-      e.preventDefault();
-      const modalContent = modal?.querySelector('.modal-content') as HTMLElement;
-
-      if (modal && modalContent) {
-        // 计算模态框居中位置
-        const modalWidth = 400;
-        const modalHeight = modalContent.offsetHeight;
-
-        // 设置模态框居中显示
-        modalContent.style.left = `${Math.max(20, (window.innerWidth - modalWidth) / 2)}px`;
-        modalContent.style.top = `${Math.max(20, (window.innerHeight - modalHeight) / 2)}px`;
-
-        // 打开模态框
-        openModal();
-      }
+    if (modal?.classList.contains('active')) {
+      positionModal();
     }
   });
 
@@ -304,27 +409,46 @@ const {
     }
   });
 
-  // 监听模态框状态变化
-  const modal = document.getElementById('qr-modal');
-  if (modal) {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          if (modal.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-          } else {
-            document.body.style.overflow = 'auto';
-            document.body.style.position = 'static';
-          }
-        }
-      });
-    });
+  /**
+   * 初始化模态框事件与状态
+   * 支持 Astro View Transitions 页面切换
+   */
+  function initModal() {
+    const titleEl = document.getElementById('modal-title');
+    const descEl = document.querySelector('#qr-modal .modal-description') as HTMLElement | null;
+    const imgEl = document.querySelector('#qr-modal img.qr-code') as HTMLImageElement | null;
 
-    observer.observe(modal, { attributes: true });
+    defaultTitle = titleEl?.textContent?.trim() || defaultTitle || '扫描二维码联系客服';
+    defaultDescription = descEl?.textContent?.trim() || defaultDescription || '使用微信扫描下方二维码，即可添加客服微信';
+    defaultQrCodeUrl = imgEl?.getAttribute('src') || defaultQrCodeUrl || '/assets/qrcode.png';
+    defaultQrCodeAlt = imgEl?.getAttribute('alt') || defaultQrCodeAlt || '客服二维码';
+
+    // 绑定关闭按钮事件
+    bindCloseButton();
+
+    // 绑定背景点击关闭
+    const modal = document.getElementById('qr-modal');
+    if (modal) {
+      modal.removeEventListener('click', handleBackgroundClick);
+      modal.addEventListener('click', handleBackgroundClick);
+    }
+
+    // 初始定位校正
+    positionModal();
   }
 
-  // 初始绑定关闭按钮事件
-  bindCloseButton();
+  function handleBackgroundClick(e: Event) {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  }
+
+  // 初始加载
+  initModal();
+  exposeGlobalOpen();
+
+  // 监听页面导航（View Transitions）
+  document.addEventListener('astro:page-load', () => {
+    initModal();
+  });
 </script>

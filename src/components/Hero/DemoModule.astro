@@ -13,7 +13,6 @@
  * 6. 支持暗黑模式
  * 7. 集成二维码弹窗功能
  */
-import QRModal from '../QRModal.astro';
 
 interface Feature {
   name: string;
@@ -171,7 +170,7 @@ const cards: Card[] = [
         <div class="flex flex-wrap justify-center lg:justify-start gap-4">
           <a
             href="javascript:void(0)"
-            onclick="document.getElementById('qr-modal').classList.add('active')"
+            onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal', { detail: { title: '联系客服', description: '扫描二维码添加客服微信', qrCodeUrl: '/assets/qrcode.png' } }))"
             class="px-8 py-3 bg-[#0055ff] hover:bg-[#0044dd] text-white font-semibold rounded-none border border-[#05f] shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center"
             aria-label="联系客服"
           >
@@ -238,10 +237,4 @@ const cards: Card[] = [
       <div class="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
     </div>
   </div>
-
-  <QRModal
-    qrCodeUrl="/assets/qrcode.png"
-    title="联系客服"
-    description="扫描二维码添加客服微信"
-  />
 </section>
