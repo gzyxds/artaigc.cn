@@ -331,6 +331,39 @@
            [&.scroll-animated]:translate-y-0 [&.scroll-animated]:scale-y-100 [&.scroll-animated]:opacity-100 [&.scroll-animated]:blur-none;
   }
 
+  /* Bento Grid / Linear 风格实用类 */
+  .bento-card {
+    @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-none overflow-hidden relative;
+  }
+
+  .bento-card-hover {
+    @apply hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300;
+  }
+
+  .corner-marker {
+    @apply absolute w-3 h-3 border-gray-300 dark:border-gray-600 transition-colors duration-300 z-20;
+  }
+
+  .corner-marker-tl {
+    @apply top-0 left-0 border-t border-l;
+  }
+
+  .corner-marker-tr {
+    @apply top-0 right-0 border-t border-r;
+  }
+
+  .corner-marker-bl {
+    @apply bottom-0 left-0 border-b border-l;
+  }
+
+  .corner-marker-br {
+    @apply bottom-0 right-0 border-b border-r;
+  }
+
+  .group:hover .corner-marker {
+    @apply border-blue-500 dark:border-blue-400;
+  }
+
   /* 延迟类 */
   .delay-50 { transition-delay: 50ms; }
   .delay-200 { transition-delay: 200ms; }

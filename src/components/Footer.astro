@@ -68,10 +68,13 @@ const footerLinks = [
 
   <div class="container-custom pt-16 pb-8">
     <!-- 顶部下载区域 -->
-    <div class="relative rounded-[2.5rem] overflow-hidden bg-gray-50 dark:bg-[#1a2027] border border-gray-200 dark:border-[#374151] p-8 md:p-12 mb-16 shadow-2xl shadow-gray-200/50 dark:shadow-black/40 transition-colors duration-300">
+    <div class="bento-card relative p-8 md:p-12 mb-16 shadow-none transition-colors duration-300 group">
+      <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+      <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
       <!-- 动态背景光效 -->
-      <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-[rgb(0,51,255)]/10 rounded-full blur-[80px] opacity-60"></div>
-      <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-purple-500/10 rounded-full blur-[80px] opacity-60"></div>
+      <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-[rgb(0,51,255)]/10 blur-[80px] opacity-60"></div>
+      <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-purple-500/10 blur-[80px] opacity-60"></div>
 
       <!-- 网格纹理 -->
       <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"></div>
@@ -79,17 +82,17 @@ const footerLinks = [
       <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
         <!-- 左侧内容 -->
         <div class="flex flex-col md:flex-row items-center lg:items-start text-center md:text-left gap-6 md:gap-8 max-w-3xl">
-          <div class="relative group">
-            <div class="absolute inset-0 bg-[rgb(0,51,255)] rounded-2xl blur-xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-            <div class="relative bg-white dark:bg-[#252d37] p-4 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-300">
-              <div class="w-16 h-16 flex items-center justify-center text-gray-900 dark:text-white font-bold text-3xl transition-colors duration-300">
+          <div class="relative group/icon">
+            <div class="absolute inset-0 bg-[rgb(0,51,255)] blur-xl opacity-10 group-hover/icon:opacity-20 transition-opacity duration-500"></div>
+            <div class="relative bg-white dark:bg-[#252d37] p-4 border border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-300 rounded-none">
+              <div class="w-16 h-16 flex items-center justify-center text-gray-900 dark:text-white font-bold text-3xl transition-colors duration-300 font-mono">
                 AI
               </div>
             </div>
           </div>
 
           <div class="space-y-4">
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-[rgba(0,51,255,0.1)] border border-[rgba(0,51,255,0.2)] text-[rgb(0,51,255)] dark:text-[rgb(100,140,255)] text-xs font-medium">
+            <div class="inline-flex items-center px-3 py-1 bg-[rgba(0,51,255,0.05)] border border-[rgba(0,51,255,0.2)] text-[rgb(0,51,255)] dark:text-[rgb(100,140,255)] text-xs font-medium font-mono rounded-none">
               <i class="material-icons text-sm mr-1.5">auto_awesome</i>
               <span class="relative flex h-2 w-2 mr-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[rgb(0,51,255)] opacity-75"></span>
@@ -99,10 +102,10 @@ const footerLinks = [
             </div>
 
             <div class="space-y-2">
-              <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight transition-colors duration-300">
+              <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight transition-colors duration-300 font-display">
                 释放 AI 创作的<span class="text-transparent bg-clip-text bg-gradient-to-r from-[rgb(0,51,255)] to-indigo-500 dark:to-indigo-400">无限潜能</span>
               </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-lg leading-relaxed transition-colors duration-300">
+              <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-lg leading-relaxed transition-colors duration-300 font-mono">
                 一键安装，畅享原生级 AI 创作体验。更稳定的连接，更流畅的交互，随时随地激发创意灵感。
               </p>
             </div>
@@ -112,27 +115,27 @@ const footerLinks = [
         <!-- 右侧操作区 -->
         <div class="flex flex-col items-center gap-6 w-full lg:w-auto">
           <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <a href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" target="_blank" class="h-12 px-8 bg-[rgb(0,51,255)] text-white hover:bg-[rgb(0,40,200)] hover:scale-105 transition-all duration-300 rounded-xl font-semibold text-base shadow-lg shadow-[rgba(0,51,255,0.3)] flex items-center justify-center">
+            <a href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20" target="_blank" class="h-12 px-8 bg-[rgb(0,51,255)] text-white hover:bg-[rgb(0,40,200)] transition-all duration-300 text-base shadow-sm hover:shadow-md flex items-center justify-center rounded-none font-mono group/btn">
               免费使用
-              <i class="material-icons text-sm ml-2">arrow_forward</i>
+              <i class="material-icons text-sm ml-2 transform group-hover/btn:translate-x-1 transition-transform">arrow_forward</i>
             </a>
-            <a href="/download" target="_blank" class="h-12 px-8 bg-transparent border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-[#2d3748] hover:border-gray-400 dark:hover:border-gray-500 rounded-xl text-base transition-all duration-300 flex items-center justify-center">
+            <a href="/download" target="_blank" class="h-12 px-8 bg-transparent border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-[#2d3748] hover:border-gray-400 dark:hover:border-gray-500 text-base transition-all duration-300 flex items-center justify-center rounded-none font-mono">
               <i class="material-icons text-sm mr-2">download</i>
               客户端下载
             </a>
           </div>
 
           <!-- 平台支持 -->
-          <div class="flex items-center gap-4 text-gray-500 dark:text-gray-500 text-sm transition-colors duration-300">
+          <div class="flex items-center gap-4 text-gray-500 dark:text-gray-500 text-sm transition-colors duration-300 font-mono">
             <span>支持平台:</span>
             <div class="flex gap-3">
-              <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500 dark:text-gray-400" title="Windows">
+              <div class="w-9 h-9 flex items-center justify-center bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500 dark:text-gray-400 rounded-none" title="Windows">
                 <i class="material-icons text-sm">desktop_windows</i>
               </div>
-              <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500 dark:text-gray-400" title="macOS">
+              <div class="w-9 h-9 flex items-center justify-center bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500 dark:text-gray-400 rounded-none" title="macOS">
                 <i class="material-icons text-sm">laptop_mac</i>
               </div>
-              <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500 dark:text-gray-400" title="Linux">
+              <div class="w-9 h-9 flex items-center justify-center bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500 dark:text-gray-400 rounded-none" title="Linux">
                 <i class="material-icons text-sm">terminal</i>
               </div>
             </div>
@@ -145,12 +148,12 @@ const footerLinks = [
       {/* 左侧品牌区 */}
       <div class="col-span-2 lg:col-span-2">
         <a href="/" class="flex items-center gap-2 mb-6">
-           <div class="w-8 h-8 bg-[rgb(0,51,255)] flex items-center justify-center rounded-lg text-white font-bold text-lg">
+           <div class="w-8 h-8 bg-[rgb(0,51,255)] flex items-center justify-center text-white font-bold text-lg rounded-none">
              AI
            </div>
-           <span class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">艺创AI</span>
+           <span class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 font-display">艺创AI</span>
         </a>
-        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs mb-6 transition-colors duration-300">
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs mb-6 transition-colors duration-300 font-mono">
           艺创AI 致力于降低企业 AI 应用开发门槛，赋能每一个团队构建智能未来。
         </p>
 
@@ -160,14 +163,14 @@ const footerLinks = [
             <span class="sr-only">QQ</span>
             <div class="flex flex-col items-center group relative">
                <i class="material-icons">chat</i>
-               <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">236749035</span>
+               <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap rounded-none">236749035</span>
             </div>
           </a>
           <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-[rgb(80,120,255)] dark:hover:text-[rgb(80,120,255)] transition-colors">
             <span class="sr-only">WeChat</span>
             <div class="flex flex-col items-center group relative">
                <i class="material-icons">wechat</i>
-               <div class="absolute -top-24 left-1/2 -translate-x-1/2 bg-white p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hidden group-hover:block z-50">
+               <div class="absolute -top-24 left-1/2 -translate-x-1/2 bg-white p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hidden group-hover:block z-50 border border-gray-200 rounded-none">
                  <img src="/assets/qrcode.png" alt="WeChat" class="w-20 h-20 object-contain" />
                </div>
             </div>
@@ -179,8 +182,8 @@ const footerLinks = [
       <div class="col-span-2 md:col-span-4 lg:col-span-4 xl:col-span-5 grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-8 items-start">
         {footerLinks.map((group) => (
           <div class="col-span-1">
-            <h4 class="font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">{group.title}</h4>
-            <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <h4 class="font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300 font-mono">{group.title}</h4>
+            <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400 font-mono">
               {group.links.map((link) => (
                 <li>
                   <a href={link.url} class="hover:text-[rgb(80,120,255)] transition-colors block">
@@ -194,29 +197,29 @@ const footerLinks = [
 
         {/* 关注我们 - 单独处理 */}
         <div class="col-span-1">
-          <h4 class="font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">关注我们</h4>
+          <h4 class="font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300 font-mono">关注我们</h4>
           <div class="space-y-3">
-            <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+            <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300 font-mono">
               <span class="font-medium">QQ:</span>
               <span>236749035</span>
             </div>
             <div class="flex flex-col space-y-2">
-              <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+              <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300 font-mono">
                 <span class="font-medium">微信:</span>
                 <span>userhlc</span>
               </div>
               <div class="flex flex-row flex-nowrap space-x-2 pt-2">
                 <div class="flex flex-col items-center space-y-1 shrink-0 group cursor-pointer">
-                  <div class="bg-white p-1 rounded border border-gray-200 group-hover:border-[rgb(80,120,255)] transition-colors">
+                  <div class="bg-white p-1 border border-gray-200 group-hover:border-[rgb(80,120,255)] transition-colors rounded-none">
                     <img src="/assets/qrcode.png" alt="客服微信" class="w-16 h-16 object-contain" />
                   </div>
-                  <span class="text-xs text-gray-500 group-hover:text-[rgb(80,120,255)] transition-colors">在线咨询</span>
+                  <span class="text-xs text-gray-500 group-hover:text-[rgb(80,120,255)] transition-colors font-mono">在线咨询</span>
                 </div>
                 <div class="flex flex-col items-center space-y-1 shrink-0 group cursor-pointer">
-                  <div class="bg-white p-1 rounded border border-gray-200 group-hover:border-[rgb(80,120,255)] transition-colors">
+                  <div class="bg-white p-1 border border-gray-200 group-hover:border-[rgb(80,120,255)] transition-colors rounded-none">
                     <img src="/assets/wchatpay.png" alt="公众号" class="w-16 h-16 object-contain" />
                   </div>
-                  <span class="text-xs text-gray-500 group-hover:text-[rgb(80,120,255)] transition-colors">关注我们</span>
+                  <span class="text-xs text-gray-500 group-hover:text-[rgb(80,120,255)] transition-colors font-mono">关注我们</span>
                 </div>
               </div>
             </div>
@@ -226,7 +229,7 @@ const footerLinks = [
     </div>
 
     {/* 友情链接 */}
-    <div class="mb-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-800 pt-8 transition-colors duration-300">
+    <div class="mb-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-800 pt-8 transition-colors duration-300 font-mono">
       <span class="text-gray-500 dark:text-gray-400 select-none">友情链接:</span>
       {friendLinks.map((link) => (
         <a href={link.href} target="_blank" class="hover:text-[rgb(80,120,255)] transition-colors">
@@ -236,11 +239,11 @@ const footerLinks = [
     </div>
 
     {/* 底部版权 */}
-    <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors duration-300">
+    <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors duration-300 font-mono">
       <div class="flex flex-col md:flex-row items-center gap-2 md:gap-6">
         <p class="text-gray-500 dark:text-gray-400 text-sm transition-colors duration-300">
           © {currentYear} 艺创AI BuidAI. All rights reserved.
-
+        </p>
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 text-sm hover:text-[rgb(80,120,255)] transition-colors">
           赣ICP备2023002309号-8
         </a>

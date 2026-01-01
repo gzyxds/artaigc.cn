@@ -333,19 +333,19 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
 };
 ---
 
-<Layout 
+<Layout
   title="艺创AI_AI系统源码_商城系统源码_CRM系统源码_产品中心"
   description="艺创AI提供AI系统源码、AI系统源码、AI系统SaaS源码等产品,支持私有化部署,提供AI系统克隆、AI系统语音合成、AI系统视频生成等功能,是企业打造数字化转型的理想选择。"
   keywords="AI系统源码,AI系统源码,AI系统SaaS源码,商城系统源码,CRM系统源码,产品中心"
 >
   <Header />
   <ShopModule />
-  
+
   <!-- 产品展示区域 -->
   <div class="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
     <!-- 背景装饰 -->
-    <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-b-[100%] blur-xl"></div>
-    
+    <div class="absolute top-0 left-0 right-0 h-[600px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10"></div>
+
     <!-- 装饰元素 -->
     <div class="absolute left-0 top-1/4 w-64 h-64 bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
     <div class="absolute right-0 top-1/3 w-80 h-80 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
@@ -356,34 +356,34 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
       <!-- 页面标题和视图切换 -->
       <div class="text-center mb-8">
         <div class="inline-block mb-4">
-          <span class="inline-block px-3 py-1 text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 rounded-full">
+          <span class="inline-block px-3 py-1 text-xs font-mono font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-none">
             精选产品
           </span>
         </div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 lg:mb-10 bg-gradient-to-r from-primary-600 via-secondary-500 to-accent-500 bg-clip-text text-transparent animate-fade-in hover:scale-105 transition-transform duration-300">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6 sm:mb-8 lg:mb-10 text-gray-900 dark:text-white animate-fade-in hover:scale-105 transition-transform duration-300">
           我们的产品
         </h1>
-        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-6">
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-6 font-mono">
           探索我们的创新产品系列，为您的业务提供最佳解决方案
         </p>
-        
+
         <!-- 视图切换按钮 -->
-        <div class="flex items-center justify-start space-x-4 p-2 rounded-lg mb-8">
-          <button id="grid-view" class={`p-4 rounded-md ${isViewType(defaultView, 'grid') ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="网格视图">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="flex items-center justify-center space-x-4 p-2 mb-8">
+          <button id="grid-view" class={`p-3 border border-gray-200 dark:border-gray-700 rounded-none ${isViewType(defaultView, 'grid') ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="网格视图">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
             </svg>
           </button>
-          <button id="list-view" class={`p-4 rounded-md ${isViewType(defaultView, 'list') ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="列表视图">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button id="list-view" class={`p-3 border border-gray-200 dark:border-gray-700 rounded-none ${isViewType(defaultView, 'list') ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="列表视图">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <button id="card-view" class={`p-4 rounded-md ${isViewType(defaultView, 'card') ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="卡片视图">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button id="card-view" class={`p-3 border border-gray-200 dark:border-gray-700 rounded-none ${isViewType(defaultView, 'card') ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'} transition-all duration-300`} aria-label="卡片视图">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
           </button>
@@ -394,69 +394,74 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
       <div id="grid-view-container" class={defaultView === 'grid' ? '' : 'hidden'}>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {products.map((product, index) => (
-            <div 
-              class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            <div
+              class="bento-card group h-full flex flex-col hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300"
               transition:animate="slide"
               style={`transition-delay: ${index * 0.1}s`}
             >
-              <div class="relative overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 aspect-[16/9]">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-                <img 
-                  src={product.image} 
-                  alt={product.title}
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-bl-lg z-20 shadow-md">
-                  {product.category}
-                </div>
-                <div class="absolute bottom-2 left-2 z-20">
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 text-primary-600 dark:bg-gray-800/90 dark:text-primary-400 shadow-sm">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span>
-                    热门
-                  </span>
+              <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+              <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
+              <div class="relative p-3 sm:p-4 md:p-5 pb-0">
+                <div class="relative overflow-hidden rounded-none bg-gray-100 dark:bg-gray-800 border border-gray-100 dark:border-gray-700" style="aspect-ratio: 16/9;">
+                  <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs px-2 py-1 font-mono z-20">
+                    {product.category}
+                  </div>
+                  <div class="absolute bottom-0 left-0 z-20">
+                    <span class="inline-flex items-center px-2 py-1 text-xs font-mono font-medium bg-white/90 text-blue-600 dark:bg-gray-900/90 dark:text-blue-400 border-t border-r border-gray-200 dark:border-gray-700">
+                      热门
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div class="p-4 sm:p-5 md:p-6 flex-grow flex flex-col">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white line-clamp-2 group-hover:text-primary-500 transition-colors duration-300">
+
+              <div class="flex-1 flex flex-col p-3 sm:p-4 md:p-5 pt-4">
+                <h3 class="text-sm sm:text-base md:text-lg font-bold font-mono text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
                   {product.title}
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-3 sm:mb-4 line-clamp-2 flex-grow">
+                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4 line-clamp-2 flex-grow font-mono">
                   {product.description}
                 </p>
-                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                <div class="flex flex-wrap gap-1.5 mb-4">
                   {product.features.map(feature => (
-                    <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
+                    <span class="px-2 py-0.5 border border-gray-200 bg-gray-50 text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 text-xs font-mono transition-colors duration-200">
                       {feature}
                     </span>
                   ))}
                 </div>
-                <div class="flex items-center justify-between mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
-                  <div>
-                    <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
+                <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
+                  <div class="flex items-center gap-2">
+                    <span class="text-base font-bold text-gray-900 dark:text-white font-mono">¥{product.price}</span>
                     {product.originalPrice && (
-                      <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
+                      <span class="text-xs line-through text-gray-400 font-mono">¥{product.originalPrice}</span>
                     )}
                   </div>
                   <div class="flex space-x-2">
-                    <a 
+                    <a
                       href={product.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg"
+                      class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 text-xs font-mono font-medium"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                       客服
                     </a>
-                    <a 
+                    <a
                       href={product.purchaseUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg"
+                      class="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 text-xs font-mono font-medium"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
                       购买
@@ -473,75 +478,75 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
       <div id="list-view-container" class={isViewType(defaultView, 'list') ? '' : 'hidden'}>
         <div class="space-y-6 md:space-y-8">
           {products.map((product, index) => (
-            <div 
-              class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            <div
+              class="bento-card group flex flex-col md:flex-row hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300"
               transition:animate="slide"
               style={`transition-delay: ${index * 0.1}s`}
             >
-              <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3 relative overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-                  <img 
-                    src={product.image} 
-                    alt={product.title}
-                    class="w-full h-48 md:h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-bl-lg z-20 shadow-md">
-                    {product.category}
-                  </div>
-                  <div class="absolute bottom-2 left-2 z-20">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 text-primary-600 dark:bg-gray-800/90 dark:text-primary-400 shadow-sm">
-                      <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span>
-                      热门
-                    </span>
-                  </div>
+              <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+              <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
+              <div class="md:w-1/3 relative overflow-hidden bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
+                <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  class="w-full h-48 md:h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs px-2 py-1 font-mono z-20">
+                  {product.category}
                 </div>
-                <div class="md:w-2/3 p-4 sm:p-5 md:p-6 flex flex-col">
-                  <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
-                    {product.title}
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-3 sm:mb-4">
-                    {product.description}
-                  </p>
-                  <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                    {product.features.map(feature => (
-                      <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
-                        {feature}
-                      </span>
-                    ))}
+                <div class="absolute bottom-0 left-0 z-20">
+                  <span class="inline-flex items-center px-2 py-1 text-xs font-mono font-medium bg-white/90 text-blue-600 dark:bg-gray-900/90 dark:text-blue-400 border-t border-r border-gray-200 dark:border-gray-700">
+                    热门
+                  </span>
+                </div>
+              </div>
+              <div class="md:w-2/3 p-4 sm:p-5 md:p-6 flex flex-col">
+                <h3 class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white mb-2 sm:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                  {product.title}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-3 sm:mb-4 flex-grow font-mono">
+                  {product.description}
+                </p>
+                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                  {product.features.map(feature => (
+                    <span class="px-2 sm:px-3 py-0.5 sm:py-1 border border-gray-200 bg-gray-50 text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 text-xs sm:text-sm font-mono transition-colors duration-200">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg font-bold text-gray-900 dark:text-white font-mono">¥{product.price}</span>
+                    {product.originalPrice && (
+                      <span class="text-sm line-through text-gray-400 font-mono">¥{product.originalPrice}</span>
+                    )}
                   </div>
-                  <div class="flex items-center justify-between mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
-                    <div>
-                      <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
-                      {product.originalPrice && (
-                        <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
-                      )}
-                    </div>
-                    <div class="flex space-x-2">
-                      <a 
-                        href={product.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        客服
-                      </a>
-                      <a 
-                        href={product.purchaseUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        购买
-                      </a>
-                    </div>
+                  <div class="flex space-x-2">
+                    <a
+                      href={product.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 text-sm font-mono font-medium"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      客服
+                    </a>
+                    <a
+                      href={product.purchaseUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 text-sm font-mono font-medium"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      购买
+                    </a>
                   </div>
                 </div>
               </div>
@@ -554,64 +559,66 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
       <div id="card-view-container" class={`${isViewType(defaultView, 'card') ? '' : 'hidden'}`}>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {products.map((product, index) => (
-            <div 
-              class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+            <div
+              class="bento-card group hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300"
               transition:animate="slide"
               style={`transition-delay: ${index * 0.1}s`}
             >
-              <div class="relative overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 aspect-[16/9]">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-                <img 
-                  src={product.image} 
+              <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+              <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+
+              <div class="relative overflow-hidden rounded-none bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 aspect-[16/9]">
+                <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                <img
+                  src={product.image}
                   alt={product.title}
-                  class="w-full h-full object-cover"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div class="absolute top-2 right-2 bg-primary-500/90 text-white text-xs px-2 py-1 rounded-bl-lg z-20 shadow-md">
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs px-2 py-1 font-mono z-20">
                   {product.category}
                 </div>
-                <div class="absolute bottom-2 left-2 z-20">
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 text-primary-600 dark:bg-gray-800/90 dark:text-primary-400 shadow-sm">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span>
+                <div class="absolute bottom-0 left-0 z-20">
+                  <span class="inline-flex items-center px-2 py-1 text-xs font-mono font-medium bg-white/90 text-blue-600 dark:bg-gray-900/90 dark:text-blue-400 border-t border-r border-gray-200 dark:border-gray-700">
                     热门
                   </span>
                 </div>
               </div>
               <div class="p-4 sm:p-5 md:p-6">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">
+                <h3 class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white mb-2 sm:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                   {product.title}
                 </h3>
                 <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
                   {product.features.map(feature => (
-                    <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors duration-300">
+                    <span class="px-2 sm:px-3 py-0.5 sm:py-1 border border-gray-200 bg-gray-50 text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 text-xs sm:text-sm font-mono transition-colors duration-200">
                       {feature}
                     </span>
                   ))}
                 </div>
-                <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
-                  <div>
-                    <span class="text-lg font-bold text-primary-600 dark:text-primary-400">¥{product.price}</span>
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg font-bold text-gray-900 dark:text-white font-mono">¥{product.price}</span>
                     {product.originalPrice && (
-                      <span class="ml-2 text-sm line-through text-gray-500 dark:text-gray-400">¥{product.originalPrice}</span>
+                      <span class="text-sm line-through text-gray-400 font-mono">¥{product.originalPrice}</span>
                     )}
                   </div>
                   <div class="flex space-x-2">
-                    <a 
+                    <a
                       href={product.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm rounded-lg"
+                      class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 text-sm font-mono font-medium"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                       客服
                     </a>
-                    <a 
+                    <a
                       href={product.purchaseUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center px-4 py-2 border border-primary-500 text-primary-500 text-sm rounded-lg"
+                      class="inline-flex items-center px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 text-sm font-mono font-medium"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -653,7 +660,7 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
           console.error('Invalid view type:', view);
           return;
         }
-        
+
         // 更新按钮状态
         [gridViewBtn, listViewBtn, cardViewBtn].forEach(btn => {
           if (btn) {
@@ -661,14 +668,14 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
             btn.classList.add('text-gray-600', 'dark:text-gray-300');
           }
         });
-        
+
         // 隐藏所有视图容器
         [gridViewContainer, listViewContainer, cardViewContainer].forEach(container => {
           if (container) {
             container.classList.add('hidden');
           }
         });
-        
+
         // 保存当前视图到本地存储
         try {
           localStorage.setItem('preferredView', view);
@@ -706,7 +713,7 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
       const handleGridView = () => switchView('grid');
       const handleListView = () => switchView('list');
       const handleCardView = () => switchView('card');
-      
+
       // 移除可能存在的旧事件监听器（避免重复绑定）
       gridViewBtn.removeEventListener('click', handleGridView);
       listViewBtn.removeEventListener('click', handleListView);
@@ -720,11 +727,10 @@ const isViewType = (current: ViewType, target: ViewType): boolean => {
 
     // 页面加载完成后初始化视图切换器
     document.addEventListener('DOMContentLoaded', initViewSwitcher);
-    
+
     // 确保在页面已经加载完成的情况下也能正确初始化
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setTimeout(initViewSwitcher, 0); // 使用setTimeout确保DOM完全准备好
     }
   })();
 </script>
-    

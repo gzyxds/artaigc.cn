@@ -58,14 +58,20 @@ const originalLength = originalCards.length;
     >
       {cards.map((card, index) => (
         <div class="shrink-0 w-[85vw] sm:w-[320px] perspective-item card-item will-change-transform">
-          <div class={`h-full min-h-[220px] sm:min-h-[260px] rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden bg-gradient-to-br ${card.gradient} backdrop-blur-md border border-white/60 dark:border-white/10 shadow-lg transition-shadow hover:shadow-2xl`}>
+          <div class={`h-full min-h-[220px] sm:min-h-[260px] bento-card p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300`}>
+            <div class="corner-marker top-0 right-0 border-t border-r"></div>
+            <div class="corner-marker bottom-0 left-0 border-b border-l"></div>
+            
+            {/* 背景装饰：微弱的渐变光晕，替代原来的全卡片渐变 */}
+            <div class={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+            
             <div class="relative z-10">
-              <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">{card.title}</h3>
-              {card.subtitle && <p class="text-gray-600 dark:text-gray-300 text-sm font-medium mb-3 opacity-90">{card.subtitle}</p>}
-              <div class="w-12 h-1 bg-gray-900/10 dark:bg-white/10 rounded-full mb-4"></div>
-              <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed font-medium">{card.desc}</p>
+              <h3 class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white mb-2 tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{card.title}</h3>
+              {card.subtitle && <p class="text-gray-500 dark:text-gray-400 text-sm font-mono font-medium mb-3 opacity-90">{card.subtitle}</p>}
+              <div class="w-8 h-1 bg-gray-200 dark:bg-gray-700 rounded-none mb-4 group-hover:bg-blue-500 transition-colors duration-300"></div>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed font-mono font-medium">{card.desc}</p>
             </div>
-            <div class="absolute bottom-4 right-4 opacity-10 font-black text-6xl select-none pointer-events-none dark:text-white">
+            <div class="absolute bottom-4 right-4 opacity-10 font-mono font-black text-6xl select-none pointer-events-none text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300">
               {(index % originalLength + 1).toString().padStart(2, '0')}
             </div>
           </div>

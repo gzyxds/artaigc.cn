@@ -2,8 +2,8 @@
 <section class="relative py-16 sm:py-24 lg:py-32 bg-white dark:bg-slate-900">
   <div class="container-custom">
     <div class="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
-      <span class="inline-flex items-center px-4 py-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 ring-1 ring-inset ring-blue-500/20 transition-colors duration-300">
-        <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <span class="inline-flex items-center px-3 py-1 text-xs font-mono font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-none">
+        <svg class="w-3 h-3 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
         全平台覆盖
@@ -61,20 +61,23 @@
         }
       ].map((item, index) => (
         <div
-          class={`group relative overflow-hidden bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 transition-all duration-300 ${item.colSpan}`}
+          class={`bento-card group hover:border-blue-500 dark:hover:border-blue-500 ${item.colSpan}`}
           style={`transition-delay: ${index * 100}ms`}
           data-aos="fade-up"
           data-aos-delay={index * 100}
         >
+          <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+          <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
+          
           <!-- 头部区域 -->
-          <div class="relative flex items-center gap-x-4 p-6 border-b border-gray-100 dark:border-gray-700/50">
-            <div class="flex h-12 w-12 flex-none items-center justify-center bg-blue-50 dark:bg-blue-900/20">
-              <div class="h-6 w-6 text-blue-600 dark:text-blue-400" set:html={item.icon}></div>
+          <div class="relative flex items-center gap-x-4 p-6 border-b border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50">
+            <div class="flex h-10 w-10 flex-none items-center justify-center bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-none shadow-sm">
+              <div class="h-5 w-5 text-blue-600 dark:text-blue-400" set:html={item.icon}></div>
             </div>
             <div class="flex-1 min-w-0">
-              <div class="flex items-center justify-between mb-1">
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white truncate">{item.title}</h3>
-                <span class={`inline-flex items-center px-2.5 py-0.5 text-xs font-medium border ${
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-bold font-mono text-slate-900 dark:text-white truncate">{item.title}</h3>
+                <span class={`inline-flex items-center px-2 py-0.5 text-xs font-mono border rounded-none ${
                   item.status === "已上线"
                     ? "bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800"
                     : "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800"
@@ -87,22 +90,20 @@
 
           <!-- 内容区域 -->
           <div class="relative p-6">
-            <p class="mb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2">{item.description}</p>
+            <p class="mb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2 font-mono">{item.description}</p>
 
-            <div class="space-y-3 mb-6">
+            <div class="space-y-2">
               {[
                 ["即开即用", "无需配置"],
                 ["数据同步", "安全可靠"]
               ].map(([title, desc]) => (
-                <div class="flex items-center gap-x-3 text-sm">
-                  <div class="w-1.5 h-1.5 bg-blue-500"></div>
+                <div class="flex items-center gap-x-3 text-xs">
+                  <div class="w-1 h-1 bg-blue-500 rounded-none"></div>
                   <span class="font-medium text-slate-700 dark:text-slate-200">{title}</span>
-                  <span class="text-slate-400 dark:text-slate-500 text-xs">{desc}</span>
+                  <span class="text-slate-400 dark:text-slate-500 font-mono">/ {desc}</span>
                 </div>
               ))}
             </div>
-
-
           </div>
         </div>
       ))}
@@ -114,8 +115,8 @@
 <section class="relative py-8 sm:py-12 lg:py-16 bg-white dark:bg-slate-900">
   <div class="container-custom">
     <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-      <span class="inline-flex items-center px-4 py-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 ring-1 ring-inset ring-blue-500/20 transition-colors duration-300">
-        <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <span class="inline-flex items-center px-3 py-1 text-xs font-mono font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-none">
+        <svg class="w-3 h-3 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
         技术优势
@@ -128,34 +129,34 @@
       {[
         {
           title: "Vue.js 生态",
-          description: "基于 Vue 3 + TypeScript + Vite 构建，集成 Vue Router 和 Pinia 状态管理，提供完整工程化配置",
+          description: "基于 Vue 3 + TypeScript + Vite 构建，集成 Vue Router 和 Pinia 状态管理",
           icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L2 19h20L12 2zm0 3.5L18.5 17H5.5L12 5.5z" fill="currentColor"/>
           </svg>`,
-          features: ["组件化开发", "响应式设计", "状态管理", "路由系统"],
+          features: ["组件化", "响应式", "状态管理", "路由系统"],
           colSpan: "md:col-span-3"
         },
         {
           title: "强大后端",
-          description: "基于 ThinkPHP 框架的模块化后端架构，集成丰富的功能模块和第三方服务",
+          description: "基于 ThinkPHP 框架的模块化后端架构，集成丰富的功能模块",
           icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" fill="currentColor"/>
           </svg>`,
-          features: ["多应用架构", "服务集成", "安全认证", "性能优化"],
+          features: ["多应用", "服务集成", "安全认证", "性能优化"],
           colSpan: "md:col-span-3"
         },
         {
           title: "跨平台开发",
-          description: "使用 uni-app 框架实现一套代码，多端运行，覆盖移动应用、小程序、H5等全部主流平台",
+          description: "使用 uni-app 框架实现一套代码，多端运行",
           icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/>
           </svg>`,
-          features: ["iOS/Android", "各类小程序", "H5响应式", "快应用"],
+          features: ["iOS/Android", "小程序", "H5响应式", "快应用"],
           colSpan: "md:col-span-2"
         },
         {
           title: "类型安全",
-          description: "全面采用 TypeScript 开发，提供完整的类型检查和智能提示，提升代码质量和开发效率",
+          description: "全面采用 TypeScript 开发，提供完整的类型检查和智能提示",
           icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/>
           </svg>`,
@@ -164,7 +165,7 @@
         },
         {
           title: "优雅界面",
-          description: "基于 Element Plus 构建专业的后台管理界面，提供丰富的组件和主题定制能力",
+          description: "基于 Element Plus 构建专业的后台管理界面",
           icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L2 19h20L12 2zm0 3.5L18.5 17H5.5L12 5.5z" fill="currentColor"/>
           </svg>`,
@@ -173,29 +174,29 @@
         }
       ].map((tech, index) => (
         <div
-          class={`group relative overflow-hidden bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 transition-all duration-300 ${tech.colSpan}`}
+          class={`bento-card group hover:border-blue-500 dark:hover:border-blue-500 ${tech.colSpan}`}
           style={`transition-delay: ${index * 100}ms`}
           data-aos="fade-up"
           data-aos-delay={index * 100}
         >
+          <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+          
           <!-- 头部区域 -->
-          <div class="flex items-center gap-x-4 p-6 border-b border-gray-100 dark:border-gray-700/50">
-            <div class="flex h-12 w-12 flex-none items-center justify-center bg-blue-50 dark:bg-blue-900/20">
-              <div class="h-6 w-6 text-blue-600 dark:text-blue-400" set:html={tech.icon}></div>
+          <div class="flex items-center gap-x-4 p-5 border-b border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50">
+            <div class="flex h-10 w-10 flex-none items-center justify-center bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-none shadow-sm">
+              <div class="h-5 w-5 text-blue-600 dark:text-blue-400" set:html={tech.icon}></div>
             </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{tech.title}</h3>
+            <h3 class="text-base font-bold font-mono text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{tech.title}</h3>
           </div>
 
           <!-- 内容区域 -->
-          <div class="p-6">
-            <p class="mb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{tech.description}</p>
+          <div class="p-5">
+            <p class="mb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-mono h-10 line-clamp-2">{tech.description}</p>
 
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-2 gap-2">
               {tech.features.map(feature => (
-                <div class="flex items-center text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-700/50 px-2.5 py-1.5 transition-colors">
-                  <svg class="flex-shrink-0 w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
+                <div class="flex items-center text-xs font-medium font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-transparent hover:border-blue-200 dark:hover:border-blue-800 px-2 py-1 transition-colors rounded-none">
+                  <div class="w-1 h-1 bg-slate-400 mr-2 rounded-none"></div>
                   <span class="truncate">{feature}</span>
                 </div>
               ))}

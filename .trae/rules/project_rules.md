@@ -109,9 +109,41 @@
 
 ### 样式规范
 
-1. **使用Tailwind类** - 优先使用Tailwind提供的工具类
-2. **暗黑模式支持** - 所有组件应支持暗黑模式切换
-3. **响应式设计** - 确保在各种屏幕尺寸下正常显示
+1.  **使用Tailwind类** - 优先使用Tailwind提供的工具类
+2.  **暗黑模式支持** - 所有组件应支持暗黑模式切换
+3.  **响应式设计** - 确保在各种屏幕尺寸下正常显示
+
+### Bento Grid / Linear 风格设计规范 (New)
+
+项目全面采用 **Bento Grid (便当盒)** 和 **Linear (线性)** 设计风格，强调几何感、秩序感和技术专业性。
+
+#### 1. 核心原则
+*   **直角化 (Sharp Corners)**: 核心容器、卡片、按钮统一使用 `rounded-none` 或极小圆角 (`rounded-sm`)，严禁使用大圆角。
+*   **边框优先 (Border-First)**: 使用边框 (`border`) 代替阴影 (`shadow`) 来定义层级。
+*   **极简布局 (Minimalism)**: 减少装饰性背景，使用纯色背景 + 细边框，依靠排版和间距构建视觉流。
+*   **微交互 (Micro-Interactions)**: 动效需克制且精准，如 Hover 时边框变色、图标微移、文字颜色变化。
+
+#### 2. 通用样式类 (Utility Classes)
+在 `global.css` 中定义了以下实用类，开发时请优先使用：
+
+*   **容器类**:
+    *   `.bento-card`: 基础卡片样式（直角、边框、无阴影）。
+    *   `.bento-grid`: 标准网格布局容器。
+*   **装饰类**:
+    *   `.corner-marker`: 四角 L 形装饰，增强科技感。
+    *   `.border-glow`: 边框微光效果。
+*   **排版类**:
+    *   `.font-mono`: 标签、代码片段、技术参数使用等宽字体。
+
+#### 3. 组件设计模式
+*   **卡片 (Cards)**:
+    *   Default: `border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 rounded-none`
+    *   Hover: `hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300`
+*   **按钮 (Buttons)**:
+    *   Primary: `bg-blue-600 text-white rounded-none hover:bg-blue-700`
+    *   Secondary: `border border-gray-300 text-gray-700 rounded-none hover:bg-gray-50`
+*   **标签 (Tags)**:
+    *   Style: `font-mono text-xs border rounded-none px-2 py-0.5`
 
 ### SEO优化
 

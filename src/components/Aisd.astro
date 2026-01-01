@@ -1,7 +1,13 @@
 ---
 /**
- * Aisd 组件 - Two row bento grid 风格
- * 参考 e:\Github\artaigc.cn\设计样式参考\参考.tsx 设计
+ * Aisd 组件 - Bento Grid / Linear 风格
+ *
+ * 设计重构：
+ * - 采用 .bento-card 标准容器
+ * - 引入 .corner-marker 装饰
+ * - 移除圆角 (rounded-none)
+ * - 移除有机曲线背景，改为线性/网格背景
+ * - 统一字体为 font-mono
  */
 
 const items = [
@@ -12,9 +18,8 @@ const items = [
     link: "https://cnai.art",
     image: "/assets/icon1.png",
     colSpan: "lg:col-span-4",
-    rounded: "rounded-none",
     gradient: "from-blue-500/5 to-purple-500/5",
-    decoration: `<svg class="absolute right-0 bottom-0 w-64 h-64 text-blue-500/10 transform translate-x-16 translate-y-16" viewBox="0 0 200 200" fill="currentColor"><path d="M100 0 L200 50 L200 150 L100 200 L0 150 L0 50 Z" /></svg>`
+    // 移除复杂的 SVG 装饰，使用更几何化的装饰或留白
   },
   {
     title: "数字分身",
@@ -23,9 +28,7 @@ const items = [
     link: "https://v.cnai.art",
     image: "/assets/icon2.png",
     colSpan: "lg:col-span-2",
-    rounded: "rounded-none",
     gradient: "from-indigo-500/5 to-cyan-500/5",
-    decoration: `<svg class="absolute -right-4 -bottom-4 w-40 h-40 text-indigo-500/10" viewBox="0 0 200 200" fill="currentColor"><circle cx="100" cy="100" r="80"/></svg>`
   },
   {
     title: "聊天绘画",
@@ -34,9 +37,7 @@ const items = [
     link: "https://www.cnai.art",
     image: "/assets/icon3.png",
     colSpan: "lg:col-span-2",
-    rounded: "rounded-none",
     gradient: "from-rose-500/5 to-orange-500/5",
-    decoration: `<svg class="absolute right-0 top-0 w-32 h-32 text-rose-500/10" viewBox="0 0 100 100" fill="currentColor"><rect x="20" y="20" width="60" height="60" rx="10"/></svg>`
   },
   {
     title: "论文创作",
@@ -45,71 +46,74 @@ const items = [
     link: "https://www.cnai.art",
     image: "/assets/icon4.png",
     colSpan: "lg:col-span-4",
-    rounded: "rounded-none",
     gradient: "from-emerald-500/5 to-teal-500/5",
-    decoration: `<svg class="absolute right-8 top-1/2 -translate-y-1/2 w-40 h-40 text-emerald-500/10" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2"><path d="M20,100 L180,100 M100,20 L100,180" stroke-linecap="round"/></svg>`
   },
 ];
 ---
 
 <div class="relative pt-12 pb-20 overflow-hidden bg-white dark:bg-gray-900 w-full">
-  <!-- 背景装饰 -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[130%] h-[300px] bg-gradient-to-b from-primary-50/50 to-transparent dark:from-primary-900/20 dark:to-transparent -z-10 rounded-b-[100%] blur-xl"></div>
+  <!-- 背景装饰：线性网格 -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-gray-900 dark:via-transparent dark:to-gray-900"></div>
 
-  <div class="container-custom">
+  <div class="container-custom relative z-10">
     <div class="text-center relative mb-12 sm:mb-16">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+      <div class="inline-block mb-4">
+        <span class="px-3 py-1 text-xs font-mono font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-none">
+          AI SOLUTIONS
+        </span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
        用AI为企业赋能
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed" id="typing-text">
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed font-mono" id="typing-text">
         引领企业实现数字化、智能化转型
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-4 lg:grid-cols-6 lg:grid-rows-2 h-auto lg:h-[600px]">
-      {items.map((item) => (
-        <div class={`relative card-double-grid-wrapper ${item.colSpan}`}>
-          <div class={`relative group overflow-hidden bg-white dark:bg-gray-800 transition-all duration-300 card-double-grid-inner ${item.rounded}`}>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-6 lg:grid-rows-2 h-auto">
+      {items.map((item, index) => (
+        <div class={`relative bento-card group flex flex-col overflow-hidden hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 ${item.colSpan}`}>
+          <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+          <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
 
-            {/* 背景装饰：几何线条与渐变 */}
-            <div class={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500`}></div>
-            <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black,transparent)]"></div>
+          {/* 背景装饰：几何线条与渐变 */}
+          <div class={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}></div>
 
-            {/* 右侧装饰图案 - 仅装饰用，不响应鼠标 */}
-            <div class="absolute inset-0 pointer-events-none select-none overflow-hidden" set:html={item.decoration}></div>
+          {/* 网格纹理 */}
+          <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black,transparent)] pointer-events-none"></div>
 
-            <div class="relative h-full p-6 sm:p-8 flex flex-col justify-between z-10">
-              {/* 顶部内容：图标与标题 */}
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-5">
-                  <div class="w-16 h-16 shrink-0 bg-white dark:bg-gray-700 rounded-none border border-gray-100 dark:border-gray-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <img src={item.image} alt={item.title} class="w-8 h-8 object-contain" />
-                  </div>
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{item.title}</h3>
-                    <p class="text-base font-medium text-blue-500 dark:text-blue-400">{item.subtitle}</p>
-                  </div>
+          <div class="relative h-full p-6 sm:p-8 flex flex-col justify-between z-10">
+            {/* 顶部内容：图标与标题 */}
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex items-center gap-5">
+                <div class="w-14 h-14 shrink-0 bg-white dark:bg-gray-800 rounded-none border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                  <img src={item.image} alt={item.title} class="w-7 h-7 object-contain" />
                 </div>
-
-                {/* 箭头图标 */}
-                <div class="w-8 h-8 rounded-none bg-gray-50 dark:bg-gray-700 flex items-center justify-center opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                  <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
+                <div>
+                  <h3 class="text-2xl font-bold font-mono text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{item.title}</h3>
+                  <p class="text-sm font-medium font-mono text-gray-500 dark:text-gray-400 uppercase tracking-wider">{item.subtitle}</p>
                 </div>
               </div>
 
-              {/* 底部描述 */}
-              <div class="mt-8 max-w-[90%]">
-                <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed line-clamp-3">
-                  {item.description}
-                </p>
+              {/* 箭头图标 */}
+              <div class="w-8 h-8 rounded-none bg-white dark:bg-gray-800 flex items-center justify-center opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 border border-gray-200 dark:border-gray-700">
+                <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
               </div>
             </div>
 
-            {/* 全卡片链接 */}
-            <a href={item.link} class="absolute inset-0 z-20" aria-label={`查看${item.title}详情`}></a>
+            {/* 底部描述 */}
+            <div class="mt-auto max-w-[90%]">
+              <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed line-clamp-3 font-mono">
+                {item.description}
+              </p>
+            </div>
           </div>
+
+          {/* 全卡片链接 */}
+          <a href={item.link} class="absolute inset-0 z-20" aria-label={`查看${item.title}详情`}></a>
         </div>
       ))}
     </div>
