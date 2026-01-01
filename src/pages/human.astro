@@ -8,13 +8,11 @@ import Footer from '../components/Footer.astro';
 
 // 页面特定组件
 import HumanHero from '../components/HumanHero.astro';
-import HeroSection from '../components/HeroSection.astro';
 
 // 功能组件
 import Contact from '../components/Contact.astro';
 import Calltoaction from '../components/Calltoaction.astro';
 import ProductCards from '../components/ProductCards.astro';
-import EnterpriseOS from '../components/EnterpriseOS.astro';
 import Structure from '../components/Hero/Structure.astro';
 
 const features = [
@@ -130,474 +128,292 @@ const scenarios = [
   keywords="AI数字人系统,数字人源码,数字人saas系统,开源数字人系统,AI数字人平台,虚拟数字人系统"
 >
 
-  <Header /><!-- 页面头部导航组件 -->
-  <HumanHero />  <!-- 数字人主页英雄区块组件 -->
+  <Header />
+  <HumanHero />
 
-<section class="py-6 sm:py-10 md:py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-  <div class="container-custom">
-    <!-- 添加大标题 -->
-    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">数字人应用优势</h2>
-    <!-- 添加小标题 -->
-    <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">以下是数字人在不同场景下的应用优势</p>
-    <div class="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-
-      <!-- 带货视频卡片 -->
-      <div class="p-6 md:p-8 overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white rounded-lg dark:outline-gray-600 dark:hover:outline-gray-500 dark:from-gray-800 dark:to-gray-900 dark:border-gray-700">
-        <div class="flex items-center mb-4">
-          <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mr-4">
-            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">带货视频</h3>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">快捷克隆主播形象，配合强大的AI克隆音色功能，轻松创建你的专属数字人。不用背台词，自动根据文案批量生成视频，更低成本，更高效率！</p>
-      </div>
-
-      <!-- 虚拟数字人IP卡片 -->
-      <div class="p-6 md:p-8 overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white rounded-lg dark:outline-gray-600 dark:hover:outline-gray-500 dark:from-gray-800 dark:to-gray-900 dark:border-gray-700">
-        <div class="flex items-center mb-4">
-          <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mr-4">
-            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">虚拟数字人IP</h3>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">企业可以通过AI克隆数字人，无论是作为企业形象IP、展会数字宣传大使、个性化导览互动服务或者企业宣传片等都完成能胜任！</p>
-      </div>
-
-      <!-- 知识付费卡片 -->
-      <div class="p-6 md:p-8 overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white rounded-lg dark:outline-gray-600 dark:hover:outline-gray-500 dark:from-gray-800 dark:to-gray-900 dark:border-gray-700">
-        <div class="flex items-center mb-4">
-          <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mr-4">
-            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">知识付费</h3>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">通过虚拟数字人能够快速批量创建知识付费课程视频，口音纯正，语速自然，情感丰富。十分适合博主通过数字分身来分担工作任务，节省时间。</p>
-      </div>
-
-      <!-- 营销中心卡片 -->
-      <div class="p-6 md:p-8 overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white rounded-lg dark:outline-gray-600 dark:hover:outline-gray-500 dark:from-gray-800 dark:to-gray-900 dark:border-gray-700">
-        <div class="flex items-center mb-4">
-          <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mr-4">
-            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">营销中心</h3>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">支持自定义新建充值套餐、卡密兑换等功能，方便配合营销推广活动。</p>
-      </div>
-
-      <!-- 功能管理卡片 -->
-      <div class="p-6 md:p-8 overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white rounded-lg dark:outline-gray-600 dark:hover:outline-gray-500 dark:from-gray-800 dark:to-gray-900 dark:border-gray-700">
-        <div class="flex items-center mb-4">
-          <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mr-4">
-            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">功能管理</h3>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">可自主调整数字分身、声音克隆、声音合成计费配置，可查看算力消费记录。</p>
-      </div>
-
-      <!-- 租户管理卡片 -->
-      <div class="p-6 md:p-8 overflow-hidden outline-1 outline-gray-200 transition-all duration-200 hover:outline-gray-300 bg-gradient-to-b from-gray-100 to-white border-2 border-white rounded-lg dark:outline-gray-600 dark:hover:outline-gray-500 dark:from-gray-800 dark:to-gray-900 dark:border-gray-700">
-        <div class="flex items-center mb-4">
-          <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mr-4">
-            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white">租户管理</h3>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">平台可无限多开分站点，输入租户相关信息和域名，即可创建新分站与管理员账号。</p>
-      </div>
-    </div>
-  </div>
-
-<!--数字分身 卡片内容开始 -->
-</section>
-    <section class="py-6 sm:py-10 md:py-12 bg-white dark:bg-gray-900">
-      <div class="container-custom">
-       <div class="mb-12 md:mb-24">
-          <div class="grid gap-8 md:gap-12 items-center mb-8 md:mb-12 md:grid-cols-2">
-            <div>
-              <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
-             数字分身
-           </span>
-              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">数字分身</h2>
-              <p class="text-gray-600 dark:text-gray-300 mb-6">
-                轻松创建你的AI虚拟数字人！只需上传一段视频，即可高品质、批量克隆你的形象！
-              </p>
-              <div class="flex flex-wrap gap-4 mb-6">
-                <div class="flex items-center">
-                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span class="text-gray-700 dark:text-gray-300">高度还原 100%</span>
-                </div>
-                <div class="flex items-center">
-                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span class="text-gray-700 dark:text-gray-300">情感丰富 100%</span>
-                </div>
-                <div class="flex items-center">
-                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span class="text-gray-700 dark:text-gray-300">语速自然</span>
-                </div>
-              </div>
-              <!-- 修改按钮样式为蓝色 -->
-              <div class="flex flex-wrap gap-4">
-                <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
-                  查看演示
-                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
-                  </svg>
-                </a>
-                <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center">
-                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-                  </svg>
-                  购买授权
-                </a>
-              </div>
-            </div>
-            <!-- 右侧展示图片区域 -->
-            <div class="rounded-lg overflow-hidden shadow-xl">
-              <!-- 数字人形象展示图片 -->
-              <img src="/assets/img/human1.png" alt="AI数字人" class="w-full h-auto" />
-            </div>
-          </div>
-        </div>
-     <!--卡片数字分身内容结束 -->
-
-     <!--声音克隆卡片 -->
-     <div class="mb-24">
-       <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
-         <div class="order-2 md:order-1 rounded-lg overflow-hidden shadow-xl">
-           <img src="/assets/img/human2.png" alt="声音克隆演示" class="w-full h-auto" />
-         </div>
-         <div class="order-1 md:order-2">
-           <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
-             高级版
-           </span>
-           <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">声音克隆</h2>
-           <p class="text-gray-600 dark:text-gray-300 mb-6">
-             有声播报、个性体验，仅需1句话，快速克隆你的音色，配合文案即可生成专属口播语音！
-           </p>
-           <div class="flex flex-wrap gap-4 mb-6">
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">高度还原 100%</span>
-             </div>
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">音色克隆 100%</span>
-             </div>
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">低成本 100%</span>
-             </div>
-           </div>
-           <div class="flex flex-wrap gap-4">
-             <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
-               获取演示
-               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
-               </svg>
-             </a>
-             <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center">
-               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-               </svg>
-               购买授权
-             </a>
-           </div>
-         </div>
-       </div>
-     </div>
-
-     <!-- 声音合成卡片 -->
-     <div class="mb-24">
-       <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
-         <div class="order-1 md:order-2 rounded-lg overflow-hidden shadow-xl">
-           <img src="/assets/img/human4.png" alt="声音合成演示" class="w-full h-auto" />
-         </div>
-         <div class="order-2 md:order-1">
-           <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
-             企业版
-           </span>
-           <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">声音合成</h2>
-           <p class="text-gray-600 dark:text-gray-300 mb-6">
-             视频配音、IP专属声音，高度还原真人音色，不仅情感丰富，而且可以自由调整语速，配合数字分身创建出您的专属数字人！
-           </p>
-           <div class="flex flex-wrap gap-4 mb-6">
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">高度还原 100%</span>
-             </div>
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">情感丰富 100%</span>
-             </div>
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">多语言支持</span>
-             </div>
-           </div>
-           <div class="flex flex-wrap gap-4">
-             <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
-               获取演示
-               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
-               </svg>
-             </a>
-             <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center">
-               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-               </svg>
-               购买授权
-             </a>
-           </div>
-         </div>
-       </div>
-     </div>
-
-     <!-- 租户管理卡片 -->
-     <div class="mb-24">
-       <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
-         <div class="order-1 md:order-1 rounded-lg overflow-hidden shadow-xl">
-           <img src="/assets/img/human3.png" alt="租户管理演示" class="w-full h-auto" />
-         </div>
-         <div class="order-2 md:order-2">
-           <span class="inline-block px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm mb-4 border border-blue-200 dark:border-blue-700">
-             企业版
-           </span>
-           <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">租户管理</h2>
-           <p class="text-gray-600 dark:text-gray-300 mb-6">
-             平台可无限多开分站点，输入租户相关信息和域名，即可创建新分站与管理员账号。
-           </p>
-           <div class="flex flex-wrap gap-4 mb-6">
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">无限分站</span>
-             </div>
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">独立域名</span>
-             </div>
-             <div class="flex items-center">
-               <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-               </svg>
-               <span class="text-gray-700 dark:text-gray-300">灵活管理</span>
-             </div>
-           </div>
-           <div class="flex flex-wrap gap-4">
-             <a href="/demo" target="_blank" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
-               获取演示
-               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/>
-               </svg>
-             </a>
-             <a href="/contact" class="px-6 py-3 bg-gray-100 text-gray-800 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center">
-               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-               </svg>
-               购买授权
-             </a>
-           </div>
-         </div>
-       </div>
-     </div>
-
-
-<!-- 行动号召卡片 -->
-<div class="mt-16 text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-indigo-900 py-12 rounded-2xl">
-  <div class="container-custom">
-    <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-      准备好开启您的AI数字人之旅了吗？
-    </h3>
-    <p class="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-      已有数百家企业选择艺创AI数字人解决方案，我们专业的团队随时准备为您提供支持，助力您的业务腾飞。
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-6">
-      <a
-        href="/contact"
-        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl"
-      >
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-        </svg>
-        联系我们
-      </a>
-      <a
-        href="/pricing"
-        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl"
-      >
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        查看价格
-      </a>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-</main>
-<!-- 行动号召卡片结束 -->
-
-<!-- 功能特色 -->
-<section class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-  <div class="container-custom">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">功能特色</h2>
-      <div class="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full"></div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      {features.map(item => (
-        <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <!-- 背景装饰 -->
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-transparent dark:from-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            <div class="relative z-10 p-8">
-                <!-- 图标 -->
-                <div class="mb-6 inline-flex items-center justify-center p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
-                    </svg>
-                </div>
-
-                <!-- 标题 -->
-                <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                    {item.title}
-                </h3>
-
-                <!-- 描述 -->
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
-                    {item.desc}
-                </p>
-            </div>
-
-            <!-- 底部线条 -->
-            <div class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full"></div>
-        </div>
-      ))}
-</div>
-  </div>
-</section>
-<!-- 功能特色 -->
-
-<!-- 幻灯 -->
-<section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-indigo-900">
-  <div class="container-custom">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <div class="order-2 md:order-1">
-        <h3 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-          数字人直播
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-            虚拟主播
-          </span>
-          <br/>AI解决方案
-        </h3>
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-          提供快速搭建的数字人直播虚拟主播AI解决方案，支持多端使用，满足企业多样化需求。
+  <!-- 优势区块 - 极简 Bento 风格 -->
+  <section class="py-16 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 font-display">数字人应用优势</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">
+          // 以下是数字人在不同场景下的应用优势
         </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#" class="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl">
-            <span>了解更多</span>
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="#" class="inline-flex items-center px-6 py-3 rounded-lg bg-white text-blue-600 border-2 border-blue-600 font-medium hover:bg-blue-50 transition-all duration-200">
-            立即试用
-          </a>
-        </div>
       </div>
-      <div class="order-1 md:order-2">
-        <div class="relative">
-          <img src="/assets/img/human1.png" alt="AI数字人演示" class="w-full h-auto rounded-lg shadow-xl"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-
-<!-- 应用场景 -->
-<section class="py-16 bg-white dark:bg-gray-900">
-  <div class="container-custom">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">应用场景</h2>
-      <div class="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
-      <p class="text-xl text-gray-600 dark:text-gray-300">多场景数字人解决方案，助力各行业数字化转型</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      {scenarios.map(item => (
-        <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <!-- 背景装饰 -->
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-transparent dark:from-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            <div class="relative z-10 p-6">
-                <!-- 图标 -->
-                <div class="mb-4 inline-flex items-center justify-center p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
-                    </svg>
-                </div>
-
-                <!-- 标题 -->
-                <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                    {item.title}
-                </h3>
-
-                <!-- 描述 -->
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {item.desc}
-                </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.slice(0, 6).map((item) => (
+          <div class="group bento-card p-6 md:p-8 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 flex items-center justify-center bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mr-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">{item.title}</h3>
             </div>
-
-            <!-- 底部线条 -->
-            <div class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full"></div>
-        </div>
-      ))}
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm">
+              {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-</section>
-<!-- 应用场景 -->
+  </section>
 
+  <!-- 详细功能展示 - Linear 风格 -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+    <div class="container-custom space-y-24">
 
-<Structure /><!-- 结构组件 -->
-<Contact /><!-- 联系我们组件 -->
-<ProductCards /><!-- 产品文档组件 -->
-<Calltoaction /><!-- 行动号召组件 -->
-<Footer />
+      <!-- 数字分身 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
+            <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
+            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Digital Avatar</span>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">数字分身</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+            轻松创建你的AI虚拟数字人！只需上传一段视频，即可高品质、批量克隆你的形象！
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            {["高度还原 100%", "情感丰富 100%", "语速自然"].map(tag => (
+              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+                <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
+                {tag}
+              </div>
+            ))}
+          </div>
+
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="/demo" class="btn btn-primary rounded-none px-6 py-3">
+              查看演示
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/contact" class="btn btn-outline rounded-none px-6 py-3">
+              购买授权
+            </a>
+          </div>
+        </div>
+        <div class="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
+          <img src="/assets/img/human1.png" alt="AI数字人" class="w-full h-auto" />
+          <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">01_AVATAR</div>
+        </div>
+      </div>
+
+      <!-- 声音克隆 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
+          <img src="/assets/img/human2.png" alt="声音克隆演示" class="w-full h-auto" />
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">02_VOICE</div>
+        </div>
+        <div class="order-1 md:order-2 space-y-6">
+          <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
+            <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
+            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Voice Cloning</span>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">声音克隆</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+            有声播报、个性体验，仅需1句话，快速克隆你的音色，配合文案即可生成专属口播语音！
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            {["高度还原 100%", "音色克隆 100%", "低成本 100%"].map(tag => (
+              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+                <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
+                {tag}
+              </div>
+            ))}
+          </div>
+
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="/demo" class="btn btn-primary rounded-none px-6 py-3">获取演示</a>
+            <a href="/contact" class="btn btn-outline rounded-none px-6 py-3">购买授权</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 声音合成 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
+            <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
+            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">TTS Synthesis</span>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">声音合成</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+            视频配音、IP专属声音，高度还原真人音色，不仅情感丰富，而且可以自由调整语速，配合数字分身创建出您的专属数字人！
+          </p>
+           <div class="grid grid-cols-2 gap-4">
+            {["高度还原 100%", "情感丰富 100%", "多语言支持"].map(tag => (
+              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+                <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
+                {tag}
+              </div>
+            ))}
+          </div>
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="/demo" class="btn btn-primary rounded-none px-6 py-3">获取演示</a>
+            <a href="/contact" class="btn btn-outline rounded-none px-6 py-3">购买授权</a>
+          </div>
+        </div>
+        <div class="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
+          <img src="/assets/img/human4.png" alt="声音合成演示" class="w-full h-auto" />
+          <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">03_SYNTHESIS</div>
+        </div>
+      </div>
+
+      <!-- 租户管理 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
+          <img src="/assets/img/human3.png" alt="租户管理演示" class="w-full h-auto" />
+           <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">04_TENANT</div>
+        </div>
+        <div class="order-1 md:order-2 space-y-6">
+          <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
+            <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
+            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Tenant System</span>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">租户管理</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+            平台可无限多开分站点，输入租户相关信息和域名，即可创建新分站与管理员账号。
+          </p>
+           <div class="grid grid-cols-2 gap-4">
+            {["无限分站", "独立域名", "灵活管理"].map(tag => (
+              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+                <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
+                {tag}
+              </div>
+            ))}
+          </div>
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="/demo" class="btn btn-primary rounded-none px-6 py-3">获取演示</a>
+            <a href="/contact" class="btn btn-outline rounded-none px-6 py-3">购买授权</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 行动号召卡片 - Bento 风格 -->
+  <section class="py-16 bg-white dark:bg-gray-950">
+    <div class="container-custom">
+      <div class="relative bg-blue-600 dark:bg-blue-900 overflow-hidden border border-blue-500 dark:border-blue-800">
+        <!-- 装饰背景 -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+           <svg class="w-64 h-64 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/></svg>
+        </div>
+
+        <div class="relative z-10 p-10 md:p-16 text-center max-w-4xl mx-auto">
+          <h3 class="text-3xl font-bold text-white mb-6 font-display">
+            准备好开启您的AI数字人之旅了吗？
+          </h3>
+          <p class="text-lg text-blue-100 mb-10 leading-relaxed font-mono">
+            // 已有数百家企业选择艺创AI数字人解决方案，我们专业的团队随时准备为您提供支持。
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-6">
+            <a href="/contact" class="btn bg-white text-blue-600 hover:bg-blue-50 border-none rounded-none px-8 py-4">
+              联系我们
+            </a>
+            <a href="/pricing" class="btn bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-none px-8 py-4">
+              查看价格
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特色 Grid -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 font-display">更多功能特色</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto rounded-none"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {features.map(item => (
+          <div class="group bento-card p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300">
+             <div class="w-10 h-10 mb-4 flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-blue-600 dark:text-blue-400 rounded-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
+                </svg>
+            </div>
+            <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+                {item.title}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-mono">
+                {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 幻灯 - 直播解决方案 -->
+  <section class="py-20 bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 space-y-8">
+          <div class="inline-block border border-blue-600 text-blue-600 px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider">Live Solution</div>
+          <h3 class="text-4xl font-bold text-gray-900 dark:text-white font-display leading-tight">
+            数字人直播<br/>
+            <span class="text-blue-600">虚拟主播</span> AI解决方案
+          </h3>
+          <p class="text-lg text-gray-600 dark:text-gray-400 font-mono border-l-2 border-gray-200 dark:border-gray-800 pl-4">
+            提供快速搭建的数字人直播虚拟主播AI解决方案，支持多端使用，满足企业多样化需求。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#" class="btn btn-primary rounded-none px-6 py-3">了解更多</a>
+            <a href="#" class="btn btn-outline rounded-none px-6 py-3">立即试用</a>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <div class="relative p-2 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+            <img src="/assets/img/human1.png" alt="AI数字人演示" class="w-full h-auto"/>
+            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-blue-600"></div>
+            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-blue-600"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 应用场景 -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 font-display">应用场景</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 font-mono">// 多场景数字人解决方案，助力各行业数字化转型</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {scenarios.map(item => (
+          <div class="group bento-card p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300">
+            <div class="w-12 h-12 mb-4 flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
+                </svg>
+            </div>
+            <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+                {item.title}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-mono">
+                {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Structure />
+  <Contact />
+  <ProductCards />
+  <Calltoaction />
+  <Footer />
+
 </Layout>

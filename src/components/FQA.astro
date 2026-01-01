@@ -43,60 +43,93 @@ const faqs = [
   }
 ]
 ---
-<section class="py-24 sm:py-32 bg-white dark:bg-gray-900">
-  <div class="container-custom">
-    <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-      {/* 左侧：标题与描述 */}
-      <div class="lg:col-span-5">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-4">
-          常见问题解答
-        </h2>
-        <p class="text-base text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-          为您解答使用过程中的常见疑问，助您快速了解我们的服务。如果这里没有您想问的问题，欢迎随时联系我们。
-        </p>
 
-        <div class="hidden lg:block">
-           <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-500 rounded-none transition-colors">
-            <span>联系我们了解更多</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
+<section class="py-24 sm:py-32 relative overflow-hidden bg-white dark:bg-gray-950">
+  <!-- 背景网格 -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+
+  <div class="container-custom relative z-10">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-16">
+      {/* 左侧：标题与描述 */}
+      <div class="lg:col-span-4 mb-12 lg:mb-0">
+        <div class="sticky top-24">
+          <div class="inline-block px-3 py-1 mb-4 text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-none">
+            FAQ & Support
+          </div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-6 font-display">
+            常见问题解答
+          </h2>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-mono">
+            // 为您解答使用过程中的常见疑问，助您快速了解我们的服务。如果这里没有您想问的问题，欢迎随时联系我们。
+          </p>
+
+          <div class="hidden lg:block">
+             <a href="#contact" class="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-none transition-all duration-300 shadow-sm hover:shadow-md">
+              <span>联系我们了解更多</span>
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
 
       {/* 右侧：FAQ 列表 */}
-      <div class="mt-10 lg:col-span-7 lg:mt-0">
-        <dl class="space-y-6 divide-y divide-gray-900/10 dark:divide-gray-800">
-          {faqs.map((faq) => (
-            <div class="pt-6">
-              <details class="group">
-                <summary class="flex w-full items-start justify-between text-left text-gray-900 dark:text-white cursor-pointer list-none">
-                  <span class="text-base font-semibold leading-7">{faq.question}</span>
-                  <span class="ml-6 flex h-7 items-center">
-                    {/* Plus Icon (show when closed) */}
-                    <svg class="h-6 w-6 group-open:hidden text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
-                    </svg>
-                    {/* Minus Icon (show when open) */}
-                    <svg class="h-6 w-6 hidden group-open:block text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                    </svg>
+      <div class="lg:col-span-8">
+        <div class="space-y-4" x-data="{ active: null }">
+          {faqs.map((faq, index) => (
+            <div class="group border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:border-blue-500 dark:hover:border-blue-400 relative">
+              <!-- 装饰角标 -->
+              <div class="corner-marker corner-marker-tl opacity-0 group-hover:opacity-100"></div>
+              <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100"></div>
+              <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100"></div>
+              <div class="corner-marker corner-marker-br opacity-0 group-hover:opacity-100"></div>
+
+              <button
+                type="button"
+                class="flex w-full items-start justify-between p-6 text-left focus:outline-none"
+                @click={`active === ${index} ? active = null : active = ${index}`}
+              >
+                <div class="flex items-start gap-4">
+                  <span class="text-xs font-mono text-blue-500 mt-1.5">0{index + 1}</span>
+                  <span class="text-base font-semibold leading-7 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {faq.question}
                   </span>
-                </summary>
-                <div class="mt-2 pr-12">
-                  <p class="text-base leading-7 text-gray-600 dark:text-gray-300">
+                </div>
+                <span class="ml-6 flex h-7 items-center">
+                  <svg
+                    class="h-5 w-5 transform transition-transform duration-300 text-gray-400 group-hover:text-blue-500"
+                    :class={`{ 'rotate-180': active === ${index} }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </button>
+
+              <div
+                class="overflow-hidden transition-all duration-300 ease-in-out"
+                x-ref={`content${index}`}
+                x-show={`active === ${index}`}
+                x-cloak
+                x-collapse
+              >
+                <div class="px-6 pb-6 pl-14 pr-12">
+                  <p class="leading-relaxed text-gray-600 dark:text-gray-300 font-mono text-sm border-l-2 border-gray-100 dark:border-gray-800 pl-4">
                     {faq.answer}
                   </p>
                 </div>
-              </details>
+              </div>
             </div>
           ))}
-        </dl>
+        </div>
 
         {/* 移动端显示的联系按钮 */}
         <div class="mt-10 lg:hidden">
-          <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-500 rounded-none transition-colors w-full justify-center">
+          <a href="#contact" class="flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-none transition-colors w-full">
             <span>联系我们了解更多</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

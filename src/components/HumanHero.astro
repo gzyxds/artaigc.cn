@@ -12,6 +12,7 @@
  * 5. 响应式设计，适配不同屏幕尺寸
  * 6. 支持暗黑模式
  * 7. 集成二维码弹窗功能
+ * 8. 风格：Bento Grid / Linear (直角、边框优先、极简)
  */
 import QRModal from './QRModal.astro';
 
@@ -63,178 +64,121 @@ const cards: Card[] = [
 ];
 ---
 
-<section class="relative py-20 md:py-28 bg-white dark:bg-gray-900 overflow-hidden">
-  <!-- AI背景装饰 -->
-  <div class="absolute inset-0">
-    <!-- 基础光晕效果 -->
-    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[#0055ff]/15 rounded-none blur-3xl opacity-60"></div>
-    <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#0055ff]/10 rounded-none blur-3xl opacity-60"></div>
+<section class="relative py-20 md:py-32 bg-white dark:bg-gray-950 overflow-hidden">
+  <!-- 背景网格 -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
 
-    <!-- AI芯片图案 -->
-    <div class="absolute top-20 right-20 w-32 h-32 opacity-20">
-      <div class="w-full h-full border-2 border-[#0055ff] rounded-none relative">
-        <div class="absolute inset-2 border border-[#0055ff]/60 rounded-none">
-          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#0055ff] rounded-none"></div>
-          <div class="absolute top-2 left-2 w-2 h-2 bg-[#0055ff]/60 rounded-none"></div>
-          <div class="absolute top-2 right-2 w-2 h-2 bg-[#0055ff]/60 rounded-none"></div>
-          <div class="absolute bottom-2 left-2 w-2 h-2 bg-[#0055ff]/60 rounded-none"></div>
-          <div class="absolute bottom-2 right-2 w-2 h-2 bg-[#0055ff]/60 rounded-none"></div>
-        </div>
-        <!-- 芯片连接线 -->
-        <div class="absolute -top-2 left-1/2 w-0.5 h-4 bg-[#0055ff]"></div>
-        <div class="absolute -bottom-2 left-1/2 w-0.5 h-4 bg-[#0055ff]"></div>
-        <div class="absolute -left-2 top-1/2 h-0.5 w-4 bg-[#0055ff]"></div>
-        <div class="absolute -right-2 top-1/2 h-0.5 w-4 bg-[#0055ff]"></div>
-      </div>
-    </div>
+  <!-- 装饰元素 -->
+  <div class="absolute top-0 right-0 w-1/3 h-full border-l border-gray-100 dark:border-gray-800 pointer-events-none hidden lg:block"></div>
+  <div class="absolute bottom-0 left-0 w-full h-1/3 border-t border-gray-100 dark:border-gray-800 pointer-events-none hidden lg:block"></div>
 
-    <!-- 神经网络连接线 -->
-    <div class="absolute bottom-32 left-16 w-40 h-40 opacity-25">
-      <svg viewBox="0 0 160 160" class="w-full h-full">
-        <!-- 节点 -->
-        <circle cx="20" cy="20" r="4" fill="#0055ff" />
-        <circle cx="80" cy="40" r="4" fill="#0055ff" />
-        <circle cx="140" cy="20" r="4" fill="#0055ff" />
-        <circle cx="20" cy="80" r="4" fill="#0055ff" />
-        <circle cx="80" cy="80" r="6" fill="#0055ff" />
-        <circle cx="140" cy="80" r="4" fill="#0055ff" />
-        <circle cx="20" cy="140" r="4" fill="#0055ff" />
-        <circle cx="80" cy="120" r="4" fill="#0055ff" />
-        <circle cx="140" cy="140" r="4" fill="#0055ff" />
-        <!-- 连接线 -->
-        <line x1="20" y1="20" x2="80" y2="40" stroke="#0055ff" stroke-width="2" opacity="0.6" />
-        <line x1="80" y1="40" x2="140" y2="20" stroke="#0055ff" stroke-width="2" opacity="0.6" />
-        <line x1="20" y1="80" x2="80" y2="80" stroke="#0055ff" stroke-width="3" opacity="0.8" />
-        <line x1="80" y1="80" x2="140" y2="80" stroke="#0055ff" stroke-width="3" opacity="0.8" />
-        <line x1="20" y1="140" x2="80" y2="120" stroke="#0055ff" stroke-width="2" opacity="0.6" />
-        <line x1="80" y1="120" x2="140" y2="140" stroke="#0055ff" stroke-width="2" opacity="0.6" />
-        <line x1="20" y1="20" x2="20" y2="80" stroke="#0055ff" stroke-width="2" opacity="0.5" />
-        <line x1="80" y1="40" x2="80" y2="80" stroke="#0055ff" stroke-width="2" opacity="0.7" />
-        <line x1="80" y1="80" x2="80" y2="120" stroke="#0055ff" stroke-width="2" opacity="0.7" />
-        <line x1="140" y1="20" x2="140" y2="80" stroke="#0055ff" stroke-width="2" opacity="0.5" />
-      </svg>
-    </div>
-
-    <!-- 数据流动效果 -->
-    <div class="absolute top-1/2 right-32 w-24 h-1 opacity-30">
-      <div class="w-full h-full bg-gradient-to-r from-transparent via-[#0055ff] to-transparent animate-pulse"></div>
-    </div>
-    <div class="absolute top-1/3 left-32 w-20 h-1 opacity-25">
-      <div class="w-full h-full bg-gradient-to-r from-[#0055ff] via-transparent to-[#0055ff] animate-pulse" style="animation-delay: 1s"></div>
-    </div>
-
-    <!-- 二进制代码装饰 -->
-    <div class="absolute top-16 left-20 text-[#0055ff] opacity-15 font-mono text-xs leading-tight">
-      01001001<br/>11010110<br/>00101101<br/>10110010
-    </div>
-    <div class="absolute bottom-20 right-32 text-[#0055ff] opacity-15 font-mono text-xs leading-tight">
-      01110100<br/>10001011<br/>11100101<br/>00110110
-    </div>
-
-    <!-- 左上角装饰点 -->
-    <div class="absolute top-12 left-12 w-3 h-3 bg-[#0055ff] rounded-none opacity-40 animate-pulse"></div>
-    <div class="absolute top-16 left-8 w-2 h-2 bg-[#0055ff] rounded-none opacity-30 animate-pulse" style="animation-delay: 0.5s"></div>
-  </div>
-
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <div class="container-custom relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
       <!-- 左侧内容区 -->
-      <div class="text-center lg:text-left space-y-8">
-        <!-- 主标题 -->
-        <div class="space-y-4">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold">
-            <span class="text-[#0055ff] block mb-2">AI数字人</span>
-            <span class="text-gray-900 dark:text-white text-2xl sm:text-3xl lg:text-4xl font-medium">
-              形象声音克隆
-            </span>
-          </h1>
-
-          <!-- 简洁装饰线 -->
-          <div class="w-20 h-1 bg-[#0055ff] mx-auto lg:mx-0 rounded-none"></div>
+      <div class="text-center lg:text-left space-y-10">
+        <!-- 标签 -->
+        <div class="inline-flex items-center space-x-2 border border-blue-100 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
+          <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
+          <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">AI Digital Human</span>
         </div>
 
-        <!-- 描述文本 -->
-        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
-          专业的AI数字人解决方案，支持形象克隆、声音克隆、数字人合成等功能，为您打造专属的数字化身
-        </p>
+        <!-- 主标题 -->
+        <div class="space-y-6">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-gray-900 dark:text-white">
+            AI数字人<br />
+            <span class="text-blue-600 dark:text-blue-500">形象声音克隆</span>
+          </h1>
 
-        <!-- 特性标签 - 统一蓝色调 -->
+          <!-- 描述文本 -->
+          <p class="text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0 font-mono border-l-2 border-gray-200 dark:border-gray-800 pl-6">
+            专业的AI数字人解决方案，支持形象克隆、声音克隆、数字人合成等功能，为您打造专属的数字化身
+          </p>
+        </div>
+
+        <!-- 特性标签 -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-3">
           {features.map((feature) => (
-            <span class="px-4 py-2 bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-none text-sm font-medium hover:bg-[#0055ff]/20 transition-colors">
+            <div class="flex items-center text-sm font-mono text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 px-3 py-1.5">
+              <span class="w-1 h-1 bg-blue-500 rounded-none mr-2"></span>
               {feature.name}
-            </span>
+            </div>
           ))}
         </div>
 
         <!-- 按钮组 -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <a
             href="javascript:void(0)"
             onclick="document.getElementById('qr-modal').classList.add('active')"
-            class="px-8 py-3 bg-[#0055ff] hover:bg-[#0044dd] text-white font-semibold rounded-none border border-[#0055ff] shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center"
+            class="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-none overflow-hidden"
             aria-label="联系客服"
           >
-            <span>联系客服</span>
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
+            <span class="relative z-10 flex items-center">
+              联系客服
+              <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
           </a>
 
           <a
             href="/demo"
-            class="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-none border border-gray-300 dark:border-gray-600 shadow-md hover:shadow-lg hover:border-[#0055ff] transition-all duration-200 flex items-center justify-center"
+            class="group inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-gray-900 dark:text-white bg-transparent border border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-500 transition-all duration-300 rounded-none"
             aria-label="查看演示"
           >
-            <span>查看演示</span>
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
+            查看演示
           </a>
         </div>
       </div>
 
-      <!-- 右侧展示区 - 简洁模拟面设计 -->
+      <!-- 右侧展示区 - Bento Grid 风格 -->
       <div class="relative mt-8 lg:mt-0">
-        <div class="bg-white dark:bg-gray-800 rounded-none border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8">
+        <!-- 主卡片容器 -->
+        <div class="relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-1">
+          <!-- 装饰角标 -->
+          <div class="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-blue-500"></div>
+          <div class="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-blue-500"></div>
+          <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-blue-500"></div>
+          <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-blue-500"></div>
 
-          <!-- 顶部标签区 -->
-          <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
-            {topTags.map((tag) => (
-              <span class="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm bg-[#0055ff]/10 text-[#0055ff] border border-[#0055ff]/20 rounded-none">
-                {tag.name}
-              </span>
-            ))}
+          <div class="p-6 sm:p-8 space-y-8">
+            <!-- 顶部标签区 -->
+            <div class="flex flex-wrap gap-2">
+              {topTags.map((tag) => (
+                <span class="px-3 py-1 text-xs font-mono text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
+                  #{tag.name}
+                </span>
+              ))}
+            </div>
+
+            <!-- 功能卡片网格 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {cards.map((card) => (
+                <div class="group relative bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800 p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300">
+                  <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                      <div class="w-10 h-10 flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors">
+                        <i class="material-icons text-xl">{card.icon}</i>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-1">{card.title}</h4>
+                      <p class="text-xs text-gray-500 dark:text-gray-400 font-mono leading-relaxed">{card.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <!-- 功能卡片网格 -->
-          <div class="grid grid-cols-2 gap-3 sm:gap-4">
-            {cards.map((card) => (
-              <div class="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-none p-3 sm:p-4 lg:p-6 hover:shadow-md hover:border-[#0055ff]/30 transition-all duration-200">
-                <!-- 图标区域 -->
-                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-[#0055ff]/10 rounded-none flex items-center justify-center mb-2 sm:mb-4">
-                  <i class="material-icons text-[#0055ff] text-lg sm:text-xl">
-                    {card.icon}
-                  </i>
-                </div>
-                <!-- 内容区域 -->
-                <div class="space-y-1 sm:space-y-2">
-                  <h4 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">{card.title}</h4>
-                  <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{card.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <!-- 底部装饰条 -->
+          <div class="h-1 w-full bg-grid-pattern opacity-10"></div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- 底部分割线 -->
-  <div class="absolute bottom-0 left-0 right-0">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
+        <!-- 背景装饰块 -->
+        <div class="absolute -z-10 top-8 -right-8 w-full h-full border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 hidden lg:block"></div>
+      </div>
     </div>
   </div>
 
