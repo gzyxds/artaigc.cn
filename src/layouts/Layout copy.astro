@@ -32,8 +32,8 @@ export interface Props {
  * 从Astro.props中获取传入的属性，并为可选属性设置默认值
  * 这些属性将用于页面的元数据和SEO优化
  */
-const { 
-  title, 
+const {
+  title,
   description = "专注提供AI系统源代码解决方案的技术团队「超级全能AI变现系统」「AI聊天绘画系统」「AI论文写作系统」拥有PHP和Java两种语言版本，技术实力强，系统体验好支持私有部署，专业团队、售后无忧",
   keywords = "AI系统,AI源码,AI变现系统,AI聊天系统,AI绘画系统,AI论文系统,PHP AI系统,Java AI系统"
 } = Astro.props;
@@ -118,26 +118,26 @@ const {
      */
     document.addEventListener('astro:page-load', () => {
       const backToTop: HTMLElement | null = document.getElementById('back-to-top');
-      let scrollTimer: number | null = null;
+      let scrollTimer: ReturnType<typeof setTimeout> | null = null;
       let lastScrollY: number = window.scrollY;
-      
+
       // 如果按钮不存在，直接返回
       if (!backToTop) return;
-      
+
       // 优化的滚动事件处理，使用节流技术减少事件触发频率
       const handleScroll = (): void => {
         if (scrollTimer) return;
-        
+
         scrollTimer = setTimeout(() => {
           // 检测滚动方向和位置
           const currentScrollY: number = window.scrollY;
           const scrollingDown: boolean = currentScrollY > lastScrollY;
           lastScrollY = currentScrollY;
-          
+
           if (currentScrollY > 300) {
             backToTop!.classList.add('opacity-100', 'scale-100');
             backToTop!.classList.remove('opacity-0', 'scale-90');
-            
+
             // 如果向下滚动且已经显示，添加一点动画效果
             if (scrollingDown) {
               backToTop!.classList.add('pulse');
@@ -147,22 +147,22 @@ const {
             backToTop!.classList.remove('opacity-100', 'scale-100');
             backToTop!.classList.add('opacity-0', 'scale-90');
           }
-          
+
           scrollTimer = null;
         }, 100);
       };
-      
+
       window.addEventListener('scroll', handleScroll);
-      
+
       // 点击事件 - 平滑滚动到顶部并添加点击反馈
       backToTop.addEventListener('click', (): void => {
         backToTop!.classList.add('active');
-        
+
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
-        
+
         // 滚动完成后移除活动状态
         setTimeout(() => {
           backToTop!.classList.remove('active');
@@ -170,17 +170,17 @@ const {
       });
     });
   </script>
-  
+
   <style>
     /* 返回顶部按钮的动画效果 */
     #back-to-top.pulse {
       animation: pulse 0.5s ease-in-out;
     }
-    
+
     #back-to-top.active {
       transform: scale(0.9);
     }
-    
+
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }

@@ -384,9 +384,8 @@ const {
     openModal();
   }
 
-  // 统一监听二维码弹窗事件（兼容旧事件 openQRModal）
+  // 统一监听二维码弹窗事件
   window.addEventListener('showQRCodeModal', handleOpenEvent);
-  document.addEventListener('openQRModal', handleOpenEvent);
 
   // 视窗变化时重新定位
   window.addEventListener('resize', () => {
