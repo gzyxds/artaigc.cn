@@ -1,60 +1,59 @@
 ---
-/**
- * Aisd 组件 - Bento Grid / Linear 风格
- *
- * 设计重构：
- * - 采用 .bento-card 标准容器
- * - 引入 .corner-marker 装饰
- * - 移除圆角 (rounded-none)
- * - 移除有机曲线背景，改为线性/网格背景
- * - 统一字体为 font-mono
- */
+/* 主色：#7C3AED→#2563EB | 字体：PingFang+Inter | 动效：200ms ease-out */
 
 const items = [
   {
-    title: "企业知识库",
+    title: "必定AI (BuidAI)",
+    subtitle: "AI创意生产力平台",
+    description: "聚合BuidAI智能体、香蕉绘画Nanobanana、Sora2视频生成。提供知识库问答、PDF解析、内容总结及爆款文章生成的一站式解决方案。",
+    link: "https://www.buidai.com/",
+    icon: "auto_awesome",
+    colSpan: "lg:col-span-6",
+    gradient: "from-violet-500/10 to-fuchsia-500/10",
+  },
+  {
+    title: "全能AI",
     subtitle: "一站式搭建",
     description: "一站式AI知识库搭建系统，轻松创建企业知识库。支持文档解析、智能问答、多端发布。",
-    link: "https://cnai.art",
-    image: "/assets/icon1.png",
+    link: "https://www.cnai.art",
+    icon: "storage",
     colSpan: "lg:col-span-4",
-    gradient: "from-blue-500/5 to-purple-500/5",
-    // 移除复杂的 SVG 装饰，使用更几何化的装饰或留白
+    gradient: "from-[#7C3AED]/10 to-[#2563EB]/10",
   },
   {
     title: "数字分身",
     subtitle: "形象克隆",
     description: "可以私有化的短视频批量混剪&数字人克隆矩阵平台。打造24小时在线的数字员工。",
     link: "https://v.cnai.art",
-    image: "/assets/icon2.png",
+    icon: "face",
     colSpan: "lg:col-span-2",
-    gradient: "from-indigo-500/5 to-cyan-500/5",
+    gradient: "from-indigo-500/10 to-cyan-500/10",
   },
   {
     title: "聊天绘画",
     subtitle: "创意无限",
     description: "AI智能对话、AI创作模型、AI绘画、分销推广、卡密兑换、模型计费等丰富的营销功能。",
-    link: "https://www.cnai.art",
-    image: "/assets/icon3.png",
+    link: "https://cnai.art",
+    icon: "palette",
     colSpan: "lg:col-span-2",
-    gradient: "from-rose-500/5 to-orange-500/5",
+    gradient: "from-rose-500/10 to-orange-500/10",
   },
   {
     title: "论文创作",
     subtitle: "学术助手",
     description: "10分钟生成3万字论文的系统，AI即可快速为您生成论文大纲，极大提高写作效率。",
-    link: "https://www.cnai.art",
-    image: "/assets/icon4.png",
+    link: "https://paper.gmlart.cn/",
+    icon: "article",
     colSpan: "lg:col-span-4",
-    gradient: "from-emerald-500/5 to-teal-500/5",
+    gradient: "from-emerald-500/10 to-teal-500/10",
   },
 ];
 ---
 
-<div class="relative pt-12 pb-20 overflow-hidden bg-white dark:bg-gray-900 w-full">
+<div class="relative pt-12 pb-20 overflow-hidden bg-white dark:bg-[#0F172A] w-full transition-colors duration-300">
   <!-- 背景装饰：线性网格 -->
   <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-gray-900 dark:via-transparent dark:to-gray-900"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#0F172A] dark:via-transparent dark:to-[#0F172A]"></div>
 
   <div class="container-custom relative z-10">
     <div class="text-center relative mb-12 sm:mb-16">
@@ -71,9 +70,9 @@ const items = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-6 lg:grid-rows-2 h-auto">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-6 h-auto">
       {items.map((item, index) => (
-        <div class={`relative bento-card group flex flex-col overflow-hidden hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 ${item.colSpan}`}>
+        <div class={`relative group flex flex-col overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-none hover:border-blue-600 dark:hover:border-blue-500 transition-colors duration-300 ${item.colSpan}`}>
           <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
           <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
 
@@ -87,8 +86,8 @@ const items = [
             {/* 顶部内容：图标与标题 */}
             <div class="flex items-start justify-between mb-6">
               <div class="flex items-center gap-5">
-                <div class="w-14 h-14 shrink-0 bg-white dark:bg-gray-800 rounded-none border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
-                  <img src={item.image} alt={item.title} class="w-7 h-7 object-contain" />
+                <div class="w-14 h-14 shrink-0 bg-white dark:bg-gray-800 rounded-none border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <i class="material-icons text-[28px] text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{item.icon}</i>
                 </div>
                 <div>
                   <h3 class="text-2xl font-bold font-mono text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{item.title}</h3>
@@ -113,7 +112,7 @@ const items = [
           </div>
 
           {/* 全卡片链接 */}
-          <a href={item.link} class="absolute inset-0 z-20" aria-label={`查看${item.title}详情`}></a>
+          <a href={item.link} class="absolute inset-0 z-20" aria-label={`查看${item.title}详情`} target="_blank" rel="noopener noreferrer"></a>
         </div>
       ))}
     </div>
