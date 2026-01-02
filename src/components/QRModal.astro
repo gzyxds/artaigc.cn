@@ -14,8 +14,10 @@
  */
 
 interface Props {
-  /** 二维码图片URL */
+  /** 客服二维码图片URL */
   qrCodeUrl: string;
+  /** 公众号二维码图片URL (可选，默认使用 assets/gzh.png) */
+  gzhQrCodeUrl?: string;
   /** 模态框标题 */
   title?: string;
   /** 模态框描述文本 */
@@ -26,8 +28,9 @@ interface Props {
 
 const {
   qrCodeUrl,
-  title = "扫描二维码联系客服",
-  description = "使用微信扫描下方二维码，即可添加客服微信",
+  gzhQrCodeUrl = "/assets/wchatpay.png",
+  title = "联系客服 & 关注公众号",
+  description = "扫描下方二维码，添加客服咨询或关注公众号获取优惠",
   isOpen = false
 } = Astro.props;
 ---
@@ -40,7 +43,7 @@ const {
   aria-modal="true"
   aria-hidden={!isOpen}
 >
-  <div class="modal-content bento-card p-0 overflow-hidden">
+  <div class="modal-content bento-card p-0 overflow-hidden w-[600px] max-w-[95%]">
     <!-- 角标装饰 -->
     <div class="corner-marker corner-marker-tr"></div>
     <div class="corner-marker corner-marker-bl"></div>
@@ -57,17 +60,45 @@ const {
       </svg>
     </button>
 
-    <div class="modal-body p-8 sm:p-10">
-      <div class="inline-flex items-center gap-2 mb-4">
+    <div class="modal-body p-5 sm:p-8 overflow-y-auto max-h-[80vh]">
+      <!-- 顶部公告 -->
+      <div class="mb-5 sm:mb-6 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 text-xs sm:text-sm text-blue-800 dark:text-blue-200 font-mono flex items-start gap-2 rounded-sm">
+        <span class="shrink-0 mt-0.5">📢</span>
+        <span>
+          公告：请 <span class="font-bold text-blue-600 dark:text-blue-400 border-b border-blue-400">联系客服</span> 咨询购买，关注公众号可以了解 <span class="font-bold text-blue-600 dark:text-blue-400">优惠活动</span> 和 <span class="font-bold text-blue-600 dark:text-blue-400">产品更新</span>
+        </span>
+      </div>
+
+      <div class="inline-flex items-center gap-2 mb-3 sm:mb-4">
         <span class="w-6 h-px bg-blue-500"></span>
         <span class="text-blue-600 dark:text-blue-400 font-mono text-[10px] font-bold uppercase tracking-widest">Connect Support</span>
       </div>
-      <h2 class="modal-title font-mono font-bold text-xl uppercase tracking-tight text-gray-900 dark:text-white mb-2" id="modal-title">{title}</h2>
-      <p class="modal-description text-gray-500 dark:text-gray-400 text-sm font-sans mb-8">{description}</p>
-      <div class="qr-container border border-gray-100 dark:border-gray-800 p-4 bg-gray-50/50 dark:bg-gray-900/50 rounded-none relative group">
-        <div class="corner-marker corner-marker-tr opacity-20 group-hover:opacity-100 transition-opacity"></div>
-        <img src={qrCodeUrl} alt="客服二维码" class="qr-code w-full h-auto transition-transform duration-300 group-hover:scale-[1.01]" loading="lazy" />
+      <h2 class="modal-title font-mono font-bold text-lg sm:text-xl uppercase tracking-tight text-gray-900 dark:text-white mb-2" id="modal-title">{title}</h2>
+      <p class="modal-description text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-sans mb-6 leading-relaxed">{description}</p>
+
+      <!-- 双二维码布局：移动端上下排列，PC端左右排列 -->
+      <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6">
+        <!-- 客服二维码 -->
+        <div class="flex flex-col items-center">
+          <div class="qr-container w-full border border-gray-100 dark:border-gray-800 p-2 sm:p-4 bg-gray-50/50 dark:bg-gray-900/50 rounded-none relative group aspect-square flex items-center justify-center">
+            <div class="corner-marker corner-marker-tr opacity-20 group-hover:opacity-100 transition-opacity"></div>
+            <img src={qrCodeUrl} alt="客服二维码" class="qr-code w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.01]" loading="lazy" />
+          </div>
+          <span class="mt-2 sm:mt-3 text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 font-mono text-center">添加客服微信</span>
+          <span class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-500 text-center scale-90 sm:scale-100 origin-top">咨询购买 / 技术支持</span>
+        </div>
+
+        <!-- 公众号二维码 -->
+        <div class="flex flex-col items-center">
+          <div class="qr-container w-full border border-gray-100 dark:border-gray-800 p-2 sm:p-4 bg-gray-50/50 dark:bg-gray-900/50 rounded-none relative group aspect-square flex items-center justify-center">
+            <div class="corner-marker corner-marker-tr opacity-20 group-hover:opacity-100 transition-opacity"></div>
+            <img src={gzhQrCodeUrl} alt="公众号二维码" class="qr-code w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.01]" loading="lazy" />
+          </div>
+          <span class="mt-2 sm:mt-3 text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 font-mono text-center">关注公众号</span>
+          <span class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-500 text-center scale-90 sm:scale-100 origin-top">优惠活动 / 产品更新</span>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -99,8 +130,8 @@ const {
   .modal-content {
     background: white;
     position: relative;
-    max-width: 90%;
-    width: 420px;
+    max-width: 95%;
+    width: 680px;
     transform: translateY(20px);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0;
@@ -324,6 +355,12 @@ const {
     // 宽度边界处理
     const maxWidth = Math.max(280, snapToDevicePixel(vw - safeMargin * 2));
     content.style.maxWidth = `${maxWidth}px`;
+    // 如果屏幕足够大，允许更宽的弹窗
+    if (vw >= 640) {
+      content.style.width = '680px';
+    } else {
+      content.style.width = '95%';
+    }
 
     // 高度边界处理
     const maxHeight = snapToDevicePixel(vh - safeMargin * 2);
