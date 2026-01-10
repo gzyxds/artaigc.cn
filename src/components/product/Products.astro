@@ -55,7 +55,13 @@ const iconInactiveClass = "text-gray-400";
 
 <!-- 产品展示区域 -->
 <section class="py-10 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-  <div class="relative" x-data="{ activeCategory: 'all' }">
+  <div class="relative" x-data={`{
+    activeCategory: 'all',
+    btnActiveClass: '${btnActiveClass}',
+    btnInactiveClass: '${btnInactiveClass}',
+    iconActiveClass: '${iconActiveClass}',
+    iconInactiveClass: '${iconInactiveClass}'
+  }`}>
     <!-- 背景装饰 -->
     <div class="absolute top-0 left-0 right-0 h-[800px] bg-gradient-to-b from-primary-50/60 via-primary-100/40 to-transparent dark:from-primary-900/30 dark:via-primary-800/20 -z-10 rounded-none blur-xl"></div>
 

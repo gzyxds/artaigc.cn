@@ -14,6 +14,7 @@
     "vercel-build": "node node_modules/astro/astro.js build"
   },
   "dependencies": {
+    "@alpinejs/collapse": "^3.15.3",
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/check": "^0.9.6",
     "@astrojs/tailwind": "^6.0.2",
@@ -23,5 +24,8 @@
     "material-icons": "^1.13.14",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/alpinejs__collapse": "^3.13.4"
   }
 }

@@ -7,7 +7,9 @@ import alpinejs from '@astrojs/alpinejs';
 export default defineConfig({
   integrations: [
     tailwind(),
-    alpinejs()
+    alpinejs({
+      entrypoint: './src/scripts/alpine.ts'
+    })
   ],
   vite: {
     resolve: {
