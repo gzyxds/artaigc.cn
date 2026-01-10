@@ -6,9 +6,30 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
-      // 自定义颜色配置
+      // 自定义颜色配置 - 基于 Linear/Bento 设计系统
       colors: {
-        // 主要颜色系列 - 蓝色调 (更新为新设计)
+        // 语义化颜色变量 (在 global.css 中定义)
+        background: 'rgb(var(--bg-background) / <alpha-value>)',
+        surface: 'rgb(var(--bg-surface) / <alpha-value>)',
+        border: 'rgb(var(--border-default) / <alpha-value>)',
+
+        // 品牌色 - 蓝色系列
+        brand: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bedbff',
+          300: '#8ec5ff',
+          400: '#51a2ff',
+          500: '#2b7fff',
+          600: '#155dfc',
+          700: '#1447e6',
+          800: '#193cb8',
+          900: '#1447e6',
+          950: '#162456',
+          DEFAULT: '#155dfc', // Default to 600
+        },
+
+        // 兼容旧代码的映射 (建议逐步迁移到语义化变量)
         primary: {
           50: '#eff6ff',
           100: '#dbeafe',
@@ -19,10 +40,9 @@ export default {
           600: '#155dfc',
           700: '#1447e6',
           800: '#193cb8',
-          900: '#1c398e',
+          900: '#1447e6',
           950: '#162456',
         },
-        // 中性色系列 (更新为新设计)
         neutral: {
           50: '#f9fafb',
           100: '#f3f4f6',
@@ -36,55 +56,21 @@ export default {
           900: '#111827',
           950: '#030712',
         },
-        // 保留旧的 secondary 以防破坏兼容性，映射到 neutral
-        secondary: {
-          50: '#f9fafb',
-          100: '#f3f4f6',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#1f2937',
-          900: '#111827',
-          950: '#030712',
-        },
-        // 强调色系列 - 亮蓝色调 (保留但调整为接近 primary)
-        accent: {
-          50: '#eff6ff',
-          100: '#dbeafe', 
-          200: '#bedbff',
-          300: '#8ec5ff',
-          400: '#51a2ff',
-          500: '#2b7fff',
-          600: '#155dfc',
-          700: '#1447e6',
-          800: '#193cb8',
-          900: '#1c398e',
-          950: '#162456',
-        },
-        // 警告色系列 - 黄色调 (保留)
-        warning: {
-          50: '#fefce8',
-          100: '#fef9c3',
-          200: '#fef08a',
-          300: '#fde047',
-          400: '#facc15',
-          500: '#eab308',
-          600: '#ca8a04',
-          700: '#a16207',
-          800: '#854d0e',
-          900: '#713f12',
-          950: '#422006',
-        },
       },
       // 自定义字体族配置
       fontFamily: {
-        sans: ['Clash-Grotesk', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Clash-Display', 'Lexend', 'system-ui', 'sans-serif'],
-        headings: ['Clash-Display', 'Lexend', 'system-ui', 'sans-serif'], // 新增 headings
-        body: ['Clash-Grotesk', 'Inter', 'system-ui', 'sans-serif'],     // 新增 body
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
+        display: ['"Inter"', 'system-ui', 'sans-serif'],
+      },
+      // 圆角配置 - 强制直角或微圆角
+      borderRadius: {
+        'none': '0',
+        'sm': '2px',
+        DEFAULT: '2px',
+        'md': '4px',
+        'lg': '8px',
+        'full': '9999px',
       },
       // 自定义动画配置
       animation: {

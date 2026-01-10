@@ -1,0 +1,196 @@
+---
+/**
+ * 英雄部分组件属性接口
+ * @interface Props
+ * @property {string} title - 标题文本
+ * @property {string} [highlightText] - 可选的高亮文本，将在标题中被特殊样式处理
+ * @property {string} description - 描述文本
+ * @property {string} [backgroundImage] - 可选的背景图片URL
+ * @property {Array<{text: string, url: string, variant?: 'primary'|'secondary'|'outline'|'accent'}>} [buttons] - 可选的按钮数组
+ * @property {string} [height] - 可选的高度设置，默认为'400px'
+ * @property {boolean} [hasPattern] - 是否显示背景图案，默认为false
+ * @property {string} [alignment] - 内容对齐方式，可选值：'center'、'left'，默认为'center'
+ */
+interface Props {
+  title: string;
+  highlightText?: string;
+  description?: string;
+  subtitle?: string;
+  badge?: string;
+  backgroundImage?: string;
+  buttons?: Array<{text: string, url: string, variant?: 'primary'|'secondary'|'outline'|'accent'}>;
+  height?: string;
+  hasPattern?: boolean;
+  alignment?: 'center' | 'left';
+}
+
+const {
+  title,
+  highlightText,
+  description,
+  subtitle,
+  badge,
+  backgroundImage,
+  buttons = [],
+  height = 'auto',
+  hasPattern = false,
+  alignment = 'center'
+} = Astro.props;
+
+const displayDescription = description || subtitle;
+
+/**
+ * 处理标题文本
+ * 如果提供了高亮文本，将标题拆分为前后两部分，以便在渲染时突出显示高亮部分
+ */
+let titleStart = title;
+let titleEnd = "";
+
+if (highlightText) {
+  const titleParts = title.split(highlightText);
+  if (titleParts.length > 1) {
+    titleStart = titleParts[0];
+    titleEnd = titleParts[1];
+  }
+}
+---
+<!-- 英雄部分 - 现代化设计的主视觉区域 -->
+<section
+  class="relative overflow-hidden hero-section border-b border-gray-200 dark:border-gray-800"
+  style={height !== 'auto' ? `height: ${height}` : ''}
+  role="banner"
+  aria-label="Hero section"
+>
+  <!-- 背景层 -->
+  <div class="absolute inset-0 bg-white dark:bg-gray-950">
+    <!-- 背景图案（如果启用） -->
+    {hasPattern && (
+      <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05]"></div>
+    )}
+
+    <!-- 背景图片（如果提供） -->
+    {backgroundImage && (
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.03] dark:opacity-[0.05] grayscale"
+        style={`background-image: url(${backgroundImage})`}
+      ></div>
+    )}
+  </div>
+
+  <!-- 内容容器 -->
+  <div class="container-custom relative z-10 py-20 md:py-32">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class={`${alignment === 'center' ? 'lg:col-span-2 text-center' : 'text-left'}`}>
+        <!-- Badge -->
+        {badge && (
+          <span class="inline-block px-3 py-1 border border-blue-500/30 text-blue-600 dark:text-blue-400 font-mono text-xs uppercase tracking-widest mb-6 animate-fade-in">
+            {badge}
+          </span>
+        )}
+
+        <!-- 标题区域 -->
+        <h1
+          class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white animate-slide-down [text-wrap:balance]"
+          style="animation-delay: 100ms"
+        >
+          {highlightText ? (
+            <>
+              {titleStart}
+              <span class="text-blue-600 dark:text-blue-400">
+                {highlightText}
+              </span>
+              {titleEnd}
+            </>
+          ) : (
+            title
+          )}
+        </h1>
+
+        <!-- 描述文本 -->
+        {displayDescription && (
+          <p
+            class={`font-sans text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-10 animate-slide-up ${alignment === 'center' ? 'max-w-[800px] mx-auto' : 'max-w-[600px]'} [text-wrap:pretty]`}
+            style="animation-delay: 200ms"
+          >
+            {displayDescription}
+          </p>
+        )}
+
+        <!-- 按钮组 / Actions Slot -->
+        <div
+          class={`flex flex-wrap gap-4 ${alignment === 'center' ? 'justify-center' : 'justify-start'} animate-fade-in`}
+          style="animation-delay: 300ms"
+        >
+          <slot name="actions" />
+
+          {buttons.length > 0 && buttons.map((button, index) => (
+            <a
+              href={button.url}
+              class={`px-8 py-3 type-small uppercase tracking-widest transition-all duration-300 rounded-none border ${
+                button.variant === 'primary'
+                  ? 'bg-blue-600 border-blue-600 text-white hover:bg-blue-700'
+                  : 'border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900'
+              }`}
+            >
+              {button.text}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Default Slot (for right side content in left-aligned layout) -->
+      {alignment === 'left' && (
+        <div class="hidden lg:block animate-fade-in" style="animation-delay: 400ms">
+          <slot />
+        </div>
+      )}
+    </div>
+
+    <!-- For center alignment, show default slot below -->
+    {alignment === 'center' && (
+      <div class="mt-16 animate-fade-in" style="animation-delay: 400ms">
+        <slot />
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  /* 优化动画性能 */
+  .animate-fade-in,
+  .animate-slide-down,
+  .animate-slide-up {
+    will-change: transform, opacity;
+  }
+
+  /* 背景图案 */
+  .pattern-grid {
+    background-image:
+      linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* 新增动画效果 */
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  @keyframes subtle-float {
+    0%, 100% { transform: translateY(0) scale(1.05); }
+    50% { transform: translateY(-5px) scale(1.05); }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+
+  .animate-subtle-float {
+    animation: subtle-float 10s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-subtle 6s ease-in-out infinite;
+  }
+</style>

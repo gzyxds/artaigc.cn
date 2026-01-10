@@ -1,0 +1,160 @@
+---
+// 导入类型定义
+interface Model {
+  name: string;
+  tag: string;
+  tagColor: string;
+  icon: string;
+  description: string;
+}
+
+// 模型数据
+const models: Model[] = [
+  {
+    name: "DeepSeek-R1",
+    tag: "推荐",
+    tagColor: "blue",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
+    description: "基于大型强化学习训练的第一代模型，在数学，代码，自然语言理解等方面表现优秀"
+  },
+  {
+    name: "DeepSeek-V3",
+    tag: "推荐",
+    tagColor: "blue",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    description: "深度思考合专家（MoE）混合模型，在各知识领域，数学推理等多领域表现突出，评测成绩优异"
+  },
+  {
+    name: "OpenAI",
+    tag: "推荐",
+    tagColor: "blue",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>`,
+    description: "基于大规模预训练的通用大模型，在自然语言处理、文本生成等方面表现出色"
+  },
+  {
+    name: "字节豆包",
+    tag: "推荐",
+    tagColor: "blue",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>`,
+    description: "字节跳动自主研发的通用大模型，在自然语言处理、文本生成等方面表现出色"
+  },
+  {
+    name: "智谱清言",
+    tag: "性价比",
+    tagColor: "orange",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
+    description: "智谱AI研发的通用大模型，在多模态和多任务场景中表现出色，支持多模态输入和输出"
+  },
+  {
+    name: "通义千问",
+    tag: "性价比",
+    tagColor: "orange",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>`,
+    description: "阿里巴巴研发的通用大模型，在长文本生成和复杂对话场景中表现突出，支持多轮上下文保持"
+  },
+  {
+    name: "腾讯混元",
+    tag: "主力版",
+    tagColor: "green",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    description: "腾讯云主力AI模型，在价格性能比上具有明显优势，支持企业定制训练和垂直领域优化"
+  },
+  {
+    name: "Kimi",
+    tag: "主力版",
+    tagColor: "green",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>`,
+    description: "KImi技术研发的通用大模型，在多模态和多任务场景中表现出色，支持多模态输入和输出"
+  }
+];
+---
+
+<!-- 大模型展示区域 -->
+<section class="relative scroll-mt-32 py-24 bg-background overflow-hidden typography-system">
+  <!-- 背景装饰元素 -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-100/20 dark:bg-brand-900/10 rounded-none blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-50/20 dark:bg-brand-900/5 rounded-none blur-3xl"></div>
+  </div>
+
+  <div class="container-custom relative z-10">
+    <!-- 标题区域：对齐 design-system 风格 -->
+    <div class="mb-12 md:mb-16 border-l-2 border-brand-600 pl-4 max-w-2xl">
+      <h2 class="h2 mb-2">AI 大模型服务</h2>
+      <p class="text-neutral-500 dark:text-neutral-400 max-w-2xl">
+        支持全系列大语言模型与上百个垂直模型，覆盖广泛行业场景，为您的业务提供智能化解决方案
+      </p>
+    </div>
+
+    <!-- 模型卡片网格：Bento Grid 风格 -->
+    <div class="bento-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-min mb-12 sm:mb-16 lg:mb-20">
+      {models.map((model, index) => (
+        <div class="bento-card group relative flex flex-col h-full overflow-hidden transition-all duration-300 hover:border-brand-500/50 hover:shadow-sm"
+             style={`animation-delay: ${index * 100}ms`}>
+
+          <!-- 装饰性角标 -->
+          <div class="corner-marker top-0 right-0 border-t border-r opacity-50 group-hover:opacity-100 group-hover:border-brand-500 transition-colors"></div>
+          <div class="corner-marker bottom-0 left-0 border-b border-l opacity-50 group-hover:opacity-100 group-hover:border-brand-500 transition-colors"></div>
+
+          <div class="p-5 flex flex-col h-full relative z-10">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <span class="flex items-center justify-center w-10 h-10 rounded-sm bg-brand-50 dark:bg-brand-900/20 border border-brand-100/80 dark:border-brand-900/40 text-brand-600 dark:text-brand-400 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300">
+                  <div set:html={model.icon} class="w-5 h-5"></div>
+                </span>
+                <h3 class="font-bold text-neutral-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300 type-heading mb-0">
+                  {model.name}
+                </h3>
+              </div>
+              {model.tag && (
+                <span class={`px-2 py-0.5 text-xs font-mono border ${
+                  model.tagColor === 'blue'
+                    ? 'border-brand-200 text-brand-700 bg-brand-50 dark:border-brand-800 dark:text-brand-300 dark:bg-brand-900/20'
+                    : model.tagColor === 'green'
+                    ? 'border-emerald-200 text-emerald-700 bg-emerald-50 dark:border-emerald-800 dark:text-emerald-300 dark:bg-emerald-900/20'
+                    : 'border-orange-200 text-orange-700 bg-orange-50 dark:border-orange-800 dark:text-orange-300 dark:bg-orange-900/20'
+                }`}>
+                  {model.tag}
+                </span>
+              )}
+            </div>
+
+            <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 flex-grow line-clamp-3 type-body">
+              {model.description}
+            </p>
+
+            <div class="mt-auto pt-4 border-t border-border group-hover:border-brand-200 dark:border-border dark:group-hover:border-brand-900/40 transition-colors duration-300">
+              <a href="#" class="inline-flex items-center text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-300">
+                了解更多
+                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 底部按钮区域 -->
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+      <button class="btn btn-primary group relative inline-flex items-center justify-center px-8 py-3.5 min-w-[180px]">
+        <span class="relative flex items-center">
+          查看更多模型
+          <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
+      </button>
+
+      <button class="btn btn-secondary group relative inline-flex items-center justify-center px-8 py-3.5 min-w-[180px]">
+        <span class="relative flex items-center">
+          更多AI能力
+          <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>

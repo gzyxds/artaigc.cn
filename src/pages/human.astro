@@ -3,17 +3,15 @@
 import Layout from '../layouts/Layout.astro';
 
 // 基础组件
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
 
 // 页面特定组件
-import HumanHero from '../components/HumanHero.astro';
-
-// 功能组件
-import Contact from '../components/Contact.astro';
-import Calltoaction from '../components/Calltoaction.astro';
-import ProductCards from '../components/ProductCards.astro';
-import Structure from '../components/Hero/Structure.astro';
+import HumanHero from '../components/home/HumanHero.astro';
+import Contact from '../components/sections/Contact.astro';
+import Calltoaction from '../components/sections/Calltoaction.astro';
+import ProductCards from '../components/product/ProductCards.astro';
+import Structure from '../components/home/Structure.astro';
 
 const features = [
   {
@@ -132,11 +130,11 @@ const scenarios = [
   <HumanHero />
 
   <!-- 优势区块 - 极简 Bento 风格 -->
-  <section class="py-16 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
+  <section class="py-16 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 typography-system">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 font-display">数字人应用优势</h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">
+        <h2 class="type-display font-bold text-gray-900 dark:text-white mb-4">数字人应用优势</h2>
+        <p class="type-body text-gray-600 dark:text-gray-400">
           // 以下是数字人在不同场景下的应用优势
         </p>
       </div>
@@ -150,9 +148,9 @@ const scenarios = [
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">{item.title}</h3>
+              <h3 class="type-heading font-bold text-gray-900 dark:text-white">{item.title}</h3>
             </div>
-            <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm">
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed type-body text-sm">
               {item.desc}
             </p>
           </div>
@@ -162,7 +160,7 @@ const scenarios = [
   </section>
 
   <!-- 详细功能展示 - Linear 风格 -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 typography-system">
     <div class="container-custom space-y-24">
 
       <!-- 数字分身 -->
@@ -170,16 +168,16 @@ const scenarios = [
         <div class="space-y-6">
           <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
             <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
-            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Digital Avatar</span>
+            <span class="type-small font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Digital Avatar</span>
           </div>
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">数字分身</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+          <h2 class="type-display font-bold text-gray-900 dark:text-white">数字分身</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed type-body border-l-2 border-gray-200 dark:border-gray-700 pl-4">
             轻松创建你的AI虚拟数字人！只需上传一段视频，即可高品质、批量克隆你的形象！
           </p>
 
           <div class="grid grid-cols-2 gap-4">
             {["高度还原 100%", "情感丰富 100%", "语速自然"].map(tag => (
-              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+              <div class="flex items-center type-small text-gray-600 dark:text-gray-400">
                 <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
                 {tag}
               </div>
@@ -198,7 +196,7 @@ const scenarios = [
         </div>
         <div class="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
           <img src="/assets/img/human1.png" alt="AI数字人" class="w-full h-auto" />
-          <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">01_AVATAR</div>
+          <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 type-small">01_AVATAR</div>
         </div>
       </div>
 
@@ -206,21 +204,21 @@ const scenarios = [
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="order-2 md:order-1 relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
           <img src="/assets/img/human2.png" alt="声音克隆演示" class="w-full h-auto" />
-          <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">02_VOICE</div>
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 type-small">02_VOICE</div>
         </div>
         <div class="order-1 md:order-2 space-y-6">
           <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
             <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
-            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Voice Cloning</span>
+            <span class="type-small font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Voice Cloning</span>
           </div>
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">声音克隆</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+          <h2 class="type-display font-bold text-gray-900 dark:text-white">声音克隆</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed type-body border-l-2 border-gray-200 dark:border-gray-700 pl-4">
             有声播报、个性体验，仅需1句话，快速克隆你的音色，配合文案即可生成专属口播语音！
           </p>
 
           <div class="grid grid-cols-2 gap-4">
             {["高度还原 100%", "音色克隆 100%", "低成本 100%"].map(tag => (
-              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+              <div class="flex items-center type-small text-gray-600 dark:text-gray-400">
                 <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
                 {tag}
               </div>
@@ -239,15 +237,15 @@ const scenarios = [
         <div class="space-y-6">
           <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
             <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
-            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">TTS Synthesis</span>
+            <span class="type-small font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">TTS Synthesis</span>
           </div>
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">声音合成</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+          <h2 class="type-display font-bold text-gray-900 dark:text-white">声音合成</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed type-body border-l-2 border-gray-200 dark:border-gray-700 pl-4">
             视频配音、IP专属声音，高度还原真人音色，不仅情感丰富，而且可以自由调整语速，配合数字分身创建出您的专属数字人！
           </p>
            <div class="grid grid-cols-2 gap-4">
             {["高度还原 100%", "情感丰富 100%", "多语言支持"].map(tag => (
-              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+              <div class="flex items-center type-small text-gray-600 dark:text-gray-400">
                 <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
                 {tag}
               </div>
@@ -260,7 +258,7 @@ const scenarios = [
         </div>
         <div class="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
           <img src="/assets/img/human4.png" alt="声音合成演示" class="w-full h-auto" />
-          <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">03_SYNTHESIS</div>
+          <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 type-small">03_SYNTHESIS</div>
         </div>
       </div>
 
@@ -268,20 +266,20 @@ const scenarios = [
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="order-2 md:order-1 relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-2 rounded-none">
           <img src="/assets/img/human3.png" alt="租户管理演示" class="w-full h-auto" />
-           <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-mono">04_TENANT</div>
+           <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 type-small">04_TENANT</div>
         </div>
         <div class="order-1 md:order-2 space-y-6">
           <div class="inline-flex items-center space-x-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 px-3 py-1">
             <span class="w-1.5 h-1.5 bg-blue-600 rounded-none"></span>
-            <span class="text-xs font-mono font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Tenant System</span>
+            <span class="type-small font-medium tracking-wider text-blue-600 dark:text-blue-400 uppercase">Tenant System</span>
           </div>
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">租户管理</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+          <h2 class="type-display font-bold text-gray-900 dark:text-white">租户管理</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed type-body border-l-2 border-gray-200 dark:border-gray-700 pl-4">
             平台可无限多开分站点，输入租户相关信息和域名，即可创建新分站与管理员账号。
           </p>
            <div class="grid grid-cols-2 gap-4">
             {["无限分站", "独立域名", "灵活管理"].map(tag => (
-              <div class="flex items-center text-sm font-mono text-gray-600 dark:text-gray-400">
+              <div class="flex items-center type-small text-gray-600 dark:text-gray-400">
                 <div class="w-1.5 h-1.5 bg-blue-500 rounded-none mr-2"></div>
                 {tag}
               </div>
@@ -298,7 +296,7 @@ const scenarios = [
   </section>
 
   <!-- 行动号召卡片 - Bento 风格 -->
-  <section class="py-16 bg-white dark:bg-gray-950">
+  <section class="py-16 bg-white dark:bg-gray-950 typography-system">
     <div class="container-custom">
       <div class="relative bg-blue-600 dark:bg-blue-900 overflow-hidden border border-blue-500 dark:border-blue-800">
         <!-- 装饰背景 -->
@@ -308,10 +306,10 @@ const scenarios = [
         </div>
 
         <div class="relative z-10 p-10 md:p-16 text-center max-w-4xl mx-auto">
-          <h3 class="text-3xl font-bold text-white mb-6 font-display">
+          <h3 class="type-display font-bold text-white mb-6">
             准备好开启您的AI数字人之旅了吗？
           </h3>
-          <p class="text-lg text-blue-100 mb-10 leading-relaxed font-mono">
+          <p class="type-body text-blue-100 mb-10 leading-relaxed">
             // 已有数百家企业选择艺创AI数字人解决方案，我们专业的团队随时准备为您提供支持。
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-6">
@@ -328,10 +326,10 @@ const scenarios = [
   </section>
 
   <!-- 功能特色 Grid -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 typography-system">
     <div class="container-custom">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 font-display">更多功能特色</h2>
+        <h2 class="type-display font-bold text-gray-900 dark:text-white mb-4">更多功能特色</h2>
         <div class="w-20 h-1 bg-blue-600 mx-auto rounded-none"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -342,10 +340,10 @@ const scenarios = [
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
                 </svg>
             </div>
-            <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+            <h3 class="mb-2 type-heading font-bold text-gray-900 dark:text-white">
                 {item.title}
             </h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-mono">
+            <p class="type-small text-gray-600 dark:text-gray-400 leading-relaxed">
                 {item.desc}
             </p>
           </div>
@@ -355,16 +353,16 @@ const scenarios = [
   </section>
 
   <!-- 幻灯 - 直播解决方案 -->
-  <section class="py-20 bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
+  <section class="py-20 bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 typography-system">
     <div class="container-custom">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="order-2 md:order-1 space-y-8">
-          <div class="inline-block border border-blue-600 text-blue-600 px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider">Live Solution</div>
-          <h3 class="text-4xl font-bold text-gray-900 dark:text-white font-display leading-tight">
+          <div class="inline-block border border-blue-600 text-blue-600 px-3 py-1 type-small font-bold uppercase tracking-wider">Live Solution</div>
+          <h3 class="type-display font-bold text-gray-900 dark:text-white leading-tight">
             数字人直播<br/>
             <span class="text-blue-600">虚拟主播</span> AI解决方案
           </h3>
-          <p class="text-lg text-gray-600 dark:text-gray-400 font-mono border-l-2 border-gray-200 dark:border-gray-800 pl-4">
+          <p class="type-body text-gray-600 dark:text-gray-400 border-l-2 border-gray-200 dark:border-gray-800 pl-4">
             提供快速搭建的数字人直播虚拟主播AI解决方案，支持多端使用，满足企业多样化需求。
           </p>
           <div class="flex flex-wrap gap-4">
@@ -384,11 +382,11 @@ const scenarios = [
   </section>
 
   <!-- 应用场景 -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 typography-system">
     <div class="container-custom">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 font-display">应用场景</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-400 font-mono">// 多场景数字人解决方案，助力各行业数字化转型</p>
+        <h2 class="type-display font-bold text-gray-900 dark:text-white mb-4">应用场景</h2>
+        <p class="type-body text-gray-600 dark:text-gray-400">// 多场景数字人解决方案，助力各行业数字化转型</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {scenarios.map(item => (
@@ -398,10 +396,10 @@ const scenarios = [
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
                 </svg>
             </div>
-            <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+            <h3 class="mb-2 type-heading font-bold text-gray-900 dark:text-white">
                 {item.title}
             </h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-mono">
+            <p class="type-small text-gray-600 dark:text-gray-400 leading-relaxed">
                 {item.desc}
             </p>
           </div>

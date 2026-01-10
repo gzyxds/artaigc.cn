@@ -1,0 +1,284 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="设计系统 v2.0 - 艺创AI">
+  <div class="min-h-screen bg-background pb-32">
+    <!-- Hero Section -->
+    <header class="border-b border-border bg-surface/50 backdrop-blur-sm sticky top-0 z-50">
+      <div class="container-custom py-6 flex items-center justify-between">
+        <div class="flex items-baseline gap-4">
+          <h1 class="h2 mb-0">设计系统 <span class="text-neutral-400 font-normal text-lg">v2.0</span></h1>
+          <p class="hidden md:block text-xs text-neutral-500 font-mono border-l border-border pl-4">企业级极简 • 线性美学 • Bento布局</p>
+        </div>
+        <div class="hidden md:flex gap-6 text-sm font-medium text-neutral-600">
+          <a href="#colors" class="hover:text-brand-600 transition-colors">色彩</a>
+          <a href="#typography" class="hover:text-brand-600 transition-colors">排版</a>
+          <a href="#components" class="hover:text-brand-600 transition-colors">组件</a>
+          <a href="#states" class="hover:text-brand-600 transition-colors">状态</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container-custom pt-16 space-y-32">
+
+      <!-- 1. Colors -->
+      <section id="colors" class="scroll-mt-32">
+        <div class="mb-10 border-l-2 border-brand-600 pl-4">
+          <h2 class="h2 mb-2">色彩系统 (Color System)</h2>
+          <p class="text-neutral-500 max-w-2xl">基于 RGB 变量定义的语义化色板，支持 Alpha 透明度通道调整。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+           <!-- Brand -->
+           <div class="space-y-3">
+             <div class="h-24 bg-brand-600 w-full rounded-none border border-black/5 flex items-end p-3">
+                <span class="text-white text-xs font-mono">brand-600 (Primary)</span>
+             </div>
+             <div class="grid grid-cols-5 gap-2 h-12">
+               <div class="bg-brand-50"></div>
+               <div class="bg-brand-100"></div>
+               <div class="bg-brand-500"></div>
+               <div class="bg-brand-700"></div>
+               <div class="bg-brand-900"></div>
+             </div>
+           </div>
+
+           <!-- Neutral -->
+           <div class="space-y-3">
+             <div class="h-24 bg-neutral-900 w-full rounded-none border border-black/5 flex items-end p-3">
+                <span class="text-white text-xs font-mono">neutral-900</span>
+             </div>
+             <div class="grid grid-cols-5 gap-2 h-12">
+               <div class="bg-neutral-50 border border-border"></div>
+               <div class="bg-neutral-200"></div>
+               <div class="bg-neutral-400"></div>
+               <div class="bg-neutral-600"></div>
+               <div class="bg-neutral-800"></div>
+             </div>
+           </div>
+
+           <!-- Semantic -->
+           <div class="col-span-1 md:col-span-2 grid grid-cols-3 gap-4">
+              <div class="bg-background border border-border p-4 h-full flex flex-col justify-end">
+                <span class="text-xs font-mono text-neutral-500">bg-background</span>
+              </div>
+              <div class="bg-surface border border-border p-4 h-full flex flex-col justify-end">
+                <span class="text-xs font-mono text-neutral-500">bg-surface</span>
+              </div>
+              <div class="bg-transparent border border-border p-4 h-full flex flex-col justify-end relative">
+                <div class="absolute inset-0 bg-grid-pattern opacity-50"></div>
+                <span class="text-xs font-mono text-neutral-500 relative z-10">border-default</span>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      <!-- 2. Typography -->
+      <section id="typography" class="scroll-mt-32">
+        <div class="mb-10 border-l-2 border-brand-600 pl-4">
+          <h2 class="h2 mb-2">排版系统 (Typography)</h2>
+          <p class="text-neutral-500 max-w-2xl">使用 <code>clamp()</code> 函数实现的流体排版，确保在全端设备的无缝缩放体验。</p>
+        </div>
+
+        <div class="border border-border bg-surface p-8 md:p-12 space-y-12">
+          <div class="grid md:grid-cols-4 gap-8 items-baseline border-b border-border pb-8">
+            <span class="text-xs font-mono text-neutral-400">Display</span>
+            <div class="md:col-span-3">
+              <span class="text-[length:var(--fs-display)] font-bold leading-tight block">
+                企业级 AI 解决方案
+              </span>
+              <span class="text-xs font-mono text-neutral-400 mt-2 block">clamp(32px, 2.5vw + 1rem, 48px)</span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-8 items-baseline border-b border-border pb-8">
+            <span class="text-xs font-mono text-neutral-400">Heading 1</span>
+            <div class="md:col-span-3">
+              <h1 class="h1 mb-0">敏捷的棕色狐狸跳过了栅栏</h1>
+              <span class="text-xs font-mono text-neutral-400 mt-2 block">clamp(28px, 2vw + 0.5rem, 36px)</span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-8 items-baseline border-b border-border pb-8">
+            <span class="text-xs font-mono text-neutral-400">Heading 2</span>
+            <div class="md:col-span-3">
+              <h2 class="h2 mb-0 text-brand-700 dark:text-brand-400">模块标题示例</h2>
+              <span class="text-xs font-mono text-neutral-400 mt-2 block">clamp(24px, 1.5vw + 0.5rem, 30px)</span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-8 items-baseline">
+            <span class="text-xs font-mono text-neutral-400">Body</span>
+            <div class="md:col-span-3">
+              <p class="mb-0 max-w-prose">
+                设计系统通过经过校准的字号层级优先考虑内容的可读性。
+                西文采用 Inter 字体，中文采用系统默认无衬线字体（苹方/微软雅黑），以确保最佳的渲染性能。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Components & States -->
+      <section id="components" class="scroll-mt-32">
+        <div class="mb-10 border-l-2 border-brand-600 pl-4">
+          <h2 class="h2 mb-2">组件与状态 (Components & States)</h2>
+          <p class="text-neutral-500 max-w-2xl">具有明确状态定义的交互元素，提供可预期的用户体验。</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Buttons -->
+          <div class="space-y-8">
+             <h3 class="h4 border-b border-border pb-4">按钮状态 (Button States)</h3>
+             <div class="flex flex-wrap gap-8 p-8 border border-border bg-surface">
+                <div class="space-y-4 flex flex-col items-start">
+                   <div class="text-xs font-mono text-neutral-400 mb-1">Primary</div>
+                   <button class="btn btn-primary">默认状态</button>
+                   <button class="btn btn-primary opacity-90">悬停状态</button>
+                   <button class="btn btn-primary" disabled>禁用状态</button>
+                </div>
+                <div class="space-y-4 flex flex-col items-start">
+                   <div class="text-xs font-mono text-neutral-400 mb-1">Secondary</div>
+                   <button class="btn btn-secondary">默认状态</button>
+                   <button class="btn btn-secondary bg-neutral-100 dark:bg-neutral-800">悬停状态</button>
+                   <button class="btn btn-secondary opacity-50 cursor-not-allowed">禁用状态</button>
+                </div>
+             </div>
+          </div>
+
+          <!-- Locked State (New) -->
+          <div class="space-y-8" id="states">
+             <h3 class="h4 border-b border-border pb-4">锁定 / 高级功能状态</h3>
+             <!-- Locked Card Example -->
+             <div class="bento-card p-0 h-64 relative group overflow-hidden">
+                <!-- Content behind blur -->
+                <div class="p-6 opacity-40 select-none grayscale transition-all duration-500 group-hover:scale-[1.02]">
+                   <div class="h-8 w-8 bg-neutral-200 dark:bg-neutral-800 mb-4 rounded-sm"></div>
+                   <h3 class="h3 text-neutral-800 dark:text-neutral-200">高级数据分析</h3>
+                   <div class="space-y-2 mt-4">
+                      <div class="h-2 w-full bg-neutral-100 dark:bg-neutral-800"></div>
+                      <div class="h-2 w-3/4 bg-neutral-100 dark:bg-neutral-800"></div>
+                      <div class="h-2 w-5/6 bg-neutral-100 dark:bg-neutral-800"></div>
+                   </div>
+                   <!-- Mock Chart -->
+                   <div class="mt-6 h-32 w-full bg-neutral-50 dark:bg-neutral-900 border border-dashed border-neutral-200 dark:border-neutral-800"></div>
+                </div>
+
+                <!-- Locked Overlay -->
+                <div class="absolute inset-0 bg-surface/30 backdrop-blur-[2px] flex flex-col items-center justify-center z-10 border border-border/50">
+                   <div class="w-12 h-12 bg-background border border-border rounded-full flex items-center justify-center mb-4 shadow-sm">
+                      <span class="material-icons text-neutral-400">lock</span>
+                   </div>
+                   <p class="text-sm font-medium text-neutral-600 dark:text-neutral-300 mb-4">专业版功能</p>
+                   <button class="btn btn-primary btn-sm">
+                      升级解锁
+                   </button>
+                </div>
+             </div>
+             <p class="text-xs text-neutral-500 mt-2 pl-2 border-l-2 border-neutral-300">
+               <strong>视觉规范:</strong> <code>backdrop-blur-[2px]</code> + <code>opacity-40</code> (内容) + <code>grayscale</code> (可选).
+             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Bento Grid Layout -->
+      <section class="scroll-mt-32 pb-32">
+        <div class="mb-10 border-l-2 border-brand-600 pl-4">
+          <h2 class="h2 mb-2">Bento Grid 仪表盘</h2>
+          <p class="text-neutral-500 max-w-2xl">展示网格系统实际应用的真实案例。</p>
+        </div>
+
+        <div class="bento-grid grid-cols-1 md:grid-cols-4 auto-rows-[180px]">
+
+          <!-- Stat Card 1 -->
+          <div class="bento-card p-6 flex flex-col justify-between">
+             <div class="flex justify-between items-start">
+               <span class="text-neutral-500 text-sm font-medium">总收入</span>
+               <div class="p-1 bg-brand-50 text-brand-600 rounded-sm">
+                 <span class="material-icons text-lg block">trending_up</span>
+               </div>
+             </div>
+             <div>
+               <div class="text-3xl font-bold text-neutral-900 dark:text-white">¥24,500</div>
+               <div class="text-xs text-brand-600 mt-1 flex items-center font-medium">
+                 <span class="material-icons text-[14px] mr-1">arrow_upward</span>
+                 较上月增长 12%
+               </div>
+             </div>
+          </div>
+
+          <!-- Stat Card 2 -->
+          <div class="bento-card p-6 flex flex-col justify-between">
+             <div class="flex justify-between items-start">
+               <span class="text-neutral-500 text-sm font-medium">活跃用户</span>
+               <div class="p-1 bg-brand-50 text-brand-600 rounded-sm">
+                 <span class="material-icons text-lg block">group</span>
+               </div>
+             </div>
+             <div>
+               <div class="text-3xl font-bold text-neutral-900 dark:text-white">1,240</div>
+               <div class="text-xs text-neutral-500 mt-1 flex items-center">
+                 <span class="material-icons text-[14px] mr-1 text-neutral-400">add</span>
+                 今日新增 45
+               </div>
+             </div>
+          </div>
+
+          <!-- Large Chart Card -->
+          <div class="md:col-span-2 md:row-span-2 bento-card p-0 relative group overflow-hidden">
+            <div class="corner-marker corner-tr"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-50/50 to-transparent dark:from-brand-900/10 pointer-events-none"></div>
+
+            <div class="p-8 relative z-10 h-full flex flex-col">
+              <div class="flex justify-between items-start mb-6">
+                 <div>
+                    <h3 class="h3 mb-1">AI 模型性能监控</h3>
+                    <p class="text-neutral-500 text-sm">实时推理延迟与准确率指标。</p>
+                 </div>
+                 <button class="btn btn-ghost btn-sm">
+                    <span class="material-icons text-sm">more_horiz</span>
+                 </button>
+              </div>
+
+              <div class="flex-1 w-full bg-background border border-border shadow-sm rounded-sm p-4 relative overflow-hidden flex items-end gap-1">
+                 <!-- Mock Graph Bars -->
+                 <div class="w-full bg-brand-100 dark:bg-brand-900/30 h-[40%] rounded-sm hover:bg-brand-200 transition-colors"></div>
+                 <div class="w-full bg-brand-200 dark:bg-brand-800/30 h-[70%] rounded-sm hover:bg-brand-300 transition-colors"></div>
+                 <div class="w-full bg-brand-300 dark:bg-brand-700/30 h-[50%] rounded-sm hover:bg-brand-400 transition-colors"></div>
+                 <div class="w-full bg-brand-400 dark:bg-brand-600/30 h-[85%] rounded-sm hover:bg-brand-500 transition-colors"></div>
+                 <div class="w-full bg-brand-500 dark:bg-brand-500/30 h-[60%] rounded-sm hover:bg-brand-600 transition-colors"></div>
+                 <div class="w-full bg-brand-600 dark:bg-brand-400/30 h-[90%] rounded-sm hover:bg-brand-700 transition-colors"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action 1 -->
+          <div class="bento-card-interactive p-6 flex items-center gap-4 group">
+            <div class="w-12 h-12 rounded-none bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300">
+               <span class="material-icons">add</span>
+            </div>
+            <div>
+               <div class="font-medium text-sm text-neutral-900 dark:text-neutral-100">新建项目</div>
+               <div class="text-xs text-neutral-500 mt-0.5">创建一个新工作区</div>
+            </div>
+          </div>
+
+          <!-- Quick Action 2 -->
+          <div class="bento-card-interactive p-6 flex items-center gap-4 group">
+             <div class="w-12 h-12 rounded-none bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300">
+                <span class="material-icons">upload_file</span>
+             </div>
+             <div>
+                <div class="font-medium text-sm text-neutral-900 dark:text-neutral-100">上传数据</div>
+                <div class="text-xs text-neutral-500 mt-0.5">支持 CSV, JSON 或 PDF</div>
+             </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+</Layout>

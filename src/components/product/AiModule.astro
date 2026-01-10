@@ -1,0 +1,220 @@
+---
+/**
+ * AiModule组件 - AI聊天绘画系统展示区域
+ * 采用简洁的模拟面设计风格，参考HumanHero.astro的设计理念
+ * 特点：视觉统一性、层次清晰、交互友好、响应式设计、暗黑模式兼容
+ *
+ * 功能包括：
+ * 1. 展示AI聊天绘画系统的主要标题和简介
+ * 2. 提供产品特性标签展示
+ * 3. 提供行动按钮（联系客服、查看演示）
+ * 4. 展示产品功能卡片
+ * 5. 响应式设计，适配不同屏幕尺寸
+ * 6. 支持暗黑模式
+ * 7. 集成二维码弹窗功能
+ */
+
+interface Feature {
+  name: string;
+}
+
+interface Card {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const features: Feature[] = [
+  { name: '智能问答' },
+  { name: '全能助手' },
+  { name: '智能绘画' },
+  { name: '模型创作' },
+  { name: 'PHP&Java' }
+];
+
+const topTags: Feature[] = [
+  { name: 'AI数字人' },
+  { name: '企业知识库' },
+  { name: '智能绘画' },
+  { name: '论文助手' }
+];
+
+const cards: Card[] = [
+  {
+    icon: 'code',
+    title: '双语言版本',
+    description: 'PHP/Java双版本支持'
+  },
+  {
+    title: '私有部署',
+    description: '安全可控的私有化部署',
+    icon: 'cloud_download'
+  },
+  {
+    title: '专业团队',
+    description: '一对一技术支持',
+    icon: 'groups'
+  },
+  {
+    title: '开源方案',
+    description: '灵活定制，售后无忧',
+    icon: 'star'
+  }
+];
+---
+
+<section class="relative py-20 md:py-28 bg-white dark:bg-gray-900 overflow-hidden">
+  <!-- AI聊天绘画背景装饰 -->
+  <div class="absolute inset-0 pointer-events-none">
+    <!-- 基础光晕效果 -->
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-none blur-[120px] opacity-40"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-600/5 rounded-none blur-[120px] opacity-40"></div>
+
+    <!-- 几何线条网格装饰 -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05]"></div>
+
+    <!-- 聊天气泡装饰 - 更加几何化 -->
+    <div class="absolute top-16 right-24 opacity-10 hidden md:block">
+      <div class="relative">
+        <div class="w-24 h-16 border border-blue-500 bg-blue-500/5 rounded-none relative">
+          <div class="absolute inset-2 flex items-center justify-center gap-1">
+            <div class="w-1.5 h-1.5 bg-blue-500 animate-pulse"></div>
+            <div class="w-1.5 h-1.5 bg-blue-500 animate-pulse" style="animation-delay: 0.2s"></div>
+            <div class="w-1.5 h-1.5 bg-blue-500 animate-pulse" style="animation-delay: 0.4s"></div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -right-2 w-16 h-10 border border-blue-400 bg-blue-400/5 rounded-none"></div>
+      </div>
+    </div>
+
+    <!-- 创意火花效果 - 更加精准 -->
+    <div class="absolute top-1/3 left-1/4 opacity-20 hidden lg:block">
+      <div class="relative w-12 h-12">
+        <div class="absolute top-0 left-1/2 w-px h-3 bg-blue-500 -translate-x-1/2"></div>
+        <div class="absolute top-1/2 right-0 w-3 h-px bg-blue-500 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-1/2 w-px h-3 bg-blue-500 -translate-x-1/2"></div>
+        <div class="absolute top-1/2 left-0 w-3 h-px bg-blue-500 -translate-y-1/2"></div>
+        <div class="absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-blue-500 -translate-x-1/2 -translate-y-1/2"></div>
+      </div>
+    </div>
+
+    <!-- AI创作文字装饰 - 等宽字体 -->
+    <div class="absolute bottom-24 right-24 text-blue-500/20 text-[10px] tracking-[0.3em] uppercase leading-relaxed text-right hidden lg:block">
+      AI_PAINTING<br/>SMART_CREATION<br/>CHAT_DIALOGUE<br/>MODEL_GEN
+    </div>
+
+    <!-- 装饰圆点 - 更加克制 -->
+    <div class="absolute top-12 left-12 w-1 h-1 bg-blue-500 opacity-40"></div>
+    <div class="absolute top-16 left-8 w-1 h-1 bg-blue-400 opacity-20"></div>
+    <div class="absolute bottom-12 right-12 w-1 h-1 bg-blue-500 opacity-30"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- 左侧内容区 -->
+      <div class="text-center lg:text-left space-y-10">
+        <!-- 主标题 -->
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-3">
+            <span class="w-8 h-px bg-blue-500"></span>
+            <span class="text-blue-600 dark:text-blue-400 font-bold tracking-[0.2em] uppercase type-small">Enterprise AI Solution</span>
+          </div>
+          <h1 class="font-bold tracking-tight leading-tight type-display">
+            <span class="text-blue-600 block">艺创AI</span>
+            <span class="text-gray-900 dark:text-white block opacity-90">
+              聊天绘画系统
+            </span>
+          </h1>
+        </div>
+
+        <!-- 描述文本 -->
+        <p class="text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0 type-subtitle">
+          AI智能对话、AI创作模型、AI绘画、分销推广、会员套餐等丰富的营销功能，为您打造闭环AI商业生态。
+        </p>
+
+        <!-- 特性标签 - 统一蓝色调 -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+          {features.map((feature) => (
+            <span class="px-4 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-800 rounded-none font-bold uppercase tracking-wider hover:border-blue-500 transition-colors type-small">
+              {feature.name}
+            </span>
+          ))}
+        </div>
+
+        <!-- 按钮组 -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+          <a
+            href="javascript:void(0)"
+            onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal', { detail: { title: '联系客服', description: '扫描二维码添加客服微信', qrCodeUrl: '/assets/qrcode.png' } }))"
+            class="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold tracking-widest uppercase rounded-none border border-blue-600 transition-all duration-300 flex items-center justify-center group/btn type-small"
+            aria-label="联系客服"
+          >
+            <span>CONTACT US</span>
+            <svg class="w-5 h-5 ml-3 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+          </a>
+
+          <a
+            href="/demo"
+            class="px-10 py-4 bg-transparent text-gray-900 dark:text-white font-bold tracking-widest uppercase rounded-none border border-gray-200 dark:border-gray-800 hover:border-blue-500 transition-all duration-300 flex items-center justify-center group/btn relative type-small"
+            aria-label="查看演示"
+          >
+            <div class="corner-marker corner-marker-tr opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+            <div class="corner-marker corner-marker-bl opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+            <span>LIVE DEMO</span>
+            <svg class="w-5 h-5 ml-3 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 右侧展示区 - 简洁模拟面设计 -->
+      <div class="relative mt-8 lg:mt-0">
+        <div class="bento-card p-6 sm:p-8 lg:p-10 relative overflow-hidden group">
+          <!-- 装饰角标 -->
+          <div class="corner-marker corner-marker-tr opacity-20 group-hover:opacity-100 transition-opacity"></div>
+          <div class="corner-marker corner-marker-bl opacity-20 group-hover:opacity-100 transition-opacity"></div>
+
+          <!-- 顶部标签区 -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            {topTags.map((tag) => (
+              <span class="px-3 py-1 font-bold uppercase tracking-widest bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-800 rounded-none type-small">
+                {tag.name}
+              </span>
+            ))}
+          </div>
+
+          <!-- 功能卡片网格 -->
+          <div class="grid grid-cols-2 gap-4">
+            {cards.map((card) => (
+              <div class="bento-card bento-card-hover p-4 sm:p-6 flex flex-col group/item relative overflow-hidden">
+                <div class="corner-marker corner-marker-tr opacity-0 group-hover/item:opacity-40 transition-opacity"></div>
+                <!-- 图标区域 -->
+                <div class="w-10 h-10 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-none flex items-center justify-center mb-4 group-hover/item:border-blue-500 transition-colors">
+                  <i class="material-icons text-gray-400 group-hover/item:text-blue-500 text-xl transition-colors">
+                    {card.icon}
+                  </i>
+                </div>
+                <!-- 内容区域 -->
+                <div class="space-y-2">
+                  <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-tight type-small">{card.title}</h4>
+                  <p class="text-gray-500 dark:text-gray-400 leading-relaxed type-small">{card.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部分割线 -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
+    </div>
+  </div>
+</section>

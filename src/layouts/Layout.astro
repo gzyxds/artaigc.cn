@@ -14,10 +14,10 @@
  import '../styles/global.css';
 import '../styles/transitions.css';
 import { ViewTransitions } from 'astro:transitions';
-import FloatingButtons from '../components/FloatingButtons.astro';
-import QRModal from '../components/QRModal.astro';
-import MobileBottomConsult from '../components/MobileBottomConsult.astro';
-import BackgroundGrid from '../components/BackgroundGrid.astro';
+import FloatingButtons from '../components/common/FloatingButtons.astro';
+import QRModal from '../components/common/QRModal.astro';
+import MobileBottomConsult from '../components/common/MobileBottomConsult.astro';
+import BackgroundGrid from '../components/common/BackgroundGrid.astro';
 
 /**
  * 定义组件属性接口
@@ -87,7 +87,7 @@ const {
     <ViewTransitions />
   </head>
   <!-- 使用Tailwind设置基础样式和暗黑模式 -->
-  <body class="antialiased bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors duration-300 scroll-animation relative">
+  <body class="antialiased bg-background text-primary transition-colors duration-300 scroll-animation relative">
     <!-- 全局网格背景 -->
     <BackgroundGrid />
 

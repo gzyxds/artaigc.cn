@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import HeroSection from '../components/HeroSection.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import HeroSection from '../components/home/HeroSection.astro';
 
 // 定义AI提示词数据结构
 interface PromptCard {
@@ -1165,14 +1165,14 @@ const categories = [...new Set(promptCards.map(card => card.category))];
       <div class="container mx-auto px-4">
         <div class="flex flex-wrap justify-center gap-2 mb-4">
           <button
-            class="category-btn active px-6 py-2.5 rounded-none bg-blue-600 text-white font-mono text-xs font-bold tracking-widest uppercase border border-blue-600 transition-all duration-300"
+            class="category-btn active px-6 py-2.5 rounded-none bg-blue-600 text-white type-small font-bold tracking-widest uppercase border border-blue-600 transition-all duration-300"
             data-category="all"
           >
             ALL / 全部
           </button>
           {categories.map(category => (
             <button
-              class="category-btn px-6 py-2.5 rounded-none bg-transparent text-gray-600 dark:text-gray-400 font-mono text-xs font-bold tracking-widest uppercase border border-gray-200 dark:border-gray-800 hover:border-blue-500 hover:text-blue-500 transition-all duration-300"
+              class="category-btn px-6 py-2.5 rounded-none bg-transparent text-gray-600 dark:text-gray-400 type-small font-bold tracking-widest uppercase border border-gray-200 dark:border-gray-800 hover:border-blue-500 hover:text-blue-500 transition-all duration-300"
               data-category={category}
             >
               {category}
@@ -1197,9 +1197,9 @@ const categories = [...new Set(promptCards.map(card => card.category))];
                 <div class="p-5 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between bg-white dark:bg-gray-900/50">
                   <div class="flex items-center gap-3">
                     <span class="text-2xl filter grayscale group-hover:grayscale-0 transition-all duration-300">{card.icon}</span>
-                    <h3 class="text-base font-bold text-gray-900 dark:text-white truncate font-mono tracking-tight">{card.title}</h3>
+                    <h3 class="type-heading font-bold text-gray-900 dark:text-white truncate tracking-tight">{card.title}</h3>
                   </div>
-                  <span class="px-2 py-0.5 text-[10px] font-mono font-bold border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 rounded-none bg-blue-50/50 dark:bg-blue-900/20">
+                  <span class="px-2 py-0.5 type-small font-bold border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 rounded-none bg-blue-50/50 dark:bg-blue-900/20">
                     {card.difficulty.toUpperCase()}
                   </span>
                 </div>
@@ -1208,7 +1208,7 @@ const categories = [...new Set(promptCards.map(card => card.category))];
                 <div class="p-6 flex flex-col flex-grow">
                   <div class="flex-grow mb-6">
                     <div class="relative">
-                      <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-4 leading-relaxed font-sans italic">
+                      <p class="type-body text-gray-600 dark:text-gray-400 line-clamp-4 leading-relaxed italic">
                         "{card.prompt}"
                       </p>
                     </div>
@@ -1217,7 +1217,7 @@ const categories = [...new Set(promptCards.map(card => card.category))];
                   <!-- 标签区域 -->
                   <div class="flex flex-wrap gap-1.5 mb-6">
                     {card.tags.map(tag => (
-                      <span class="px-2 py-0.5 text-[10px] font-mono text-gray-500 dark:text-gray-500 border border-gray-100 dark:border-gray-800 rounded-none bg-gray-50 dark:bg-gray-800/50">
+                      <span class="px-2 py-0.5 type-small text-gray-500 dark:text-gray-500 border border-gray-100 dark:border-gray-800 rounded-none bg-gray-50 dark:bg-gray-800/50">
                         #{tag.toUpperCase()}
                       </span>
                     ))}
@@ -1225,7 +1225,7 @@ const categories = [...new Set(promptCards.map(card => card.category))];
 
                   <!-- 复制按钮 -->
                   <button
-                    class="copy-btn w-full mt-auto px-4 py-3 bg-white dark:bg-gray-950 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-800 rounded-none font-mono text-xs font-bold tracking-widest uppercase hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    class="copy-btn w-full mt-auto px-4 py-3 bg-white dark:bg-gray-950 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-800 rounded-none type-small font-bold tracking-widest uppercase hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                     data-prompt={card.prompt}
                   >
                     <svg class="w-4 h-4 transition-transform group-hover/btn:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1245,7 +1245,7 @@ const categories = [...new Set(promptCards.map(card => card.category))];
     <div class="mt-16 mb-24 text-center">
       <a
         href="/contact"
-        class="inline-flex items-center px-10 py-4 rounded-none bg-blue-600 text-white font-mono text-sm font-bold tracking-[0.2em] uppercase hover:bg-blue-700 transition-all duration-300 border border-blue-600 relative group overflow-hidden"
+        class="inline-flex items-center px-10 py-4 rounded-none bg-blue-600 text-white type-small font-bold tracking-[0.2em] uppercase hover:bg-blue-700 transition-all duration-300 border border-blue-600 relative group overflow-hidden"
       >
         <span class="relative z-10 flex items-center">
           <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

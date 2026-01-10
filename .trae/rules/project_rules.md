@@ -1,3 +1,6 @@
+---
+alwaysApply: false
+---
 # 艺创AI项目结构分析
 
 ## 项目概述
@@ -112,38 +115,62 @@
 1.  **使用Tailwind类** - 优先使用Tailwind提供的工具类
 2.  **暗黑模式支持** - 所有组件应支持暗黑模式切换
 3.  **响应式设计** - 确保在各种屏幕尺寸下正常显示
+4.  **字体规范** - 禁止使用远程字体，统一使用本地字体。字体栈顺序遵循：Inter -> System -> PingFang SC (苹方) -> Hiragino Sans GB (冬青黑体) -> Microsoft YaHei (微软雅黑)。严禁使用宋体等衬线字体。
+5.  **专业字体系统设计规范** - 基于宽屏设计风格，建立清晰的视觉层级和良好的阅读体验。
+    *   **字体族**: `Inter, system-ui, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif`
+    *   **响应式缩放**: 采用 `clamp()` 函数实现基于视口的平滑缩放，并针对超宽屏 (>1920px) 进行增强适配。
+    *   **层级定义**:
+        *   **Display (H2/Hero)**: `clamp(32px, 2.5vw + 1rem, 48px)` (超宽屏: 56px), Weight: 700, Line-height: 1.2
+        *   **Subtitle (Intro)**: `clamp(18px, 1.2vw + 0.8rem, 24px)` (超宽屏: 28px), Weight: 400, Line-height: 1.5
+        *   **Heading (H4/Card)**: `clamp(20px, 1.5vw + 0.5rem, 24px)` (超宽屏: 28px), Weight: 600, Line-height: 1.3
+        *   **Body (Content)**: `clamp(16px, 0.8vw + 0.5rem, 18px)` (超宽屏: 20px), Weight: 400, Line-height: 1.6
+        *   **Small (Tags/Meta)**: `clamp(13px, 0.5vw + 0.5rem, 14px)` (超宽屏: 16px), Weight: 400, Line-height: 1.5
+    *   **CSS变量命名**: 推荐使用 `--fs-display`, `--fs-subtitle`, `--fs-body` 等语义化变量管理字号。
 
-### Bento Grid / Linear 风格设计规范 (New)
+### Bento Grid / Linear 风格设计规范 (v2.0)
 
 项目全面采用 **Bento Grid (便当盒)** 和 **Linear (线性)** 设计风格，强调几何感、秩序感和技术专业性。
 
 #### 1. 核心原则
-*   **直角化 (Sharp Corners)**: 核心容器、卡片、按钮统一使用 `rounded-none` 或极小圆角 (`rounded-sm`)，严禁使用大圆角。
+*   **直角化 (Sharp Corners)**: 核心容器、卡片、按钮统一使用 `rounded-none` 或极小圆角 (`rounded-sm`, 2px)，严禁使用大圆角。
 *   **边框优先 (Border-First)**: 使用边框 (`border`) 代替阴影 (`shadow`) 来定义层级。
 *   **极简布局 (Minimalism)**: 减少装饰性背景，使用纯色背景 + 细边框，依靠排版和间距构建视觉流。
 *   **微交互 (Micro-Interactions)**: 动效需克制且精准，如 Hover 时边框变色、图标微移、文字颜色变化。
 
-#### 2. 通用样式类 (Utility Classes)
-在 `global.css` 中定义了以下实用类，开发时请优先使用：
+#### 2. 语义化色彩系统 (Semantic Colors)
+请优先使用以下语义化变量，而非硬编码颜色值（如 `bg-white`, `text-gray-900`），以确保暗黑模式完美适配。
 
-*   **容器类**:
-    *   `.bento-card`: 基础卡片样式（直角、边框、无阴影）。
-    *   `.bento-grid`: 标准网格布局容器。
-*   **装饰类**:
-    *   `.corner-marker`: 四角 L 形装饰，增强科技感。
-    *   `.border-glow`: 边框微光效果。
-*   **排版类**:
-    *   `.font-mono`: 标签、代码片段、技术参数使用等宽字体。
+*   **Background**: `bg-background` (Page base)
+*   **Surface**: `bg-surface` (Cards, Panels)
+*   **Border**: `border-border` (Default borders)
+*   **Brand**: `text-brand-600` / `bg-brand-600` (Primary actions)
 
-#### 3. 组件设计模式
-*   **卡片 (Cards)**:
-    *   Default: `border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 rounded-none`
-    *   Hover: `hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300`
-*   **按钮 (Buttons)**:
-    *   Primary: `bg-blue-600 text-white rounded-none hover:bg-blue-700`
-    *   Secondary: `border border-gray-300 text-gray-700 rounded-none hover:bg-gray-50`
-*   **标签 (Tags)**:
-    *   Style: `font-mono text-xs border rounded-none px-2 py-0.5`
+#### 3. 通用组件类 (Component Classes)
+在 `global.css` 中定义了核心组件类，开发时**必须**使用：
+
+*   **卡片**: `.bento-card`
+    *   自带 `bg-surface`, `border-border`, `rounded-sm` 以及 hover 效果。
+    *   交互式卡片使用 `.bento-card-interactive`。
+*   **网格容器**: `.bento-grid`
+    *   预设了 `grid` 和 `gap`。
+*   **按钮**:
+    *   `.btn` (基础类)
+    *   `.btn-primary` (实心品牌色)
+    *   `.btn-secondary` (描边)
+    *   `.btn-ghost` (无边框)
+*   **装饰**: `.corner-marker` (角落 L 形装饰)
+
+#### 4. 响应式布局规范
+*   **容器宽度**: `.container-custom`
+    *   最大宽度锁定为 **1920px** (`max-w-[1920px]`) 以适配超宽屏。
+    *   内边距 (`px-4 md:px-6 lg:px-8`) 已内置。
+
+#### 5. 排版规范
+使用 CSS 变量或 Tailwind 工具类：
+*   **Display**: `text-[length:var(--fs-display)]` (Hero Title)
+*   **H1**: `.h1` or `text-[length:var(--fs-h1)]`
+*   **H2**: `.h2` or `text-[length:var(--fs-h2)]`
+*   **Body**: `.type-body` (16px base)
 
 ### SEO优化
 

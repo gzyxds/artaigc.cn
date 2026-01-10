@@ -5,10 +5,10 @@
  */
 
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Contact from '../components/Contact.astro';
-import Calltoaction from '../components/Calltoaction.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import Contact from '../components/sections/Contact.astro';
+import Calltoaction from '../components/sections/Calltoaction.astro';
 import { products as rawProducts, getCategory, type Product } from '../data/products';
 
 // 定义图标路径 (SVG Paths)
@@ -23,7 +23,7 @@ const icons = {
   sparkles: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z",
   zap: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
   database: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
-  video: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+  video: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 00-2 2v8a2 2 0 002 2z",
   penTool: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z",
   briefcase: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
   layoutGrid: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
@@ -65,7 +65,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
 
   <!-- 主体内容区域 -->
   <div
-    class="min-h-screen bg-gray-50 dark:bg-gray-950 pt-8 pb-20 relative"
+    class="min-h-screen bg-background pt-8 pb-20 relative typography-system"
     x-data={`{
       searchQuery: '',
       activeCategory: 'all',
@@ -123,7 +123,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
     <!-- 背景装饰 (使用网格背景代替模糊球) -->
     <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.03] pointer-events-none"></div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="container-custom relative z-10">
       <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
 
         <!-- 左侧边栏 -->
@@ -137,7 +137,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                   type="text"
                   placeholder="搜索应用..."
                   x-model="searchQuery"
-                  class="w-full pl-11 pr-4 py-3.5 bg-transparent outline-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 rounded-none font-mono"
+                  class="w-full pl-11 pr-4 py-3.5 bg-transparent outline-none text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 rounded-none"
                 />
                 <div class="absolute left-3.5 top-3.5 text-gray-400 group-focus-within:text-blue-500 transition-colors">
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -149,7 +149,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
 
             <!-- 分类导航 -->
             <div class="space-y-3">
-              <h3 class="px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider font-mono">分类导航</h3>
+              <h3 class="px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">分类导航</h3>
               <nav class="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide">
                 {categories.map((cat) => (
                   <button
@@ -175,7 +175,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                       <svg class="w-4 h-4" :class={`activeCategory === '${cat.id}' ? shopIconActiveClass : shopIconInactiveClass`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d={cat.icon} />
                       </svg>
-                      <span :class={`activeCategory === '${cat.id}' ? 'font-bold' : 'font-medium'`} class="font-mono">{cat.name}</span>
+                      <span :class={`activeCategory === '${cat.id}' ? 'font-bold' : 'font-medium'`}>{cat.name}</span>
                       <svg x-show={`activeCategory === '${cat.id}'`} class="w-3.5 h-3.5 text-white ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d={icons.checkBadge} />
                       </svg>
@@ -187,7 +187,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
 
             <!-- 插件应用 -->
             <div class="space-y-3 pt-2">
-              <h3 class="px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider font-mono">插件应用</h3>
+              <h3 class="px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">插件应用</h3>
               <nav class="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide">
                 {pluginCategories.map((cat) => (
                   <button
@@ -212,7 +212,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                       <svg class="w-4 h-4" :class={`activeCategory === '${cat.id}' ? shopIconActiveClass : shopIconInactiveClass`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d={cat.icon} />
                       </svg>
-                      <span :class={`activeCategory === '${cat.id}' ? 'font-bold' : 'font-medium'`} class="font-mono">{cat.name}</span>
+                      <span :class={`activeCategory === '${cat.id}' ? 'font-bold' : 'font-medium'`}>{cat.name}</span>
                       <svg x-show={`activeCategory === '${cat.id}'`} class="w-3.5 h-3.5 text-white ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d={icons.checkBadge} />
                       </svg>
@@ -227,28 +227,28 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
         <!-- 右侧主内容 -->
         <main class="flex-1 min-w-0">
           <!-- 促销 Banner - 简化风格 -->
-          <div class="relative overflow-hidden rounded-none bg-white dark:bg-gray-900 border border-blue-200 dark:border-blue-900 p-5 mb-8">
+          <div class="relative bento-card p-6 md:p-8 mb-8 border-blue-200 dark:border-blue-900">
              <!-- 装饰角标 -->
-             <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-500"></div>
-             <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-500"></div>
+             <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none"></div>
+             <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none"></div>
 
             <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div class="space-y-1 max-w-lg">
-                <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 text-xs font-mono font-medium bg-blue-50 dark:bg-blue-900/20 px-2.5 py-0.5 border border-blue-100 dark:border-blue-800 w-fit mb-2">
+                <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 text-xs font-medium bg-blue-50 dark:bg-blue-900/20 px-2.5 py-0.5 border border-blue-100 dark:border-blue-800 w-fit mb-2">
                   <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.sparkles} /></svg>
                   <span>限时特惠活动</span>
                 </div>
-                <h2 class="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h2 class="type-display font-bold tracking-tight text-gray-900 dark:text-white">
                   解锁 AI 生产力工具
                 </h2>
-                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  联系客服领取限时 <span class="text-blue-600 dark:text-blue-400 font-bold font-mono">5折优惠码</span>，
+                <p class="type-body text-gray-500 dark:text-gray-400 leading-relaxed">
+                  联系客服领取限时 <span class="text-blue-600 dark:text-blue-400 font-bold">5折优惠码</span>，
                   助力您的业务快速腾飞。
                 </p>
               </div>
               <a
                 href="/contact"
-                class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 rounded-none font-semibold px-6 h-10 text-sm font-mono border border-blue-600 hover:border-blue-700"
+                class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 rounded-none font-semibold px-6 h-10 text-sm border border-blue-600 hover:border-blue-700"
               >
                 获取优惠码
                 <svg class="w-3.5 h-3.5 ml-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.arrowRight} /></svg>
@@ -258,10 +258,10 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
 
           <!-- 应用列表头 -->
           <div class="flex items-center justify-between mb-6">
-            <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <h2 class="type-heading font-semibold text-gray-900 dark:text-white flex items-center gap-2">
               <span class="w-1.5 h-6 bg-blue-500"></span>
               全部应用
-              <span class="text-sm font-normal text-gray-500 ml-2 font-mono" x-text="`(${visibleCount})`"></span>
+              <span class="type-small font-normal text-gray-500 ml-2" x-text="`(${visibleCount})`"></span>
             </h2>
           </div>
 
@@ -269,16 +269,17 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((app) => (
               <div
-                class="product-item group"
+                class="product-item group h-full"
                 data-name={app.name}
                 data-desc={app.description}
                 data-subtitle={app.subtitle}
                 data-category={app.category}
                 data-features={app.features.join(',')}
               >
-                <div class="bg-white dark:bg-gray-900 rounded-none border border-gray-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-200 overflow-hidden flex flex-col h-full relative">
+                <div class="bento-card flex flex-col h-full p-0 overflow-hidden hover:border-blue-500 dark:hover:border-blue-500">
                   <!-- Hover 装饰角标 -->
-                  <div class="absolute top-0 right-0 w-0 h-0 border-t-[6px] border-r-[6px] border-transparent group-hover:border-blue-500 transition-all duration-200 z-10"></div>
+                  <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                  <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
                   <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden border-b border-gray-100 dark:border-gray-800">
                     <div class="absolute inset-0 bg-gray-100 dark:bg-gray-800"></div>
@@ -297,16 +298,16 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                     <div class="flex items-start justify-between gap-3 mb-2">
                       <div class="flex-1">
                         <div class="flex items-center gap-2 mb-1">
-                          <h3 class="font-bold text-gray-900 dark:text-white line-clamp-1">{app.name}</h3>
+                          <h3 class="text-lg font-semibold text-gray-900 dark:text-white truncate m-0">{app.name}</h3>
                           {app.subtitle && (
-                            <span class="text-[10px] font-mono font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-1.5 py-0.5 border border-blue-100 dark:border-blue-800 whitespace-nowrap">
+                            <span class="inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 rounded-sm shrink-0 whitespace-nowrap">
                               {app.subtitle.replace(/[\[\]]/g, '')}
                             </span>
                           )}
                         </div>
                         <div class="flex flex-wrap gap-1 mb-2">
                           {app.features?.slice(0, 3).map((feature) => (
-                            <span class="text-[10px] font-mono text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 px-1.5 py-0.5">
+                            <span class="type-small text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 px-1.5 py-0.5">
                               {feature}
                             </span>
                           ))}
@@ -314,12 +315,12 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                       </div>
                     </div>
 
-                    <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 mb-4 flex-1 font-light">
+                    <p class="type-body text-gray-500 dark:text-gray-400 line-clamp-2 mb-4 flex-1 font-light">
                       {app.description}
                     </p>
 
                     <div class="space-y-4">
-                      <div class="flex items-center gap-2 flex-wrap font-mono">
+                      <div class="flex items-center gap-2 flex-wrap">
                         <span class="text-xs text-gray-400 line-through">¥{app.originalPrice.toFixed(2)}</span>
                         <span class="px-2.5 py-0.5 bg-gray-900 dark:bg-black text-[#FFD700] text-sm font-medium border border-gray-800 flex items-center gap-1 rounded-none">
                            <span class="text-[10px] font-normal text-gray-400">折后</span>
@@ -332,7 +333,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                         )}
                       </div>
 
-                      <div class="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100 dark:border-gray-800 font-mono">
+                      <div class="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100 dark:border-gray-800">
                         <div class="flex items-center gap-2">
                           <div class="flex items-center gap-1">
                             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.checkBadge} /></svg>
@@ -353,7 +354,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                           <a
                             href={app.buyLink}
                             target="_blank"
-                            class="flex-1 inline-flex items-center justify-center h-9 px-2 text-xs font-medium text-blue-600 border border-blue-200 dark:border-blue-900 hover:border-blue-600 dark:hover:border-blue-500 bg-blue-50/50 dark:bg-blue-900/10 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors font-mono rounded-none"
+                            class="flex-1 inline-flex items-center justify-center h-9 px-2 text-xs font-medium text-blue-600 border border-blue-200 dark:border-blue-900 hover:border-blue-600 dark:hover:border-blue-500 bg-blue-50/50 dark:bg-blue-900/10 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors rounded-none"
                           >
                             <svg class="h-3.5 w-3.5 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.shoppingCart} /></svg>
                             购买
@@ -363,7 +364,7 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                           <a
                             href={app.link}
                             target="_blank"
-                            class="flex-1 inline-flex items-center justify-center h-9 px-2 text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors font-mono rounded-none"
+                            class="flex-1 inline-flex items-center justify-center h-9 px-2 text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors rounded-none"
                           >
                             <svg class="h-3.5 w-3.5 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.play} /></svg>
                             演示
@@ -386,13 +387,13 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
             <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6 border border-gray-200 dark:border-gray-700">
               <svg class="w-10 h-10 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={icons.inbox} /></svg>
             </div>
-            <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2 font-mono">未找到相关应用</h3>
-            <p class="text-gray-500 max-w-xs mx-auto">
+            <h3 class="type-heading font-medium text-gray-900 dark:text-white mb-2">未找到相关应用</h3>
+            <p class="type-body text-gray-500 max-w-xs mx-auto">
               试试更换搜索关键词，或者切换分类看看吧
             </p>
             <button
               @click="searchQuery = ''; activeCategory = 'all'"
-              class="mt-6 inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-none text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none font-mono transition-colors"
+              class="mt-6 inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-none text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none transition-colors"
             >
               重置筛选条件
             </button>
@@ -406,14 +407,3 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
   <Contact />
   <Footer />
 </Layout>
-
-<style>
-  /* 隐藏滚动条但保留功能 */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-</style>

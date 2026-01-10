@@ -1,0 +1,388 @@
+---
+import { featuresData } from '../../data/features';
+
+const gradients = [
+  'from-sky-500/15 to-sky-500/5',
+  'from-purple-500/15 to-purple-500/5',
+  'from-rose-500/15 to-rose-500/5',
+  'from-amber-500/15 to-amber-500/5',
+  'from-emerald-500/15 to-emerald-500/5',
+  'from-indigo-500/15 to-indigo-500/5',
+  'from-orange-500/15 to-orange-500/5',
+  'from-teal-500/15 to-teal-500/5',
+  'from-fuchsia-500/15 to-fuchsia-500/5',
+  'from-cyan-500/15 to-cyan-500/5',
+  'from-yellow-500/15 to-yellow-500/5',
+  'from-red-500/15 to-red-500/5',
+  'from-violet-500/15 to-violet-500/5',
+  'from-blue-500/15 to-blue-500/5',
+  'from-lime-500/15 to-lime-500/5'
+];
+
+// 优化：仅复制 3 份即可满足无限滚动需求 (左缓冲+主显示+右缓冲)
+const originalCards = featuresData.map((feature, index) => ({
+  title: feature.title,
+  subtitle: feature.subtitle,
+  desc: feature.description,
+  gradient: gradients[index % gradients.length]
+}));
+
+const cards = [...originalCards, ...originalCards, ...originalCards];
+const originalLength = originalCards.length;
+---
+
+<style>
+
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .perspective-container { perspective: 1000px; perspective-origin: center center; }
+  .perspective-item { transform-style: preserve-3d; }
+  /* 优化：移除 CSS transition，完全由 JS 控制 transform 以避免冲突和性能抖动 */
+
+  /* 性能优化：为滚动容器添加 contain 属性 */
+  #scroll-container {
+    contain: layout style;
+  }
+
+  /* 使用伪元素重新实现角标，减少 DOM 节点 */
+  .bento-card::before,
+  .bento-card::after {
+    content: "";
+    @apply absolute w-3 h-3 border-gray-300 dark:border-gray-600 transition-colors duration-300 z-20 pointer-events-none;
+  }
+
+  /* Hover 状态颜色 */
+  .bento-card:hover::before,
+  .bento-card:hover::after {
+    @apply border-blue-500 dark:border-blue-400;
+  }
+
+  /* 右上角 */
+  .bento-card::before {
+    @apply top-0 right-0 border-t border-r;
+  }
+
+  /* 左下角 */
+  .bento-card::after {
+    @apply bottom-0 left-0 border-b border-l;
+  }
+</style>
+
+<section class="typography-system py-16 md:py-24 bg-white dark:bg-slate-900 overflow-hidden relative" id="scenes">
+  <!-- 背景优化：使用 CSS 变量减少重复代码 -->
+  <div class="absolute inset-x-0 top-0 h-[500px] pointer-events-none select-none overflow-hidden z-0">
+    <div class="relative w-full h-full flex flex-col items-center pt-[27px] md:pt-[70px]">
+      <div class="absolute inset-0 bg-[url('/scene/EnterpriseOS.svg')] bg-center bg-no-repeat [background-size:120%_auto] md:[background-size:100%_auto] [mask-image:linear-gradient(to_bottom,white,transparent)] dark:[mask-image:linear-gradient(to_bottom,black,transparent)] opacity-70 dark:opacity-30"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-white/80 to-white dark:from-slate-900/50 dark:via-slate-900/80 dark:to-slate-900 -z-10"></div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-12 md:mb-20 text-center relative z-10">
+    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 tracking-tight type-display">
+      艺创AI -可以帮你解决什么
+    </h2>
+    <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-lg tracking-wide max-w-xl mx-auto type-subtitle">
+      艺创AI 无限拓展应用场景
+    </p>
+  </div>
+
+  <!-- 3D 轮播容器 -->
+  <div class="relative w-full">
+    <div
+      id="scroll-container"
+      class="flex gap-4 sm:gap-8 overflow-x-auto pb-12 pt-8 md:pb-20 md:pt-10 px-[7.5vw] sm:px-[50vw] perspective-container select-none touch-pan-x scroll-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+      data-original-length={originalLength}
+    >
+      {cards.map((card, index) => (
+        <div class="shrink-0 w-[85vw] sm:w-[320px] perspective-item card-item will-change-transform">
+          <div class={`h-full min-h-[220px] sm:min-h-[260px] bento-card p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300`}>
+            {/* 优化：使用伪元素替代 DOM 节点，在 global.css 中定义 .bento-card::before/after */}
+
+            {/* 背景装饰：微弱的渐变光晕 */}
+            <div class={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}></div>
+
+            <div class="relative z-10 pointer-events-none">
+              <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors type-heading">{card.title}</h3>
+              {card.subtitle && <p class="text-gray-500 dark:text-gray-400 text-sm font-medium mb-3 opacity-90 type-small">{card.subtitle}</p>}
+              <div class="w-8 h-1 bg-gray-200 dark:bg-gray-700 rounded-none mb-4 group-hover:bg-blue-500 transition-colors duration-300"></div>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed font-medium type-body">{card.desc}</p>
+            </div>
+            <div class="absolute bottom-4 right-4 opacity-10 font-black text-6xl select-none pointer-events-none text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300 type-display">
+              {(index % originalLength + 1).toString().padStart(2, '0')}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 边缘遮罩 -->
+    <div class="absolute inset-y-0 left-0 w-8 md:w-64 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-slate-900 dark:via-slate-900/80 pointer-events-none z-10"></div>
+    <div class="absolute inset-y-0 right-0 w-8 md:w-64 bg-gradient-to-l from-white via-white/80 to-transparent dark:from-slate-900 dark:via-slate-900/80 pointer-events-none z-10"></div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .perspective-container { perspective: 1000px; perspective-origin: center center; }
+  .perspective-item { transform-style: preserve-3d; }
+  /* 优化：移除 CSS transition，完全由 JS 控制 transform 以避免冲突和性能抖动 */
+</style>
+
+<script>
+  /**
+   * 初始化 3D 轮播
+   * 性能优化版：
+   * 1. 缓存 DOM 属性，避免布局抖动 (Layout Thrashing)
+   * 2. 仅更新视口附近的卡片
+   * 3. 使用 transform3d 启用硬件加速
+   * 4. 减少数据复制份数
+   */
+  function initCarousel() {
+    const container = document.getElementById('scroll-container');
+    if (!container) return;
+
+    const items = Array.from(container.children) as HTMLElement[];
+    const originalLen = parseInt(container.dataset.originalLength || '0', 10);
+    if (!originalLen || items.length === 0) return;
+
+    // 状态变量
+    let isDragging = false;
+    let startX = 0;
+    // 使用虚拟滚动位置来提高精度，避免浏览器 scrollLeft 取整导致的卡顿或不移动
+    let virtualScrollLeft = 0;
+    let dragStartScrollLeft = 0;
+    let rafId: number | null = null;
+    let lastTime = 0;
+    const AUTO_SPEED = 0.5; // 自动滚动速度 px/frame
+
+    // 追踪上一帧的可见范围，用于清理
+    let lastVisibleRange = { start: 0, end: 0 };
+
+    // 缓存卡片位置信息 (Left, Width)
+    let itemMetrics: { left: number; width: number; el: HTMLElement }[] = [];
+    let singleSetWidth = 0;
+    let containerPadding = 0;
+
+    // 测量布局 (仅在初始化和 Resize 时调用)
+    const measureLayout = () => {
+      if (items.length > 0) {
+        // 获取容器 padding-left 用于校准
+        const computedStyle = window.getComputedStyle(container);
+        containerPadding = parseFloat(computedStyle.paddingLeft) || 0;
+
+        itemMetrics = items.map(el => ({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          el
+        }));
+
+        // 计算一组数据的总宽度 (假设间距一致)
+        if (itemMetrics.length >= originalLen) {
+           singleSetWidth = itemMetrics[originalLen].left - itemMetrics[0].left;
+        }
+      }
+    };
+
+    // 核心动画循环
+    const animate = (time: number) => {
+      // 1. 更新滚动位置
+      if (!isDragging) {
+        // 自动滚动模式：仅操作虚拟位置
+        virtualScrollLeft += AUTO_SPEED;
+
+        // 只有当虚拟位置与实际位置差异足够大（>0.5px）时才同步 DOM，减少 Layout Thrashing
+        // 但为了平滑，我们在每一帧都尝试同步，利用浏览器的亚像素渲染（如果支持）
+        container.scrollLeft = virtualScrollLeft;
+
+        // 关键修复：部分浏览器 scrollLeft 会自动取整，导致 virtualScrollLeft 逐渐偏离
+        // 或者 scrollLeft 赋值无效（如 0.5 -> 0）。
+        // 所以我们不从 DOM 读取 scrollLeft 来更新 virtualScrollLeft，
+        // 而是强制 DOM 跟随 virtualScrollLeft。
+      } else {
+        // 拖拽模式：以实际 DOM 位置为准，同步回虚拟位置
+        virtualScrollLeft = container.scrollLeft;
+      }
+
+      // 2. 获取当前状态 (避免读取 container.scrollLeft 导致重排，直接用 virtualScrollLeft)
+      const currentScroll = virtualScrollLeft;
+      const viewportWidth = window.innerWidth;
+      const viewportCenter = currentScroll + viewportWidth / 2;
+      const isMobile = viewportWidth < 768;
+      const range = isMobile ? viewportWidth * 0.8 : 1000;
+
+      // 3. 无限滚动逻辑
+      if (singleSetWidth > 0) {
+        const set1Start = itemMetrics[originalLen].left - containerPadding; // 第二组起点
+        const set2Start = itemMetrics[originalLen * 2].left - containerPadding; // 第三组起点
+
+        // 缓冲区阈值
+        if (currentScroll >= set2Start) {
+          // 向左跳回第一组
+          const adjust = singleSetWidth;
+          container.scrollLeft -= adjust;
+          virtualScrollLeft -= adjust; // 必须同步调整虚拟位置
+        } else if (currentScroll < set1Start - singleSetWidth) {
+          // 向右跳到第二组
+          const adjust = singleSetWidth;
+          container.scrollLeft += adjust;
+          virtualScrollLeft += adjust; // 必须同步调整虚拟位置
+        }
+      }
+
+      // 批量更新样式
+      // 性能优化：仅遍历可视区域附近的卡片
+      // 假设卡片宽度一致，直接计算索引范围
+      if (itemMetrics.length > 0) {
+        // 估算单个卡片占用空间（含间距）
+        const cardSpace = itemMetrics.length > 1
+          ? itemMetrics[1].left - itemMetrics[0].left
+          : itemMetrics[0].width + 32; // 32 is approx gap
+
+        // 计算当前视口中心对应的索引
+        const centerIndex = Math.floor((viewportCenter - containerPadding) / cardSpace);
+
+        // 定义缓冲区 (视口内大约显示 3-5 个，左右各多缓冲 3 个)
+        const buffer = isMobile ? 3 : 5;
+        const startIndex = Math.max(0, centerIndex - buffer);
+        const endIndex = Math.min(itemMetrics.length - 1, centerIndex + buffer);
+
+        // 优化：处理元素的可见性 (Visibility Culling)
+        // 如果是第一帧或范围发生变化
+        if (rafId === null || startIndex !== lastVisibleRange.start || endIndex !== lastVisibleRange.end) {
+             // 隐藏移出视野的元素
+             for (let i = lastVisibleRange.start; i <= lastVisibleRange.end; i++) {
+                 if ((i < startIndex || i > endIndex) && itemMetrics[i]) {
+                     itemMetrics[i].el.style.visibility = 'hidden';
+                 }
+             }
+
+             // 如果是初始加载 (rafId还没赋值或为第一帧)，隐藏所有不在当前范围内的
+             if (lastVisibleRange.end === 0 && itemMetrics.length > 0) {
+                for (let i = 0; i < itemMetrics.length; i++) {
+                    if (i < startIndex || i > endIndex) {
+                        itemMetrics[i].el.style.visibility = 'hidden';
+                    }
+                }
+             }
+
+             lastVisibleRange = { start: startIndex, end: endIndex };
+        }
+
+        // 仅更新可视范围内的元素
+        for (let i = startIndex; i <= endIndex; i++) {
+          const { left, width, el } = itemMetrics[i];
+
+          // 确保元素可见
+          if (el.style.visibility === 'hidden') {
+              el.style.visibility = 'visible';
+          }
+
+          const cardCenter = left + width / 2;
+          const dist = (cardCenter - viewportCenter) / range;
+
+          // 限制范围 [-1, 1]
+          const d = Math.max(-1, Math.min(1, dist));
+          const absD = Math.abs(d);
+
+          // 计算 3D 参数
+          // 移动端减少旋转角度，避免过度扭曲
+          const rotation = d * (isMobile ? 10 : 30);
+          const translateZ = absD * (isMobile ? -30 : -100);
+          const scale = 1 - absD * (isMobile ? 0.05 : 0.15);
+          const opacity = 1 - absD * (isMobile ? 0.2 : 0.4);
+
+          // 使用 transform3d 强制 GPU 加速
+          // 精度控制：保留 2 位小数，减少样式字符串长度和解析开销
+          el.style.transform = `perspective(1000px) rotateY(${rotation.toFixed(2)}deg) translateZ(${translateZ.toFixed(2)}px) scale(${scale.toFixed(3)})`;
+          el.style.opacity = opacity.toFixed(2);
+        }
+      }
+
+      rafId = requestAnimationFrame(animate);
+    };
+
+    // 事件处理
+    const startDrag = (e: MouseEvent | TouchEvent) => {
+      isDragging = true;
+      container.style.cursor = 'grabbing';
+      startX = (e instanceof MouseEvent ? e.pageX : e.touches[0].pageX) - container.offsetLeft;
+      dragStartScrollLeft = container.scrollLeft;
+    };
+
+    const moveDrag = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      // e.preventDefault(); // 允许纵向滚动? 这里是横向容器，通常阻止默认行为以防页面滚动干扰
+      if (e.cancelable) e.preventDefault();
+
+      const x = (e instanceof MouseEvent ? e.pageX : e.touches[0].pageX) - container.offsetLeft;
+      const walk = (x - startX) * 1.5; // 1.5倍阻尼系数
+      container.scrollLeft = dragStartScrollLeft - walk;
+    };
+
+    const stopDrag = () => {
+      isDragging = false;
+      container.style.cursor = 'grab';
+    };
+
+    // 初始化
+    // 确保图片加载完成后再测量一次，防止布局偏移
+    const initAndMeasure = () => {
+       measureLayout();
+       if (singleSetWidth > 0 && itemMetrics.length > 0) {
+          const initialOffset = itemMetrics[originalLen].left - containerPadding;
+          container.scrollLeft = initialOffset;
+          virtualScrollLeft = initialOffset; // 初始化虚拟位置
+       }
+    };
+
+    // 立即尝试测量
+    initAndMeasure();
+    // 并在 load 事件后再次测量 (兼容图片延迟加载)
+    if (document.readyState === 'complete') {
+        initAndMeasure();
+    } else {
+        window.addEventListener('load', initAndMeasure);
+    }
+
+    rafId = requestAnimationFrame(animate);
+
+    // 监听器绑定
+    window.addEventListener('resize', () => {
+        measureLayout();
+        // Resize 后可能需要重置位置或重新计算 virtualScrollLeft
+        virtualScrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mousedown', startDrag);
+    container.addEventListener('mousemove', moveDrag);
+    container.addEventListener('mouseup', stopDrag);
+    container.addEventListener('mouseleave', stopDrag);
+
+    container.addEventListener('touchstart', startDrag, { passive: false });
+    container.addEventListener('touchmove', moveDrag, { passive: false });
+    container.addEventListener('touchend', stopDrag);
+
+    // 清理函数 (用于 View Transitions)
+    const cleanup = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', measureLayout);
+      // 移除其他监听器略 (Astro 页面刷新会销毁 DOM，但 best practice 是移除)
+    };
+
+    // 保存清理函数到元素上，以便后续获取
+    (container as any)._cleanup = cleanup;
+  }
+
+  // 启动
+  initCarousel();
+  document.addEventListener('astro:page-load', () => {
+      // 如果之前的实例还在运行，先清理 (虽然 astro:page-load 通常意味着新页面)
+      const oldContainer = document.getElementById('scroll-container');
+      if (oldContainer && (oldContainer as any)._cleanup) {
+          (oldContainer as any)._cleanup();
+      }
+      initCarousel();
+  });
+</script>
