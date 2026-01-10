@@ -1,175 +1,110 @@
-# 艺创AI - 专业AI系统源码解决方案
+# 艺创AI (Artaigc) - 专业 AI 系统源码解决方案
 
 ![艺创AI](src/assets/logo.png)
 
-艺创AI是一个专注于提供AI系统源代码解决方案的技术平台，为企业和个人提供多种AI系统源码产品，包括AI数字人系统、企业全能AI知识库、AI聊天绘画系统和AI论文写作系统。本项目基于Astro框架构建，集成了Tailwind CSS和Alpine.js，提供现代化、响应式的用户界面和流畅的交互体验。
+艺创AI 是一个专注于提供企业级 AI 系统源代码解决方案的技术平台。我们致力于为开发者、初创公司和大型企业提供高质量、可私有化部署的 AI 系统源码，涵盖数字人、知识库、AI 绘画、论文写作等多个领域。
+
+本项目基于 **Astro** 框架构建，采用 **Enterprise Minimalist** 设计风格，集成了 **Tailwind CSS** 和 **Alpine.js**，提供卓越的性能和极致的用户体验。
 
 ## 🚀 在线预览
 
-[访问艺创AI官网](https://artaigc.cn)
+- **官网**: [https://artaigc.cn](https://artaigc.cn)
+- **演示中心**: [https://artaigc.cn/demo](https://artaigc.cn/demo)
 
-## ✨ 产品与服务
+## ✨ 核心产品与服务
 
-艺创AI提供以下核心产品和服务：
+艺创AI 提供 PHP 和 Java 双语言版本的全套源码解决方案：
 
-### 1. AI数字人系统
-为企业主、个人博主打造短视频IP的数字人源码系统，支持声音克隆和数字人合成。
+### 1. AI 数字人系统 (`/human`)
+打造企业级短视频 IP 矩阵，支持声音克隆、唇形同步和数字人实时合成，适用于直播带货、视频制作等场景。
 
-### 2. 全能AI知识库系统
-支持问答式和文档式知识库的企业智能客服系统，帮助企业构建专属知识库。
+### 2. 全能 AI 知识库系统 (`/ai`)
+基于 RAG 技术的企业智能中台，支持文档解析、问答式检索和多模型接入，帮助企业构建专属的 AI 知识大脑。
 
-### 3. AI聊天绘画系统
-提供智能对话与创作功能，支持多种AI模型和绘画风格。
+### 3. AI 聊天绘画系统 (`/chat`)
+集成了 ChatGPT、Midjourney 等多模态能力的创意平台，提供智能对话、AI 绘画、思维导图生成等功能。
 
-### 4. AI论文创作系统
-智能论文写作助手，快速生成论文大纲和内容。
+### 4. AI 论文创作系统 (`/paper`)
+专业的学术写作助手，支持从大纲生成到全文撰写的一站式服务，辅助科研人员提高写作效率。
 
-所有产品均提供PHP和Java双语言版本，支持私有化部署。
+### 5. 企业级 SaaS 解决方案 (`/shop`)
+提供完整的 SaaS 运营系统源码，支持多租户管理、计费系统、会员体系，助力快速商业化落地。
 
-## 🛠️ 技术栈全面分析
+## 🛠️ 技术栈概览
 
-### 1. 核心框架 (Core Framework)
-- **[Astro](https://astro.build/) (v5.14.1)**: 项目的基础框架。
-  - **渲染模式**: **SSG (静态站点生成)**。目前配置为静态 HTML 构建。
-  - **语言**: **TypeScript**。严格模式配置，确保类型安全。
-  - **构建工具**: **Vite**。Astro 内置，配置了路径别名 `@` 指向 `/src`。
+本项目采用前沿的现代 Web 技术栈构建：
 
-### 2. 样式与 UI (Styling & UI)
-- **[Tailwind CSS](https://tailwindcss.com/) (v3.4.1)**: 主要样式解决方案。
-  - **集成**: 通过 `@astrojs/tailwind` 集成。
-  - **配置**: 自定义色彩系统（蓝/灰/亮蓝/黄）、暗黑模式支持、自定义动画（如 fade-in, slide-up）。
-  - **字体**: Inter (正文) 和 Lexend (展示)。
-- **Material Icons (v1.13.14)**: 用于项目中的图标展示。
-
-### 3. 交互与动态效果 (Interactivity)
-- **[Alpine.js](https://alpinejs.dev/) (v3.13.5)**: 轻量级客户端交互。
-  - **集成**: 通过 `@astrojs/alpinejs` 集成，符合 Astro 的“岛屿架构”。
-- **Typed.js (v2.1.0) & Typewriter.js**: 用于实现着陆页的打字机文字特效。
-
-### 4. 内容管理 (Content Management)
-- **Marked (v15.0.7)**: 用于解析和渲染 Markdown 内容。
-- **Content Collections**: 使用 Astro 的内容集合功能组织结构化内容（如博客）。
-
-### 5. 构建与部署 (Build & Deployment)
-- **平台**: **Vercel**。
-- **配置**: 使用 `vercel.json` 和自定义构建脚本 `npm run vercel-build`。
+| 类别 | 技术 | 版本 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **核心框架** | **Astro** | v5.14+ | 静态站点生成 (SSG)，极致性能 |
+| **样式系统** | **Tailwind CSS** | v3.4+ | 实用优先 CSS 框架 |
+| **交互逻辑** | **Alpine.js** | v3.13+ | 轻量级声明式交互框架 |
+| **开发语言** | **TypeScript** | v5.9+ | 严格类型安全保证 |
+| **图标库** | **Material Icons** | - | 统一的系统图标风格 |
+| **构建工具** | **Vite** | - | 极速开发与构建体验 |
 
 ## 📦 项目结构
 
+```bash
+/src
+├── assets/             # 静态资源 (图片、图标)
+├── components/         # UI 组件库
+│   ├── common/         # 全局通用组件 (Header, Footer...)
+│   ├── home/           # 首页特定组件 (Carousel, Features...)
+│   ├── product/        # 产品展示组件
+│   └── sections/       # 功能区块 (Pricing, Contact...)
+├── content/            # 内容集合 (博客文章)
+├── data/               # 静态数据配置 (产品信息、配置项)
+├── layouts/            # 页面布局模板
+├── pages/              # 路由页面
+│   ├── blog/           # 博客文章页
+│   ├── demo.astro      # 产品演示页
+│   ├── shop.astro      # 商店聚合页
+│   └── ...             # 各产品详情页
+├── scripts/            # 客户端脚本
+└── styles/             # 全局样式 (Tailwind, Variables)
 ```
-/
-├── public/                 # 静态资源目录
-│   ├── assets/             # 图片和图标资源
-│   ├── fonts/              # 字体文件
-│   └── favicon.ico         # 网站图标
-├── src/                    # 源代码目录
-│   ├── assets/             # 组件使用的资源
-│   ├── components/         # 可复用组件
-│   │   ├── Hero/           # 首页英雄区域相关组件
-│   │   └── ...             # 其他组件
-│   ├── content/            # 内容集合（博客等）
-│   ├── layouts/            # 页面布局组件
-│   ├── pages/              # 网站页面
-│   ├── scripts/            # JavaScript脚本
-│   └── styles/             # 全局样式
-├── astro.config.mjs        # Astro配置文件
-├── tailwind.config.mjs     # Tailwind CSS配置
-└── package.json            # 项目依赖
+
+## 🎨 设计系统 (Design System)
+
+本项目严格遵循 **Linear & Bento Grid** 设计规范：
+
+- **Bento Grid**: 采用网格化布局，信息展示清晰有序。
+- **Linear Style**: 强调线性美学，使用边框 (`border`) 定义层级，减少阴影使用。
+- **Fluid Typography**: 使用 `clamp()` 实现流畅的响应式排版。
+- **Dark Mode**: 全线支持深色模式，自动适配系统偏好。
+
+## 🧞 开发指南
+
+### 环境要求
+- Node.js >= 18.0.0
+- npm / yarn / pnpm
+
+### 常用命令
+
+```bash
+# 安装依赖
+npm install
+
+# 启动本地开发服务器
+npm run dev
+
+# 构建生产版本
+npm run build
+
+# 预览构建结果
+npm run preview
 ```
 
-## 🎨 设计特点
-
-- **响应式设计** - 适配PC、移动端、平板等多种设备
-- **深色模式支持** - 提供亮色和暗色两种主题模式
-- **现代UI组件** - 包含丰富的现代化UI组件和交互效果
-- **平滑过渡动画** - 页面切换和元素加载时的平滑过渡效果
-- **SEO优化** - 针对搜索引擎优化的元数据和结构
-
-## 🧞 常用命令
-
-所有命令需在项目根目录下执行：
-
-| 命令                   | 作用                      |
-| :-------------------- | :----------------------- |
-| `npm install`         | 安装项目依赖              |
-| `npm run dev`         | 启动本地开发服务器        |
-| `npm run build`       | 构建生产环境代码          |
-| `npm run preview`     | 预览构建结果              |
-| `npm run astro`       | 运行Astro CLI命令         |
-
-## 🚀 快速开始
-
-1. 克隆本仓库
-   ```bash
-   git clone https://github.com/yourusername/artaigc.git
-   cd artaigc
-   ```
-
-2. 安装依赖
-   ```bash
-   npm install
-   ```
-
-3. 启动开发服务器
-   ```bash
-   npm run dev
-   ```
-
-4. 在浏览器中访问 `http://localhost:4321` 查看效果
-
-## 📱 主要功能
-
-- **多产品展示** - 展示多种AI系统产品和解决方案
-- **全模型支持** - 支持OpenAI和多种国内外大模型
-- **多端适配** - 适配PC、移动端、平板等设备
-- **源码开放** - 提供完全开放的系统源码
-- **私有部署** - 支持本地私有化部署
-- **双语言版本** - 提供PHP和Java两种语言版本
-
-## 🔧 定制指南
-
-### 颜色配置
-
-模板包含预定义的配色方案（位于 `tailwind.config.mjs`）：
-
-- 主色系：蓝色系
-- 辅色系：石板灰系
-- 强调色：青柠色系
-
-可通过修改 `tailwind.config.mjs` 文件自定义颜色。
-
-### 字体配置
-
-使用以下字体组合：
-
-- 无衬线字体：Inter（带系统备用字体）
-- 展示字体：Lexend（带系统备用字体）
-
-## 🌐 部署
-
-项目使用Vercel进行部署，配置文件为`vercel.json`：
-
-```json
-{
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": "dist",
-  "framework": "astro",
-  "installCommand": "npm install"
-}
-```
+### 部署
+项目配置为 **Vercel** 部署，代码推送到主分支后将自动触发构建和部署。
 
 ## 📝 许可协议
 
-本项目采用 [MIT 许可协议](LICENSE)
+本项目源码受版权保护。购买商业授权后可获得完整源码及商业使用权。详情请参阅 [授权说明](/pricing)。
 
 ## 📞 联系我们
 
-- 官方网站：[https://artaigc.cn](https://artaigc.cn)
-- 电子邮件：contact@artaigc.cn
-- QQ群：123456789
-
-## 👀 扩展学习
-
-- [Astro 文档](https://docs.astro.build)
-- [Tailwind CSS 文档](https://tailwindcss.com/docs)
-- [Alpine.js 文档](https://alpinejs.dev/start-here)
+- **官方网站**: [artaigc.cn](https://artaigc.cn)
+- **商务合作**: contact@artaigc.cn
+- **技术支持**: 请访问官网获取最新联系方式

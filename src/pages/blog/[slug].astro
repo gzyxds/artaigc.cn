@@ -51,10 +51,10 @@ const relatedPosts = allPosts
 
     <!-- 顶部导航栏 - 简洁固定设计 -->
     <div class="sticky top-16 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800">
-      <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-4">
+      <div class="container-custom py-4">
         <div class="flex items-center justify-between">
           <!-- 返回按钮 -->
-          <a href="/blog" class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 group font-mono text-sm uppercase tracking-wider">
+          <a href="/blog" class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 group text-sm uppercase tracking-wider">
             <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
@@ -63,18 +63,18 @@ const relatedPosts = allPosts
 
           <!-- 阅读进度指示器 -->
           <div class="flex items-center gap-4">
-            <span class="text-[10px] font-mono text-gray-500 dark:text-gray-400 uppercase tracking-widest">Progress</span>
+            <span class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest">Progress</span>
             <div class="w-24 h-1 bg-gray-100 dark:bg-gray-800 rounded-none overflow-hidden">
               <div class="reading-progress-bar h-full bg-blue-600 transition-all duration-300" style="width: 0%"></div>
             </div>
-            <span class="reading-progress text-[10px] font-mono text-blue-600 dark:text-blue-400 min-w-[2rem]">0%</span>
+            <span class="reading-progress text-[10px] text-blue-600 dark:text-blue-400 min-w-[2rem]">0%</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 文章容器 - 左右布局设计 -->
-    <div class="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-12">
+    <div class="container-custom relative z-10 py-12">
       <div class="grid lg:grid-cols-12 gap-8">
 
         <!-- 左侧内容区域 -->
@@ -84,10 +84,10 @@ const relatedPosts = allPosts
           <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 lg:p-12 mb-8">
             <!-- 分类和日期标签 -->
             <div class="flex flex-wrap items-center gap-6 mb-8">
-              <span class="inline-flex items-center px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-mono uppercase tracking-widest border border-blue-100 dark:border-blue-800 rounded-none">
+              <span class="inline-flex items-center px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] uppercase tracking-widest border border-blue-100 dark:border-blue-800 rounded-none">
                 {post.data.category}
               </span>
-              <div class="flex items-center text-gray-400 dark:text-gray-500 text-[10px] font-mono uppercase tracking-widest">
+              <div class="flex items-center text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest">
                 <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
@@ -113,8 +113,8 @@ const relatedPosts = allPosts
                 class="w-12 h-12 object-cover border border-gray-200 dark:border-gray-700 p-0.5 rounded-none"
               />
               <div>
-                <p class="font-mono text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">{post.data.author}</p>
-                <p class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest">{post.data.authorRole}</p>
+                <p class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">{post.data.author}</p>
+                <p class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest">{post.data.authorRole}</p>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ const relatedPosts = allPosts
 
           <!-- 分享功能卡片 -->
           <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 mt-8">
-            <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest">
+            <h3 class="text-xs font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest">
               <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
               </svg>
@@ -138,13 +138,13 @@ const relatedPosts = allPosts
               <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`}
                  target="_blank"
                  rel="noopener noreferrer"
-                 class="share-btn flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-gray-900 transition-all text-[10px] font-mono uppercase tracking-widest border border-gray-100 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400">
+                 class="share-btn flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-gray-900 transition-all text-[10px] uppercase tracking-widest border border-gray-100 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400">
                 Twitter
               </a>
               <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.data.title)}`}
                  target="_blank"
                  rel="noopener noreferrer"
-                 class="share-btn flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-gray-900 transition-all text-[10px] font-mono uppercase tracking-widest border border-gray-100 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400">
+                 class="share-btn flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-gray-900 transition-all text-[10px] uppercase tracking-widest border border-gray-100 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400">
                 LinkedIn
               </a>
             </div>
@@ -156,7 +156,7 @@ const relatedPosts = allPosts
 
           <!-- 目录导航卡片 -->
           <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 sticky top-32">
-            <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest border-b border-gray-100 dark:border-gray-800 pb-4">
+            <h3 class="text-xs font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest border-b border-gray-100 dark:border-gray-800 pb-4">
               <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
               </svg>
@@ -169,7 +169,7 @@ const relatedPosts = allPosts
 
           <!-- 文章统计信息卡片 -->
           <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8">
-            <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest border-b border-gray-100 dark:border-gray-800 pb-4">
+            <h3 class="text-xs font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 uppercase tracking-widest border-b border-gray-100 dark:border-gray-800 pb-4">
               <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 00-2-2z"/>
               </svg>
@@ -177,16 +177,16 @@ const relatedPosts = allPosts
             </h3>
             <div class="space-y-6">
               <div class="flex justify-between items-center py-2 border-b border-gray-50 dark:border-gray-800/50">
-                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Published</span>
-                <span class="text-[10px] font-mono font-bold text-gray-900 dark:text-white">{post.data.date}</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest">Published</span>
+                <span class="text-[10px] font-bold text-gray-900 dark:text-white">{post.data.date}</span>
               </div>
               <div class="flex justify-between items-center py-2 border-b border-gray-50 dark:border-gray-800/50">
-                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Category</span>
-                <span class="text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400">{post.data.category}</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest">Category</span>
+                <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400">{post.data.category}</span>
               </div>
               <div class="flex justify-between items-center py-2">
-                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Read Time</span>
-                <span class="text-[10px] font-mono font-bold text-gray-900 dark:text-white">~5 MIN</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest">Read Time</span>
+                <span class="text-[10px] font-bold text-gray-900 dark:text-white">~5 MIN</span>
               </div>
             </div>
           </div>
@@ -196,9 +196,9 @@ const relatedPosts = allPosts
 
      <!-- 相关文章推荐区域 -->
      {relatedPosts.length > 0 && (
-       <div class="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] pb-24">
+       <div class="container-custom relative z-10 pb-24">
          <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 lg:p-12">
-           <h3 class="text-xs font-mono font-bold text-gray-900 dark:text-white mb-10 flex items-center gap-3 uppercase tracking-widest">
+           <h3 class="text-xs font-bold text-gray-900 dark:text-white mb-10 flex items-center gap-3 uppercase tracking-widest">
              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
              </svg>
@@ -217,7 +217,7 @@ const relatedPosts = allPosts
                    />
                  </div>
                  <div>
-                   <time class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest block mb-3">{relatedPost.date}</time>
+                   <time class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest block mb-3">{relatedPost.date}</time>
                    <h4 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
                      {relatedPost.title}
                    </h4>
@@ -270,7 +270,7 @@ const relatedPosts = allPosts
   }
 
   .prose a {
-    @apply text-blue-600 dark:text-blue-400 no-underline hover:underline font-mono text-sm transition-colors;
+    @apply text-blue-600 dark:text-blue-400 no-underline hover:underline text-sm transition-colors;
   }
 
   .prose strong {
@@ -336,7 +336,7 @@ const relatedPosts = allPosts
   #toc a {
     display: block;
     padding: 0.75rem 1rem;
-    @apply text-gray-500 dark:text-gray-400 font-mono text-xs uppercase tracking-wider;
+    @apply text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider;
     border-radius: 0;
     transition: all 0.2s ease;
   }

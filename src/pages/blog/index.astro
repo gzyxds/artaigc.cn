@@ -88,7 +88,7 @@ const categories = [...new Set(posts.map(post => post.category))];
     />
 
     <!-- 博客内容区域 -->
-    <div class="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1550px] py-12">
+    <div class="container-custom relative z-10 py-12">
 
       <!-- 博客文章卡片网格 - 4列布局设计 -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800">
@@ -104,7 +104,7 @@ const categories = [...new Set(posts.map(post => post.category))];
                 loading="lazy"
               />
               <div class="absolute top-4 left-4">
-                <span class="px-2 py-1 bg-white/90 dark:bg-gray-900/90 text-blue-600 dark:text-blue-400 text-[10px] font-mono uppercase tracking-wider border border-blue-200 dark:border-blue-800 rounded-none backdrop-blur-sm">
+                <span class="px-2 py-1 bg-white/90 dark:bg-gray-900/90 text-blue-600 dark:text-blue-400 text-[10px] uppercase tracking-wider border border-blue-200 dark:border-blue-800 rounded-none backdrop-blur-sm">
                   {post.category}
                 </span>
               </div>
@@ -113,7 +113,7 @@ const categories = [...new Set(posts.map(post => post.category))];
             <div class="p-6 flex flex-col flex-grow">
               <!-- 日期信息 -->
               <div class="flex items-center mb-4">
-                <time class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest">{post.date}</time>
+                <time class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest">{post.date}</time>
               </div>
               <!-- 文章标题 - 适中的字体 -->
               <a href={'/blog/' + post.id.replace('.md', '')} class="block mb-4 group/title">
@@ -136,8 +136,8 @@ const categories = [...new Set(posts.map(post => post.category))];
                     loading="lazy"
                   />
                   <div>
-                    <p class="font-mono text-xs font-bold text-gray-900 dark:text-white">{post.author}</p>
-                    <p class="text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase">{post.authorRole}</p>
+                    <p class="text-xs font-bold text-gray-900 dark:text-white">{post.author}</p>
+                    <p class="text-[10px] text-gray-400 dark:text-gray-500 uppercase">{post.authorRole}</p>
                   </div>
                 </div>
 
@@ -155,7 +155,7 @@ const categories = [...new Set(posts.map(post => post.category))];
 
       <!-- 加载更多按钮 -->
       <div class="mt-12 flex justify-center">
-        <a href="#" class="group inline-flex items-center px-10 py-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-mono text-xs uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 border border-gray-200 dark:border-gray-800 rounded-none relative overflow-hidden">
+        <a href="#" class="group inline-flex items-center px-10 py-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-xs uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 border border-gray-200 dark:border-gray-800 rounded-none relative overflow-hidden">
           <span class="relative z-10">Load More Content</span>
           <div class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
         </a>
