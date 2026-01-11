@@ -281,13 +281,13 @@ const shopActiveBgClass = "absolute inset-0 bg-transparent rounded-none pointer-
                   <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                   <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
-                  <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden border-b border-gray-100 dark:border-gray-800">
+                  <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden border-b border-gray-100 dark:border-gray-800 p-2">
                     <div class="absolute inset-0 bg-gray-100 dark:bg-gray-800"></div>
-                    <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <div class="absolute inset-2 flex items-center justify-center text-gray-400">
                       <img
                         src={app.image}
                         alt={app.name}
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="w-full h-full object-cover transition-transform duration-500 rounded-sm"
                         loading="lazy"
                         decoding="async"
                       />
