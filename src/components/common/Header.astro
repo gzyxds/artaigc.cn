@@ -6,7 +6,7 @@
  */
 
 import astroLogo from '../../assets/logo.svg';
-import { icons, menuData, type MenuItem } from '../../data/config';
+import { icons, menuData, type MenuItem } from '../../data/menu';
 
 /**
  * 获取logo的URL - 处理Astro的SVG导入类型
@@ -17,7 +17,7 @@ const logoUrl = typeof astroLogo === 'string' ? astroLogo : astroLogo.src;
  * 优化的图标组件 - 减少DOM节点
  */
 const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; className?: string }) => (
-  `<svg class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="${icons[name]}"/></svg>`
+  `<svg class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="${icons[name]}"/></svg>`
 );
 ---
 
@@ -48,7 +48,7 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
                 <span class="group-hover/btn:text-brand-600 dark:group-hover/btn:text-brand-400 transition-colors duration-200">
                   {menuName}
                 </span>
-                <svg class="ml-1 h-3 w-3 transition-all duration-300 group-hover:rotate-180 text-neutral-400 group-hover/btn:text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="ml-1 h-3 w-3 transition-all duration-300 group-hover:rotate-180 text-neutral-400 group-hover/btn:text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d={icons.chevron} />
                 </svg>
               </button>
@@ -86,7 +86,7 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
                                 {item.name}
                                 </div>
                                 <span class="opacity-0 group-hover/item:opacity-100 transition-opacity duration-200 -translate-x-2 group-hover/item:translate-x-0">
-                                    <svg class="w-3 h-3 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                    <svg class="w-3 h-3 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" /></svg>
                                 </span>
                             </div>
                             <div class="text-xs text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed line-clamp-2 font-normal">
@@ -118,10 +118,10 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
           aria-label="切换暗黑模式"
         >
           <svg x-show="!darkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.moon} />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icons.moon} />
           </svg>
           <svg x-show="darkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.sun} />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icons.sun} />
           </svg>
         </button>
 
@@ -251,11 +251,11 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
 
 <style>
   .nav-link {
-    @apply px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-200 relative;
+    @apply px-4 py-2 text-[15px] font-medium text-neutral-600 dark:text-neutral-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-200 relative;
   }
 
   .mobile-nav-item {
-    @apply flex items-center justify-between w-full px-6 py-4 rounded-none text-neutral-700 dark:text-neutral-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-all duration-200 text-sm font-medium;
+    @apply flex items-center justify-between w-full px-6 py-4 rounded-none text-neutral-700 dark:text-neutral-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-all duration-200 text-[15px] font-medium;
   }
 
   [x-cloak] {

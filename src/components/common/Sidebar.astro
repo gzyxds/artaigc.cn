@@ -5,7 +5,7 @@
  * 适配 PC 端，支持展开/收起，响应式设计
  */
 import astroLogo from '../../assets/logo.svg';
-import { icons, menuData, type MenuItem } from '../../data/config';
+import { icons, menuData, type MenuItem } from '../../data/menu';
 
 const logoUrl = typeof astroLogo === 'string' ? astroLogo : astroLogo.src;
 const currentPath = Astro.url.pathname;
@@ -48,7 +48,7 @@ const titleToIconMap: Record<string, string> = {
   '产品演示': 'smart_display',
   'AI提示词': 'tips_and_updates',
   '授权中心': 'verified',
-  '项目文档': 'menu_book',
+  '官方文档': 'menu_book',
   '飞书文档': 'description',
   '更新日志': 'update',
   '联系我们': 'support_agent',
@@ -70,7 +70,7 @@ const Icon = ({ name, title, className = "" }: { name: string; title?: string; c
   const iconName = getMaterialIcon(name, title);
   const finalClass = className.replace(/w-\[.*?\]|h-\[.*?\]/g, '').trim();
   // 增加 flex 和 items-center 确保图标垂直居中
-  return `<i class="material-icons-outlined ${finalClass} text-[18px] leading-none select-none flex items-center justify-center">${iconName}</i>`;
+  return `<i class="material-icons-outlined ${finalClass} text-[20px] leading-none select-none flex items-center justify-center font-light">${iconName}</i>`;
 };
 
 const navLinks = [
@@ -143,13 +143,13 @@ const navLinks = [
             class:list={[
               "flex items-center gap-3 px-3 py-2.5 rounded-sm transition-all group relative",
               active
-                ? "bg-brand-50 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400 font-medium"
+                ? "bg-brand-600 text-white shadow-sm font-medium"
                 : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-200"
             ]}
             :class="sidebarExpanded ? '' : 'justify-center'"
           >
-            <div class="flex-shrink-0" set:html={Icon({ name: link.icon as any, title: link.name, className: "w-[18px] h-[18px]" })} />
-            <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">{link.name}</span>
+            <div class="flex-shrink-0" set:html={Icon({ name: link.icon as any, title: link.name, className: "w-[20px] h-[20px]" })} />
+            <span class="text-[15px] font-medium whitespace-nowrap" x-show="sidebarExpanded">{link.name}</span>
 
             <!-- 收起时的 Tooltip -->
             <div
@@ -173,7 +173,7 @@ const navLinks = [
           <!-- 分组标题 -->
           <button
             @click="open = !open"
-            class="w-full flex items-center justify-between px-3 py-2 text-[13px] font-bold text-neutral-500 uppercase tracking-wider hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
+            class="w-full flex items-center justify-between px-3 py-2 text-sm font-bold text-neutral-500 uppercase tracking-wider hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
             x-show="sidebarExpanded"
           >
             <span>{title}</span>
@@ -194,7 +194,7 @@ const navLinks = [
                   class:list={[
                     "flex items-center gap-3 px-3 py-2 rounded-sm transition-all group relative",
                     active
-                      ? "bg-brand-50 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400 font-medium"
+                      ? "bg-brand-600 text-white shadow-sm font-medium"
                       : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-200"
                   ]}
                   :class="sidebarExpanded ? '' : 'justify-center'"
@@ -252,7 +252,7 @@ const navLinks = [
         <i x-show="!darkMode" class="material-icons absolute inset-0 text-[20px] leading-none">dark_mode</i>
         <i x-show="darkMode" class="material-icons absolute inset-0 text-[20px] leading-none">light_mode</i>
       </div>
-      <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">
+      <span class="text-[15px] font-medium whitespace-nowrap" x-show="sidebarExpanded">
         <span x-show="!darkMode">暗黑模式</span>
         <span x-show="darkMode">明亮模式</span>
       </span>

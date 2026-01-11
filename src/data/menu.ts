@@ -44,7 +44,7 @@ export const menuData = {
     { name: "授权中心", url: "https://console.cloudcvm.com/home.htm", icon: "shield", desc: "授权管理与使用", target: "_blank" },
   ],
   docs: [
-    { name: "项目文档", url: "https://doc.artaigc.cn/", icon: "lightbulb", desc: "5分钟快速上手", target: "_blank" },
+    { name: "官方文档", url: "https://docs.buidai.com/", icon: "lightbulb", desc: "5分钟快速上手", target: "_blank" },
     { name: "飞书文档", url: "https://rwm01l8tn3x.feishu.cn/wiki/VqNCwBO0KiqWIWkSfdHcDigGnZg?from=from_copylink", icon: "monitor", desc: "详细功能说明", target: "_blank" },
     { name: "数字分身", url: "https://doc.artaigc.cn/human/", icon: "user", desc: "数字人部署文档", target: "_blank" },
     { name: "全能知识库", url: "https://doc.artaigc.cn/work/deployment/demo.html", icon: "brain", desc: "企业知识库数文档", target: "_blank" },
