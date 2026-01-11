@@ -1162,7 +1162,7 @@ const categories = [...new Set(promptCards.map(card => card.category))];
 
     <!-- 分类筛选区域 -->
     <section class="py-8 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
-      <div class="container mx-auto px-4">
+      <div class="container-custom">
         <div class="flex flex-wrap justify-center gap-2 mb-4">
           <button
             class="category-btn active px-6 py-2.5 rounded-none bg-blue-600 text-white type-small font-bold tracking-widest uppercase border border-blue-600 transition-all duration-300"
@@ -1184,7 +1184,7 @@ const categories = [...new Set(promptCards.map(card => card.category))];
 
     <!-- 提示词卡片展示区域 -->
     <section class="py-16 bg-gray-50/30 dark:bg-gray-900/50">
-      <div class="container mx-auto px-4">
+      <div class="container-custom">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {promptCards.map(card => (
             <div class="prompt-card group" data-category={card.category}>

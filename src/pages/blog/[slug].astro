@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/common/Header.astro';
 import Footer from '../../components/common/Footer.astro';
 import { getCollection } from 'astro:content';
+import { getRandomImage } from '../../data/blog';
 
 /**
  * 生成静态路径 - 为每篇博客文章创建动态路由
@@ -12,33 +13,30 @@ export async function getStaticPaths() {
     return import.meta.env.PROD ? !data.draft : true;
   });
 
-  return posts.map((post) => ({
-    params: { slug: post.id.replace('.md', '') },
-    props: { post },
-  }));
+  return posts.map((post) => {
+    // 获取相关文章推荐
+    // 筛选同分类的其他文章，最多显示3篇
+    const relatedPosts = posts
+      .filter(p => p.id !== post.id && p.data.category === post.data.category)
+      .slice(0, 3)
+      .map(p => ({
+        id: p.id,
+        title: p.data.title,
+        excerpt: p.data.excerpt,
+        image: getRandomImage(p.id),
+        date: p.data.date
+      }));
+
+    return {
+      params: { slug: post.id.replace('.md', '') },
+      props: { post, relatedPosts },
+    };
+  });
 }
 
-const { post } = Astro.props;
+const { post, relatedPosts } = Astro.props;
 const { Content } = await post.render();
 
-/**
- * 获取相关文章推荐
- * 筛选同分类的其他文章，最多显示3篇
- */
-const allPosts = await getCollection('blog', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true;
-});
-
-const relatedPosts = allPosts
-  .filter(p => p.id !== post.id && p.data.category === post.data.category)
-  .slice(0, 3)
-  .map(p => ({
-    id: p.id,
-    title: p.data.title,
-    excerpt: p.data.excerpt,
-    image: p.data.image,
-    date: p.data.date
-  }));
 ---
 
 <Layout title={post.data.title + " - 艺创AI"} description={post.data.excerpt}>
@@ -58,12 +56,12 @@ const relatedPosts = allPosts
             <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
-            <span>Back to Index</span>
+            <span>返回列表</span>
           </a>
 
           <!-- 阅读进度指示器 -->
           <div class="flex items-center gap-4">
-            <span class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest">Progress</span>
+            <span class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest">阅读进度</span>
             <div class="w-24 h-1 bg-gray-100 dark:bg-gray-800 rounded-none overflow-hidden">
               <div class="reading-progress-bar h-full bg-blue-600 transition-all duration-300" style="width: 0%"></div>
             </div>
@@ -132,7 +130,7 @@ const relatedPosts = allPosts
               <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
               </svg>
-              Share Knowledge
+              分享文章
             </h3>
             <div class="flex flex-wrap gap-4">
               <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`}
@@ -160,7 +158,7 @@ const relatedPosts = allPosts
               <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
               </svg>
-              Navigation
+              文章目录
             </h3>
             <nav class="space-y-4" id="toc">
               <!-- 目录内容将通过JavaScript动态生成 -->
@@ -173,20 +171,20 @@ const relatedPosts = allPosts
               <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 00-2-2z"/>
               </svg>
-              Technical Specs
+              文章信息
             </h3>
             <div class="space-y-6">
               <div class="flex justify-between items-center py-2 border-b border-gray-50 dark:border-gray-800/50">
-                <span class="text-[10px] text-gray-400 uppercase tracking-widest">Published</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest">发布时间</span>
                 <span class="text-[10px] font-bold text-gray-900 dark:text-white">{post.data.date}</span>
               </div>
               <div class="flex justify-between items-center py-2 border-b border-gray-50 dark:border-gray-800/50">
-                <span class="text-[10px] text-gray-400 uppercase tracking-widest">Category</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest">分类</span>
                 <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400">{post.data.category}</span>
               </div>
               <div class="flex justify-between items-center py-2">
-                <span class="text-[10px] text-gray-400 uppercase tracking-widest">Read Time</span>
-                <span class="text-[10px] font-bold text-gray-900 dark:text-white">~5 MIN</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest">预计阅读</span>
+                <span class="text-[10px] font-bold text-gray-900 dark:text-white">约 5 分钟</span>
               </div>
             </div>
           </div>
@@ -202,7 +200,7 @@ const relatedPosts = allPosts
              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
              </svg>
-             Related Insights
+             相关推荐
            </h3>
            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 dark:bg-gray-800 border border-gray-100 dark:border-gray-800">
              {relatedPosts.map((relatedPost) => (
@@ -244,83 +242,124 @@ const relatedPosts = allPosts
     scroll-padding-top: var(--header-height);
   }
 
-  /* 文章内容样式优化 */
+  /* 文章内容样式优化 - 基于 Tailwind Typography 深度定制 */
   .prose {
-    @apply text-slate-700 dark:text-slate-300;
+    @apply max-w-none;
+    /* 基础文本设置 */
+    @apply text-base leading-7 text-gray-600 dark:text-gray-300;
   }
 
+  /* 标题层级设计 */
   .prose h1, .prose h2, .prose h3, .prose h4 {
-    @apply text-slate-900 dark:text-white font-bold tracking-tight;
+    @apply font-bold tracking-tight text-gray-900 dark:text-white scroll-mt-20;
   }
 
   .prose h1 {
-    @apply text-3xl mb-8 pb-4;
+    @apply text-3xl lg:text-4xl mb-8 pb-4 border-b border-gray-100 dark:border-gray-800;
   }
 
   .prose h2 {
-    @apply text-2xl mt-12 mb-6 pb-3 border-b border-slate-200 dark:border-slate-700 text-blue-600 dark:text-blue-400;
+    @apply text-2xl lg:text-3xl mt-12 mb-6 flex items-center;
+  }
+
+  .prose h2::before {
+    content: '#';
+    @apply mr-2 text-blue-600 dark:text-blue-400 font-normal opacity-50 text-xl;
   }
 
   .prose h3 {
-    @apply text-xl mt-8 mb-4;
+    @apply text-xl lg:text-2xl mt-8 mb-4;
   }
 
+  .prose h4 {
+    @apply text-lg lg:text-xl mt-6 mb-3;
+  }
+
+  /* 段落文本 */
   .prose p {
-    @apply mb-6 leading-relaxed text-base text-gray-600 dark:text-gray-400;
+    @apply mb-6 leading-relaxed;
   }
 
+  /* 链接样式 */
   .prose a {
-    @apply text-blue-600 dark:text-blue-400 no-underline hover:underline text-sm transition-colors;
+    @apply text-blue-600 dark:text-blue-400 no-underline border-b border-blue-600/30 hover:border-blue-600 transition-colors pb-0.5;
   }
 
+  /* 强调文本 */
   .prose strong {
-    @apply text-gray-900 dark:text-white font-bold;
+    @apply font-bold text-gray-900 dark:text-white;
   }
 
+  /* 列表样式 */
   .prose ul {
-    @apply list-none pl-0 space-y-4 mb-6;
+    @apply list-none pl-0 space-y-2 mb-6;
   }
 
   .prose ol {
-    @apply mb-6 pl-6;
+    @apply list-decimal pl-5 space-y-2 mb-6 text-gray-600 dark:text-gray-400 marker:text-gray-400 dark:marker:text-gray-500;
   }
 
-  .prose li {
-    @apply relative pl-8 text-gray-600 dark:text-gray-400 mb-2;
+  .prose ul li {
+    @apply relative pl-6;
   }
 
   .prose ul li::before {
     content: '';
-    @apply absolute left-0 top-3 w-4 h-px bg-blue-600;
+    @apply absolute left-0 top-[0.6em] w-1.5 h-1.5 bg-blue-600 rounded-full;
   }
 
+  /* 引用区块 - Bento 风格 */
   .prose blockquote {
-    @apply border-l-0 bg-gray-50 dark:bg-gray-800/50 pl-10 py-8 italic text-gray-600 dark:text-gray-400 relative;
+    @apply not-italic border-l-4 border-blue-500 bg-blue-50/30 dark:bg-blue-900/10 px-6 py-5 my-8 rounded-r-sm text-gray-700 dark:text-gray-300 relative;
   }
 
-  .prose blockquote::before {
-    content: '"';
-    @apply absolute left-4 top-4 text-4xl text-blue-600/20;
+  .prose blockquote p:last-child {
+    @apply mb-0;
+  }
+
+  /* 表格样式 - 响应式斑马线 */
+  .prose table {
+    @apply w-full text-left border-collapse my-8 text-sm;
+  }
+
+  .prose thead {
+    @apply bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700;
+  }
+
+  .prose th {
+    @apply font-semibold text-gray-900 dark:text-white p-4;
+  }
+
+  .prose td {
+    @apply p-4 border-b border-gray-100 dark:border-gray-800/50 text-gray-600 dark:text-gray-400;
+  }
+
+  .prose tr:nth-child(even) {
+    @apply bg-gray-50/50 dark:bg-gray-800/20;
+  }
+
+  /* 代码块样式 */
+  .prose pre {
+    @apply bg-gray-900 dark:bg-black text-gray-200 p-6 rounded-md border border-gray-800 overflow-x-auto my-8 shadow-sm;
   }
 
   .prose code {
-    @apply text-blue-600 dark:text-blue-400 bg-gray-50 dark:bg-gray-800 px-1.5 py-0.5 font-mono text-[0.9em] rounded-none border-none;
+    @apply font-mono text-sm;
   }
 
-  .prose code::before, .prose code::after {
-    content: '';
+  /* 行内代码 */
+  .prose :not(pre) > code {
+    @apply text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded text-[0.9em] font-medium border border-blue-100 dark:border-blue-900/30;
   }
 
-  .prose pre {
-    @apply bg-slate-900 dark:bg-black p-6 overflow-x-auto rounded-none border border-gray-800;
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    content: none;
   }
 
-  .prose pre code {
-    @apply bg-transparent border-none p-0 text-gray-300;
-  }
-
+  /* 图片样式 */
   .prose img {
-    @apply rounded-none border border-gray-100 dark:border-gray-800;
+    @apply rounded-sm border border-gray-100 dark:border-gray-800 shadow-sm my-8 w-full h-auto;
   }
 
   .prose hr {
@@ -335,19 +374,16 @@ const relatedPosts = allPosts
   /* 目录样式 */
   #toc a {
     display: block;
-    padding: 0.75rem 1rem;
-    @apply text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider;
-    border-radius: 0;
-    transition: all 0.2s ease;
+    padding: 0.5rem 0.75rem;
+    @apply text-gray-500 dark:text-gray-400 text-xs font-medium border-l-2 border-transparent transition-all duration-200;
   }
 
   #toc a:hover {
-    @apply bg-gray-50 dark:bg-gray-800 text-blue-600 dark:text-blue-400;
-    transform: translateX(4px);
+    @apply text-blue-600 dark:text-blue-400 border-gray-200 dark:border-gray-700;
   }
 
   #toc a.active {
-    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-bold border-l-2 border-blue-600;
+    @apply text-blue-600 dark:text-blue-400 border-blue-600 bg-blue-50/50 dark:bg-blue-900/10;
   }
 
   /* 响应式调整 */
@@ -363,8 +399,11 @@ const relatedPosts = allPosts
       padding-right: 1rem;
     }
 
-    .prose {
-      font-size: 16px;
+    /* 移动端表格滚动 */
+    .prose table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
     }
   }
 
@@ -389,23 +428,53 @@ const relatedPosts = allPosts
     if (!article || !progressBar || !progressText) return;
 
     const updateProgress = () => {
-      const articleHeight = article.offsetHeight;
-      const windowHeight = window.innerHeight;
-      const scrolled = window.scrollY;
-      const articleTop = article.offsetTop;
+      // 获取文章内容的位置信息
+      const rect = article.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
 
-      const progress = Math.min(
-        Math.max((scrolled - articleTop + windowHeight) / articleHeight, 0),
-        1
-      );
+      // 计算总的可滚动距离：文章高度 - 视口高度
+      // 如果文章高度小于视口高度，则进度永远是100%（或者不显示）
+      const totalScrollableDistance = rect.height - viewportHeight;
 
-      const percentage = Math.round(progress * 100);
-      progressBar.style.width = `${percentage}%`;
-      progressText.textContent = `${percentage}%`;
+      // 计算已滚动的距离
+      // rect.top 是文章顶部距离视口顶部的距离
+      // 当 rect.top 为 0 时，说明刚开始读（假设文章顶部贴顶）
+      // 实际上我们可能希望从文章进入视口就开始计算，或者文章顶部到达视口顶部才开始
+      // 这里采用：当文章顶部到达视口顶部时开始计算 (rect.top <= 0)
+      // 使用 -rect.top 表示我们滚过了多少文章内容
+      const scrolledDistance = -rect.top;
+
+      let percentage = 0;
+
+      if (totalScrollableDistance <= 0) {
+        // 文章太短，直接显示 100%
+        percentage = 100;
+      } else {
+        percentage = (scrolledDistance / totalScrollableDistance) * 100;
+        // 限制在 0-100 之间
+        percentage = Math.min(Math.max(percentage, 0), 100);
+      }
+
+      const roundedPercentage = Math.round(percentage);
+      progressBar.style.width = `${roundedPercentage}%`;
+      progressText.textContent = `${roundedPercentage}%`;
     };
 
-    window.addEventListener('scroll', updateProgress);
-    window.addEventListener('resize', updateProgress);
+    // 使用 requestAnimationFrame 优化性能
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateProgress();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    // 初始化调用一次
     updateProgress();
   };
 
@@ -436,7 +505,15 @@ const relatedPosts = allPosts
         if (href) {
           const target = document.querySelector(href);
           if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // 考虑顶部导航栏的高度
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
           }
         }
       });
@@ -458,8 +535,7 @@ const relatedPosts = allPosts
         }
       });
     }, {
-      threshold: 0.5,
-      rootMargin: '-100px 0px -50% 0px'
+      rootMargin: '-100px 0px -60% 0px' // 调整可视区域判断范围
     });
 
     headings.forEach(heading => observer.observe(heading));
@@ -500,12 +576,16 @@ const relatedPosts = allPosts
   };
 
   // 页面加载完成后初始化
-  document.addEventListener('DOMContentLoaded', () => {
+  // 支持 Astro View Transitions (astro:page-load) 和普通加载 (DOMContentLoaded)
+  const init = () => {
     updateReadingProgress();
     generateTOC();
     initShareButtons();
     initLazyLoading();
-  });
+  };
+
+  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('astro:page-load', init);
 
   // 响应式处理
   window.addEventListener('resize', () => {

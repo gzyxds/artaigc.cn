@@ -1,0 +1,280 @@
+---
+/**
+ * Sidebar 组件
+ * 替代原顶部 Header，提供垂直导航布局
+ * 适配 PC 端，支持展开/收起，响应式设计
+ */
+import astroLogo from '../../assets/logo.svg';
+import { icons, menuData, type MenuItem } from '../../data/config';
+
+const logoUrl = typeof astroLogo === 'string' ? astroLogo : astroLogo.src;
+const currentPath = Astro.url.pathname;
+
+// 辅助函数：判断链接是否激活
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/';
+  return currentPath.startsWith(path);
+};
+
+// 映射配置：将 config.ts 中的 icon key 映射为 Material Icons 名称
+const iconMap: Record<string, string> = {
+  user: 'person_outline',
+  brain: 'psychology',
+  chat: 'chat_bubble_outline',
+  edit: 'edit_note',
+  target: 'ads_click',
+  monitor: 'desktop_windows',
+  lightbulb: 'lightbulb_outline',
+  shield: 'verified_user',
+  chevron: 'expand_more',
+  arrow: 'arrow_forward',
+  menu: 'menu',
+  close: 'close',
+  sun: 'light_mode',
+  moon: 'dark_mode'
+};
+
+// 标题到图标的精确映射（覆盖默认映射，实现更精准的语义）
+const titleToIconMap: Record<string, string> = {
+  '首页': 'home',
+  '产品价格': 'payments',
+  '关于我们': 'domain',
+  '最新动态': 'newspaper',
+  '产品中心': 'widgets',
+  '数字分身': 'face_6',
+  '全能知识库': 'auto_stories',
+  '聊天绘画': 'palette',
+  '论文创作': 'school',
+  '产品演示': 'smart_display',
+  'AI提示词': 'tips_and_updates',
+  '授权中心': 'verified',
+  '项目文档': 'menu_book',
+  '飞书文档': 'description',
+  '更新日志': 'update',
+  '联系我们': 'support_agent',
+  '集成与API': 'api',
+  '合作伙伴': 'handshake',
+  '渠道合作': 'storefront',
+  'APP下载': 'install_mobile'
+};
+
+const getMaterialIcon = (name: string, title?: string) => {
+  if (title && titleToIconMap[title]) {
+    return titleToIconMap[title];
+  }
+  return iconMap[name] || name;
+};
+
+// 辅助函数：渲染图标 (使用 Material Icons Outlined 线性风格)
+const Icon = ({ name, title, className = "" }: { name: string; title?: string; className?: string }) => {
+  const iconName = getMaterialIcon(name, title);
+  const finalClass = className.replace(/w-\[.*?\]|h-\[.*?\]/g, '').trim();
+  // 增加 flex 和 items-center 确保图标垂直居中
+  return `<i class="material-icons-outlined ${finalClass} text-[18px] leading-none select-none flex items-center justify-center">${iconName}</i>`;
+};
+
+const navLinks = [
+  { name: '首页', url: '/', icon: 'home' },
+  { name: '产品价格', url: '/pricing', icon: 'payments' },
+  { name: '关于我们', url: '/company', icon: 'domain' },
+  { name: '最新动态', url: '/blog', icon: 'newspaper' },
+];
+
+---
+
+<!--
+  Sidebar 容器
+  在移动端隐藏 (hidden)，在 PC 端显示 (lg:flex)
+  使用 fixed 定位固定在左侧
+  z-index 设置高一点确保在内容之上
+-->
+<aside
+  class="hidden lg:flex fixed left-0 top-0 h-screen bg-surface border-r border-border z-40 flex-col transition-all duration-300 ease-in-out"
+  x-bind:class="sidebarExpanded ? 'w-64' : 'w-20'"
+>
+  <!-- 顶部 Logo 区域 -->
+  <div
+    class="h-16 flex items-center border-b border-border flex-shrink-0 transition-all duration-300"
+    :class="sidebarExpanded ? 'justify-between px-4' : 'justify-center'"
+  >
+    <a href="/" class="flex items-center gap-3 overflow-hidden">
+      <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-50/10 rounded-sm border border-transparent hover:border-brand-500/20 transition-colors">
+        <img src={logoUrl} alt="艺创AI" class="w-5 h-5" />
+      </div>
+      <span
+        class="font-bold text-lg text-neutral-900 dark:text-white whitespace-nowrap transition-opacity duration-200"
+        x-show="sidebarExpanded"
+        x-transition:enter="delay-100"
+      >
+        ART.AI
+      </span>
+    </a>
+
+    <!-- 展开/收起按钮 -->
+    <button
+      @click="sidebarExpanded = !sidebarExpanded"
+      class="p-1.5 rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 transition-colors"
+      x-show="sidebarExpanded"
+    >
+      <i class="material-icons text-[20px]">keyboard_double_arrow_left</i>
+    </button>
+  </div>
+
+  <!-- 收起状态下的展开按钮 (居中显示) -->
+  <div class="w-full flex justify-center py-2" x-show="!sidebarExpanded" x-cloak>
+    <button
+      @click="sidebarExpanded = !sidebarExpanded"
+      class="p-2 rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 transition-colors"
+    >
+      <i class="material-icons text-[20px]">keyboard_double_arrow_right</i>
+    </button>
+  </div>
+
+  <!-- 导航菜单区域 -->
+  <nav class="flex-1 overflow-y-auto overflow-x-hidden py-4 px-3 space-y-6 scrollbar-thin">
+
+    <!-- 基础导航 -->
+    <div class="space-y-1">
+      {navLinks.map(link => {
+        const active = isActive(link.url);
+        return (
+          <a
+            href={link.url}
+            class:list={[
+              "flex items-center gap-3 px-3 py-2.5 rounded-sm transition-all group relative",
+              active
+                ? "bg-brand-50 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400 font-medium"
+                : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-200"
+            ]}
+            :class="sidebarExpanded ? '' : 'justify-center'"
+          >
+            <div class="flex-shrink-0" set:html={Icon({ name: link.icon as any, title: link.name, className: "w-[18px] h-[18px]" })} />
+            <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">{link.name}</span>
+
+            <!-- 收起时的 Tooltip -->
+            <div
+              class="absolute left-full ml-2 px-2 py-1 bg-neutral-900 text-white text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 whitespace-nowrap"
+              x-show="!sidebarExpanded"
+            >
+              {link.name}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="h-px bg-border mx-2"></div>
+
+    <!-- 分组菜单 -->
+    {Object.entries(menuData).map(([key, items]) => {
+      const title = key === 'products' ? '产品中心' : key === 'docs' ? '产品文档' : '支持与服务';
+      return (
+        <div x-data="{ open: true }" class="space-y-1">
+          <!-- 分组标题 -->
+          <button
+            @click="open = !open"
+            class="w-full flex items-center justify-between px-3 py-2 text-[13px] font-bold text-neutral-500 uppercase tracking-wider hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
+            x-show="sidebarExpanded"
+          >
+            <span>{title}</span>
+            <i
+              class="material-icons text-[16px] transition-transform duration-200"
+              :class="open ? 'rotate-180' : ''"
+            >expand_more</i>
+          </button>
+
+          <!-- 分组内容 -->
+          <div x-show="sidebarExpanded ? open : true" x-collapse class="space-y-1">
+            {items.map(item => {
+              const active = isActive(item.url);
+              return (
+                <a
+                  href={item.url}
+                  target={(item as MenuItem).target || undefined}
+                  class:list={[
+                    "flex items-center gap-3 px-3 py-2 rounded-sm transition-all group relative",
+                    active
+                      ? "bg-brand-50 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400 font-medium"
+                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-200"
+                  ]}
+                  :class="sidebarExpanded ? '' : 'justify-center'"
+                >
+                  <div class="flex-shrink-0" set:html={Icon({ name: item.icon, title: item.name, className: "w-[18px] h-[18px]" })} />
+                  <span class="text-sm whitespace-nowrap" x-show="sidebarExpanded">{item.name}</span>
+
+                  <!-- 收起时的 Tooltip -->
+                  <div
+                    class="absolute left-full ml-2 px-2 py-1 bg-neutral-900 text-white text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 whitespace-nowrap"
+                    x-show="!sidebarExpanded"
+                  >
+                    {item.name}
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      );
+    })}
+
+  </nav>
+
+  <!-- 底部操作区 -->
+  <div class="p-3 border-t border-border space-y-2">
+    <!-- 登录/购买按钮 -->
+    <div class="flex flex-col gap-2">
+      <a
+        href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
+        target="_blank"
+        class="flex items-center justify-center gap-2 px-3 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-colors overflow-hidden"
+      >
+        <i class="material-icons text-[20px] flex-shrink-0">shopping_cart</i>
+        <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">立即购买</span>
+      </a>
+
+      <a
+        href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
+        target="_blank"
+        class="flex items-center justify-center gap-2 px-3 py-2 border border-border hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-sm transition-colors overflow-hidden"
+      >
+        <i class="material-icons text-[20px] flex-shrink-0">login</i>
+        <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">登录控制台</span>
+      </a>
+    </div>
+
+    <!-- 暗黑模式切换 -->
+    <button
+      x-on:click="darkMode = !darkMode"
+      class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-sm text-neutral-500 hover:text-brand-600 dark:text-neutral-400 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+      :title="sidebarExpanded ? '' : '切换模式'"
+    >
+      <div class="relative w-5 h-5 flex-shrink-0">
+        <i x-show="!darkMode" class="material-icons absolute inset-0 text-[20px] leading-none">dark_mode</i>
+        <i x-show="darkMode" class="material-icons absolute inset-0 text-[20px] leading-none">light_mode</i>
+      </div>
+      <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">
+        <span x-show="!darkMode">暗黑模式</span>
+        <span x-show="darkMode">明亮模式</span>
+      </span>
+    </button>
+  </div>
+</aside>
+
+<style>
+  /* 隐藏滚动条但保留滚动功能 */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 20px;
+  }
+  .scrollbar-thin:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+  }
+
+  [x-cloak] { display: none !important; }
+</style>

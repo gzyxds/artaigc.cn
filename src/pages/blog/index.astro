@@ -4,39 +4,7 @@ import Header from '../../components/common/Header.astro';
 import Footer from '../../components/common/Footer.astro';
 import HeroSection from '../../components/home/HeroSection.astro';
 import { getCollection } from 'astro:content';
-
-/**
- * 可用的博客封面图片列表
- * 从public/assets/blog目录中随机选择
- */
-const blogImages = [
-  '/assets/blog/blog.jpg',
-  '/assets/blog/blog1.jpg',
-  '/assets/blog/blog2.jpg',
-  '/assets/blog/blog3.jpg',
-  '/assets/blog/blog4.jpg',
-  '/assets/blog/blog5.jpg',
-  '/assets/blog/blog6.jpg',
-  '/assets/blog/blog8.jpg'
-];
-
-/**
- * 随机选择封面图片的函数
- * @param {string} postId - 文章ID，用于确保同一文章始终使用相同图片
- * @returns {string} 图片路径
- */
-function getRandomImage(postId: string): string {
-  // 使用文章ID生成一个简单的哈希值，确保同一文章始终使用相同图片
-  let hash = 0;
-  for (let i = 0; i < postId.length; i++) {
-    const char = postId.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash; // 转换为32位整数
-  }
-  // 使用哈希值选择图片索引
-  const index = Math.abs(hash) % blogImages.length;
-  return blogImages[index];
-}
+import { getRandomImage } from '../../data/blog';
 
 /**
  * 博客文章数据
@@ -80,12 +48,49 @@ const categories = [...new Set(posts.map(post => post.category))];
     <!-- 背景网格装饰 -->
     <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-fixed opacity-5 pointer-events-none"></div>
 
-    <!-- 英雄区块：页面标题和描述 -->
-    <HeroSection
-      title="新闻资讯"
-      description="了解我们最新的产品更新、功能发布和公司新闻"
-      hasPattern={true}
-    />
+    <!-- 页面标题区域 - Bento/Linear 设计 -->
+    <section class="relative py-20 lg:py-32 border-b border-gray-200 dark:border-gray-800">
+      <!-- 网格背景 -->
+      <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+
+      <div class="container-custom relative z-10">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+          <!-- 标题 -->
+          <div class="space-y-6">
+            <div class="inline-flex items-center px-3 py-1 rounded-none border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs mb-4">
+              BLOG & INSIGHTS
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white tracking-tight">
+              最新 <span class="text-blue-600">资讯动态</span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              了解我们最新的产品更新、功能发布和公司新闻。
+              <span class="text-sm block mt-2 text-gray-500">技术分享 · 行业洞察 · 最佳实践</span>
+            </p>
+          </div>
+
+          <!-- 核心数据展示 - Bento Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 mt-20">
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">{posts.length}<span class="text-blue-600">+</span></div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">发布文章</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">50k<span class="text-blue-600">+</span></div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">阅读总量</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">{categories.length}</div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">专栏分类</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">Daily</div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">更新频率</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- 博客内容区域 -->
     <div class="container-custom relative z-10 py-12">
@@ -128,16 +133,16 @@ const categories = [...new Set(posts.map(post => post.category))];
 
               <div class="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
                 <!-- 作者信息 -->
-                <div class="flex items-center">
+                <div class="flex items-center gap-3">
                   <img
                     src={post.authorAvatar}
                     alt={post.author}
-                    class="w-8 h-8 mr-3 object-cover border border-gray-200 dark:border-gray-700 p-0.5"
+                    class="w-8 h-8 object-cover border border-gray-100 dark:border-gray-800 rounded-sm"
                     loading="lazy"
                   />
-                  <div>
-                    <p class="text-xs font-bold text-gray-900 dark:text-white">{post.author}</p>
-                    <p class="text-[10px] text-gray-400 dark:text-gray-500 uppercase">{post.authorRole}</p>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-xs font-bold text-gray-900 dark:text-white leading-tight mb-0.5">{post.author}</p>
+                    <p class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wider leading-tight">{post.authorRole}</p>
                   </div>
                 </div>
 

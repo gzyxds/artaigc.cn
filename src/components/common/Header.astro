@@ -21,8 +21,8 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
 );
 ---
 
-<!-- 主导航栏 -->
-<header class="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border transition-colors duration-300">
+<!-- 主导航栏 - PC端隐藏，移动端显示 -->
+<header class="lg:hidden sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border transition-colors duration-300">
   <div class="container-custom">
     <div class="flex items-center h-16">
       <!-- Logo区域 -->

@@ -3,7 +3,6 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/common/Header.astro';
 import Footer from '../components/common/Footer.astro';
-import HeroSection from '../components/home/HeroSection.astro';
 
 // 版本数据
 const versions = [
@@ -182,12 +181,49 @@ const versions = [
 <Layout title="更新日志 - 艺创AI">
   <Header />
   <main>
-    <HeroSection
-      title="产品更新日志"
-      highlightText="更新日志"
-      description="及时了解艺创AI的最新更新、改进和修复。"
-      compact={true}
-    />
+    <!-- 页面标题区域 - Bento/Linear 设计 -->
+    <section class="relative py-20 lg:py-32 border-b border-gray-200 dark:border-gray-800">
+      <!-- 网格背景 -->
+      <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+
+      <div class="container-custom relative z-10">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+          <!-- 标题 -->
+          <div class="space-y-6">
+            <div class="inline-flex items-center px-3 py-1 rounded-none border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs mb-4">
+              CHANGELOG & UPDATES
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white tracking-tight">
+              产品 <span class="text-blue-600">更新日志</span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              及时了解艺创AI的最新更新、改进和修复。
+              <span class="text-sm block mt-2 text-gray-500">持续迭代 · 性能优化 · 体验升级</span>
+            </p>
+          </div>
+
+          <!-- 核心数据展示 - Bento Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 mt-20">
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">{versions.length}<span class="text-blue-600">+</span></div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">发布版本</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">Weekly</div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">更新频率</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">100<span class="text-blue-600">+</span></div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">新增功能</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 text-center group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <div class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">500<span class="text-blue-600">+</span></div>
+              <div class="text-sm text-gray-500 uppercase tracking-wider">优化修复</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="py-12 lg:py-16 bg-white dark:bg-gray-900">
       <div class="container-custom relative z-10">

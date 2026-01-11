@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@alpinejs/collapse": "^3.15.3",
+    "@alpinejs/persist": "^3.15.3",
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/check": "^0.9.6",
     "@astrojs/tailwind": "^6.0.2",
@@ -22,10 +23,13 @@
     "astro": "^5.14.1",
     "marked": "^15.0.7",
     "material-icons": "^1.13.14",
+    "simple-icons": "^16.4.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/alpinejs__collapse": "^3.13.4"
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/alpinejs__collapse": "^3.13.4",
+    "@types/alpinejs__persist": "^3.13.4"
   }
 }

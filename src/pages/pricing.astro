@@ -72,7 +72,7 @@ const faqData = [
   keywords={keywords}
 >
   <Header />
-  <Carousel />
+
   <main class="min-h-screen bg-white dark:bg-gray-950">
     <!-- 页面标题区域 - Bento/Linear 设计 -->
     <section class="relative py-20 lg:py-32 border-b border-gray-200 dark:border-gray-800">
@@ -117,9 +117,9 @@ const faqData = [
         </div>
       </div>
     </section>
-
+ <!-- 页面标题区域 - Bento/Linear 设计 -->
+  
     <Products />
-
     <!-- 服务特性区域 -->
     <section class="py-24 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
       <div class="container-custom">
@@ -226,40 +226,51 @@ const faqData = [
     <!-- FAQ区域 -->
     <section class="py-24 bg-white dark:bg-gray-950">
       <div class="container-custom">
-        <div class="text-center space-y-6 mb-16">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-            常见问题
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400">
-            FAQ & ANSWERS
-          </p>
-        </div>
-
-        <div class="max-w-3xl mx-auto border-t border-gray-200 dark:border-gray-800">
-          {faqData.map((faq, index) => (
-            <div class="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950" x-data="{ open: false }">
-              <button
-                class="w-full py-6 text-left flex items-center justify-between group"
-                @click="open = !open"
-              >
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white pr-6 group-hover:text-blue-600 transition-colors">
-                  <span class="text-blue-600 mr-2">0{index + 1}.</span>
-                  {faq.question}
-                </h3>
-                <div class="relative w-6 h-6 flex items-center justify-center">
-                  <span class="absolute w-full h-px bg-gray-400 transform transition-transform duration-300" :class="{ 'rotate-180': open }"></span>
-                  <span class="absolute h-full w-px bg-gray-400 transform transition-transform duration-300" :class="{ 'rotate-90': open, 'rotate-0': !open }"></span>
-                </div>
-              </button>
-              <div
-                x-show="open"
-                x-collapse
-                class="pb-6 text-gray-600 dark:text-gray-400 text-base leading-relaxed pl-8 border-l-2 border-blue-600 ml-2"
-              >
-                {faq.answer}
+        <div class="grid lg:grid-cols-3 gap-12 lg:gap-20">
+          <!-- 左侧：标题与描述 -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-24">
+              <div class="inline-flex items-center px-3 py-1 rounded-none border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs mb-6">
+                FAQ & ANSWERS
               </div>
+              <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                常见问题解答
+              </h2>
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                这里列出了客户最关心的问题，包含购买流程、技术支持、部署方式等详细解答，希望能帮助您更好地了解我们的产品与服务。
+              </p>
             </div>
-          ))}
+          </div>
+
+          <!-- 右侧：FAQ列表 -->
+          <div class="lg:col-span-2">
+            <div class="border-t border-gray-200 dark:border-gray-800">
+              {faqData.map((faq, index) => (
+                <div class="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950" x-data="{ open: false }">
+                  <button
+                    class="w-full py-6 text-left flex items-center justify-between group"
+                    @click="open = !open"
+                  >
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white pr-6 group-hover:text-blue-600 transition-colors">
+                      <span class="text-blue-600 mr-2">0{index + 1}.</span>
+                      {faq.question}
+                    </h3>
+                    <div class="relative w-6 h-6 flex items-center justify-center">
+                      <span class="absolute w-full h-px bg-gray-400 transform transition-transform duration-300" :class="{ 'rotate-180': open }"></span>
+                      <span class="absolute h-full w-px bg-gray-400 transform transition-transform duration-300" :class="{ 'rotate-90': open, 'rotate-0': !open }"></span>
+                    </div>
+                  </button>
+                  <div
+                    x-show="open"
+                    x-collapse
+                    class="pb-6 text-gray-600 dark:text-gray-400 text-base leading-relaxed pl-8 border-l-2 border-blue-600 ml-2"
+                  >
+                    {faq.answer}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
