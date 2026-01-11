@@ -240,20 +240,21 @@ const demoSystems = [
         <!-- 演示系统卡片列表 -->
         <div class="bento-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {demoSystems.map((system, index) => (
-            <div class="bento-card group flex flex-col h-full hover:border-brand-500/30 transition-colors duration-300" style={`--index: ${index}`}>
+            <div class="bento-card group flex flex-col h-full hover:border-brand-500/30 bg-white dark:bg-gray-900 transition-colors duration-300" style={`--index: ${index}`}>
               <div class="corner-marker top-0 right-0 border-t border-r rounded-bl-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
               <div class="corner-marker bottom-0 left-0 border-b border-l rounded-tr-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
 
               <!-- 商品图片区域 - 16:9比例 -->
-              <div class="relative border-b border-border aspect-video bg-surface overflow-hidden group-hover:border-border/50 transition-colors">
-                <img
-                  src={system.headerImage}
-                  alt={`${system.title} Header Image`}
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300"></div>
-
+              <div class="relative border-b border-border aspect-video bg-white dark:bg-gray-900 group-hover:border-border/50 transition-colors">
+                <div class="relative w-full h-full overflow-hidden p-1">
+                  <img
+                    src={system.headerImage}
+                    alt={`${system.title} Header Image`}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300"></div>
+                </div>
                 <!-- 类型标签 -->
                 <div class="absolute top-0 right-0">
                   <span class="inline-block bg-brand-600 text-white text-xs font-semibold px-3 py-1.5 shadow-sm">
