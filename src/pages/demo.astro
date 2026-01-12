@@ -23,8 +23,12 @@ export const layout = Layout;
 // 演示系统数据
 const demoSystems = [
   {
+    id: "digital-human",
     title: "AI数字人SaaS系统PHP",
+    version: "PHP",
+    versionColor: "bg-blue-100 text-blue-600",
     headerImage: "/assets/saas.webp",
+    description: "通过我们的在线演示系统，您可以亲身体验AI数字人的强大功能和直观界面，无需安装，即刻体验。",
     color: "from-indigo-700 to-violet-700",
     bgColor: "bg-gradient-to-br from-indigo-200 to-violet-200",
     cardBgColor: "bg-gradient-to-br from-indigo-100/90 to-violet-100/90 dark:from-indigo-950/90 dark:to-violet-950/90",
@@ -59,9 +63,13 @@ const demoSystems = [
       }
     ]
   },
-    {
+  {
+    id: "digital-human-java",
     title: "AI数字人PRO",
+    version: "PHP",
+    versionColor: "bg-amber-100 text-amber-600",
     headerImage: "/assets/saas.webp",
+    description: "2.0版数字人SaaS系统，融合了最新的AI技术和数字人交互体验。通过我们的在线演示系统，您可以亲身体验升级版AI数字人的强大功能和直观界面，无需安装，即刻体验。",
     color: "from-indigo-700 to-violet-700",
     bgColor: "bg-gradient-to-br from-indigo-200 to-violet-200",
     cardBgColor: "bg-gradient-to-br from-indigo-100/90 to-violet-100/90 dark:from-indigo-950/90 dark:to-violet-950/90",
@@ -97,9 +105,13 @@ const demoSystems = [
     ]
   },
   {
-    title: "艺创AI-全能知识库PHP&Java",
+    id: "knowledge-base",
+    title: "艺创AI-全能知识库PHP",
+    version: "PHP",
+    versionColor: "bg-blue-100 text-blue-600",
     image: "/assets/qr-paper.png",
     headerImage: "/assets/work.webp",
+    description: "基于大型语言模型的企业级知识库解决方案。支持多种文档格式，实现智能问答和语义搜索，帮助企业构建专属的知识中心。",
     color: "from-amber-600 to-rose-600",
     bgColor: "bg-gradient-to-br from-amber-200 to-rose-200",
     cardBgColor: "bg-gradient-to-br from-amber-100/90 to-rose-100/90 dark:from-amber-950/90 dark:to-rose-950/90",
@@ -135,9 +147,54 @@ const demoSystems = [
     ]
   },
   {
-    title: "艺创AI-聊天绘画系统PHP&Java",
+    id: "knowledge-base-java",
+    title: "全能知识库Java版",
+    version: "Java",
+    versionColor: "bg-orange-100 text-orange-600",
+    headerImage: "/assets/work.webp",
+    description: "Java版全能AI知识库系统,基于大型语言模型的企业级知识库解决方案。支持多种文档格式,实现智能问答和语义搜索,帮助企业构建专属的知识中心,集成AVA智能助手功能。",
+    color: "from-amber-600 to-rose-600",
+    bgColor: "bg-gradient-to-br from-amber-200 to-rose-200",
+    cardBgColor: "bg-gradient-to-br from-amber-100/90 to-rose-100/90 dark:from-amber-950/90 dark:to-rose-950/90",
+    platforms: [
+      {
+        title: "Java版知识库前台",
+        icon: "computer",
+        url: "联系客服获取",
+        account: "自行注册",
+        password: "自行注册"
+      },
+      {
+        title: "Java版知识库后台",
+        icon: "admin_panel_settings",
+        url: "联系客服获取",
+        account: "java_kb_admin",
+        password: "java_kb123"
+      },
+      {
+        title: "开发文档",
+        icon: "api",
+        url: "http://docs.buidai.com",
+        account: "联系客服",
+        password: "联系客服"
+      },
+      {
+        title: "移动端",
+        icon: "smartphone",
+        url: "联系客服获取",
+        account: "联系客服",
+        password: "联系客服"
+      }
+    ]
+  },
+  {
+    id: "ai-chat-drawing",
+    title: "艺创AI-聊天绘画系统PHP",
+    version: "PHP",
+    versionColor: "bg-blue-100 text-blue-600",
     image: "/assets/qrcode.png",
     headerImage: "/assets/ai.webp",
+    description: "集成了先进的AI绘画和聊天功能。用户可以通过自然语言与AI进行对话，并生成高质量的艺术作品。支持多种绘画风格和模型。",
     color: "from-cyan-600 to-blue-700",
     bgColor: "bg-gradient-to-br from-cyan-200 to-blue-200",
     cardBgColor: "bg-gradient-to-br from-cyan-100/90 to-blue-100/90 dark:from-cyan-950/90 dark:to-blue-950/90",
@@ -173,9 +230,54 @@ const demoSystems = [
     ]
   },
   {
+    id: "ai-chat-drawing-java",
+    title: "聊天绘画Java版",
+    version: "Java",
+    versionColor: "bg-orange-100 text-orange-600",
+    headerImage: "/assets/ai.webp",
+    description: "Java版智能聊天绘画系统,集成了先进的AI绘画和聊天功能。用户可以通过自然语言与AVA进行对话,并生成高质量的艺术作品。支持多种绘画风格和模型,提供更智能的创作体验。",
+    color: "from-cyan-600 to-blue-700",
+    bgColor: "bg-gradient-to-br from-cyan-200 to-blue-200",
+    cardBgColor: "bg-gradient-to-br from-cyan-100/90 to-blue-100/90 dark:from-cyan-950/90 dark:to-blue-950/90",
+    platforms: [
+      {
+        title: "聊天绘画Java",
+        icon: "computer",
+        url: "联系客服获取",
+        account: "自行注册",
+        password: "自行注册"
+      },
+      {
+        title: "绘画管理后台Java",
+        icon: "admin_panel_settings",
+        url: "联系客服获取",
+        account: "admin",
+        password: "123456"
+      },
+      {
+        title: "开发文档",
+        icon: "api",
+        url: "http://docs.buidai.com",
+        account: "联系客服",
+        password: "联系客服"
+      },
+      {
+        title: "移动端",
+        icon: "smartphone",
+        url: "联系客服获取",
+        account: "联系客服",
+        password: "联系客服"
+      }
+    ]
+  },
+  {
+    id: "long-writing",
     title: "艺创AI-论文写作系统PHP",
+    version: "PHP",
+    versionColor: "bg-blue-100 text-blue-600",
     image: "/assets/qrcode.png",
     headerImage: "/assets/lw.svg",
+    description: "专为学术研究者和学生设计的AI写作助手。能够根据主题快速生成论文大纲和初稿，提供海量文献参考，显著提高论文写作效率和质量。",
     color: "from-green-600 to-teal-700",
     bgColor: "bg-gradient-to-br from-green-200 to-teal-200",
     cardBgColor: "bg-gradient-to-br from-green-100/90 to-teal-100/90 dark:from-green-950/90 dark:to-teal-950/90",
@@ -205,6 +307,47 @@ const demoSystems = [
         title: "移动端",
         icon: "smartphone",
         url: "https://cp.chatmoney.cn/generate/1",
+        account: "联系客服",
+        password: "联系客服"
+      }
+    ]
+  },
+  {
+    id: "BuidAI",
+    title: "必定AI (BuidAI)",
+    version: "BuidAI",
+    versionColor: "bg-lime-100 text-lime-600",
+    headerImage: "/assets/ai.webp",
+    description: "必定AI, BuidAI, AI创意生产力平台, 智能体,香蕉绘画Nanobanana, AI绘画, AI视频, AI对话, Sora2, 知识库, 内容总结, PDF解析工具, 文档问答, 爆款文章生成。",
+    color: "from-lime-600 to-green-700",
+    bgColor: "bg-gradient-to-br from-lime-200 to-green-200",
+    cardBgColor: "bg-gradient-to-br from-lime-100/90 to-green-100/90 dark:from-lime-950/90 dark:to-green-950/90",
+    platforms: [
+      {
+        title: "必定AI(BuidAI)",
+        icon: "computer",
+        url: "联系客服获取",
+        account: "自行注册",
+        password: "自行注册"
+      },
+      {
+        title: "必定AI(BuidAI)后台",
+        icon: "admin_panel_settings",
+        url: "联系客服获取",
+        account: "admin",
+        password: "123456"
+      },
+      {
+        title: "开发文档",
+        icon: "api",
+        url: "http://docs.buidai.com",
+        account: "联系客服",
+        password: "联系客服"
+      },
+      {
+        title: "移动端",
+        icon: "smartphone",
+        url: "联系客服获取",
         account: "联系客服",
         password: "联系客服"
       }
