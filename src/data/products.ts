@@ -107,7 +107,7 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/buidai.svg",
+    image: "/product/tongyong.jpeg",
     title: "开源智能体部署",
     subtitle: "PHP 源码版",
     description: "零代码构建原生 AI 能力。集成 MCP、RAG 管道与知识库，快速聚合主流大模型。",
@@ -119,22 +119,9 @@ export const products: Product[] = [
     sales: 3134,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
+  
   {
-    image: "/product/buidai.webp",
-    title: "BuidAl 部署服务",
-    subtitle: "独立系统",
-    description: "官方专家技术支持。提供 BuildAl 平台框架的私有化部署服务，确保数据安全与系统稳定。",
-    features: ["私有化部署", "企业级", "源码交付", "技术支持"],
-    price: 500,
-    originalPrice: 1398,
-    link: "/demo",
-    rating: 4.9,
-    sales: 856,
-    buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    isPlugin: false
-  },
-  {
-    image: "/product/Sora2短剧视频创作.png",
+    image: "/product/tongyong-1.jpeg",
     title: "Sora2 短剧创作",
     subtitle: "图像视频",
     description: "聚焦高效短剧创作的 AI 工具。深度理解文本提示词，将创意瞬间转化为精彩视频。",
@@ -148,7 +135,7 @@ export const products: Product[] = [
     isPlugin: true
   },
   {
-    image: "/product/Nanobanana.png",
+    image: "/product/tongyong-2.png",
     title: "Nanobanana",
     subtitle: "图像视频",
     description: "开箱即用的绘画模板库。结合 Gemini-3 生图能力，精准保持角色一致性。",
@@ -161,21 +148,21 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     isPlugin: true
   },
-  {
-    image: "/product/AI简历.png",
-    title: "AI 简历",
-    subtitle: "效率工具",
-    description: "智能生成与深度优化个人简历。提升简历质量与专业度，助力职场进阶。",
-    features: ["简历生成", "智能优化", "求职辅助", "效率提升"],
-    price: 799,
-    originalPrice: 1598,
-    link: "/demo",
-    rating: 4.9,
-    sales: 2103,
-    buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-    isPlugin: true
-  },
-  {
+  // {
+  //   image: "/product/AI简历.png",
+  //   title: "AI 简历",
+  //   subtitle: "效率工具",
+  //   description: "智能生成与深度优化个人简历。提升简历质量与专业度，助力职场进阶。",
+  //   features: ["简历生成", "智能优化", "求职辅助", "效率提升"],
+  //   price: 799,
+  //   originalPrice: 1598,
+  //   link: "/demo",
+  //   rating: 4.9,
+  //   sales: 2103,
+  //   buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
+  //   isPlugin: true
+  // },
+/*  {
     image: "/product/思维导图.png",
     title: "AI 思维导图",
     subtitle: "效率工具",
@@ -412,8 +399,8 @@ export const products: Product[] = [
     sales: 1200,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     isPlugin: true
-  }
-];
+  }*/
+]; 
 
 // 辅助函数：根据 subtitle 获取分类 ID
 export const getCategory = (subtitle: string) => {
