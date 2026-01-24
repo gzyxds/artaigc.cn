@@ -148,21 +148,21 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     isPlugin: true
   },
-  // {
-  //   image: "/product/AI简历.png",
-  //   title: "AI 简历",
-  //   subtitle: "效率工具",
-  //   description: "智能生成与深度优化个人简历。提升简历质量与专业度，助力职场进阶。",
-  //   features: ["简历生成", "智能优化", "求职辅助", "效率提升"],
-  //   price: 799,
-  //   originalPrice: 1598,
-  //   link: "/demo",
-  //   rating: 4.9,
-  //   sales: 2103,
-  //   buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
-  //   isPlugin: true
-  // },
-/*  {
+  {
+    image: "/product/AI简历.png",
+    title: "AI 简历",
+    subtitle: "效率工具",
+    description: "智能生成与深度优化个人简历。提升简历质量与专业度，助力职场进阶。",
+    features: ["简历生成", "智能优化", "求职辅助", "效率提升"],
+    price: 799,
+    originalPrice: 1598,
+    link: "/demo",
+    rating: 4.9,
+    sales: 2103,
+    buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
+    isPlugin: true
+  },
+  {
     image: "/product/思维导图.png",
     title: "AI 思维导图",
     subtitle: "效率工具",
@@ -399,7 +399,7 @@ export const products: Product[] = [
     sales: 1200,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     isPlugin: true
-  }*/
+  }
 ]; 
 
 // 辅助函数：根据 subtitle 获取分类 ID
