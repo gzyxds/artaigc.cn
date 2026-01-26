@@ -14,6 +14,7 @@
  import '../styles/global.css';
 import '../styles/transitions.css';
 import { ViewTransitions } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 import FloatingButtons from '../components/common/FloatingButtons.astro';
 import QRModal from '../components/common/QRModal.astro';
 import MobileBottomConsult from '../components/common/MobileBottomConsult.astro';
@@ -88,6 +89,8 @@ const {
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
     <!-- 启用Astro页面过渡效果 -->
     <ViewTransitions />
+    <!-- Vercel Web Analytics -->
+    <Analytics />
   </head>
   <!-- 使用Tailwind设置基础样式和暗黑模式 -->
   <body class="antialiased bg-background text-primary transition-colors duration-300 scroll-animation relative"
