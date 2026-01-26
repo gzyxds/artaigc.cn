@@ -78,6 +78,8 @@ const navLinks = [
   { name: '产品价格', url: '/pricing', icon: 'payments' },
   { name: '关于我们', url: '/company', icon: 'domain' },
   { name: '最新动态', url: '/blog', icon: 'newspaper' },
+  { name: '智言万象', url: 'https://gmlart.cn/', icon: 'api', target: '_blank' },
+  { name: '智言API', url: 'https://api.gmlart.cn/', icon: 'api', target: '_blank' },
 ];
 
 ---
@@ -140,6 +142,7 @@ const navLinks = [
         return (
           <a
             href={link.url}
+            target={(link as any).target || undefined}
             class:list={[
               "flex items-center gap-3 px-3 py-2.5 rounded-sm transition-all group relative",
               active
