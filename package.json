@@ -19,6 +19,7 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/check": "^0.9.6",
     "@astrojs/tailwind": "^6.0.2",
+    "@vercel/analytics": "^1.6.1",
     "alpinejs": "^3.13.5",
     "astro": "^5.14.1",
     "marked": "^15.0.7",
