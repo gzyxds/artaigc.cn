@@ -107,7 +107,7 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/tongyong.jpeg",
+    image: "/product/知识库.png",
     title: "开源智能体部署",
     subtitle: "PHP 源码版",
     description: "零代码构建原生 AI 能力。集成 MCP、RAG 管道与知识库，快速聚合主流大模型。",
