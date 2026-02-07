@@ -121,7 +121,7 @@ export const products: Product[] = [
   },
   
   {
-    image: "/product/tongyong-1.jpeg",
+    image: "/product/Sora2短剧视频创作.png",
     title: "Sora2 短剧创作",
     subtitle: "图像视频",
     description: "聚焦高效短剧创作的 AI 工具。深度理解文本提示词，将创意瞬间转化为精彩视频。",
@@ -135,7 +135,21 @@ export const products: Product[] = [
     isPlugin: true
   },
   {
-    image: "/product/tongyong-2.png",
+    image: "/product/漫剧短剧.png",
+    title: "AI漫剧短剧创作",
+    subtitle: "漫剧短剧",
+    description: "漫剧是一款智能AI视频生成工具，服务于创作者、动画爱好者及视觉工作者，能够根据用户输入的文字提示词，快速生成符合需求的视频内容。",
+    features: ["AI 绘画", "角色一致性", "模板生成", "开箱即用"],
+    price: 699,
+    originalPrice: 1398,
+    link: "/demo",
+    rating: 4.7,
+    sales: 982,
+    buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
+    isPlugin: true
+  },  
+  {
+    image: "/product/Nanobanana.png",
     title: "Nanobanana",
     subtitle: "图像视频",
     description: "开箱即用的绘画模板库。结合 Gemini-3 生图能力，精准保持角色一致性。",
