@@ -3,9 +3,10 @@
  * Sidebar 组件
  * 替代原顶部 Header，提供垂直导航布局
  * 适配 PC 端，支持展开/收起，响应式设计
+ * 优化：统一使用 SVG 图标，移除字体图标依赖，增强可访问性
  */
 import astroLogo from '../../assets/logo.svg';
-import { menuData, type MenuItem } from '../../data/menu';
+import { icons, menuData, type MenuItem } from '../../data/menu';
 
 const logoUrl = typeof astroLogo === 'string' ? astroLogo : astroLogo.src;
 const currentPath = Astro.url.pathname;
@@ -20,74 +21,14 @@ const isActive = (path: string) => {
 interface NavLink {
   name: string;
   url: string;
-  icon: string;
+  icon: keyof typeof icons;
   target?: string;
 }
 
-// 映射配置：将 config.ts 中的 icon key 映射为 Material Icons 名称
-const iconMap: Record<string, string> = {
-  user: 'person_outline',
-  brain: 'psychology',
-  chat: 'chat_bubble_outline',
-  edit: 'edit_note',
-  target: 'ads_click',
-  monitor: 'desktop_windows',
-  lightbulb: 'lightbulb_outline',
-  shield: 'verified_user',
-  chevron: 'expand_more',
-  arrow: 'arrow_forward',
-  menu: 'menu',
-  close: 'close',
-  sun: 'light_mode',
-  moon: 'dark_mode',
-  // 新增图标映射
-  palette: 'palette',
-  trending: 'trending_up',
-  video: 'movie',
-  brush: 'brush',
-  cloth: 'checkroom',
-  music: 'music_note',
-  heart: 'favorite'
-};
-
-// 标题到图标的精确映射（覆盖默认映射，实现更精准的语义）
-const titleToIconMap: Record<string, string> = {
-  '首页': 'home',
-  '产品价格': 'payments',
-  '关于我们': 'domain',
-  '最新动态': 'newspaper',
-  '产品中心': 'widgets',
-  '数字分身': 'face_6',
-  '全能知识库': 'auto_stories',
-  '聊天绘画': 'palette',
-  '论文创作': 'school',
-  '产品演示': 'smart_display',
-  'AI提示词': 'tips_and_updates',
-  '授权中心': 'verified',
-  '官方文档': 'menu_book',
-  '飞书文档': 'description',
-  '更新日志': 'update',
-  '联系我们': 'support_agent',
-  '集成与API': 'api',
-  '合作伙伴': 'handshake',
-  '渠道合作': 'storefront',
-  'APP下载': 'install_mobile'
-};
-
-const getMaterialIcon = (name: string, title?: string) => {
-  if (title && titleToIconMap[title]) {
-    return titleToIconMap[title];
-  }
-  return iconMap[name] || name;
-};
-
-// 辅助函数：渲染图标 (使用 Material Icons Outlined 线性风格)
-const Icon = ({ name, title, className = "" }: { name: string; title?: string; className?: string }) => {
-  const iconName = getMaterialIcon(name, title);
-  const finalClass = className.replace(/w-\[.*?\]|h-\[.*?\]/g, '').trim();
-  // 增加 flex 和 items-center 确保图标垂直居中
-  return `<i class="material-icons-outlined ${finalClass} text-[20px] leading-none select-none flex items-center justify-center font-light">${iconName}</i>`;
-};
+// 优化的图标组件 - 使用 SVG 路径
+const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; className?: string }) => (
+  `<svg class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" role="img"><path stroke-linecap="round" stroke-linejoin="round" d="${icons[name]}"/></svg>`
+);
 
 const navLinks: NavLink[] = [
   { name: '网站首页', url: '/', icon: 'home' },
@@ -97,7 +38,6 @@ const navLinks: NavLink[] = [
   { name: '智言万象', url: 'https://gmlart.cn/', icon: 'api', target: '_blank' },
   { name: '智言API', url: 'https://api.gmlart.cn/', icon: 'api', target: '_blank' },
 ];
-
 ---
 
 <!--
@@ -109,15 +49,17 @@ const navLinks: NavLink[] = [
 <aside
   class="hidden lg:flex fixed left-0 top-0 h-screen bg-surface border-r border-border z-40 flex-col transition-all duration-300 ease-in-out"
   x-bind:class="sidebarExpanded ? 'w-64' : 'w-20'"
+  x-data="{ sidebarExpanded: true }"
+  aria-label="侧边导航栏"
 >
   <!-- 顶部 Logo 区域 -->
   <div
     class="h-16 flex items-center border-b border-border flex-shrink-0 transition-all duration-300"
     :class="sidebarExpanded ? 'justify-between px-4' : 'justify-center'"
   >
-    <a href="/" class="flex items-center gap-3 overflow-hidden">
+    <a href="/" class="flex items-center gap-3 overflow-hidden" aria-label="艺创AI 首页">
       <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-50/10 rounded-sm border border-transparent hover:border-brand-500/20 transition-colors">
-        <img src={logoUrl} alt="艺创AI" class="w-20 h-20" />
+        <img src={logoUrl} alt="" class="w-full h-full p-1" aria-hidden="true" />
       </div>
       <span
         class="font-bold text-lg text-neutral-900 dark:text-white whitespace-nowrap transition-opacity duration-200"
@@ -133,8 +75,9 @@ const navLinks: NavLink[] = [
       @click="sidebarExpanded = !sidebarExpanded"
       class="p-1.5 rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 transition-colors"
       x-show="sidebarExpanded"
+      aria-label="收起菜单"
     >
-      <i class="material-icons text-[20px]">keyboard_double_arrow_left</i>
+      <span class="w-5 h-5 block" set:html={Icon({ name: 'double_arrow_left', className: "w-5 h-5" })}></span>
     </button>
   </div>
 
@@ -143,13 +86,14 @@ const navLinks: NavLink[] = [
     <button
       @click="sidebarExpanded = !sidebarExpanded"
       class="p-2 rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 transition-colors"
+      aria-label="展开菜单"
     >
-      <i class="material-icons text-[20px]">keyboard_double_arrow_right</i>
+      <span class="w-5 h-5 block" set:html={Icon({ name: 'double_arrow_right', className: "w-5 h-5" })}></span>
     </button>
   </div>
 
   <!-- 导航菜单区域 -->
-  <nav class="flex-1 overflow-y-auto overflow-x-hidden py-4 px-3 space-y-6 scrollbar-thin">
+  <nav class="flex-1 overflow-y-auto overflow-x-hidden py-4 px-3 space-y-6 scrollbar-thin" aria-label="主菜单">
 
     <!-- 基础导航 -->
     <div class="space-y-1">
@@ -166,14 +110,16 @@ const navLinks: NavLink[] = [
                 : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-200"
             ]}
             :class="sidebarExpanded ? '' : 'justify-center'"
+            aria-current={active ? 'page' : undefined}
           >
-            <div class="flex-shrink-0" set:html={Icon({ name: link.icon, title: link.name, className: "w-[20px] h-[20px]" })} />
+            <div class="flex-shrink-0" set:html={Icon({ name: link.icon, className: "w-5 h-5" })} />
             <span class="text-[15px] font-medium whitespace-nowrap" x-show="sidebarExpanded">{link.name}</span>
 
             <!-- 收起时的 Tooltip -->
             <div
               class="absolute left-full ml-2 px-2 py-1 bg-neutral-900 text-white text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 whitespace-nowrap"
               x-show="!sidebarExpanded"
+              role="tooltip"
             >
               {link.name}
             </div>
@@ -182,7 +128,7 @@ const navLinks: NavLink[] = [
       })}
     </div>
 
-    <div class="h-px bg-border mx-2"></div>
+    <div class="h-px bg-border mx-2" role="separator"></div>
 
     <!-- 分组菜单 -->
     {Object.entries(menuData).map(([key, items]) => {
@@ -196,12 +142,10 @@ const navLinks: NavLink[] = [
             @click="open = !open"
             class="w-full flex items-center justify-between px-3 py-2 text-sm font-bold text-neutral-500 uppercase tracking-wider hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
             x-show="sidebarExpanded"
+            :aria-expanded="open"
           >
             <span>{title}</span>
-            <i
-              class="material-icons text-[16px] transition-transform duration-200"
-              :class="open ? 'rotate-180' : ''"
-            >expand_more</i>
+            <span class="w-4 h-4 transition-transform duration-200 block text-neutral-400" :class="open ? 'rotate-180' : ''" set:html={Icon({ name: 'chevron', className: "w-4 h-4" })}></span>
           </button>
 
           <!-- 分组内容 -->
@@ -219,14 +163,16 @@ const navLinks: NavLink[] = [
                       : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-200"
                   ]}
                   :class="sidebarExpanded ? '' : 'justify-center'"
+                  aria-current={active ? 'page' : undefined}
                 >
-                  <div class="flex-shrink-0" set:html={Icon({ name: item.icon, title: item.name, className: "w-[18px] h-[18px]" })} />
+                  <div class="flex-shrink-0" set:html={Icon({ name: item.icon, className: "w-[18px] h-[18px]" })} />
                   <span class="text-sm whitespace-nowrap" x-show="sidebarExpanded">{item.name}</span>
 
                   <!-- 收起时的 Tooltip -->
                   <div
                     class="absolute left-full ml-2 px-2 py-1 bg-neutral-900 text-white text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 whitespace-nowrap"
                     x-show="!sidebarExpanded"
+                    role="tooltip"
                   >
                     {item.name}
                   </div>
@@ -248,8 +194,9 @@ const navLinks: NavLink[] = [
         href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
         target="_blank"
         class="flex items-center justify-center gap-2 px-3 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-colors overflow-hidden"
+        aria-label="立即购买"
       >
-        <i class="material-icons text-[20px] flex-shrink-0">shopping_cart</i>
+        <div class="flex-shrink-0" set:html={Icon({ name: 'shopping_cart', className: "w-5 h-5" })} />
         <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">立即购买</span>
       </a>
 
@@ -257,8 +204,9 @@ const navLinks: NavLink[] = [
         href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
         target="_blank"
         class="flex items-center justify-center gap-2 px-3 py-2 border border-border hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-sm transition-colors overflow-hidden"
+        aria-label="登录控制台"
       >
-        <i class="material-icons text-[20px] flex-shrink-0">login</i>
+        <div class="flex-shrink-0" set:html={Icon({ name: 'login', className: "w-5 h-5" })} />
         <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">登录控制台</span>
       </a>
     </div>
@@ -268,10 +216,12 @@ const navLinks: NavLink[] = [
       x-on:click="darkMode = !darkMode"
       class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-sm text-neutral-500 hover:text-brand-600 dark:text-neutral-400 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
       :title="sidebarExpanded ? '' : '切换模式'"
+      aria-label="切换暗黑模式"
+      :aria-pressed="darkMode"
     >
       <div class="relative w-5 h-5 flex-shrink-0">
-        <i x-show="!darkMode" class="material-icons absolute inset-0 text-[20px] leading-none">dark_mode</i>
-        <i x-show="darkMode" class="material-icons absolute inset-0 text-[20px] leading-none">light_mode</i>
+        <span x-show="!darkMode" class="absolute inset-0" set:html={Icon({ name: 'moon', className: "w-5 h-5" })}></span>
+        <span x-show="darkMode" class="absolute inset-0" set:html={Icon({ name: 'sun', className: "w-5 h-5" })}></span>
       </div>
       <span class="text-[15px] font-medium whitespace-nowrap" x-show="sidebarExpanded">
         <span x-show="!darkMode">暗黑模式</span>
