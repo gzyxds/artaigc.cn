@@ -1,0 +1,418 @@
+---
+/**
+ * AI 漫剧解决方案页面
+ * 适配 Astro + Alpine.js + Tailwind CSS
+ */
+import Layout from '../../../layouts/Layout.astro';
+import UserReviews from '../../../components/sections/UserReviews.astro';
+import ApplicationSystem from '../../../components/product/ApplicationSystem.astro';
+import Structure from '../../../components/home/Structure.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import Calltoaction from '../../../components/sections/Calltoaction.astro';
+import Footer from '../../../components/common/Footer.astro';
+
+// --- 功能网格数据 ---
+const features = [
+  {
+    title: '角色模板视频生成',
+    desc: '上传真人或虚拟角色作为模板，沉淀角色库，快速生成以该角色为主角的叙事视频。',
+    icon: 'person',
+  },
+  {
+    title: '首尾帧动画生成',
+    desc: '设定起始与结束画面，系统自动补全过渡镜头，生成流畅连贯的动态视频。',
+    icon: 'image',
+  },
+  {
+    title: '多镜头叙事编排',
+    desc: '支持镜头切换与节奏控制，轻松实现角色驱动的多镜头故事表达。',
+    icon: 'auto_awesome',
+  },
+  {
+    title: '分辨率与时长自定义',
+    desc: '多种分辨率与时长可选，适配抖音、B站、小红书等多平台发布需求。',
+    icon: 'inventory_2',
+  },
+  {
+    title: '专业运镜与光影模板',
+    desc: '内置运镜轨迹、景别切换与光影效果，一键提升电影感与表现力。',
+    icon: 'edit',
+  },
+  {
+    title: '智能提示词优化扩写',
+    desc: '自动优化输入描述，补全细节与风格关键词，提升生成质量与一致性。',
+    icon: 'description',
+  },
+];
+
+// --- 功能详情数据结构 ---
+interface DetailPoint {
+  title: string;
+  desc: string;
+}
+
+interface FeatureDetail {
+  title: string;
+  desc: string;
+  image: string;
+  points: DetailPoint[];
+}
+
+const featureDetailsData: FeatureDetail[] = [
+  {
+    title: "角色主演：专属角色库快速开拍",
+    desc: "上传真人或虚拟形象作为模板，沉淀到个人角色库，快速生成以该角色为核心的多镜头叙事视频。",
+    image: "/solution/wanclipg-1.png",
+    points: [
+      {
+        title: "角色模板一键复用",
+        desc: "角色模板可长期保留并反复调用，持续产出统一风格的系列内容。",
+      },
+      {
+        title: "角色一致性保障",
+        desc: "自动保持角色特征与风格一致，减少返工与手动调整成本。",
+      },
+      {
+        title: "多镜头叙事编排",
+        desc: "支持镜头节奏与景别切换，让故事表达更具层次与电影感。",
+      },
+      {
+        title: "创作者友好流程",
+        desc: "无需专业门槛即可完成角色化叙事，让创作更轻量高效。",
+      },
+    ],
+  },
+  {
+    title: "首尾帧生成：自动补全流畅过渡",
+    desc: "设定起始与结束画面，系统自动生成过渡镜头与动作衔接，让故事呈现更自然。",
+    image: "/solution/wanclipg-2.png",
+    points: [
+      {
+        title: "起止画面驱动",
+        desc: "用关键帧定义故事走向，轻松控制叙事节奏与情绪变化。",
+      },
+      {
+        title: "过渡镜头自动补全",
+        desc: "自动生成中间镜头，解决跳切问题，保证画面连贯性。",
+      },
+      {
+        title: "运镜与光影模板",
+        desc: "内置多种运镜轨迹与光影效果，一键提升画面质感。",
+      },
+      {
+        title: "多场景适配",
+        desc: "适用于角色故事、动漫片段、视觉概念短片等多类场景。",
+      },
+    ],
+  },
+  {
+    title: "交付与管理：高效产出可用成片",
+    desc: "提供分辨率、时长与风格控制，配合提示词优化，让输出更稳定、更可控。",
+    image: "/solution/wanclipg-3.png",
+    points: [
+      {
+        title: "分辨率与时长可选",
+        desc: "多种输出规格可选，适配不同平台发布与传播需求。",
+      },
+      {
+        title: "智能提示词优化",
+        desc: "自动扩写与优化描述，补齐细节与风格指令，提升画面质量。",
+      },
+      {
+        title: "稳定的成片一致性",
+        desc: "减少风格漂移，保证系列视频在视觉与叙事上的连续性。",
+      },
+      {
+        title: "面向企业的可复制流程",
+        desc: "标准化创作流程，适用于团队协作与批量内容生产。",
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="AI漫剧 | 角色模板与多镜头叙事的 AI 视频生成系统 | 智言AI-BuidAI"
+  description="AI漫剧是一款智能 AI 视频生成工具，面向创作者与动画爱好者，提供角色主演与首尾帧生成两大模式，实现角色化叙事与多镜头自动过渡。支持分辨率与时长自定义、运镜光影模板与提示词优化，适配企业级 AI 系统与 AI 源码场景。"
+  keywords="AI漫剧,漫剧,AI系统,AI源码,开源代码,AI视频生成,角色主演,首尾帧生成,多镜头叙事,运镜光影模板,提示词优化"
+>
+  <div class="relative min-h-full font-sans text-neutral-900 dark:text-neutral-100 overflow-x-hidden">
+
+    <!-- 首屏区域 -->
+    <div class="relative pt-24 pb-16 md:pt-32 md:pb-24 w-full border-b border-border bg-background">
+      <!-- 背景特效 -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none select-none">
+        <!-- 顶部聚焦光束 -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-normal dark:bg-brand-500/5"></div>
+        <!-- 细微网格背景 -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      </div>
+
+      <div class="container-custom mx-auto px-4 text-center relative z-10">
+        <div class="flex flex-col gap-8 items-center max-w-5xl mx-auto">
+          <!-- 标签 -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border animate-fade-in-up hover:border-brand-500/30 transition-colors cursor-default">
+            <span class="px-1.5 py-0.5 rounded bg-brand-600 text-[11px] font-bold text-white tracking-wider">NEW</span>
+            <span class="text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">智言AI 漫剧 2.0 发布</span>
+          </div>
+
+          <!-- 标题 -->
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 leading-[1.1] animate-fade-in-up delay-100">
+            打造您的 <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">专属 AI 漫剧</span>
+          </h1>
+
+          <!-- 描述 -->
+          <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200 text-balance">
+            基于通义万相的wan2.6-r2v模型新一代 AI 视频生成平台,一键生成高质量视频。<br class="hidden sm:block" />
+            预置模板开箱即用,保持角色一致性,开启智能视频创作新时代。
+          </p>
+
+          <!-- 按钮组 -->
+          <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto animate-fade-in-up delay-300">
+            <button
+              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-all shadow-sm hover:shadow-md font-medium text-lg group"
+              onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+            >
+              开始构建
+              <i class="material-icons text-[20px] group-hover:translate-x-0.5 transition-transform">arrow_forward</i>
+            </button>
+            <button
+              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border bg-background text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-sm transition-colors font-medium text-lg"
+              onclick="document.getElementById('__demo_container__')?.scrollIntoView({ behavior: 'smooth' })"
+            >
+              查看案例
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 图片展示区域 -->
+    <div id="__demo_container__" class="container-custom mx-auto px-4 -mt-12 relative z-20">
+      <div class="relative p-2 rounded-sm bg-surface/80 border border-border max-w-5xl mx-auto animate-fade-in-up backdrop-blur-sm shadow-2xl shadow-black/5 dark:shadow-black/20">
+          <!-- Corner Markers -->
+          <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-brand-500 z-30"></div>
+          <div class="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-brand-500 z-30"></div>
+          <div class="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-brand-500 z-30"></div>
+          <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-brand-500 z-30"></div>
+
+          <div class="relative rounded-sm overflow-hidden border border-border bg-background aspect-video flex items-center justify-center group">
+            <div class="absolute inset-0 bg-neutral-100 dark:bg-neutral-900 animate-pulse" x-show="!loaded" x-data="{ loaded: false }" @load.window="loaded = true"></div>
+            <img
+              src="/solution/wanclipg.png"
+              alt="漫剧功能展示"
+              class="w-full h-full object-contain relative z-10"
+              loading="lazy"
+            />
+            <!-- 悬浮遮罩 -->
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 pointer-events-none"></div>
+          </div>
+        </div>
+    </div>
+
+    <!-- 功能网格 -->
+    <div class="py-24 md:py-32 bg-background">
+      <div class="container-custom mx-auto px-4">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-6 tracking-tight">
+            漫剧角色叙事与多镜头生成
+          </h2>
+          <p class="text-neutral-600 dark:text-neutral-400 text-lg">
+            以角色模板与首尾帧驱动的创作方式，快速产出可发布的动态叙事内容
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border overflow-hidden rounded-sm">
+          {features.map((feature, index) => (
+            <div
+              class="bg-background p-8 md:p-10 transition-all duration-300 group hover:bg-surface relative overflow-hidden"
+            >
+              <!-- Hover Glow -->
+              <div class="absolute top-0 right-0 w-24 h-24 bg-brand-500/5 rounded-bl-full -mr-12 -mt-12 transition-all duration-500 group-hover:scale-150 group-hover:bg-brand-500/10"></div>
+
+              <div class="w-12 h-12 rounded-sm bg-surface border border-border flex items-center justify-center text-neutral-600 dark:text-neutral-400 mb-6 group-hover:border-brand-500/50 group-hover:text-brand-600 transition-colors duration-300 relative z-10">
+                <i class="material-icons text-[24px]">{feature.icon}</i>
+              </div>
+              <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-3 relative z-10">{feature.title}</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm relative z-10">
+                {feature.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- 功能详情 -->
+    <div class="container-custom mx-auto px-4 py-12 md:py-24 flex flex-col gap-24 md:gap-32">
+      {featureDetailsData.map((detail, index) => (
+        <div class="group">
+          <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div class:list={["flex flex-col gap-6", index % 2 === 1 ? "lg:order-last" : ""]}>
+              <!-- 标签 -->
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-wider w-fit border border-brand-100 dark:bg-brand-900/20 dark:border-brand-800">
+                CORE FEATURE 0{index + 1}
+              </div>
+
+              <!-- 标题 -->
+              <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
+                {detail.title}
+              </h2>
+              <p class="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+                {detail.desc}
+              </p>
+
+              <!-- 功能折叠列表 (Timeline Style) -->
+              <div class="flex flex-col gap-1" x-data="{ activePoint: 0 }">
+                {detail.points.map((point, pIndex) => (
+                  <div
+                    class="rounded-sm flex gap-3 w-full group/item transition-all duration-300 pr-3 cursor-pointer"
+                    x-bind:class={`activePoint === ${pIndex} ? 'bg-gradient-to-r from-brand-500/5 to-transparent' : ''`}
+                    x-on:mouseenter={`activePoint = ${pIndex}`}
+                  >
+                    <div class="flex flex-col pl-3 py-3 items-center gap-[2px]">
+                      <!-- Icon -->
+                      <div class="relative w-4 h-4 mt-1 shrink-0 flex items-center justify-center text-brand-600">
+                        <!-- Active Icon -->
+                        <div
+                          class="absolute inset-0 transition-opacity duration-300"
+                          x-bind:class={`activePoint === ${pIndex} ? 'opacity-100' : 'opacity-0'`}
+                        >
+                           <i class="material-icons text-[16px]">check_circle</i>
+                        </div>
+                        <!-- Inactive Icon -->
+                        <div
+                          class="absolute inset-0 transition-opacity duration-300 flex items-center justify-center"
+                          x-bind:class={`activePoint !== ${pIndex} ? 'opacity-30 group-hover/item:opacity-50' : 'opacity-0'`}
+                        >
+                           <div class="w-3 h-3 rounded-full border-2 border-current"></div>
+                        </div>
+                      </div>
+
+                      <!-- 连接线 -->
+                      {pIndex < detail.points.length - 1 && (
+                        <div class="w-[2px] grow bg-neutral-200 dark:bg-neutral-800 rounded-full relative overflow-hidden min-h-[16px]">
+                          <div
+                            class="absolute top-0 left-0 w-full bg-brand-600 rounded-full transition-all duration-500 ease-out"
+                            x-bind:style={`activePoint === ${pIndex} ? 'height: 100%' : 'height: 0%'`}
+                            x-bind:class={`activePoint > ${pIndex} ? 'opacity-0' : ''`}
+                          ></div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div class="grow cursor-default">
+                      <div class="relative transition-all duration-300 ease-out">
+                        <h3
+                          class="flex items-center gap-3 font-medium leading-normal p-3 pl-0 transition-colors duration-300 text-base"
+                          x-bind:class={`activePoint === ${pIndex} ? 'text-brand-600 dark:text-brand-400' : 'text-neutral-500 dark:text-neutral-400'`}
+                        >
+                          {point.title}
+                        </h3>
+
+                        <div
+                          class="grid transition-[grid-template-rows] duration-300 ease-out"
+                          x-bind:class={`activePoint === ${pIndex} ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'`}
+                        >
+                          <div class="overflow-hidden">
+                            <div
+                              class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pt-0 pb-3 transition-all duration-300 delay-75"
+                              x-bind:class={`activePoint === ${pIndex} ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'`}
+                            >
+                              {point.desc}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- 调用操作按钮 -->
+              <div class="mt-4">
+                <button
+                  class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-all shadow-sm hover:shadow-md font-medium text-sm"
+                  onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+                >
+                  立即体验
+                </button>
+              </div>
+            </div>
+
+            <!-- 右侧图片 -->
+            <div class:list={["relative", index % 2 === 1 ? "lg:order-first" : ""]}>
+               <div class="relative p-2 rounded-sm bg-surface/40 backdrop-blur-sm border border-border max-w-xl mx-auto lg:max-w-none group hover:border-brand-500/30 transition-colors duration-500">
+                  <!-- Corner Markers -->
+                  <div class="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+                  <div class="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+                  <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+                  <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+
+                  <div class="relative rounded-sm overflow-hidden border border-border shadow-sm bg-background/60 aspect-[4/3] flex items-center justify-center group-hover:shadow-xl transition-shadow duration-500">
+                      <img
+                          src={detail.image}
+                          alt={detail.title}
+                          class="w-full h-full object-contain relative z-10"
+                          loading="lazy"
+                      />
+                  </div>
+              </div>
+              <!-- 装饰背景 -->
+              <div class:list={[
+                  "absolute -z-10 w-3/4 h-3/4 blur-[100px] opacity-20 rounded-full pointer-events-none",
+                  index % 2 === 0 ? "top-0 right-0 bg-brand-400/30" : "bottom-0 left-0 bg-purple-400/30"
+              ]}></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+
+    <!-- 用户评价 -->
+    <UserReviews />
+
+    <!-- 功能蓝图 -->
+    <ApplicationSystem />
+
+    <!-- 行动号召区域 -->
+    <section class="py-24 bg-surface border-t border-border relative overflow-hidden">
+      <div class="container-custom mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
+          准备好开始创作了吗？
+        </h2>
+        <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto">
+          立即加入 智言AI-BuidAI，体验前沿 AI 技术带来的无限可能。无需复杂的配置，快速构建您的AI应用。
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            class="px-10 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-colors font-medium text-lg"
+            onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+          >
+            免费试用
+          </button>
+          <button
+            class="px-10 py-4 border border-border bg-background text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-sm transition-colors font-medium text-lg"
+            onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+          >
+            联系商务
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 结构展示 -->
+    <Structure />
+
+    <!-- 联系我们 -->
+    <Contact />
+
+    <!-- 行动号召 -->
+    <Calltoaction />
+
+    <!-- 页脚 -->
+    <Footer />
+  </div>
+</Layout>
+

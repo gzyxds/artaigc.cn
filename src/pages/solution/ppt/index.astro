@@ -1,0 +1,418 @@
+---
+/**
+ * AI PPT 解决方案页面
+ * 适配 Astro + Alpine.js + Tailwind CSS
+ */
+import Layout from '../../../layouts/Layout.astro';
+import UserReviews from '../../../components/sections/UserReviews.astro';
+import ApplicationSystem from '../../../components/product/ApplicationSystem.astro';
+import Structure from '../../../components/home/Structure.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import Calltoaction from '../../../components/sections/Calltoaction.astro';
+import Footer from '../../../components/common/Footer.astro';
+
+// --- 功能网格数据 ---
+const features = [
+  {
+    title: '智能生成',
+    desc: '根据用户输入的主题或大纲，自动生成结构清晰、设计美观的PPT页面。',
+    icon: 'auto_awesome', // material-icons: auto_awesome (Sparkles)
+  },
+  {
+    title: '模板图表',
+    desc: '内置多种模板与图表，满足不同场景需求，快速搭建专业级演示文稿。',
+    icon: 'dashboard', // material-icons: dashboard (Layout)
+  },
+  {
+    title: '智能配色',
+    desc: '支持智能配色方案，自动匹配最佳色彩组合，提升视觉表现力。',
+    icon: 'palette', // material-icons: palette (Paintbrush)
+  },
+  {
+    title: '字体搭配',
+    desc: '智能推荐字体搭配方案，确保排版美观专业，提升阅读体验。',
+    icon: 'text_fields', // material-icons: text_fields (Type)
+  },
+  {
+    title: '动画效果',
+    desc: '支持动画效果优化，让演示更加生动有趣，增强观众参与感。',
+    icon: 'movie', // material-icons: movie (Film)
+  },
+  {
+    title: '演讲备注',
+    desc: '一键生成演讲备注，帮助演讲者更好地掌控节奏和内容。',
+    icon: 'description', // material-icons: description (FileText)
+  },
+];
+
+// --- 功能详情数据结构 ---
+interface DetailPoint {
+  title: string;
+  desc: string;
+}
+
+interface FeatureDetail {
+  title: string;
+  desc: string;
+  image: string;
+  points: DetailPoint[];
+}
+
+const featureDetailsData: FeatureDetail[] = [
+  {
+    title: '智能生成，一键直出',
+    desc: '根据用户输入的主题或大纲，自动生成结构清晰、设计美观的PPT页面。无论是工作报告、学术展示还是商业提案，都能快速输出专业级演示文稿，显著提升制作效率与视觉表现力。',
+    image: '/solution/ppt-1.png',
+    points: [
+      {
+        title: '主题自动生成',
+        desc: '根据用户输入的主题或大纲，自动生成结构清晰、设计美观的PPT页面，大幅提升制作效率。'
+      },
+      {
+        title: '智能内容扩展',
+        desc: '基于 AI 算法，自动扩展和优化内容，确保演示文稿内容丰富、逻辑清晰。'
+      },
+      {
+        title: '快速导出',
+        desc: '支持快速导出多种格式，大幅缩短等待时间，提升创作效率。'
+      },
+      {
+        title: '高质量输出',
+        desc: '生成的 PPT 质量高，设计美观，结构清晰，满足专业级创作需求。'
+      }
+    ]
+  },
+  {
+    title: '模板图表，专业设计',
+    desc: '内置多种模板与图表，满足不同场景需求。支持智能配色、字体搭配与动画效果优化，让您的演示文稿更加专业美观。',
+    image: '/solution/ppt-1.png',
+    points: [
+      {
+        title: '丰富模板库',
+        desc: '内置多种模板与图表，涵盖商务、教育、科技等多个领域，满足不同场景需求。'
+      },
+      {
+        title: '智能配色',
+        desc: '支持智能配色方案，自动匹配最佳色彩组合，提升视觉表现力。'
+      },
+      {
+        title: '字体搭配',
+        desc: '智能推荐字体搭配方案，确保排版美观专业，提升阅读体验。'
+      },
+      {
+        title: '动画效果',
+        desc: '支持动画效果优化，让演示更加生动有趣，增强观众参与感。'
+      }
+    ]
+  },
+  {
+    title: '演讲备注，掌控全场',
+    desc: '一键生成演讲备注，帮助演讲者更好地掌控节奏和内容。支持多种输出格式，满足不同场景需求。',
+    image: '/solution/ppt-1.png',
+    points: [
+      {
+        title: '智能备注生成',
+        desc: '一键生成演讲备注，帮助演讲者更好地掌控节奏和内容，提升演讲效果。'
+      },
+      {
+        title: '多种输出格式',
+        desc: '支持多种输出格式，如 PDF、PPTX 等，满足不同场景需求。'
+      },
+      {
+        title: '实时预览',
+        desc: '支持实时预览功能，随时查看演示效果，及时调整优化。'
+      },
+      {
+        title: '云端存储',
+        desc: '支持云端存储，随时随地访问和编辑您的演示文稿。'
+      }
+    ]
+  },
+];
+---
+
+<Layout
+  title="AI PPT - 开源免费的智能演示文稿制作工具 | 智言AI-BuidAI"
+  description="智言AI-BuidAI AI PPT是一款智能演示文稿制作工具，能够根据用户输入的主题或大纲，自动生成结构清晰、设计美观的PPT页面。内置多种模板与图表，支持智能配色、字体搭配与动画效果优化，还可一键生成演讲备注。无论是工作报告、学术展示还是商业提案，都能快速输出专业级演示文稿，显著提升制作效率与视觉表现力。基于开源技术构建，提供完整源码与私有化部署支持。"
+  keywords="AI PPT,智能演示文稿,自动生成PPT,模板图表,智能配色,字体搭配,动画效果,智言AI,BuidAI,PPT制作工具,开源AI系统,私有化部署,PPT源码"
+>
+  <div class="relative min-h-full font-sans text-neutral-900 dark:text-neutral-100 overflow-x-hidden">
+
+    <!-- 首屏区域 -->
+    <div class="relative pt-24 pb-16 md:pt-32 md:pb-24 w-full border-b border-border bg-background">
+      <!-- 背景特效 -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none select-none">
+        <!-- 顶部聚焦光束 -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-normal dark:bg-brand-500/5"></div>
+        <!-- 细微网格背景 -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      </div>
+
+      <div class="container-custom mx-auto px-4 text-center relative z-10">
+        <div class="flex flex-col gap-8 items-center max-w-5xl mx-auto">
+          <!-- 标签 -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border animate-fade-in-up hover:border-brand-500/30 transition-colors cursor-default">
+            <span class="px-1.5 py-0.5 rounded bg-brand-600 text-[11px] font-bold text-white tracking-wider">NEW</span>
+            <span class="text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">AI PPT 2.0 发布</span>
+          </div>
+
+          <!-- 标题 -->
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 leading-[1.1] animate-fade-in-up delay-100">
+            一键直出 <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">幻灯片</span>
+          </h1>
+
+          <!-- 描述 -->
+          <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200 text-balance">
+            智能演示文稿制作工具，根据主题或大纲自动生成 PPT。<br class="hidden sm:block" />
+            内置多种模板与图表，支持智能配色、字体搭配与动画效果优化。
+          </p>
+
+          <!-- 按钮组 -->
+          <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto animate-fade-in-up delay-300">
+            <button
+              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-all shadow-sm hover:shadow-md font-medium text-lg group"
+              onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+            >
+              开始制作
+              <i class="material-icons text-[20px] group-hover:translate-x-0.5 transition-transform">arrow_forward</i>
+            </button>
+            <button
+              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border bg-background text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-sm transition-colors font-medium text-lg"
+              onclick="document.getElementById('__demo_container__')?.scrollIntoView({ behavior: 'smooth' })"
+            >
+              查看示例
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 图片展示区域 -->
+    <div id="__demo_container__" class="container-custom mx-auto px-4 -mt-12 relative z-20">
+      <div class="relative p-2 rounded-sm bg-surface/80 border border-border max-w-5xl mx-auto animate-fade-in-up backdrop-blur-sm shadow-2xl shadow-black/5 dark:shadow-black/20">
+          <!-- Corner Markers -->
+          <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-brand-500 z-30"></div>
+          <div class="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-brand-500 z-30"></div>
+          <div class="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-brand-500 z-30"></div>
+          <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-brand-500 z-30"></div>
+
+          <div class="relative rounded-sm overflow-hidden border border-border bg-background aspect-video flex items-center justify-center group">
+            <div class="absolute inset-0 bg-neutral-100 dark:bg-neutral-900 animate-pulse" x-show="!loaded" x-data="{ loaded: false }" @load.window="loaded = true"></div>
+            <img
+              src="/solution/ppt-1.png"
+              alt="AI PPT展示"
+              class="w-full h-full object-contain relative z-10"
+              loading="lazy"
+            />
+            <!-- 悬浮遮罩 -->
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 pointer-events-none"></div>
+          </div>
+        </div>
+    </div>
+
+    <!-- 功能网格 -->
+    <div class="py-24 md:py-32 bg-background">
+      <div class="container-custom mx-auto px-4">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-6 tracking-tight">
+            全能型 AI PPT 制作平台
+          </h2>
+          <p class="text-neutral-600 dark:text-neutral-400 text-lg">
+            集智能生成、模板图表、智能配色、字体搭配、动画效果于一体，为您提供一站式演示文稿制作解决方案
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border overflow-hidden rounded-sm">
+          {features.map((feature, index) => (
+            <div
+              class="bg-background p-8 md:p-10 transition-all duration-300 group hover:bg-surface relative overflow-hidden"
+            >
+              <!-- Hover Glow -->
+              <div class="absolute top-0 right-0 w-24 h-24 bg-brand-500/5 rounded-bl-full -mr-12 -mt-12 transition-all duration-500 group-hover:scale-150 group-hover:bg-brand-500/10"></div>
+
+              <div class="w-12 h-12 rounded-sm bg-surface border border-border flex items-center justify-center text-neutral-600 dark:text-neutral-400 mb-6 group-hover:border-brand-500/50 group-hover:text-brand-600 transition-colors duration-300 relative z-10">
+                <i class="material-icons text-[24px]">{feature.icon}</i>
+              </div>
+              <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-3 relative z-10">{feature.title}</h3>
+              <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm relative z-10">
+                {feature.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- 功能详情 -->
+    <div class="container-custom mx-auto px-4 py-12 md:py-24 flex flex-col gap-24 md:gap-32">
+      {featureDetailsData.map((detail, index) => (
+        <div class="group">
+          <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div class:list={["flex flex-col gap-6", index % 2 === 1 ? "lg:order-last" : ""]}>
+              <!-- 标签 -->
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-wider w-fit border border-brand-100 dark:bg-brand-900/20 dark:border-brand-800">
+                CORE FEATURE 0{index + 1}
+              </div>
+
+              <!-- 标题 -->
+              <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
+                {detail.title}
+              </h2>
+              <p class="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+                {detail.desc}
+              </p>
+
+              <!-- 功能折叠列表 (Timeline Style) -->
+              <div class="flex flex-col gap-1" x-data="{ activePoint: 0 }">
+                {detail.points.map((point, pIndex) => (
+                  <div
+                    class="rounded-sm flex gap-3 w-full group/item transition-all duration-300 pr-3 cursor-pointer"
+                    x-bind:class={`activePoint === ${pIndex} ? 'bg-gradient-to-r from-brand-500/5 to-transparent' : ''`}
+                    x-on:mouseenter={`activePoint = ${pIndex}`}
+                  >
+                    <div class="flex flex-col pl-3 py-3 items-center gap-[2px]">
+                      <!-- Icon -->
+                      <div class="relative w-4 h-4 mt-1 shrink-0 flex items-center justify-center text-brand-600">
+                        <!-- Active Icon -->
+                        <div
+                          class="absolute inset-0 transition-opacity duration-300"
+                          x-bind:class={`activePoint === ${pIndex} ? 'opacity-100' : 'opacity-0'`}
+                        >
+                           <i class="material-icons text-[16px]">check_circle</i>
+                        </div>
+                        <!-- Inactive Icon -->
+                        <div
+                          class="absolute inset-0 transition-opacity duration-300 flex items-center justify-center"
+                          x-bind:class={`activePoint !== ${pIndex} ? 'opacity-30 group-hover/item:opacity-50' : 'opacity-0'`}
+                        >
+                           <div class="w-3 h-3 rounded-full border-2 border-current"></div>
+                        </div>
+                      </div>
+
+                      <!-- 连接线 -->
+                      {pIndex < detail.points.length - 1 && (
+                        <div class="w-[2px] grow bg-neutral-200 dark:bg-neutral-800 rounded-full relative overflow-hidden min-h-[16px]">
+                          <div
+                            class="absolute top-0 left-0 w-full bg-brand-600 rounded-full transition-all duration-500 ease-out"
+                            x-bind:style={`activePoint === ${pIndex} ? 'height: 100%' : 'height: 0%'`}
+                            x-bind:class={`activePoint > ${pIndex} ? 'opacity-0' : ''`}
+                          ></div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div class="grow cursor-default">
+                      <div class="relative transition-all duration-300 ease-out">
+                        <h3
+                          class="flex items-center gap-3 font-medium leading-normal p-3 pl-0 transition-colors duration-300 text-base"
+                          x-bind:class={`activePoint === ${pIndex} ? 'text-brand-600 dark:text-brand-400' : 'text-neutral-500 dark:text-neutral-400'`}
+                        >
+                          {point.title}
+                        </h3>
+
+                        <div
+                          class="grid transition-[grid-template-rows] duration-300 ease-out"
+                          x-bind:class={`activePoint === ${pIndex} ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'`}
+                        >
+                          <div class="overflow-hidden">
+                            <div
+                              class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pt-0 pb-3 transition-all duration-300 delay-75"
+                              x-bind:class={`activePoint === ${pIndex} ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'`}
+                            >
+                              {point.desc}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- 调用操作按钮 -->
+              <div class="mt-4">
+                <button
+                  class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-all shadow-sm hover:shadow-md font-medium text-sm"
+                  onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+                >
+                  立即体验
+                </button>
+              </div>
+            </div>
+
+            <!-- 右侧图片 -->
+            <div class:list={["relative", index % 2 === 1 ? "lg:order-first" : ""]}>
+               <div class="relative p-2 rounded-sm bg-surface/40 backdrop-blur-sm border border-border max-w-xl mx-auto lg:max-w-none group hover:border-brand-500/30 transition-colors duration-500">
+                  <!-- Corner Markers -->
+                  <div class="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+                  <div class="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+                  <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+                  <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-neutral-300 dark:border-neutral-700 group-hover:border-brand-500 transition-colors duration-500"></div>
+
+                  <div class="relative rounded-sm overflow-hidden border border-border shadow-sm bg-background/60 aspect-[4/3] flex items-center justify-center group-hover:shadow-xl transition-shadow duration-500">
+                      <img
+                          src={detail.image}
+                          alt={detail.title}
+                          class="w-full h-full object-contain relative z-10"
+                          loading="lazy"
+                      />
+                  </div>
+              </div>
+              <!-- 装饰背景 -->
+              <div class:list={[
+                  "absolute -z-10 w-3/4 h-3/4 blur-[100px] opacity-20 rounded-full pointer-events-none",
+                  index % 2 === 0 ? "top-0 right-0 bg-brand-400/30" : "bottom-0 left-0 bg-purple-400/30"
+              ]}></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+
+    <!-- 用户评价 -->
+    <UserReviews />
+
+    <!-- 功能蓝图 -->
+    <ApplicationSystem />
+
+    <!-- 行动号召区域 -->
+    <section class="py-24 bg-surface border-t border-border relative overflow-hidden">
+      <div class="container-custom mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
+          准备好开始创作了吗？
+        </h2>
+        <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto">
+          立即加入 智言AI-BuidAI，体验前沿 AI 技术带来的无限可能。无需复杂的配置，快速构建您的AI应用。
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            class="px-10 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-colors font-medium text-lg"
+            onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+          >
+            免费试用
+          </button>
+          <button
+            class="px-10 py-4 border border-border bg-background text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-sm transition-colors font-medium text-lg"
+            onclick="window.dispatchEvent(new CustomEvent('showQRCodeModal'))"
+          >
+            联系商务
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 结构展示 -->
+    <Structure />
+
+    <!-- 联系我们 -->
+    <Contact />
+
+    <!-- 行动号召 -->
+    <Calltoaction />
+
+    <!-- 页脚 -->
+    <Footer />
+  </div>
+</Layout>
+

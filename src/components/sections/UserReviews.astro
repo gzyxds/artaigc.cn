@@ -1,0 +1,252 @@
+---
+/**
+ * UserReviews 组件
+ * 展示用户评价和反馈
+ * 参考设计: UserReviews.tsx
+ */
+
+// 定义评论类型
+type Review = {
+  content: string;
+  author: string;
+  role: string;
+};
+
+// 评论数据
+const reviews: Review[] = [
+  {
+    content: '艺创AI 在国内算做得很好很好了，对于数字人生成，无论是从美观还是使用的角度，都非常方便非常优秀，导入功能特别好，比其他工具好用太多了。继续加油！',
+    author: 'Alex',
+    role: 'AI 创作者',
+  },
+  {
+    content: '艺创AI 真的牛，想要的定制功能提出没多久就加上了，而且测试了下和预期的效果完全一致，我之前还因为其他工具的限制专门写了脚本来处理，现在 艺创AI 直接能满足需求了！',
+    author: '何易于',
+    role: '全栈开发者',
+  },
+  {
+    content: '每次有问题都能在群里直接找到技术人员，不仅给出了最佳解决方案，还进行了耐心的讲解。再次为你们的专业技能和敬业精神点赞👍🏻你们是国产之光',
+    author: '花满楼',
+    role: '测试工程师',
+  },
+  {
+    content: '不知不觉发现公司很多运营都被我带动用上 艺创AI 了，平常分享视频素材都是丢个链接出去，大家发现真方便，都跟着我用了哈哈哈哈，现在越来越离不开 艺创AI 啦',
+    author: 'vate',
+    role: '运营经理',
+  },
+  {
+    content: '其他工具能干的 艺创AI 能干，其他工具不能干的 艺创AI 还是能干，而且 艺创AI 作为国产工具，几乎整合了大部分 AI 相关功能，真就一个代替所有。最主要是对小团队协作友好，有格局。',
+    author: '我是光',
+    role: '产品经理',
+  },
+  {
+    content: '你们的 UI 真不错，是国内 UI 交互做的最好的。做产品就应该这样精致，这样才会有好的产品体验！我每天用 艺创AI，看着这个 UI 交互心情就很好，效率也会好哈哈。',
+    author: '多喝热水',
+    role: '前端工程师',
+  },
+  {
+    content: '对于我们这种初创团队来说，艺创AI 的私有化部署方案简直是救星。数据安全有保障，而且成本可控，技术支持响应速度也非常快，必须五星好评！',
+    author: 'TechLead',
+    role: 'CTO',
+  },
+  {
+    content: 'Sora 视频生成功能太惊艳了！生成的视频质量很高，镜头语言很专业，完全可以直接用到商业项目中。大大缩短了我们的视频制作周期。',
+    author: '创意总监',
+    role: '视频制作人',
+  },
+  {
+    content: '集成非常丝滑，API 文档清晰易懂。我们在原有系统中接入 艺创AI 的能力只用了半天时间，现在的产品竞争力提升了一个档次。',
+    author: 'CodeMaster',
+    role: '后端架构师',
+  },
+  {
+    content: '从文案生成到视频制作，一条龙服务太方便了。以前需要几个工具切换，现在一个平台全搞定，效率提升了至少 300%。',
+    author: '效率达人',
+    role: '自媒体博主',
+  },
+  {
+    content: '界面简洁直观，上手没有任何难度。对于非技术人员也非常友好，我们市场部的同事现在都能自己做一些简单的 AI 素材了。',
+    author: 'MarketPro',
+    role: '市场总监',
+  },
+  {
+    content: '不仅仅是工具，更是一个生态。社区氛围很好，官方经常分享一些前沿的 AI 玩法和案例，跟着学到了很多新知识。',
+    author: 'LearnAI',
+    role: '独立开发者',
+  }
+];
+
+// 将评论分为三列
+const columns: Review[][] = [
+  reviews.slice(0, 4),
+  reviews.slice(4, 8),
+  reviews.slice(8, 12)
+];
+
+/**
+ * 获取指定列的评论列表（用于纵向滚动复制）
+ */
+const getColumnReviews = (index: number): Review[] => {
+  const col = columns[index] ?? [];
+  return [...col, ...col]; // 复制一份以实现无缝滚动
+};
+
+const gradients = [
+  'bg-gradient-to-br from-blue-50/50 to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10',
+  'bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-900/10 dark:to-pink-900/10',
+  'bg-gradient-to-br from-green-50/50 to-emerald-50/50 dark:from-green-900/10 dark:to-emerald-900/10',
+  'bg-gradient-to-br from-orange-50/50 to-amber-50/50 dark:from-orange-900/10 dark:to-amber-900/10',
+  'bg-gradient-to-br from-cyan-50/50 to-sky-50/50 dark:from-cyan-900/10 dark:to-sky-900/10',
+  'bg-gradient-to-br from-rose-50/50 to-red-50/50 dark:from-rose-900/10 dark:to-red-900/10',
+];
+---
+
+<section class="py-16 md:py-24 bg-background border-t border-border overflow-hidden">
+  <div class="container-custom">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+        深受开发者与创作者喜爱
+      </h2>
+      <p class="text-neutral-500 dark:text-neutral-400 text-lg">
+        听听来自社区的真实反馈，见证 艺创AI 如何提升工作效率
+      </p>
+    </div>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[800px] overflow-hidden mask-gradient">
+      {/* Column 1 */}
+      <div class="marquee-column space-y-6" style="--duration: 40s;">
+        {getColumnReviews(0).map((review, index) => (
+          <div
+            class:list={[
+              "p-8 rounded-sm border border-border break-inside-avoid hover:scale-[1.02] transition-transform duration-300",
+              gradients[index % gradients.length]
+            ]}
+          >
+            {/* 评价内容 */}
+            <p class="mb-8 text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              "{review.content}"
+            </p>
+
+            {/* 用户信息 */}
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-white dark:bg-neutral-800 flex items-center justify-center text-neutral-400 dark:text-neutral-500 shadow-sm border border-neutral-100 dark:border-neutral-700">
+                  {/* User Icon SVG */}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="font-medium text-neutral-900 dark:text-neutral-100 text-sm">
+                    {review.author}
+                  </div>
+                  <div class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                    {review.role}
+                  </div>
+                </div>
+              </div>
+
+              {/* MessageSquare Icon SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-neutral-200 dark:text-neutral-800"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Column 2 */}
+      <div class="marquee-column space-y-6 hidden md:block" style="--duration: 50s; --direction: reverse;">
+        {getColumnReviews(1).map((review, index) => (
+          <div
+            class:list={[
+              "p-8 rounded-sm border border-border break-inside-avoid hover:scale-[1.02] transition-transform duration-300",
+              gradients[(index + 2) % gradients.length]
+            ]}
+          >
+             {/* 评价内容 */}
+             <p class="mb-8 text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              "{review.content}"
+            </p>
+
+            {/* 用户信息 */}
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-white dark:bg-neutral-800 flex items-center justify-center text-neutral-400 dark:text-neutral-500 shadow-sm border border-neutral-100 dark:border-neutral-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="font-medium text-neutral-900 dark:text-neutral-100 text-sm">
+                    {review.author}
+                  </div>
+                  <div class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                    {review.role}
+                  </div>
+                </div>
+              </div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-neutral-200 dark:text-neutral-800"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Column 3 */}
+      <div class="marquee-column space-y-6 hidden lg:block" style="--duration: 45s;">
+        {getColumnReviews(2).map((review, index) => (
+          <div
+            class:list={[
+              "p-8 rounded-sm border border-border break-inside-avoid hover:scale-[1.02] transition-transform duration-300",
+              gradients[(index + 4) % gradients.length]
+            ]}
+          >
+             {/* 评价内容 */}
+             <p class="mb-8 text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              "{review.content}"
+            </p>
+
+            {/* 用户信息 */}
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-white dark:bg-neutral-800 flex items-center justify-center text-neutral-400 dark:text-neutral-500 shadow-sm border border-neutral-100 dark:border-neutral-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="font-medium text-neutral-900 dark:text-neutral-100 text-sm">
+                    {review.author}
+                  </div>
+                  <div class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                    {review.role}
+                  </div>
+                </div>
+              </div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-neutral-200 dark:text-neutral-800"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mask-gradient {
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-column {
+    animation: marquee-vertical var(--duration) linear infinite;
+    animation-direction: var(--direction, normal);
+  }
+
+  .marquee-column:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+</style>
