@@ -2,6 +2,8 @@
 // 首页产品数据接口
 import { products as defaultProducts, type Product, getCategory } from '../../data/products';
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import { getProductImage } from '../../data/images';
 
 // 分类定义
 const categories = [
@@ -34,7 +36,8 @@ const {
 // 为产品添加分类属性
 const productsWithCategory = products.map(product => ({
   ...product,
-  category: getCategory(product.subtitle)
+  category: getCategory(product.subtitle),
+  imageSrc: getProductImage(product.image)
 }));
 
 // 定义样式常量
@@ -118,12 +121,21 @@ const iconInactiveClass = "text-gray-400";
             <!-- 商品图片区域 - 16:9比例 -->
             <div class="relative p-3 sm:p-4 md:p-5 pb-0">
               <div class="relative overflow-hidden rounded-none bg-gray-100 dark:bg-gray-800 border border-gray-100 dark:border-gray-700" style="aspect-ratio: 16/9;">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  class="w-full h-full object-cover transition-transform duration-500"
-                  loading="lazy"
-                />
+                {product.imageSrc ? (
+                  <Image
+                    src={product.imageSrc as any}
+                    alt={product.title}
+                    class="w-full h-full object-cover transition-transform duration-500"
+                    width={800}
+                    height={450}
+                    quality={90}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-400">
+                    <Icon name="lucide:image-off" class="w-8 h-8" />
+                  </div>
+                )}
                 <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                 {product.subtitle && (

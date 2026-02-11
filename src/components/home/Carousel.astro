@@ -1,10 +1,13 @@
 ---
 import { products } from '../../data/products';
+import { getProductImage } from '../../data/images';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 // 数据处理
 // 简单的随机打乱
 const shuffled = [...products].sort(() => Math.random() - 0.5);
-const images = shuffled.map(p => p.image);
+const images = shuffled.map(p => getProductImage(p.image)).filter(img => img !== null);
 
 // 确保有足够的图片用于滚动，如果少于10张则重复
 let result = images;
@@ -18,14 +21,6 @@ const marqueeImages = {
   second: result.slice(mid)
 };
 
-// 图标定义 (SVG) - 简洁线性风格
-const icons = {
-  Sparkles: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.2 1.2L3 12l5.8 1.9a2 2 0 0 1 1.2 1.2L12 21l1.9-5.8a2 2 0 0 1 1.2-1.2L21 12l-5.8-1.9a2 2 0 0 1-1.2-1.2L12 3Z"/></svg>`,
-  Database: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>`,
-  Palette: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
-  MessageSquareCode: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M10 9.5 8 12l2 2.5"/><path d="M14 9.5 16 12l-2 2.5"/><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`
-};
-
 interface FeatureItem {
   icon: string;
   title: string;
@@ -37,7 +32,7 @@ interface FeatureItem {
 
 const featureList: FeatureItem[] = [
   {
-    icon: 'Sparkles',
+    icon: 'lucide:sparkles',
     title: "AI数字人",
     desc: "声音形象克隆，24h在线",
     color: "text-purple-500",
@@ -45,7 +40,7 @@ const featureList: FeatureItem[] = [
     border: "border-purple-500/20"
   },
   {
-    icon: 'Database',
+    icon: 'lucide:database',
     title: "知识库系统",
     desc: "智能问答，文档管理",
     color: "text-blue-500",
@@ -53,7 +48,7 @@ const featureList: FeatureItem[] = [
     border: "border-blue-500/20"
   },
   {
-    icon: 'Palette',
+    icon: 'lucide:palette',
     title: "聊天绘画",
     desc: "AI创作，文生图/视频",
     color: "text-pink-500",
@@ -61,7 +56,7 @@ const featureList: FeatureItem[] = [
     border: "border-pink-500/20"
   },
   {
-    icon: 'MessageSquareCode',
+    icon: 'lucide:message-square-code',
     title: "商业正版",
     desc: "私有部署，代码开源",
     color: "text-indigo-500",
@@ -178,7 +173,9 @@ const featureList: FeatureItem[] = [
             {featureList.map((item) => (
               <div class="group flex items-center gap-4 p-4 bg-surface/30 hover:bg-surface transition-all duration-300 border border-transparent hover:border-border rounded-none">
                 <div class={`shrink-0 w-10 h-10 flex items-center justify-center rounded-sm bg-surface border border-border group-hover:border-brand-500/30 group-hover:text-brand-600 transition-colors`}>
-                  <div class="text-neutral-500 group-hover:text-brand-600 transition-colors" set:html={icons[item.icon as keyof typeof icons]} />
+                  <div class="text-neutral-500 group-hover:text-brand-600 transition-colors">
+                    <Icon name={item.icon} class="w-5 h-5" />
+                  </div>
                 </div>
                 <div class="flex flex-col justify-center min-w-0">
                   <h3 class="text-sm font-semibold text-neutral-900 dark:text-white group-hover:text-brand-600 transition-colors mb-0.5 truncate">{item.title}</h3>
@@ -203,10 +200,14 @@ const featureList: FeatureItem[] = [
               {marqueeImages.first.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
                   <div class="bento-card bento-card-hover relative w-full overflow-hidden">
-                    <img
-                      src={img}
+                  <Image
+                      src={img as any}
                       alt={`Product Preview ${index + 1}`}
                       class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                      width={600}
+                      height={338}
+                      quality={90}
+                      inferSize={true}
                       loading="lazy"
                     />
                     <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300"></div>
@@ -216,10 +217,14 @@ const featureList: FeatureItem[] = [
                {marqueeImages.first.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
                   <div class="bento-card bento-card-hover relative w-full overflow-hidden">
-                    <img
-                      src={img}
+                  <Image
+                      src={img as any}
                       alt={`Product Preview ${index + 1}`}
                       class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                      width={600}
+                      height={338}
+                      quality={90}
+                      inferSize={true}
                       loading="lazy"
                     />
                     <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300"></div>
@@ -235,10 +240,14 @@ const featureList: FeatureItem[] = [
               {marqueeImages.second.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
                   <div class="bento-card bento-card-hover relative w-full overflow-hidden">
-                    <img
-                      src={img}
+                  <Image
+                      src={img as any}
                       alt={`Product Preview ${index + 1}`}
                       class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                      width={600}
+                      height={338}
+                      quality={90}
+                      inferSize={true}
                       loading="lazy"
                     />
                     <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300"></div>
@@ -248,10 +257,14 @@ const featureList: FeatureItem[] = [
                {marqueeImages.second.map((img, index) => (
                  <a href="/shop" class="block w-[260px] shrink-0 mx-3 group">
                   <div class="bento-card bento-card-hover relative w-full overflow-hidden">
-                    <img
-                      src={img}
+                  <Image
+                      src={img as any}
                       alt={`Product Preview ${index + 1}`}
                       class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                      width={600}
+                      height={338}
+                      quality={90}
+                      inferSize={true}
                       loading="lazy"
                     />
                     <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300"></div>
@@ -285,10 +298,14 @@ const featureList: FeatureItem[] = [
               <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                 <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <img
-                  src={img}
+                <Image
+                  src={img as any}
                   alt={`Product Preview ${index + 1}`}
                   class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                  width={600}
+                  height={338}
+                  quality={90}
+                  inferSize={true}
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/5 transition-colors duration-300"></div>
@@ -300,10 +317,14 @@ const featureList: FeatureItem[] = [
               <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                 <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <img
-                  src={img}
+                <Image
+                  src={img as any}
                   alt={`Product Preview ${index + 1}`}
                   class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                  width={600}
+                  height={338}
+                  quality={90}
+                  inferSize={true}
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/5 transition-colors duration-300"></div>
@@ -321,10 +342,14 @@ const featureList: FeatureItem[] = [
               <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                 <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <img
-                  src={img}
+                <Image
+                  src={img as any}
                   alt={`Product Preview ${index + 1}`}
                   class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                  width={600}
+                  height={338}
+                  quality={90}
+                  inferSize={true}
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/5 transition-colors duration-300"></div>
@@ -336,10 +361,14 @@ const featureList: FeatureItem[] = [
               <div class="bento-card bento-card-hover relative w-full overflow-hidden">
                 <div class="corner-marker corner-marker-tr opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div class="corner-marker corner-marker-bl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <img
-                  src={img}
+                <Image
+                  src={img as any}
                   alt={`Product Preview ${index + 1}`}
                   class="w-full h-auto bg-gray-50 dark:bg-gray-900"
+                  width={600}
+                  height={338}
+                  quality={90}
+                  inferSize={true}
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/5 transition-colors duration-300"></div>
