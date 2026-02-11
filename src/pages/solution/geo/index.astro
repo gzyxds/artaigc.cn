@@ -4,6 +4,7 @@
  * 适配 Astro + Alpine.js + Tailwind CSS
  */
 import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/common/Header.astro';
 import UserReviews from '../../../components/sections/UserReviews.astro';
 import ApplicationSystem from '../../../components/product/ApplicationSystem.astro';
 import Structure from '../../../components/home/Structure.astro';
@@ -137,6 +138,7 @@ const featureDetailsData: FeatureDetail[] = [
   keywords="GEO优化排名工具,A搜索优化,AI系统,AI源码,开源代码,内容训练,批量创作文章,AI模板创作,标题生成,改写扩写,模型计费"
 >
   <div class="relative min-h-full font-sans text-neutral-900 dark:text-neutral-100 overflow-x-hidden">
+    <Header />
 
     <!-- 首屏区域 -->
     <div class="relative pt-24 pb-16 md:pt-32 md:pb-24 w-full border-b border-border bg-background">

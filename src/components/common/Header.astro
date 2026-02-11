@@ -41,7 +41,9 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
 
         <!-- 企业级简约下拉菜单组件 -->
         {Object.entries(menuData).map(([key, items]) => {
-          const menuName = key === 'products' ? '产品中心' : key === 'docs' ? '产品文档' : '支持与服务';
+          const menuName = key === 'products' ? '产品中心' : 
+                          key === 'solutions' ? '应用方案' : 
+                          key === 'docs' ? '产品文档' : '支持与服务';
           return (
             <div class="relative group">
               <button class="nav-link flex items-center whitespace-nowrap group/btn">
@@ -183,7 +185,9 @@ const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; class
 
         <!-- 移动端菜单项 -->
         {Object.entries(menuData).map(([key, items]) => {
-          const menuName = key === 'products' ? '产品中心' : key === 'docs' ? '产品文档' : '支持与服务';
+          const menuName = key === 'products' ? '产品中心' : 
+                          key === 'solutions' ? '应用方案' : 
+                          key === 'docs' ? '产品文档' : '支持与服务';
           return (
             <div x-data="{expanded: false}" class="rounded-none bg-background">
               <button

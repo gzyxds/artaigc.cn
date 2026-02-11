@@ -4,6 +4,7 @@
  * 适配 Astro + Alpine.js + Tailwind CSS
  */
 import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/common/Header.astro';
 import UserReviews from '../../../components/sections/UserReviews.astro';
 import ApplicationSystem from '../../../components/product/ApplicationSystem.astro';
 import Structure from '../../../components/home/Structure.astro';
@@ -137,6 +138,7 @@ const featureDetailsData: FeatureDetail[] = [
   keywords="AI简历,智能简历,简历生成,简历分析,简历优化,简历模板,智言AI,BuidAI,简历制作工具,开源AI系统,私有化部署,简历源码"
 >
   <div class="relative min-h-full font-sans text-neutral-900 dark:text-neutral-100 overflow-x-hidden">
+    <Header />
 
     <!-- 首屏区域 -->
     <div class="relative pt-24 pb-16 md:pt-32 md:pb-24 w-full border-b border-border bg-background">
