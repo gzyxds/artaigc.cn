@@ -23,7 +23,7 @@ export const products: Product[] = [
     features: ["声音克隆", "形象定制", "视频生成", "AI 交谈", "热点话题"],
     price: 4999,
     originalPrice: 6800,
-    link: "/demo",
+    link: "/human",
     rating: 4.8,
     sales: 2156,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
@@ -36,7 +36,7 @@ export const products: Product[] = [
     features: ["多模式输入", "向量检索", "智能问答", "多端支持"],
     price: 6600,
     originalPrice: 9800,
-    link: "/demo",
+    link: "/ai",
     rating: 4.9,
     sales: 5203,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
@@ -49,7 +49,7 @@ export const products: Product[] = [
     features: ["Python 架构", "向量检索", "多源接入", "智能问答"],
     price: 2999,
     originalPrice: 3800.00,
-    link: "/demo",
+    link: "/chat",
     rating: 4.9,
     sales: 3178,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
@@ -62,7 +62,7 @@ export const products: Product[] = [
     features: ["期刊论文", "科普文章", "学生作业", "商业报告"],
     price: 3200,
     originalPrice: 4698,
-    link: "/demo",
+    link: "/paper",
     rating: 4.8,
     sales: 3132,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
@@ -75,7 +75,7 @@ export const products: Product[] = [
     features: ["Java 架构", "高并发", "企业级", "多端支持"],
     price: 6600,
     originalPrice: 9800,
-    link: "/demo",
+    link: "/ai",
     rating: 4.9,
     sales: 1165,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
@@ -88,7 +88,7 @@ export const products: Product[] = [
     features: ["Java 架构", "多模型支持", "高性能", "场景定制"],
     price: 6600,
     originalPrice: 9800,
-    link: "/demo",
+    link: "/human",
     rating: 4.8,
     sales: 4108,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
@@ -101,7 +101,7 @@ export const products: Product[] = [
     features: ["AI 绘画", "智能聊天", "场景定制", "一键部署"],
     price: 2999,
     originalPrice: 3800,
-    link: "/demo",
+    link: "/chat",
     rating: 4.7,
     sales: 2389,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
@@ -119,7 +119,7 @@ export const products: Product[] = [
     sales: 3134,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
-  
+
   {
     image: "/product/Sora2短剧视频创作.png",
     title: "Sora2 短剧创作",
@@ -128,7 +128,7 @@ export const products: Product[] = [
     features: ["Sora 模型", "短剧生成", "剧本转视频", "创意转化"],
     price: 1398,
     originalPrice: 1398,
-    link: "/demo",
+    link: "/solution/sora",
     rating: 4.8,
     sales: 1243,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -142,12 +142,12 @@ export const products: Product[] = [
     features: ["AI 绘画", "角色一致性", "模板生成", "开箱即用"],
     price: 1398,
     originalPrice: 1398,
-    link: "/demo",
+    link: "/solution/wanclipg",
     rating: 4.7,
     sales: 982,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     isPlugin: true
-  },  
+  },
   {
     image: "/product/Nanobanana.png",
     title: "Nanobanana",
@@ -156,7 +156,7 @@ export const products: Product[] = [
     features: ["AI 绘画", "角色一致性", "模板生成", "开箱即用"],
     price: 1398,
     originalPrice: 1398,
-    link: "/demo",
+    link: "/solution/banana",
     rating: 4.7,
     sales: 982,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -170,7 +170,7 @@ export const products: Product[] = [
     features: ["简历生成", "智能优化", "求职辅助", "效率提升"],
     price: 998,
     originalPrice: 998,
-    link: "/demo",
+    link: "/solution/resume",
     rating: 4.9,
     sales: 2103,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -226,7 +226,7 @@ export const products: Product[] = [
     features: ["一键生成", "智能排版", "海量模板", "演示增强"],
     price: 1299,
     originalPrice: 1299,
-    link: "/demo",
+    link: "/solution/ppt",
     rating: 4.8,
     sales: 2341,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -282,7 +282,7 @@ export const products: Product[] = [
     features: ["剧本创作", "小说续写", "灵感激发", "创作辅助"],
     price: 1198,
     originalPrice: 1198,
-    link: "/demo",
+    link: "/solution/drama",
     rating: 4.6,
     sales: 1120,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -296,7 +296,7 @@ export const products: Product[] = [
     features: ["本地 SEO", "排名优化", "精准获客", "流量增长"],
     price: 1398,
     originalPrice: 1398,
-    link: "/demo",
+    link: "/solution/geo",
     rating: 4.8,
     sales: 654,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -310,7 +310,7 @@ export const products: Product[] = [
     features: ["以文生图", "风格迁移", "艺术创作", "多风格支持"],
     price: 999,
     originalPrice: 999,
-    link: "/demo",
+    link: "/solution/jmdraw",
     rating: 4.7,
     sales: 1876,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -324,7 +324,7 @@ export const products: Product[] = [
     features: ["图生视频", "文生视频", "创意短片", "动态效果"],
     price: 998,
     originalPrice: 1499,
-    link: "/demo",
+    link: "/solution/jimeng",
     rating: 4.8,
     sales: 1432,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -352,7 +352,7 @@ export const products: Product[] = [
     features: ["爆款文案", "智能仿写", "内容生成", "流量密码"],
     price: 1398,
     originalPrice: 1398,
-    link: "/demo",
+    link: "/solution/xhs",
     rating: 4.7,
     sales: 2987,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -366,7 +366,7 @@ export const products: Product[] = [
     features: ["虚拟试衣", "服装设计", "效果预览", "成本降低"],
     price: 1398,
     originalPrice: 1398,
-    link: "/demo",
+    link: "/solution/model",
     rating: 4.8,
     sales: 765,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -380,7 +380,7 @@ export const products: Product[] = [
     features: ["智能混剪", "热点抓取", "短视频生成", "爆款制造"],
     price: 1398,
     originalPrice: 1398,
-    link: "/demo",
+    link: "/solution/videoclip",
     rating: 4.6,
     sales: 1654,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
@@ -408,18 +408,18 @@ export const products: Product[] = [
     features: ["文本生歌", "AI 作曲", "人机协同", "多模态输入"],
     price: 1399,
     originalPrice: 1399,
-    link: "/demo",
+    link: "/solution/music",
     rating: 4.9,
     sales: 1200,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     isPlugin: true
   }
-]; 
+];
 
 // 辅助函数：根据 subtitle 获取分类 ID
 export const getCategory = (subtitle: string) => {
   const sub = (subtitle || '').toLowerCase();
-  if (sub.includes('图像视频') || sub.includes('数字人') || sub.includes('聊天绘画')) return 'video';
+  if (sub.includes('图像视频') || sub.includes('数字人') || sub.includes('聊天绘画') || sub.includes('漫剧') || sub.includes('短剧')) return 'video';
   if (sub.includes('智能写作') || sub.includes('论文')) return 'writing';
   if (sub.includes('企业工具') || sub.includes('知识库')) return 'enterprise';
   if (sub.includes('效率工具') || sub.includes('ppt') || sub.includes('简历')) return 'efficiency';

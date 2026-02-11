@@ -33,6 +33,8 @@ const {
   description = "扫描下方二维码，添加客服咨询或关注公众号获取优惠",
   isOpen = false
 } = Astro.props;
+
+import { Icon } from 'astro-icon/components';
 ---
 
 <div
@@ -45,57 +47,70 @@ const {
 >
   <div class="modal-content bento-card p-0 overflow-hidden w-[600px] max-w-[95%]">
     <!-- 角标装饰 -->
-    <div class="corner-marker corner-marker-tr"></div>
-    <div class="corner-marker corner-marker-bl"></div>
+    <div class="corner-marker corner-tr"></div>
+    <div class="corner-marker corner-bl"></div>
 
     <button
-      class="close-button"
+      class="close-button group"
       aria-label="关闭二维码"
       id="close-modal"
       tabindex="0"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
+      <Icon name="lucide:x" class="w-[22px] h-[22px] transition-transform duration-300 group-hover:rotate-90" stroke-width="1.5" />
     </button>
 
-    <div class="modal-body p-5 sm:p-8 overflow-y-auto max-h-[80vh]">
+    <div class="modal-body p-6 sm:p-8 overflow-y-auto max-h-[80vh]">
       <!-- 顶部公告 -->
-      <div class="mb-5 sm:mb-6 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 text-xs sm:text-sm text-blue-800 dark:text-blue-200 font-mono flex items-start gap-2 rounded-sm">
-        <span class="shrink-0 mt-0.5">📢</span>
-        <span>
-          公告：请 <span class="font-bold text-blue-600 dark:text-blue-400 border-b border-blue-400">联系客服</span> 咨询购买，关注公众号可以了解 <span class="font-bold text-blue-600 dark:text-blue-400">优惠活动</span> 和 <span class="font-bold text-blue-600 dark:text-blue-400">产品更新</span>
+      <div class="mb-6 p-4 bg-blue-50/50 dark:bg-blue-500/5 border border-blue-100 dark:border-blue-500/20 text-xs sm:text-sm text-blue-800 dark:text-blue-200 flex items-start gap-3 rounded-sm">
+        <Icon name="lucide:megaphone" class="w-4 h-4 shrink-0 mt-0.5 text-blue-600 dark:text-blue-400" />
+        <span class="leading-relaxed">
+          <span class="font-bold text-blue-700 dark:text-blue-300">公告：</span>请 <span class="font-bold text-blue-600 dark:text-blue-400 border-b border-blue-400/30 hover:border-blue-500 transition-colors cursor-pointer">联系客服</span> 咨询购买，关注公众号可以了解 <span class="font-bold text-blue-600 dark:text-blue-400">优惠活动</span> 和 <span class="font-bold text-blue-600 dark:text-blue-400">产品更新</span>
         </span>
       </div>
 
-      <div class="inline-flex items-center gap-2 mb-3 sm:mb-4">
-        <span class="w-6 h-px bg-blue-500"></span>
-        <span class="text-blue-600 dark:text-blue-400 font-mono text-[10px] font-bold uppercase tracking-widest">Connect Support</span>
+      <div class="inline-flex items-center gap-2 mb-3">
+        <span class="w-6 h-px bg-brand-600 dark:bg-brand-400"></span>
+        <span class="text-brand-600 dark:text-brand-400 font-mono text-xs font-bold uppercase tracking-widest">Connect Support</span>
       </div>
-      <h2 class="modal-title font-mono font-bold text-lg sm:text-xl uppercase tracking-tight text-gray-900 dark:text-white mb-2" id="modal-title">{title}</h2>
-      <p class="modal-description text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-sans mb-6 leading-relaxed">{description}</p>
+      <h2 class="modal-title font-sans font-bold text-2xl tracking-tight text-gray-900 dark:text-white mb-3" id="modal-title">{title}</h2>
+      <p class="modal-description text-gray-500 dark:text-gray-400 text-sm font-sans mb-8 leading-relaxed max-w-lg">{description}</p>
 
       <!-- 双二维码布局：移动端上下排列，PC端左右排列 -->
-      <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6">
+      <div class="grid grid-cols-2 gap-4 sm:gap-8">
         <!-- 客服二维码 -->
-        <div class="flex flex-col items-center">
-          <div class="qr-container w-full border border-gray-100 dark:border-gray-800 p-2 sm:p-4 bg-gray-50/50 dark:bg-gray-900/50 rounded-none relative group aspect-square flex items-center justify-center">
-            <div class="corner-marker corner-marker-tr opacity-20 group-hover:opacity-100 transition-opacity"></div>
-            <img src={qrCodeUrl} alt="客服二维码" class="qr-code w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.01]" loading="lazy" />
+        <div class="flex flex-col items-center group/qr">
+          <div class="qr-container w-full border border-gray-200 dark:border-gray-800 p-4 bg-white dark:bg-gray-900/50 rounded-sm relative aspect-square flex items-center justify-center overflow-hidden transition-all duration-300 group-hover/qr:border-blue-500/30 group-hover/qr:shadow-lg group-hover/qr:shadow-blue-500/10">
+            <!-- 扫描动画元素 -->
+            <div class="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent z-10 opacity-0 group-hover/qr:opacity-100 scan-animation pointer-events-none top-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
+            <div class="absolute inset-0 bg-blue-500/5 opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+            <div class="corner-marker corner-tl opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+            <div class="corner-marker corner-tr opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+            <div class="corner-marker corner-bl opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+            <div class="corner-marker corner-br opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+
+            <img src={qrCodeUrl} alt="客服二维码" class="qr-code w-full h-full object-contain relative z-0" loading="lazy" />
           </div>
-          <span class="mt-2 sm:mt-3 text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 font-mono text-center">添加客服微信</span>
-          <span class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-500 text-center scale-90 sm:scale-100 origin-top">咨询购买 / 技术支持</span>
+          <span class="mt-4 text-sm font-bold text-gray-700 dark:text-gray-300 font-mono text-center group-hover/qr:text-blue-600 dark:group-hover/qr:text-blue-400 transition-colors">添加客服微信</span>
+          <span class="text-xs text-gray-500 dark:text-gray-500 text-center mt-1">咨询购买 / 技术支持</span>
         </div>
 
         <!-- 公众号二维码 -->
-        <div class="flex flex-col items-center">
-          <div class="qr-container w-full border border-gray-100 dark:border-gray-800 p-2 sm:p-4 bg-gray-50/50 dark:bg-gray-900/50 rounded-none relative group aspect-square flex items-center justify-center">
-            <div class="corner-marker corner-marker-tr opacity-20 group-hover:opacity-100 transition-opacity"></div>
-            <img src={gzhQrCodeUrl} alt="公众号二维码" class="qr-code w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.01]" loading="lazy" />
+        <div class="flex flex-col items-center group/qr">
+          <div class="qr-container w-full border border-gray-200 dark:border-gray-800 p-4 bg-white dark:bg-gray-900/50 rounded-sm relative aspect-square flex items-center justify-center overflow-hidden transition-all duration-300 group-hover/qr:border-blue-500/30 group-hover/qr:shadow-lg group-hover/qr:shadow-blue-500/10">
+            <!-- 扫描动画元素 -->
+            <div class="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent z-10 opacity-0 group-hover/qr:opacity-100 scan-animation pointer-events-none top-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
+            <div class="absolute inset-0 bg-blue-500/5 opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+            <div class="corner-marker corner-tl opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+            <div class="corner-marker corner-tr opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+            <div class="corner-marker corner-bl opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+            <div class="corner-marker corner-br opacity-0 group-hover/qr:opacity-100 transition-opacity duration-300 group-hover/qr:border-blue-500"></div>
+
+            <img src={gzhQrCodeUrl} alt="公众号二维码" class="qr-code w-full h-full object-contain relative z-0" loading="lazy" />
           </div>
-          <span class="mt-2 sm:mt-3 text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 font-mono text-center">关注公众号</span>
-          <span class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-500 text-center scale-90 sm:scale-100 origin-top">优惠活动 / 产品更新</span>
+          <span class="mt-4 text-sm font-bold text-gray-700 dark:text-gray-300 font-mono text-center group-hover/qr:text-blue-600 dark:group-hover/qr:text-blue-400 transition-colors">关注公众号</span>
+          <span class="text-xs text-gray-500 dark:text-gray-500 text-center mt-1">优惠活动 / 产品更新</span>
         </div>
       </div>
 
@@ -160,21 +175,48 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
   }
 
   .close-button:hover {
-    border-color: #ef4444;
-    color: #ef4444;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000;
   }
 
   :global(.dark) .close-button {
     color: #999;
   }
 
+  :global(.dark) .close-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+
   .qr-code {
     display: block;
     max-width: 100%;
     height: auto;
+  }
+
+  @keyframes scan {
+     0% {
+       top: 0%;
+       opacity: 0;
+     }
+     15% {
+       opacity: 1;
+     }
+     85% {
+       opacity: 1;
+     }
+     100% {
+       top: 100%;
+       opacity: 0;
+     }
+   }
+
+  .scan-animation {
+    animation: scan 2s linear infinite;
   }
 
   @media (max-width: 480px) {

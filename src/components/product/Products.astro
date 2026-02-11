@@ -1,25 +1,16 @@
 ---
 // 首页产品数据接口
 import { products as defaultProducts, type Product, getCategory } from '../../data/products';
-
-// 定义图标路径
-const icons = {
-  zap: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
-  database: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
-  video: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
-  penTool: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z",
-  briefcase: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
-  layoutGrid: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-};
+import { Icon } from 'astro-icon/components';
 
 // 分类定义
 const categories = [
-  { id: 'all', name: '全部应用', icon: icons.zap },
-  { id: 'independent', name: '独立系统', icon: icons.database },
-  { id: 'video', name: '图像视频', icon: icons.video },
-  { id: 'writing', name: '智能写作', icon: icons.penTool },
-  { id: 'enterprise', name: '企业工具', icon: icons.briefcase },
-  { id: 'efficiency', name: '效率工具', icon: icons.layoutGrid },
+  { id: 'all', name: '全部应用', icon: 'lucide:zap' },
+  { id: 'independent', name: '独立系统', icon: 'lucide:database' },
+  { id: 'video', name: '图像视频', icon: 'lucide:video' },
+  { id: 'writing', name: '智能写作', icon: 'lucide:pen-tool' },
+  { id: 'enterprise', name: '企业工具', icon: 'lucide:briefcase' },
+  { id: 'efficiency', name: '效率工具', icon: 'lucide:layout-grid' },
 ];
 
 // 辅助函数：根据 subtitle 获取分类 ID
@@ -100,9 +91,9 @@ const iconInactiveClass = "text-gray-400";
             class="inline-flex items-center px-4 py-2 rounded-none text-sm font-medium transition-all duration-300 border type-small"
             :class={`activeCategory === '${cat.id}' ? btnActiveClass : btnInactiveClass`}
           >
-            <svg class="w-4 h-4 mr-2" :class={`activeCategory === '${cat.id}' ? iconActiveClass : iconInactiveClass`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d={cat.icon} />
-            </svg>
+            <div class="mr-2" :class={`activeCategory === '${cat.id}' ? iconActiveClass : iconInactiveClass`}>
+              <Icon name={cat.icon} class="w-4 h-4" />
+            </div>
             {cat.name}
           </button>
         ))}
@@ -188,9 +179,9 @@ const iconInactiveClass = "text-gray-400";
                     )}
                   </div>
                   <div class="flex items-center text-xs text-gray-500 type-small">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-yellow-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    <div class="text-yellow-500 mr-1">
+                      <Icon name="lucide:star" class="h-3 w-3 fill-current" />
+                    </div>
                     <span>{product.rating}</span>
                     <span class="mx-1">·</span>
                     <span>已售 {product.sales}</span>
@@ -203,10 +194,8 @@ const iconInactiveClass = "text-gray-400";
                      rel="noopener noreferrer"
                      class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 text-xs font-medium rounded-none type-small"
                    >
-                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                     </svg>
-                     演示
+                     <Icon name="lucide:arrow-up-right" class="w-3.5 h-3.5" />
+                     详情
                    </a>
                    <a
                      href={product.buyLink}
@@ -214,9 +203,7 @@ const iconInactiveClass = "text-gray-400";
                      rel="noopener noreferrer"
                      class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 text-xs font-medium rounded-none type-small"
                    >
-                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                     </svg>
+                     <Icon name="lucide:shopping-cart" class="w-3.5 h-3.5" />
                      购买
                    </a>
                  </div>

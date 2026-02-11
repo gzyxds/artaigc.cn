@@ -6,7 +6,8 @@
  * 优化：统一使用 SVG 图标，移除字体图标依赖，增强可访问性
  */
 import astroLogo from '../../assets/logo.svg';
-import { icons, menuData, type MenuItem } from '../../data/menu';
+import { menuData, type MenuItem } from '../../data/menu';
+import { Icon } from 'astro-icon/components';
 
 const logoUrl = typeof astroLogo === 'string' ? astroLogo : astroLogo.src;
 const currentPath = Astro.url.pathname;
@@ -21,22 +22,17 @@ const isActive = (path: string) => {
 interface NavLink {
   name: string;
   url: string;
-  icon: keyof typeof icons;
+  icon: string;
   target?: string;
 }
 
-// 优化的图标组件 - 使用 SVG 路径
-const Icon = ({ name, className = "w-5 h-5" }: { name: keyof typeof icons; className?: string }) => (
-  `<svg class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" role="img"><path stroke-linecap="round" stroke-linejoin="round" d="${icons[name]}"/></svg>`
-);
-
 const navLinks: NavLink[] = [
-  { name: '网站首页', url: '/', icon: 'home' },
-  { name: '产品价格', url: '/pricing', icon: 'payments' },
-  { name: '关于我们', url: '/company', icon: 'domain' },
-  { name: '最新动态', url: '/blog', icon: 'newspaper' },
-  { name: '智言万象', url: 'https://gmlart.cn/', icon: 'api', target: '_blank' },
-  { name: '智言API', url: 'https://api.gmlart.cn/', icon: 'api', target: '_blank' },
+  { name: '网站首页', url: '/', icon: 'lucide:home' },
+  { name: '产品价格', url: '/pricing', icon: 'lucide:credit-card' },
+  { name: '关于我们', url: '/company', icon: 'lucide:globe' },
+  { name: '最新动态', url: '/blog', icon: 'lucide:newspaper' },
+  { name: '智言万象', url: 'https://gmlart.cn/', icon: 'lucide:image', target: '_blank' },
+  { name: '智言API', url: 'https://api.gmlart.cn/', icon: 'lucide:server', target: '_blank' },
 ];
 ---
 
@@ -77,7 +73,9 @@ const navLinks: NavLink[] = [
       x-show="sidebarExpanded"
       aria-label="收起菜单"
     >
-      <span class="w-5 h-5 block" set:html={Icon({ name: 'double_arrow_left', className: "w-5 h-5" })}></span>
+      <span class="w-5 h-5 block">
+        <Icon name="lucide:chevrons-left" class="w-5 h-5" />
+      </span>
     </button>
   </div>
 
@@ -88,7 +86,9 @@ const navLinks: NavLink[] = [
       class="p-2 rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 transition-colors"
       aria-label="展开菜单"
     >
-      <span class="w-5 h-5 block" set:html={Icon({ name: 'double_arrow_right', className: "w-5 h-5" })}></span>
+      <span class="w-5 h-5 block">
+        <Icon name="lucide:chevrons-right" class="w-5 h-5" />
+      </span>
     </button>
   </div>
 
@@ -112,7 +112,9 @@ const navLinks: NavLink[] = [
             :class="sidebarExpanded ? '' : 'justify-center'"
             aria-current={active ? 'page' : undefined}
           >
-            <div class="flex-shrink-0" set:html={Icon({ name: link.icon, className: "w-5 h-5" })} />
+            <div class="flex-shrink-0">
+              <Icon name={link.icon} class="w-5 h-5" />
+            </div>
             <span class="text-[15px] font-medium whitespace-nowrap" x-show="sidebarExpanded">{link.name}</span>
 
             <!-- 收起时的 Tooltip -->
@@ -145,7 +147,9 @@ const navLinks: NavLink[] = [
             :aria-expanded="open"
           >
             <span>{title}</span>
-            <span class="w-4 h-4 transition-transform duration-200 block text-neutral-400" :class="open ? 'rotate-180' : ''" set:html={Icon({ name: 'chevron', className: "w-4 h-4" })}></span>
+            <span class="w-4 h-4 transition-transform duration-200 block text-neutral-400" :class="open ? 'rotate-180' : ''">
+              <Icon name="lucide:chevron-down" class="w-4 h-4" />
+            </span>
           </button>
 
           <!-- 分组内容 -->
@@ -165,7 +169,9 @@ const navLinks: NavLink[] = [
                   :class="sidebarExpanded ? '' : 'justify-center'"
                   aria-current={active ? 'page' : undefined}
                 >
-                  <div class="flex-shrink-0" set:html={Icon({ name: item.icon, className: "w-[18px] h-[18px]" })} />
+                  <div class="flex-shrink-0">
+                    <Icon name={item.icon} class="w-[18px] h-[18px]" />
+                  </div>
                   <span class="text-sm whitespace-nowrap" x-show="sidebarExpanded">{item.name}</span>
 
                   <!-- 收起时的 Tooltip -->
@@ -196,7 +202,9 @@ const navLinks: NavLink[] = [
         class="flex items-center justify-center gap-2 px-3 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-sm transition-colors overflow-hidden"
         aria-label="立即购买"
       >
-        <div class="flex-shrink-0" set:html={Icon({ name: 'shopping_cart', className: "w-5 h-5" })} />
+        <div class="flex-shrink-0">
+          <Icon name="lucide:shopping-cart" class="w-5 h-5" />
+        </div>
         <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">立即购买</span>
       </a>
 
@@ -206,7 +214,9 @@ const navLinks: NavLink[] = [
         class="flex items-center justify-center gap-2 px-3 py-2 border border-border hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-sm transition-colors overflow-hidden"
         aria-label="登录控制台"
       >
-        <div class="flex-shrink-0" set:html={Icon({ name: 'login', className: "w-5 h-5" })} />
+        <div class="flex-shrink-0">
+          <Icon name="lucide:log-in" class="w-5 h-5" />
+        </div>
         <span class="text-sm font-medium whitespace-nowrap" x-show="sidebarExpanded">登录控制台</span>
       </a>
     </div>
@@ -220,8 +230,12 @@ const navLinks: NavLink[] = [
       :aria-pressed="darkMode"
     >
       <div class="relative w-5 h-5 flex-shrink-0">
-        <span x-show="!darkMode" class="absolute inset-0" set:html={Icon({ name: 'moon', className: "w-5 h-5" })}></span>
-        <span x-show="darkMode" class="absolute inset-0" set:html={Icon({ name: 'sun', className: "w-5 h-5" })}></span>
+        <span x-show="!darkMode" class="absolute inset-0">
+          <Icon name="lucide:moon" class="w-5 h-5" />
+        </span>
+        <span x-show="darkMode" class="absolute inset-0">
+          <Icon name="lucide:sun" class="w-5 h-5" />
+        </span>
       </div>
       <span class="text-[15px] font-medium whitespace-nowrap" x-show="sidebarExpanded">
         <span x-show="!darkMode">暗黑模式</span>

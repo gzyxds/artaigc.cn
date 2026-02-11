@@ -6,24 +6,13 @@
  */
 
 import astroLogo from '../../assets/logo.svg';
-import { icons, menuData, type MenuItem } from '../../data/menu';
+import { menuData, type MenuItem } from '../../data/menu';
+import { Icon } from 'astro-icon/components';
 
 /**
  * 获取logo的URL - 处理Astro的SVG导入类型
  */
 const logoUrl = typeof astroLogo === 'string' ? astroLogo : astroLogo.src;
-
-interface IconProps {
-  name: keyof typeof icons;
-  className?: string;
-}
-
-/**
- * 优化的图标组件 - 减少DOM节点
- */
-const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
-  `<svg class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" role="img"><path stroke-linecap="round" stroke-linejoin="round" d="${icons[name]}"/></svg>`
-);
 ---
 
 <!-- 主导航栏 - PC端隐藏，移动端显示 -->
@@ -55,9 +44,9 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
                 <span class="group-hover/btn:text-brand-600 dark:group-hover/btn:text-brand-400 transition-colors duration-200">
                   {menuName}
                 </span>
-                <svg class="ml-1 h-3 w-3 transition-all duration-300 group-hover:rotate-180 text-neutral-400 group-hover/btn:text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={icons.chevron} />
-                </svg>
+                <span class="ml-1 transition-all duration-300 group-hover:rotate-180 text-neutral-400 group-hover/btn:text-brand-500">
+                  <Icon name="lucide:chevron-down" class="h-3 w-3" />
+                </span>
               </button>
 
               <!-- 企业级简约下拉容器 -->
@@ -82,7 +71,9 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
                           <!-- 简约图标区域 -->
                           <div class="flex-shrink-0 mt-0.5">
                             <div class="w-8 h-8 rounded-sm bg-background border border-border flex items-center justify-center group-hover/item:border-brand-500/30 group-hover/item:bg-brand-50/10 transition-all duration-200">
-                              <span class="w-4 h-4 text-neutral-500 dark:text-neutral-400 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 transition-colors duration-200" set:html={Icon({ name: item.icon, className: "w-4 h-4" })}></span>
+                              <span class="w-4 h-4 text-neutral-500 dark:text-neutral-400 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 transition-colors duration-200">
+                                <Icon name={item.icon} class="w-4 h-4" />
+                              </span>
                             </div>
                           </div>
 
@@ -93,7 +84,7 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
                                 {item.name}
                                 </div>
                                 <span class="opacity-0 group-hover/item:opacity-100 transition-opacity duration-200 -translate-x-2 group-hover/item:translate-x-0" aria-hidden="true">
-                                    <svg class="w-3 h-3 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" /></svg>
+                                    <Icon name="lucide:arrow-right" class="w-3 h-3 text-brand-500" />
                                 </span>
                             </div>
                             <div class="text-xs text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed line-clamp-2 font-normal">
@@ -125,12 +116,12 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
           aria-label="切换暗黑模式"
           :aria-pressed="darkMode"
         >
-          <svg x-show="!darkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icons.moon} />
-          </svg>
-          <svg x-show="darkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icons.sun} />
-          </svg>
+          <div x-show="!darkMode">
+            <Icon name="lucide:moon" class="h-5 w-5" />
+          </div>
+          <div x-show="darkMode">
+            <Icon name="lucide:sun" class="h-5 w-5" />
+          </div>
         </button>
 
         <!-- 用户操作按钮 -->
@@ -162,12 +153,12 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
           :aria-expanded="open"
           aria-controls="mobile-menu"
         >
-          <svg x-bind:class="{'hidden': open, 'block': !open}" class="h-6 w-6 text-neutral-600 dark:text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.menu} />
-          </svg>
-          <svg x-bind:class="{'block': open, 'hidden': !open}" class="h-6 w-6 text-neutral-600 dark:text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.close} />
-          </svg>
+          <div x-bind:class="{'hidden': open, 'block': !open}">
+            <Icon name="lucide:menu" class="h-6 w-6 text-neutral-600 dark:text-neutral-400" />
+          </div>
+          <div x-bind:class="{'block': open, 'hidden': !open}">
+            <Icon name="lucide:x" class="h-6 w-6 text-neutral-600 dark:text-neutral-400" />
+          </div>
         </button>
       </div>
     </div>
@@ -205,14 +196,12 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
                 :aria-expanded="expanded"
               >
                 <span class="font-medium text-sm text-neutral-900 dark:text-white" x-bind:class="{'text-brand-600 dark:text-brand-400': expanded}">{menuName}</span>
-                <svg
+                <span
                   x-bind:class="{'rotate-180 text-brand-600 dark:text-brand-400': expanded}"
-                  class="h-4 w-4 text-neutral-400 transition-all duration-200 group-hover:text-brand-600 dark:group-hover:text-brand-400"
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  aria-hidden="true"
+                  class="transition-all duration-200 text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-400"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons.chevron} />
-                </svg>
+                  <Icon name="lucide:chevron-down" class="h-4 w-4" />
+                </span>
               </button>
 
               <div x-show="expanded" x-collapse x-cloak>
@@ -223,7 +212,9 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
                         <a href={item.url} target={(item as MenuItem).target || undefined} class="group flex flex-col p-2.5 rounded-sm bg-background border border-border/50 hover:border-brand-500/30 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50 transition-all duration-200">
                           <div class="flex items-center gap-2 mb-1">
                             <div class="flex-shrink-0 flex items-center justify-center">
-                              <span class="w-4 h-4 text-neutral-500 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-200" set:html={Icon({ name: item.icon, className: "w-4 h-4" })}></span>
+                              <span class="w-4 h-4 text-neutral-500 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-200">
+                                <Icon name={item.icon} class="w-4 h-4" />
+                              </span>
                             </div>
                             <div class="text-xs font-bold text-neutral-800 dark:text-neutral-200 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-200 line-clamp-1">{item.name}</div>
                           </div>
@@ -250,7 +241,7 @@ const Icon = ({ name, className = "w-5 h-5" }: IconProps) => (
       <div class="p-6 border-t border-border">
         <div class="grid grid-cols-2 gap-4">
           <a
-            href="https://auth.cnai.art/regist.htm"
+            href="https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
             class="flex items-center justify-center px-4 py-3 border border-border hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-medium transition-colors duration-200 rounded-none"
           >
             登录
