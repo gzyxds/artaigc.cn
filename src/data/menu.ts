@@ -41,10 +41,10 @@ export const menuData = {
   docs: [
     { name: "官方文档", url: "https://docs.buidai.com/", icon: "lucide:lightbulb", desc: "5分钟快速上手", target: "_blank" },
     { name: "飞书文档", url: "https://rwm01l8tn3x.feishu.cn/wiki/VqNCwBO0KiqWIWkSfdHcDigGnZg?from=from_copylink", icon: "lucide:monitor", desc: "详细功能说明", target: "_blank" },
-    { name: "数字分身", url: "https://doc.artaigc.cn/human/", icon: "lucide:user", desc: "数字人部署文档", target: "_blank" },
-    { name: "全能知识库", url: "https://doc.artaigc.cn/work/deployment/demo.html", icon: "lucide:brain", desc: "企业知识库数文档", target: "_blank" },
-    { name: "聊天绘画", url: "https://doc.artaigc.cn/chat/", icon: "lucide:message-square", desc: "聊天绘画企业知识库数文档", target: "_blank" },
-    { name: "论文创作", url: "https://doc.artaigc.cn/Paper/deployment/bt.html", icon: "lucide:edit", desc: "论文创作文档", target: "_blank" },
+    { name: "数字分身", url: "https://docs.buidai.com/digital", icon: "lucide:user", desc: "数字人部署文档", target: "_blank" },
+    { name: "全能知识库", url: "https://docs.buidai.com/ai", icon: "lucide:brain", desc: "企业知识库数文档", target: "_blank" },
+    { name: "聊天绘画", url: "https://docs.buidai.com/art", icon: "lucide:message-square", desc: "聊天绘画企业知识库数文档", target: "_blank" },
+    { name: "论文创作", url: "https://docs.buidai.com/article", icon: "lucide:edit", desc: "论文创作文档", target: "_blank" },
   ],
   support: [
     { name: "更新日志", url: "/changelog", icon: "lucide:shield", desc: "获取最新更新" },
