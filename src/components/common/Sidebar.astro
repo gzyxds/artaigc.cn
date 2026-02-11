@@ -39,7 +39,15 @@ const iconMap: Record<string, string> = {
   menu: 'menu',
   close: 'close',
   sun: 'light_mode',
-  moon: 'dark_mode'
+  moon: 'dark_mode',
+  // 新增图标映射
+  palette: 'palette',
+  trending: 'trending_up',
+  video: 'movie',
+  brush: 'brush',
+  cloth: 'checkroom',
+  music: 'music_note',
+  heart: 'favorite'
 };
 
 // 标题到图标的精确映射（覆盖默认映射，实现更精准的语义）
@@ -178,7 +186,9 @@ const navLinks: NavLink[] = [
 
     <!-- 分组菜单 -->
     {Object.entries(menuData).map(([key, items]) => {
-      const title = key === 'products' ? '产品中心' : key === 'docs' ? '产品文档' : '支持与服务';
+      const title = key === 'products' ? '产品中心' :
+                   key === 'solutions' ? '应用方案' :
+                   key === 'docs' ? '产品文档' : '支持与服务';
       return (
         <div x-data="{ open: true }" class="space-y-1">
           <!-- 分组标题 -->

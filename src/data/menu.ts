@@ -15,7 +15,15 @@ export const icons = {
   menu: "M4 6h16M4 12h16M4 18h16",
   close: "M6 18L18 6M6 6l12 12",
   sun: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
-  moon: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+  moon: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z",
+  // 优化的图标路径 (Heroicons 风格)
+  palette: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+  trending: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+  video: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 00-2 2v8a2 2 0 002 2z",
+  brush: "M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42",
+  cloth: "M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z",
+  music: "M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3",
+  heart: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
 };
 
 /**
@@ -42,6 +50,21 @@ export const menuData = {
     { name: "产品演示", url: "/demo", icon: "monitor", desc: "在线体验中心" },
     { name: "AI提示词", url: "/tips", icon: "lightbulb", desc: "AI提示词大全" },
     { name: "授权中心", url: "https://console.cloudcvm.com/home.htm", icon: "shield", desc: "授权管理与使用", target: "_blank" },
+  ],
+  solutions: [
+    { name: "香蕉绘画", url: "/solution/banana", icon: "palette", desc: "AI 绘画与图像生成" },
+    { name: "剧本创作", url: "/solution/drama", icon: "edit", desc: "AI 辅助剧本写作" },
+    { name: "GEO排名", url: "/solution/geo", icon: "trending", desc: "AI 搜索引擎优化" },
+    { name: "即梦视频", url: "/solution/jimeng", icon: "video", desc: "AI 视频生成平台" },
+    { name: "即梦绘画", url: "/solution/jmdraw", icon: "brush", desc: "创意绘画工具" },
+    { name: "试衣换装", url: "/solution/model", icon: "cloth", desc: "虚拟模特试衣" },
+    { name: "AI音乐", url: "/solution/music", icon: "music", desc: "AI 音乐创作" },
+    { name: "AI PPT", url: "/solution/ppt", icon: "video", desc: "智能演示文稿生成" },
+    { name: "AI简历", url: "/solution/resume", icon: "cloth", desc: "智能简历优化" },
+    { name: "Sora视频", url: "/solution/sora", icon: "video", desc: "Sora 视频生成" },
+    { name: "视频混剪", url: "/solution/videoclip", icon: "video", desc: "智能视频剪辑" },
+    { name: "AI漫剧", url: "/solution/wanclipg", icon: "video", desc: "AI 漫剧创作" },
+    { name: "小红书助手", url: "/solution/xhs", icon: "heart", desc: "社媒内容创作" },
   ],
   docs: [
     { name: "官方文档", url: "https://docs.buidai.com/", icon: "lightbulb", desc: "5分钟快速上手", target: "_blank" },
