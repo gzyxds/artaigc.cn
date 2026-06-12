@@ -16,7 +16,7 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    image: "/product/saas.webp",
+    image: "/product/human.png",
     title: "数字分身 SaaS 系统",
     subtitle: "PHP 源码版",
     description: "企业级数字人解决方案。支持真人声音克隆与形象定制，快速打造短视频 IP 矩阵。",
@@ -29,7 +29,7 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/work.webp",
+    image: "/product/work.png",
     title: "全能 AI 知识库",
     subtitle: "PHP 源码版",
     description: "基于 PHP + Vue3 构建的企业级 AI 知识库。支持多端适配与向量检索，私有化部署首选。",
@@ -42,11 +42,11 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/ai.webp",
+    image: "/product/chatcnai.webp",
     title: "智能聊天绘画系统",
     subtitle: "PHP 源码版",
     description: "集成 Vue3、uni-app 与 ThinkPHP6 的全栈 AI 系统。融合对话与绘图功能，开箱即用。",
-    features: ["Python 架构", "向量检索", "多源接入", "智能问答"],
+    features: ["Vue3、uni 架构", "向量检索", "多源接入", "智能问答"],
     price: 2999,
     originalPrice: 3800.00,
     link: "/chat",
@@ -55,7 +55,7 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/lw.svg",
+    image: "/product/thesis.webp",
     title: "论文创作系统",
     subtitle: "全新升级",
     description: "输入关键词即可生成完整论文大纲。支持期刊、科普、报告等多种格式，大幅提升写作效率。",
@@ -81,7 +81,7 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/saas.svg",
+    image: "/product/vpro.webp",
     title: "数字分身 2.0",
     subtitle: "PHP 源码版",
     description: "高性能 AI 聊天与绘图系统。支持多模型接入与场景深度定制，满足多样化运营需求。",
@@ -94,7 +94,7 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/ai.svg",
+    image: "/product/chatcnai.webp",
     title: "聊天绘画系统 Java",
     subtitle: "Java 源码版",
     description: "深度融合 AI 对话与创作能力。提供一键部署方案，支持灵活的场景配置与扩展。",
@@ -107,8 +107,8 @@ export const products: Product[] = [
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20"
   },
   {
-    image: "/product/知识库.png",
-    title: "开源智能体部署",
+    image: "/product/buidai.webp",
+    title: "智言AI框架",
     subtitle: "PHP 源码版",
     description: "零代码构建原生 AI 能力。集成 MCP、RAG 管道与知识库，快速聚合主流大模型。",
     features: ["MCP", "知识库", "模型聚合", "扣子"],
@@ -121,21 +121,21 @@ export const products: Product[] = [
   },
 
   {
-    image: "/product/Sora2短剧视频创作.png",
-    title: "Sora2 短剧创作",
+    image: "/product/image.png",
+    title: "Imgea-2 图片创作",
     subtitle: "图像视频",
-    description: "聚焦高效短剧创作的 AI 工具。深度理解文本提示词，将创意瞬间转化为精彩视频。",
-    features: ["Sora 模型", "短剧生成", "剧本转视频", "创意转化"],
+    description: "聚焦高效图片创作的 AI 工具。深度理解文本提示词，将创意瞬间转化为精彩图片。",
+    features: ["Imgea-2 模型", "图片生成", "剧本图片", "创意转化"],
     price: 1398,
     originalPrice: 1398,
-    link: "/solution/sora",
+    link: "/solution/sora2",
     rating: 4.8,
     sales: 1243,
     buyLink: "https://console.cloudcvm.com/cart/goodsList.htm?fpg_id=61&spg_id=20",
     isPlugin: true
   },
   {
-    image: "/product/漫剧短剧.png",
+    image: "/product/万象漫剧.png",
     title: "AI漫剧短剧创作",
     subtitle: "漫剧短剧",
     description: "漫剧是一款智能AI视频生成工具，服务于创作者、动画爱好者及视觉工作者，能够根据用户输入的文字提示词，快速生成符合需求的视频内容。",
@@ -261,7 +261,7 @@ export const products: Product[] = [
     isPlugin: true
   },
   {
-    image: "/product/AI直播短视频数字人.png",
+    image: "/product/vsaas.webp",
     title: "AI 直播数字人",
     subtitle: "图像视频",
     description: "7x24 小时无人直播带货。打造永不休息的超级主播，抢占直播红利。",
@@ -345,7 +345,7 @@ export const products: Product[] = [
     isPlugin: true
   },
   {
-    image: "/product/小红书内容复刻.png",
+    image: "/product/小红书.png",
     title: "小红书内容复刻",
     subtitle: "智能写作",
     description: "一键提取爆款笔记文案并智能仿写。轻松掌握流量密码，快速产出高质量内容。",
